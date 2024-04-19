@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Navbar from "../components/navbar";
 import Hero from "../components/hero";
+import {ComplexNavbar} from "../components/navbar1"
 
 export default function Home() {
   return (
@@ -117,6 +118,7 @@ export default function Home() {
       className="relative flex flex-col justify-between w-full min-h-[3000px] bg-black "
     >
       <Navbar />
+      {/* <ComplexNavbar/> */}
       <Hero />
     </main>
   );

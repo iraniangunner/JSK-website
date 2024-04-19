@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { ComplexNavbar } from "./navbar1";
 
 export default function Navbar() {
   const [isScrolling, setIsScrolling] = useState(false);
@@ -36,8 +37,8 @@ export default function Navbar() {
 
 function NavbarFixed() {
   return (
-    <nav className="fixed z-10 flex justify-between w-full px-8 py-2 top-4">
-      <div className="flex items-center gap-2 text-white">
+    <nav className="fixed z-10 flex justify-between w-full px-8 py-2 bg-[#ccc]">
+      {/* <div className="flex items-center gap-2 text-white">
         <svg
           className="rotate-180"
           width="15"
@@ -55,7 +56,7 @@ function NavbarFixed() {
         </svg>
         <p className="text-xl text-white">Diagram</p>
       </div>
-      <ul className="flex items-center text-white/50">
+      <ul className="flex items-center text-white/50 ">
         <li className="px-2 text-md ">
           <Link href={"/pods"}>Magician</Link>
         </li>
@@ -71,7 +72,8 @@ function NavbarFixed() {
       </ul>
       <div className="px-4 py-2 ml-2 text-white bg-black rounded-full text-md ">
         <Link href={"/"}>Login</Link>
-      </div>
+      </div> */}
+      <ComplexNavbar />
     </nav>
   );
 }
@@ -84,9 +86,9 @@ function NavbarScroll({ isScrolling }) {
       animate={isScrolling ? "animate" : "initial"}
       exit="exit"
       variants={NavAnimations}
-      className="fixed z-10 flex justify-between px-4 py-2 rounded-full ts-bg left-1/2 top-10"
+      className="fixed z-10 flex justify-between w-full px-8 py-2 bg-[#ccc]"
     >
-      <ul className="flex items-center">
+      {/* <ul className="flex items-center w-full">
         <li className="px-2 text-white text-md">
           <Link href={"/pods"}>Magician</Link>
         </li>
@@ -102,7 +104,25 @@ function NavbarScroll({ isScrolling }) {
         <li className="px-4 py-2 ml-2 text-white bg-black rounded-full text-md ">
           <Link href={"/"}>Login</Link>
         </li>
+      </ul> */}
+       {/* <ul className="flex items-center text-white/50 ">
+        <li className="px-2 text-md ">
+          <Link href={"/pods"}>Magician</Link>
+        </li>
+        <li className="px-2 text-md">
+          <Link href={"/"}>Genius</Link>
+        </li>
+        <li className="px-2 text-md">
+          <Link href={"/"}>Animator</Link>
+        </li>
+        <li className="px-2 text-md">
+          <Link href={"/"}>UI-AI</Link>
+        </li>
       </ul>
+      <div className="px-4 py-2 ml-2 text-white bg-black rounded-full text-md ">
+        <Link href={"/"}>Login</Link>
+      </div> */}
+      <ComplexNavbar />
     </motion.nav>
   );
 }
@@ -110,12 +130,12 @@ function NavbarScroll({ isScrolling }) {
 const NavAnimations = {
   initial: {
     y: -50,
-    x: "-50%",
+    // x: "-50%",
     opacity: 0,
   },
   animate: {
     y: 0,
-    x: "-50%",
+    // x: "-50%",
     opacity: 1,
     transition: {
       type: "spring",
@@ -129,3 +149,7 @@ const NavAnimations = {
   },
 
 };
+
+
+
+
