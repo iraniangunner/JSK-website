@@ -289,7 +289,7 @@ export function ComplexNavbar({ isScroll }) {
             href="#"
             className="mr-4 ml-2 cursor-pointer py-1.5 font-medium ml-auto"
           >
-            <Image src="./jsk.svg" alt="Vercel Logo" width={200} height={24} />
+            <Image src="./jsk.svg" alt="JSK Logo" width={200} height={24} />
           </Typography>
         ) : (
           <></>
