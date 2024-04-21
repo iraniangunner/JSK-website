@@ -2,6 +2,7 @@ import { HiOutlineLogin } from "react-icons/hi";
 import { Button } from "@material-tailwind/react";
 import { CiLocationOn } from "react-icons/ci";
 import { FiPhoneIncoming } from "react-icons/fi";
+import { MdOutlineLocationOn } from "react-icons/md";
 import { Typography } from "@material-tailwind/react";
 import Image from "next/image";
 
@@ -24,8 +25,8 @@ export default function TopNav() {
 
       <div className="flex justify-center items-center gap-4 lg:gap-6">
         <div className="flex justify-center items-center ml-3">
-          <div className="border rounded-full p-2 ml-3">
-            <FiPhoneIncoming size={20} />
+          <div className="border border-[#ffa500] text-[#ffa500] hover:bg-[#ffa500] hover:text-white transition-all rounded-full p-2 ml-3">
+            <FiPhoneIncoming size={20}  />
           </div>
           <div>
             <p className="mb-2">تلفن</p>
@@ -33,8 +34,8 @@ export default function TopNav() {
           </div>
         </div>
         <div className="flex justify-center items-center">
-          <div className="border rounded-full p-2 ml-3">
-            <CiLocationOn size={20} />
+          <div className="border border-[#ffa500] text-[#ffa500] hover:bg-[#ffa500] hover:text-white transition-all rounded-full p-2 ml-3">
+            <MdOutlineLocationOn size={20} />
           </div>
           <div>
             <p className="mb-2">آدرس</p>
