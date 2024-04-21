@@ -12,7 +12,7 @@ export default function TopNav() {
         <Typography
           as="a"
           href="#"
-          className="relative cursor-pointer py-1.5 font-medium 
+          className="relative cursor-pointer py-1.5 font-medium
           before:content-[''] before:absolute before:right-[100%] 
           before:top-0 before:border-l-[50px] before:border-l-transparent before:border-b-[65px] before:border-b-[#ffa500]
           after:content-[''] after:absolute after:left-[100%] after:top-0 after:min-w-[100vw] after:h-[100%] after:bg-[#ffa500]

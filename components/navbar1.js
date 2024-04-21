@@ -140,7 +140,7 @@ function NavListMenu() {
   const renderItems = navListMenuItems.map(({ title, description }) => (
     <a href="#" key={title}>
       <MenuItem>
-        <Typography variant="h6" color="blue-gray" className="mb-1">
+        <Typography variant="h6" color="blue-gray" className="mb-1 font-iransans">
           {title}
         </Typography>
         {/* <Typography variant="small" color="gray" className="font-normal">
@@ -155,7 +155,7 @@ function NavListMenu() {
       <Menu allowHover open={isMenuOpen} handler={setIsMenuOpen}>
         <MenuHandler>
           <Typography as="a" href="#" variant="small" className="font-normal">
-            <MenuItem className="hidden items-center gap-2 font-medium text-blue-gray-900 lg:flex lg:rounded-full hover:bg-opacity-0 focus:bg-opacity-0 active:bg-opacity-0">
+            <MenuItem className="hidden items-center gap-2 font-medium font-iransans text-blue-gray-900 lg:flex lg:rounded-full hover:bg-opacity-0 focus:bg-opacity-0 active:bg-opacity-0">
               {/* <Square3Stack3DIcon className="h-[18px] w-[18px] text-blue-gray-500" />{" "} */}
               خدمات{" "}
               <ChevronDownIcon
@@ -181,7 +181,7 @@ function NavListMenu() {
           </ul>
         </MenuList>
       </Menu>
-      <MenuItem className="flex items-center gap-2 font-medium text-blue-gray-900 lg:hidden">
+      <MenuItem className="flex items-center gap-2 font-medium font-iransans text-blue-gray-900 lg:hidden">
         {/* <Square3Stack3DIcon className="h-[18px] w-[18px] text-blue-gray-500" />{" "} */}
         خدمات{" "}
       </MenuItem>
@@ -227,7 +227,7 @@ function NavList() {
           href="#"
           variant="small"
           color="gray"
-          className="relative font-medium text-blue-gray-500 after:hidden after:lg:block after:content-[''] after:border-b-[3px] after:border-b-[#ffa500] after:scale-0 after:transition-all hover:after:scale-100 after:duration-200"
+          className="relative font-medium font-iransans text-blue-gray-500 after:hidden after:lg:block after:content-[''] after:border-b-[3px] after:border-b-[#ffa500] after:scale-0 after:transition-all hover:after:scale-100 after:duration-200"
         >
           <MenuItem className="flex items-center gap-2 lg:rounded-full h-full py-6 hover:bg-opacity-0 focus:bg-opacity-0 active:bg-opacity-0">
             {/* {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "} */}
@@ -260,7 +260,7 @@ export function ComplexNavbar({ isScroll }) {
   }, []);
 
   return (
-    <Navbar className="mx-auto max-w-screen-3xl rounded-none py-0 lg:pl-6">
+    <Navbar className="mx-auto max-w-screen-3xl rounded-none py-0 lg:pl-6 font-iransans">
       <div className="relative mx-auto flex items-center justify-center text-blue-gray-900">
         <Typography
           as="a"
