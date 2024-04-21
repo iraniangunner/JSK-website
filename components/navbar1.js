@@ -140,7 +140,11 @@ function NavListMenu() {
   const renderItems = navListMenuItems.map(({ title, description }) => (
     <a href="#" key={title}>
       <MenuItem>
-        <Typography variant="h6" color="blue-gray" className="mb-1 font-iransans">
+        <Typography
+          variant="h6"
+          color="blue-gray"
+          className="mb-1 font-iransans"
+        >
           {title}
         </Typography>
         {/* <Typography variant="small" color="gray" className="font-normal">
@@ -155,7 +159,11 @@ function NavListMenu() {
       <Menu allowHover open={isMenuOpen} handler={setIsMenuOpen}>
         <MenuHandler>
           <Typography as="a" href="#" variant="small" className="font-normal">
-            <MenuItem className="hidden items-center gap-2 font-medium font-iransans text-blue-gray-900 lg:flex lg:rounded-full hover:bg-opacity-0 focus:bg-opacity-0 active:bg-opacity-0">
+            <MenuItem
+              className={`hidden items-center gap-2 font-medium font-iransans text-gray-900 hover:text-[#ffa500] ${
+                isMenuOpen ? "text-[#ffa500]" : ""
+              } lg:flex lg:rounded-full hover:bg-opacity-0 focus:bg-opacity-0 active:bg-opacity-0`}
+            >
               {/* <Square3Stack3DIcon className="h-[18px] w-[18px] text-blue-gray-500" />{" "} */}
               خدمات{" "}
               <ChevronDownIcon
@@ -167,7 +175,7 @@ function NavListMenu() {
             </MenuItem>
           </Typography>
         </MenuHandler>
-        <MenuList className="hidden w-[24rem] grid-cols-3 gap-3 overflow-visible lg:grid">
+        <MenuList className="hidden w-[24rem] gap-3 overflow-visible lg:grid grid-cols-3">
           {/* <Card
             color="blue"
             shadow={false}
@@ -176,7 +184,7 @@ function NavListMenu() {
           >
             <RocketLaunchIcon strokeWidth={1} className="h-28 w-28" />
           </Card> */}
-          <ul className="col-span-3 flex w-full flex-col gap-1">
+          <ul className="col-span-3 flex w-full flex-col gap-1 group-hover:text-[#ffa500]">
             {renderItems}
           </ul>
         </MenuList>
@@ -229,9 +237,9 @@ function NavList() {
           color="gray"
           className="relative font-medium font-iransans text-blue-gray-500 after:hidden after:lg:block after:content-[''] after:border-b-[3px] after:border-b-[#ffa500] after:scale-0 after:transition-all hover:after:scale-100 after:duration-200"
         >
-          <MenuItem className="flex items-center gap-2 lg:rounded-full h-full py-6 hover:bg-opacity-0 focus:bg-opacity-0 active:bg-opacity-0">
+          <MenuItem className="flex text-gray-900 hover:text-[#ffa500] items-center gap-2 lg:rounded-full h-full py-6 hover:bg-opacity-0 focus:bg-opacity-0 active:bg-opacity-0">
             {/* {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "} */}
-            <div className="text-gray-900"> {label}</div>
+            <div> {label}</div>
           </MenuItem>
         </Typography>
       ))}
