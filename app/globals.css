@@ -33,3 +33,13 @@ body {
     text-wrap: balance;
   }
 }
+
+
+/* .navlink:after {
+  display:block;
+  content: '';
+  border-bottom: solid 3px black;  
+  transform: scaleX(0);  
+  transition: transform 250ms ease-in-out;
+}
+.navlink:hover:after { transform: scaleX(1); } */

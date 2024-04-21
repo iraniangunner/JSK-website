@@ -16,19 +16,6 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 
-// export{
-//   Navbar,
-//   MobileNav,
-//   Typography,
-//   Button,
-//   Menu,
-//   MenuHandler,
-//   MenuList,
-//   MenuItem,
-//   Avatar,
-//   Card,
-//   IconButton,
-// };
 import {
   CubeTransparentIcon,
   UserCircleIcon,
@@ -168,7 +155,7 @@ function NavListMenu() {
       <Menu allowHover open={isMenuOpen} handler={setIsMenuOpen}>
         <MenuHandler>
           <Typography as="a" href="#" variant="small" className="font-normal">
-            <MenuItem className="hidden items-center gap-2 font-medium text-blue-gray-900 lg:flex lg:rounded-full">
+            <MenuItem className="hidden items-center gap-2 font-medium text-blue-gray-900 lg:flex lg:rounded-full hover:bg-opacity-0 focus:bg-opacity-0 active:bg-opacity-0">
               {/* <Square3Stack3DIcon className="h-[18px] w-[18px] text-blue-gray-500" />{" "} */}
               خدمات{" "}
               <ChevronDownIcon
@@ -231,7 +218,7 @@ const navListItems = [
 
 function NavList() {
   return (
-    <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
+    <ul className="mt-2 mb-4 flex flex-col gap-2 lg:gap-6 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
       <NavListMenu />
       {navListItems.map(({ label, icon }, key) => (
         <Typography
@@ -240,11 +227,11 @@ function NavList() {
           href="#"
           variant="small"
           color="gray"
-          className="font-medium text-blue-gray-500"
+          className="relative font-medium text-blue-gray-500 after:hidden after:lg:block after:content-[''] after:border-b-[3px] after:border-b-[#ffa500] after:scale-0 after:transition-all hover:after:scale-100 after:duration-200"
         >
-          <MenuItem className="flex items-center gap-2 lg:rounded-full">
+          <MenuItem className="flex items-center gap-2 lg:rounded-full h-full py-6 hover:bg-opacity-0 focus:bg-opacity-0 active:bg-opacity-0">
             {/* {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "} */}
-            <span className="text-gray-900"> {label}</span>
+            <div className="text-gray-900"> {label}</div>
           </MenuItem>
         </Typography>
       ))}
@@ -273,7 +260,7 @@ export function ComplexNavbar({ isScroll }) {
   }, []);
 
   return (
-    <Navbar className="mx-auto max-w-screen-3xl rounded-none p-2 lg:pl-6">
+    <Navbar className="mx-auto max-w-screen-3xl rounded-none py-0 lg:pl-6">
       <div className="relative mx-auto flex items-center justify-center text-blue-gray-900">
         <Typography
           as="a"
@@ -286,7 +273,7 @@ export function ComplexNavbar({ isScroll }) {
           <Typography
             as="a"
             href="#"
-            className="mr-4 cursor-pointer py-1.5 font-medium ml-auto"
+            className="mr-4 cursor-pointer py-1.5 font-medium ml-auto hidden lg:block"
           >
             <Image src="./jsk.svg" alt="JSK Logo" width={200} height={24} />
           </Typography>
@@ -305,6 +292,19 @@ export function ComplexNavbar({ isScroll }) {
         >
           <Bars2Icon className="h-6 w-6" />
         </IconButton>
+
+        {isScroll ? (
+          <Button
+            size="md"
+            variant="text"
+            className="hidden lg:mr-auto lg:flex items-center justify-between text-md"
+          >
+            <span>ورود</span>
+            <HiOutlineLogin size={25} />
+          </Button>
+        ) : (
+          <></>
+        )}
 
         {/* <Button
           size="md"

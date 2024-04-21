@@ -1,6 +1,5 @@
 import { HiOutlineLogin } from "react-icons/hi";
 import { Button } from "@material-tailwind/react";
-import { ImLocation2 } from "react-icons/im";
 import { CiLocationOn } from "react-icons/ci";
 import { FiPhoneIncoming } from "react-icons/fi";
 import { Typography } from "@material-tailwind/react";
@@ -8,7 +7,7 @@ import Image from "next/image";
 
 export default function TopNav() {
   return (
-    <div className="hidden sticky top-0 lg:grid grid-cols-3 py-4 bg-white">
+    <div className="hidden sticky top-0 lg:grid grid-cols-3 bg-white py-4">
       <div className="flex justify-center items-center">
         <Typography
           as="a"
@@ -23,7 +22,7 @@ export default function TopNav() {
         </Typography>
       </div>
 
-      <div className="flex justify-center items-center py-2 gap-4 lg:gap-6">
+      <div className="flex justify-center items-center gap-4 lg:gap-6">
         <div className="flex justify-center items-center ml-3">
           <div className="border rounded-full p-2 ml-3">
             <FiPhoneIncoming size={20} />
@@ -46,7 +45,8 @@ export default function TopNav() {
           </div>
         </div>
       </div>
-      <div className="flex justify-center items-center py-2 gap-4">
+      <div className="flex justify-center items-center gap-4">
+
         <Button
           size="md"
           variant="text"
@@ -55,7 +55,7 @@ export default function TopNav() {
           <span>ورود</span>
           <HiOutlineLogin size={25} />
         </Button>
-        <button>انگلیسی</button>
+        {/* <button>انگلیسی</button> */}
       </div>
     </div>
   );

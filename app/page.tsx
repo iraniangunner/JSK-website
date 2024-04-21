@@ -10,7 +10,7 @@ export default function Home() {
         // style={{ backgroundImage: "url(/Stars.png)" }}
         className="relative flex flex-col justify-between w-full"
       >
-        <TopNav />
+        <TopNav/>
         <Navbar />
       </header>
       {/* <div className="text-black">Hello</div> */}

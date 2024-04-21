@@ -1,8 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import { motion, AnimatePresence, px } from "framer-motion";
 import { ComplexNavbar } from "./navbar1";
+import TopNav from "./top-nav";
 
 export default function Navbar() {
   const [isScrolling, setIsScrolling] = useState(false);
@@ -35,7 +35,7 @@ export default function Navbar() {
   );
 }
 
-function NavbarFixed({isScrolling}) {
+function NavbarFixed({ isScrolling }) {
   return (
     <nav className="sticky top-[72px] z-10 flex justify-between w-full bg-[#ccc]">
       <ComplexNavbar isScroll={isScrolling} />
