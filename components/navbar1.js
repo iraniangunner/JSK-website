@@ -260,12 +260,12 @@ export function ComplexNavbar({ isScroll }) {
   }, []);
 
   return (
-    <Navbar className="mx-auto max-w-screen-3xl rounded-none py-0 lg:pl-6 font-iransans">
+    <Navbar className="mx-auto max-w-screen-3xl rounded-none px-2 lg:px-8 py-0 lg:pl-6 font-iransans">
       <div className="relative mx-auto flex items-center justify-center text-blue-gray-900">
         <Typography
           as="a"
           href="#"
-          className="block lg:hidden mr-4 cursor-pointer py-1.5 font-medium ml-auto"
+          className="block lg:hidden cursor-pointer py-1.5 font-medium ml-auto"
         >
           <Image src="./jsk.svg" alt="JSK Logo" width={200} height={24} />
         </Typography>
@@ -316,7 +316,7 @@ export function ComplexNavbar({ isScroll }) {
         </Button> */}
         {/* <ProfileMenu /> */}
       </div>
-      <MobileNav open={isNavOpen} className="overflow-scroll">
+      <MobileNav open={isNavOpen} className="overflow-scroll ">
         <NavList />
       </MobileNav>
     </Navbar>

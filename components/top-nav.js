@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function TopNav() {
   return (
-    <div className="hidden sticky top-0 lg:grid grid-cols-3 bg-white py-4">
+    <div className="hidden sticky top-0 lg:grid grid-cols-3 bg-white pt-4">
       <div className="flex justify-center items-center">
         <Typography
           as="a"
