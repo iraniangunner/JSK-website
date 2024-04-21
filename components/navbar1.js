@@ -169,7 +169,7 @@ function NavListMenu() {
         <MenuHandler>
           <Typography as="a" href="#" variant="small" className="font-normal">
             <MenuItem className="hidden items-center gap-2 font-medium text-blue-gray-900 lg:flex lg:rounded-full">
-              <Square3Stack3DIcon className="h-[18px] w-[18px] text-blue-gray-500" />{" "}
+              {/* <Square3Stack3DIcon className="h-[18px] w-[18px] text-blue-gray-500" />{" "} */}
               خدمات{" "}
               <ChevronDownIcon
                 strokeWidth={2}
@@ -195,7 +195,7 @@ function NavListMenu() {
         </MenuList>
       </Menu>
       <MenuItem className="flex items-center gap-2 font-medium text-blue-gray-900 lg:hidden">
-        <Square3Stack3DIcon className="h-[18px] w-[18px] text-blue-gray-500" />{" "}
+        {/* <Square3Stack3DIcon className="h-[18px] w-[18px] text-blue-gray-500" />{" "} */}
         خدمات{" "}
       </MenuItem>
       <ul className="ml-6 flex w-full flex-col gap-1 lg:hidden">
@@ -246,14 +246,6 @@ function NavList() {
             {/* {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "} */}
             <span className="text-gray-900"> {label}</span>
           </MenuItem>
-          {/* <Button
-            size="md"
-            variant="text"
-            className="lg:mr-auto flex items-center justify-between text-md"
-          >
-            <span>ورود</span>
-            <HiOutlineLogin size={25} />
-          </Button> */}
         </Typography>
       ))}
       <Button
@@ -283,24 +275,24 @@ export function ComplexNavbar({ isScroll }) {
   return (
     <Navbar className="mx-auto max-w-screen-3xl rounded-none p-2 lg:pl-6">
       <div className="relative mx-auto flex items-center justify-center text-blue-gray-900">
+        <Typography
+          as="a"
+          href="#"
+          className="block lg:hidden mr-4 cursor-pointer py-1.5 font-medium ml-auto"
+        >
+          <Image src="./jsk.svg" alt="JSK Logo" width={200} height={24} />
+        </Typography>
         {isScroll ? (
           <Typography
             as="a"
             href="#"
-            className="mr-4 ml-2 cursor-pointer py-1.5 font-medium ml-auto"
+            className="mr-4 cursor-pointer py-1.5 font-medium ml-auto"
           >
             <Image src="./jsk.svg" alt="JSK Logo" width={200} height={24} />
           </Typography>
         ) : (
           <></>
         )}
-        {/* <Typography
-          as="a"
-          href="#"
-          className="mr-4 ml-2 cursor-pointer py-1.5 font-medium ml-auto"
-        >
-          <Image src="./jsk.svg" alt="Vercel Logo" width={200} height={24} />
-        </Typography> */}
         <div className={`hidden lg:block ${isScroll ? "ml-auto" : ""}`}>
           <NavList />
         </div>
