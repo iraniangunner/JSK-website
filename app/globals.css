@@ -56,3 +56,8 @@ body {
 .main_nav{
   background: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%);
 }
+
+
+/* after:hidden after:lg:block after:content-[''] after:border-b-[3px] after:border-b-[#ffa500] after:scale-0 after:transition-all hover:after:scale-100 after:duration-200 */
+
+/* after:hidden after:lg:block after:content-[''] after:border-b-[3px] after:border-b-[#ffa500] after:scale-0 after:transition-all hover:after:scale-100 after:duration-200 */

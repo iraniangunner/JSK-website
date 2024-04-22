@@ -37,7 +37,7 @@ export default function Navbar() {
 
 function NavbarFixed({ isScrolling }) {
   return (
-    <nav className="sticky top-[72px] z-10 flex justify-between w-full main_nav">
+    <nav className="sticky top-[72px] z-10 flex justify-between w-full bg-[#737373]">
       <ComplexNavbar isScroll={isScrolling} />
     </nav>
   );

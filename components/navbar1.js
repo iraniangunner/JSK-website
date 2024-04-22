@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import { HiOutlineLogin } from "react-icons/hi";
+import { BsFillPersonFill } from "react-icons/bs";
 import {
   Navbar,
   MobileNav,
@@ -141,7 +142,7 @@ function NavListMenu() {
     <a href="#" key={title}>
       <MenuItem>
         <Typography
-          variant="h6"
+          variant="small"
           color="blue-gray"
           className="mb-1 font-iransans"
         >
@@ -158,7 +159,7 @@ function NavListMenu() {
     <React.Fragment>
       <Menu allowHover open={isMenuOpen} handler={setIsMenuOpen}>
         <MenuHandler>
-          <Typography as="a" href="#" variant="small" className="font-normal">
+          <Typography as="a" href="#" variant="medium" className="font-normal">
             <MenuItem
               className={`hidden items-center gap-2 font-medium font-iransans text-gray-900 hover:text-[#ffa500] ${
                 isMenuOpen ? "text-[#ffa500]" : ""
@@ -175,7 +176,7 @@ function NavListMenu() {
             </MenuItem>
           </Typography>
         </MenuHandler>
-        <MenuList className="hidden w-[24rem] gap-3 overflow-visible lg:grid grid-cols-3">
+        <MenuList className="hidden w-[18rem] gap-3 overflow-visible lg:grid grid-cols-3">
           {/* <Card
             color="blue"
             shadow={false}
@@ -224,20 +225,45 @@ const navListItems = [
   },
 ];
 
-function NavList() {
+function NavList({ navIsScroll }) {
   return (
-    <ul className="mt-2 mb-4 flex flex-col gap-2 lg:gap-6 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
+    <ul className="mt-2 mb-4 py-2 flex flex-col gap-2 lg:gap-8 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
+      <Typography
+        // key={label}
+        as="a"
+        href="#"
+        variant="medium"
+        color="gray"
+        className="relative font-medium font-iransans text-blue-gray-500"
+      >
+        <MenuItem
+          className={`flex text-gray-900 items-center gap-2 rounded-none h-full py-3 ${
+            navIsScroll
+              ? "hover:text-[#ffa500] hover:bg-opacity-0"
+              : "hover:bg-[#fff] hover:transition-all duration-[0.4s] delay-0 ease-in-out"
+          } focus:bg-opacity-0 active:bg-opacity-0`}
+        >
+          {/* {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "} */}
+          <div>صفحه اصلی</div>
+        </MenuItem>
+      </Typography>
       <NavListMenu />
       {navListItems.map(({ label, icon }, key) => (
         <Typography
           key={label}
           as="a"
           href="#"
-          variant="small"
+          variant="medium"
           color="gray"
-          className="relative font-medium font-iransans text-blue-gray-500 after:hidden after:lg:block after:content-[''] after:border-b-[3px] after:border-b-[#ffa500] after:scale-0 after:transition-all hover:after:scale-100 after:duration-200"
+          className="relative font-medium font-iransans text-blue-gray-500 "
         >
-          <MenuItem className="flex text-gray-900 hover:text-[#ffa500] items-center gap-2 lg:rounded-full h-full py-6 hover:bg-opacity-0 focus:bg-opacity-0 active:bg-opacity-0">
+          <MenuItem
+            className={`flex text-gray-900 items-center gap-2 rounded-none h-full py-3 ${
+              navIsScroll
+                ? "hover:text-[#ffa500] hover:bg-opacity-0"
+                : "hover:bg-[#fff] hover:transition-all duration-[0.4s] delay-0 ease-in-out"
+            }  focus:bg-opacity-0 active:bg-opacity-0`}
+          >
             {/* {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "} */}
             <div> {label}</div>
           </MenuItem>
@@ -246,10 +272,11 @@ function NavList() {
       <Button
         size="md"
         variant="text"
-        className="lg:hidden flex items-center justify-between text-md"
+        className="lg:hidden flex items-center justify-between text-md text-[#626161] 
+        hover:bg-[#fff] hover:text-black hover:transition-all duration-[0.4s] delay-0 ease-in-out"
       >
-        <span>ورود</span>
-        <HiOutlineLogin size={25} />
+        <BsFillPersonFill size={20} />
+        <span className="mr-1">ورود</span>
       </Button>
     </ul>
   );
@@ -286,10 +313,11 @@ export function ComplexNavbar({ isScroll }) {
             <Image src="./jsk.svg" alt="JSK Logo" width={200} height={24} />
           </Typography>
         ) : (
+          // <></>
           <></>
         )}
         <div className={`hidden lg:block ${isScroll ? "ml-auto" : ""}`}>
-          <NavList />
+          <NavList navIsScroll={isScroll} />
         </div>
         <IconButton
           size="sm"
@@ -305,10 +333,11 @@ export function ComplexNavbar({ isScroll }) {
           <Button
             size="md"
             variant="text"
-            className="hidden lg:mr-auto lg:flex items-center justify-between text-md"
+            className="hidden lg:mr-auto lg:flex items-center justify-between text-md text-[#626161] 
+            hover:bg-[#fff] hover:text-black hover:transition-all duration-[0.4s] delay-0 ease-in-out"
           >
-            <span>ورود</span>
-            <HiOutlineLogin size={25} />
+            <BsFillPersonFill size={20} />
+            <span className="mr-1">ورود</span>
           </Button>
         ) : (
           <></>
