@@ -69,7 +69,7 @@ const NavAnimations = {
     // x: "-50%",
     opacity: 1,
     transition: {
-      type: "spring",
+      type: "ease-in-out",
       damping: 10,
       stiffness: 100,
     },

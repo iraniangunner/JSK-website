@@ -135,7 +135,7 @@ const navListMenuItems = [
   },
 ];
 
-function NavListMenu() {
+function NavListMenu({ navIsScroll }) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const renderItems = navListMenuItems.map(({ title, description }) => (
@@ -159,11 +159,18 @@ function NavListMenu() {
     <React.Fragment>
       <Menu allowHover open={isMenuOpen} handler={setIsMenuOpen}>
         <MenuHandler>
-          <Typography as="a" href="#" variant="medium" className="font-normal">
+          <Typography as="a" href="#" variant="medium" className="font-normal focus-visible:outline-none">
             <MenuItem
-              className={`hidden items-center gap-2 font-medium font-iransans text-gray-900 hover:text-[#ffa500] ${
-                isMenuOpen ? "text-[#ffa500]" : ""
-              } lg:flex lg:rounded-full hover:bg-opacity-0 focus:bg-opacity-0 active:bg-opacity-0`}
+              className={`hidden items-center gap-2 font-medium font-iransans py-3 text-gray-900  ${
+                isMenuOpen && navIsScroll ? "text-[#ffa500]" : ""
+              } 
+               ${
+                isMenuOpen && !navIsScroll ? "bg-[#fff]" : ""
+              }  ${
+                navIsScroll
+                  ? "hover:text-[#ffa500] hover:bg-opacity-0"
+                  : "hover:bg-[#fff] hover:transition-all duration-[0.4s] delay-0 ease-in-out"
+              } lg:flex lg:rounded-none  focus:bg-opacity-0 active:bg-opacity-0`}
             >
               {/* <Square3Stack3DIcon className="h-[18px] w-[18px] text-blue-gray-500" />{" "} */}
               خدمات{" "}
@@ -176,7 +183,7 @@ function NavListMenu() {
             </MenuItem>
           </Typography>
         </MenuHandler>
-        <MenuList className="hidden w-[18rem] gap-3 overflow-visible lg:grid grid-cols-3">
+        <MenuList className="hidden w-[18rem] rounded-none gap-3 overflow-visible lg:grid grid-cols-3 ">
           {/* <Card
             color="blue"
             shadow={false}
@@ -185,7 +192,7 @@ function NavListMenu() {
           >
             <RocketLaunchIcon strokeWidth={1} className="h-28 w-28" />
           </Card> */}
-          <ul className="col-span-3 flex w-full flex-col gap-1 group-hover:text-[#ffa500]">
+          <ul className="col-span-3 flex w-full flex-col gap-1 group-hover:text-[#ffa500] focus-visible:outline-none">
             {renderItems}
           </ul>
         </MenuList>
@@ -247,7 +254,7 @@ function NavList({ navIsScroll }) {
           <div>صفحه اصلی</div>
         </MenuItem>
       </Typography>
-      <NavListMenu />
+      <NavListMenu navIsScroll={navIsScroll} />
       {navListItems.map(({ label, icon }, key) => (
         <Typography
           key={label}
@@ -296,7 +303,7 @@ export function ComplexNavbar({ isScroll }) {
 
   return (
     <Navbar className="mx-auto max-w-screen-3xl rounded-none px-2 lg:px-8 py-0 lg:pl-6 font-iransans">
-      <div className="relative mx-auto flex items-center justify-center text-blue-gray-900">
+      <div className="relative mx-auto flex items-center justify-center xl:gap-16 text-blue-gray-900">
         <Typography
           as="a"
           href="#"
@@ -305,18 +312,23 @@ export function ComplexNavbar({ isScroll }) {
           <Image src="./jsk.svg" alt="JSK Logo" width={200} height={24} />
         </Typography>
         {isScroll ? (
-          <Typography
-            as="a"
-            href="#"
-            className="mr-4 cursor-pointer py-1.5 font-medium ml-auto hidden lg:block"
-          >
-            <Image src="./jsk.svg" alt="JSK Logo" width={200} height={24} />
-          </Typography>
+          // <Typography
+          //   as="a"
+          //   href="#"
+          //   className="mr-4 cursor-pointer py-1.5 font-medium ml-auto hidden lg:block"
+          // >
+          //   <Image src="./jsk.svg" alt="JSK Logo" width={200} height={24} />
+          // </Typography>
+          <></>
         ) : (
           // <></>
           <></>
         )}
-        <div className={`hidden lg:block ${isScroll ? "ml-auto" : ""}`}>
+        <div
+          className={`hidden lg:block ${
+            isScroll ? "" : ""
+          } relative after:content-[''] after:absolute after:w-full after:left-0 after:bottom-[-4px] after:h-[4px] after:bg-[#ffa502]`}
+        >
           <NavList navIsScroll={isScroll} />
         </div>
         <IconButton
@@ -333,7 +345,7 @@ export function ComplexNavbar({ isScroll }) {
           <Button
             size="md"
             variant="text"
-            className="hidden lg:mr-auto lg:flex items-center justify-between text-md text-[#626161] 
+            className="hidden  lg:flex items-center justify-between text-md text-[#626161] 
             hover:bg-[#fff] hover:text-black hover:transition-all duration-[0.4s] delay-0 ease-in-out"
           >
             <BsFillPersonFill size={20} />
