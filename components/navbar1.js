@@ -158,7 +158,12 @@ function NavListMenu({ navIsScroll }) {
 
   return (
     <React.Fragment>
-      <Menu allowHover open={isMenuOpen} handler={setIsMenuOpen}>
+      <Menu
+        allowHover
+        open={isMenuOpen}
+        handler={setIsMenuOpen}
+        offset={{ mainAxis: 12 }}
+      >
         <MenuHandler>
           <Typography
             as="a"
@@ -372,7 +377,7 @@ export function ComplexNavbar({ isScroll }) {
               <BsFillPersonFill size={20} />
               <span className="mx-1">ورود</span>
             </Button>
-            <ConvertLanguageBtn  />
+            <ConvertLanguageBtn />
           </div>
         ) : (
           <></>
