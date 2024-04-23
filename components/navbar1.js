@@ -30,6 +30,7 @@ import {
   RocketLaunchIcon,
   Bars2Icon,
 } from "@heroicons/react/24/solid";
+import { ConvertLanguageBtn } from "./convertLanguageBtn";
 
 // profile menu component
 const profileMenuItems = [
@@ -140,11 +141,11 @@ function NavListMenu({ navIsScroll }) {
 
   const renderItems = navListMenuItems.map(({ title, description }) => (
     <a href="#" key={title}>
-      <MenuItem>
+      <MenuItem className=" rounded-none px-0 py-0">
         <Typography
           variant="small"
           color="blue-gray"
-          className="mb-1 font-iransans"
+          className="font-iransans px-3 py-3 hover:text-white hover:bg-[#ffa500] transition-all duration-[0.4s]"
         >
           {title}
         </Typography>
@@ -159,14 +160,17 @@ function NavListMenu({ navIsScroll }) {
     <React.Fragment>
       <Menu allowHover open={isMenuOpen} handler={setIsMenuOpen}>
         <MenuHandler>
-          <Typography as="a" href="#" variant="medium" className="font-normal focus-visible:outline-none">
+          <Typography
+            as="a"
+            href="#"
+            variant="medium"
+            className="font-normal focus-visible:outline-none"
+          >
             <MenuItem
               className={`hidden items-center gap-2 font-medium font-iransans py-3 text-gray-900  ${
                 isMenuOpen && navIsScroll ? "text-[#ffa500]" : ""
               } 
-               ${
-                isMenuOpen && !navIsScroll ? "bg-[#fff]" : ""
-              }  ${
+               ${isMenuOpen && !navIsScroll ? "bg-[#fff]" : ""}  ${
                 navIsScroll
                   ? "hover:text-[#ffa500] hover:bg-opacity-0"
                   : "hover:bg-[#fff] hover:transition-all duration-[0.4s] delay-0 ease-in-out"
@@ -183,7 +187,7 @@ function NavListMenu({ navIsScroll }) {
             </MenuItem>
           </Typography>
         </MenuHandler>
-        <MenuList className="hidden w-[18rem] rounded-none gap-3 overflow-visible lg:grid grid-cols-3 ">
+        <MenuList className="hidden w-[18rem] rounded-none gap-3 overflow-visible py-0 px-0 lg:grid grid-cols-3 ">
           {/* <Card
             color="blue"
             shadow={false}
@@ -192,7 +196,7 @@ function NavListMenu({ navIsScroll }) {
           >
             <RocketLaunchIcon strokeWidth={1} className="h-28 w-28" />
           </Card> */}
-          <ul className="col-span-3 flex w-full flex-col gap-1 group-hover:text-[#ffa500] focus-visible:outline-none">
+          <ul className="col-span-3 flex w-full flex-col  group-hover:text-[#ffa500] focus-visible:outline-none">
             {renderItems}
           </ul>
         </MenuList>
@@ -226,10 +230,10 @@ const navListItems = [
     label: "درباره ما",
     // icon: CubeTransparentIcon,
   },
-  {
-    label: "تماس با ما",
-    // icon: CodeBracketSquareIcon,
-  },
+  // {
+  //   label: "تماس با ما",
+  //   // icon: CodeBracketSquareIcon,
+  // },
 ];
 
 function NavList({ navIsScroll }) {
@@ -254,6 +258,7 @@ function NavList({ navIsScroll }) {
           <div>صفحه اصلی</div>
         </MenuItem>
       </Typography>
+
       <NavListMenu navIsScroll={navIsScroll} />
       {navListItems.map(({ label, icon }, key) => (
         <Typography
@@ -276,6 +281,23 @@ function NavList({ navIsScroll }) {
           </MenuItem>
         </Typography>
       ))}
+      <Typography
+        // key={label}
+        as="a"
+        href="#"
+        variant="medium"
+        color="gray"
+        className="relative font-medium font-iransans text-blue-gray-500"
+      >
+        <MenuItem
+          className={`flex group relative items-center gap-2 rounded-none overflow-hidden text-gray-900 lg:bg-[#ffa500] lg:text-[#fff] h-full py-3 hover:bg-[#fff]
+           `}
+        >
+          {/* {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "} */}
+          <div>تماس با ما</div>
+          {/* <span className="contact absolute w-0 h-0 block rounded-none translate-x-[50%] translate-y-[40%] group-hover:w-[200%] group-hover:h-[500px] group-hover:bg-[#000] group-hover:z-[-1]"></span> */}
+        </MenuItem>
+      </Typography>
       <Button
         size="md"
         variant="text"
@@ -325,9 +347,7 @@ export function ComplexNavbar({ isScroll }) {
           <></>
         )}
         <div
-          className={`hidden lg:block ${
-            isScroll ? "" : ""
-          } relative after:content-[''] after:absolute after:w-full after:left-0 after:bottom-[-4px] after:h-[4px] after:bg-[#ffa502]`}
+          className={`hidden lg:block relative after:content-[''] after:absolute after:w-full after:left-0 after:bottom-[-4px] after:h-[4px] after:bg-[#ffa502]`}
         >
           <NavList navIsScroll={isScroll} />
         </div>
@@ -342,15 +362,18 @@ export function ComplexNavbar({ isScroll }) {
         </IconButton>
 
         {isScroll ? (
-          <Button
-            size="md"
-            variant="text"
-            className="hidden  lg:flex items-center justify-between text-md text-[#626161] 
+          <div className="flex justify-center items-center">
+            <Button
+              size="md"
+              variant="text"
+              className="hidden lg:flex items-center justify-between text-md text-[#626161] 
             hover:bg-[#fff] hover:text-black hover:transition-all duration-[0.4s] delay-0 ease-in-out"
-          >
-            <BsFillPersonFill size={20} />
-            <span className="mr-1">ورود</span>
-          </Button>
+            >
+              <BsFillPersonFill size={20} />
+              <span className="mx-1">ورود</span>
+            </Button>
+            <ConvertLanguageBtn  />
+          </div>
         ) : (
           <></>
         )}

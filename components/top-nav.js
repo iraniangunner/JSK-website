@@ -7,6 +7,8 @@ import { Typography } from "@material-tailwind/react";
 import { HiOutlineMail } from "react-icons/hi";
 import { BsFillPersonFill } from "react-icons/bs";
 import Image from "next/image";
+import {ConvertLanguageBtn} from "./convertLanguageBtn"
+
 
 export default function TopNav() {
   return (
@@ -71,6 +73,7 @@ export default function TopNav() {
           <BsFillPersonFill size={20} />
           <span className="mr-1">ورود</span>
         </Button>
+        <ConvertLanguageBtn/>
       </div>
     </div>
   );
