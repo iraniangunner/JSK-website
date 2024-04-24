@@ -1,14 +1,13 @@
-import { HiOutlineLogin } from "react-icons/hi";
-import { Button } from "@material-tailwind/react";
-import { CiLocationOn } from "react-icons/ci";
 import { FiPhoneIncoming } from "react-icons/fi";
 import { MdOutlineLocationOn } from "react-icons/md";
 import { Typography } from "@material-tailwind/react";
 import { HiOutlineMail } from "react-icons/hi";
 import { BsFillPersonFill } from "react-icons/bs";
 import Image from "next/image";
-import {ConvertLanguageBtn} from "./convertLanguageBtn"
-
+import { ConvertLanguageBtn } from "./convertLanguageBtn";
+import { MenuItem } from "@material-tailwind/react";
+import { FaShoppingCart } from "react-icons/fa";
+// import jsk from "../public/images/jsk.png";
 
 export default function TopNav() {
   return (
@@ -22,10 +21,10 @@ export default function TopNav() {
           before:bottom-0 before:border-l-[50px] before:border-l-transparent 
           before:border-b-[75px] before:border-b-[#ffa500]
           after:content-[''] after:absolute after:left-[100%] 
-          after:bottom-0 after:min-w-[100vw] after:h-[100%] after:bg-[#ffa500]
-          "
+          after:bottom-0 after:min-w-[100vw] after:h-[100%] after:bg-[#ffa500] xl:mr-auto"
         >
           <Image src="./jsk.svg" alt="JSK Logo" width={200} height={24} />
+         
         </Typography>
       </div>
 
@@ -52,8 +51,10 @@ export default function TopNav() {
           </div>
         </div>
         <div className="flex justify-center items-center ">
-          <div className="border border-[#ffa500] text-[#ffa500] hover:bg-[#ffa500] 
-          hover:text-white transition-all rounded-full p-2 ml-3">
+          <div
+            className="border border-[#ffa500] text-[#ffa500] hover:bg-[#ffa500] 
+          hover:text-white transition-all rounded-full p-2 ml-3"
+          >
             <HiOutlineMail size={20} />
           </div>
           <div>
@@ -62,18 +63,40 @@ export default function TopNav() {
           </div>
         </div>
       </div>
-      <div className="flex justify-center items-center gap-4">
-        <Button
-          size="md"
-          variant="text"
-          className="lg:flex items-center justify-between text-md hover:bg-opacity-0 
-          focus:bg-opacity-0 active:bg-opacity-0 text-[#737272] hover:bg-[#fff] 
-          hover:text-[#323131] hover:transition-all duration-[0.4s] delay-0 ease-in-out"
+      <div className="flex justify-start items-center gap-1">
+        <Typography
+          as="a"
+          href="#"
+          variant="medium"
+          color="gray"
+          className="relative font-medium font-iransans text-blue-gray-500"
         >
-          <BsFillPersonFill size={20} />
-          <span className="mr-1">ورود</span>
-        </Button>
-        <ConvertLanguageBtn/>
+          <MenuItem
+            className={`lg:flex items-center justify-between text-md hover:bg-opacity-0 rounded-none border-l border-[#ccc]
+            focus:bg-opacity-0 active:bg-opacity-0 text-[#737272] 
+            hover:text-[#323131] hover:transition-all duration-[0.4s] delay-0 ease-in-out`}
+          >
+            <BsFillPersonFill size={20} />
+            <span className="mr-1">ورود</span>
+          </MenuItem>
+        </Typography>
+        <ConvertLanguageBtn />
+        <Typography
+          as="a"
+          href="#"
+          variant="medium"
+          color="gray"
+          className="relative font-medium font-iransans text-blue-gray-500"
+        >
+          <MenuItem
+            className={`lg:flex items-center justify-between text-md hover:bg-opacity-0 rounded-none
+            focus:bg-opacity-0 active:bg-opacity-0 text-[#737272] 
+            hover:text-[#323131] hover:transition-all duration-[0.4s] delay-0 ease-in-out`}
+          >
+            <FaShoppingCart size={17} />
+           
+          </MenuItem>
+        </Typography>
       </div>
     </div>
   );

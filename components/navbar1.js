@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { HiOutlineLogin } from "react-icons/hi";
 import { BsFillPersonFill } from "react-icons/bs";
 import {
   Navbar,
@@ -15,6 +14,7 @@ import {
   Avatar,
   Card,
   IconButton,
+  Collapse,
 } from "@material-tailwind/react";
 
 import {
@@ -162,7 +162,11 @@ function NavListMenu({ navIsScroll }) {
         allowHover
         open={isMenuOpen}
         handler={setIsMenuOpen}
-        offset={{ mainAxis: 12 }}
+        offset={{ mainAxis: 10 }}
+        animate={{
+          mount: { y: 0 },
+          unmount: { y: 25 },
+        }}
       >
         <MenuHandler>
           <Typography
@@ -295,7 +299,7 @@ function NavList({ navIsScroll }) {
         className="relative font-medium font-iransans text-blue-gray-500"
       >
         <MenuItem
-          className={`flex group relative items-center gap-2 rounded-none overflow-hidden text-gray-900 lg:bg-[#ffa500] lg:text-[#fff] h-full py-3 hover:bg-[#fff]
+          className={`flex group relative items-center gap-2 rounded-none overflow-hidden text-gray-900 text-md lg:bg-[#ffa500] lg:text-[#fff] h-full py-3 hover:bg-[#fff]
            `}
         >
           {/* {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "} */}
@@ -303,7 +307,7 @@ function NavList({ navIsScroll }) {
           {/* <span className="contact absolute w-0 h-0 block rounded-none translate-x-[50%] translate-y-[40%] group-hover:w-[200%] group-hover:h-[500px] group-hover:bg-[#000] group-hover:z-[-1]"></span> */}
         </MenuItem>
       </Typography>
-      <Button
+      {/* <Button
         size="md"
         variant="text"
         className="lg:hidden flex items-center justify-between text-md text-[#626161] 
@@ -311,7 +315,23 @@ function NavList({ navIsScroll }) {
       >
         <BsFillPersonFill size={20} />
         <span className="mr-1">ورود</span>
-      </Button>
+      </Button> */}
+      <Typography
+        as="a"
+        href="#"
+        variant="medium"
+        color="gray"
+        className="relative font-medium font-iransans"
+      >
+        <MenuItem
+          className={`lg:hidden flex items-center justify-between text-md text-[#626161] rounded-none
+          hover:bg-[#fff] hover:text-black hover:transition-all duration-[0.4s] delay-0 ease-in-out`}
+        >
+          
+          <BsFillPersonFill size={20} />
+          <span className="mr-1">ورود</span>
+        </MenuItem>
+      </Typography>
     </ul>
   );
 }
@@ -329,7 +349,7 @@ export function ComplexNavbar({ isScroll }) {
   }, []);
 
   return (
-    <Navbar className="mx-auto max-w-screen-3xl rounded-none px-2 lg:px-8 py-0 lg:pl-6 font-iransans">
+    <Navbar className="mx-auto max-w-screen-3xl shadow-none rounded-none px-2 lg:px-8 py-0 lg:pl-6 font-iransans">
       <div className="relative mx-auto flex items-center justify-center xl:gap-16 text-blue-gray-900">
         <Typography
           as="a"
@@ -352,7 +372,7 @@ export function ComplexNavbar({ isScroll }) {
           <></>
         )}
         <div
-          className={`hidden lg:block relative after:content-[''] after:absolute after:w-full after:left-0 after:bottom-[-4px] after:h-[4px] after:bg-[#ffa502]`}
+          className={`hidden lg:block relative after:content-[''] after:absolute after:w-full after:left-0 after:bottom-[-3px] after:h-[3px] after:bg-[#ffa502]`}
         >
           <NavList navIsScroll={isScroll} />
         </div>
@@ -365,23 +385,31 @@ export function ComplexNavbar({ isScroll }) {
         >
           <Bars2Icon className="h-6 w-6" />
         </IconButton>
-
+{/* 
         {isScroll ? (
-          <div className="flex justify-center items-center">
-            <Button
-              size="md"
-              variant="text"
-              className="hidden lg:flex items-center justify-between text-md text-[#626161] 
-            hover:bg-[#fff] hover:text-black hover:transition-all duration-[0.4s] delay-0 ease-in-out"
+          <div className="flex justify-center items-center gap-4">
+            <Typography
+              as="a"
+              href="#"
+              variant="medium"
+              color="gray"
+              className="relative font-medium font-iransans text-blue-gray-500"
             >
-              <BsFillPersonFill size={20} />
-              <span className="mx-1">ورود</span>
-            </Button>
+              <MenuItem
+                className={`n lg:flex items-center justify-between text-md text-[#626161] border-l rounded-none border-[#ccc]
+                hover:text-black hover:transition-all duration-[0.4s] delay-0 ease-in-out hover:bg-transparent focus:bg-transparent active:bg-transparent`}
+              >
+                // {/* {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "} 
+                <BsFillPersonFill size={20} />
+                <span className="mr-1">ورود</span>
+              </MenuItem>
+            </Typography>
             <ConvertLanguageBtn />
           </div>
+          <></>
         ) : (
           <></>
-        )}
+        )} */}
 
         {/* <Button
           size="md"
@@ -393,9 +421,9 @@ export function ComplexNavbar({ isScroll }) {
         </Button> */}
         {/* <ProfileMenu /> */}
       </div>
-      <MobileNav open={isNavOpen} className="overflow-scroll ">
+      <Collapse open={isNavOpen} className="overflow-scroll ">
         <NavList />
-      </MobileNav>
+      </Collapse>
     </Navbar>
   );
 }
