@@ -69,14 +69,14 @@ export default function TopNav() {
           href="#"
           variant="medium"
           color="gray"
-          className="relative font-medium font-iransans text-blue-gray-500"
+          className="relative font-medium font-iransans text-blue-gray-500 login_btn"
         >
           <MenuItem
-            className={`lg:flex items-center justify-between text-md hover:bg-opacity-0 rounded-none border-l border-[#ccc]
+            className={`lg:flex items-center justify-between text-md hover:bg-opacity-0 rounded-none border-l border-[#ccc] py-3 
             focus:bg-opacity-0 active:bg-opacity-0 text-[#737272] 
             hover:text-[#323131] hover:transition-all duration-[0.4s] delay-0 ease-in-out`}
           >
-            <BsFillPersonFill size={20} />
+            <BsFillPersonFill size={17} />
             <span className="mr-1">ورود</span>
           </MenuItem>
         </Typography>
@@ -95,6 +95,7 @@ export default function TopNav() {
           >
             <FaShoppingCart size={17} />
            
+
           </MenuItem>
         </Typography>
       </div>

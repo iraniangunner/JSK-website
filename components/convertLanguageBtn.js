@@ -19,8 +19,8 @@ export function ConvertLanguageBtn() {
           <span className="">فارسی</span>
           <ChevronDownIcon
                 strokeWidth={2}
-                fontSize={20}
-                className={`h-3 w-3 transition-transform ${
+                // fontSize={17}
+                className={`w-3 transition-transform ${
                   openMenu ? "rotate-180" : ""
                 }`}
               />
