@@ -297,7 +297,7 @@ function NavList({ navIsScroll }) {
       >
         <MenuItem
           className="contact font-bold relative flex items-center gap-2 rounded-none py-3
-        overflow-hidden text-md transition-all duration-[0.4s] text-[#fff] hover:text-[#ffa500] h-full z-[1]"
+        overflow-hidden text-md transition-all duration-[0.5s] text-[#fff] hover:text-[#ffa500] h-full z-[1]"
         >
           تماس با ما
         </MenuItem>
@@ -357,7 +357,8 @@ export function ComplexNavbar({ isScroll }) {
           <></>
         )}
         <div
-          className={`hidden lg:block relative after:content-[''] after:absolute after:w-full after:left-0 after:bottom-[-3px] after:h-[3px] after:bg-[#ffa502]`}
+          className="hidden lg:block relative after:content-[''] after:absolute after:w-full after:left-0 
+          after:bottom-[-3px] after:h-[3px] after:bg-[#ffa502]"
         >
           <NavList navIsScroll={isScroll} />
         </div>
