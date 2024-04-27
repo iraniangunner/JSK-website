@@ -263,7 +263,6 @@ function NavList({ navIsScroll }) {
               : "hover:bg-[#fff] hover:transition-all duration-[0.4s] delay-0 ease-in-out"
           } focus:bg-opacity-0 active:bg-opacity-0`}
         >
-          {/* {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "} */}
           <div>صفحه اصلی</div>
         </MenuItem>
       </Typography>
@@ -291,36 +290,18 @@ function NavList({ navIsScroll }) {
         </Typography>
       ))}
       <Typography
-        // key={label}
         as="a"
         href="#"
         variant="medium"
-        // color="gray"
         className="font-medium font-iransans"
       >
         <MenuItem
-          className="contact font-bold relative flex items-center gap-2 rounded-none overflow-hidden text-md transition-all duration-[0.4s] text-[#fff] hover:text-[#ffa500] h-full py-3 z-[1]"
+          className="contact font-bold relative flex items-center gap-2 rounded-none py-3
+        overflow-hidden text-md transition-all duration-[0.4s] text-[#fff] hover:text-[#ffa500] h-full z-[1]"
         >
-
-          {/* <div className="first"> */}
           تماس با ما
-          {/* </div> */}
-          {/* {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "} */}
-          {/* <div className="last"> */}
-        
-          {/* </div> */}
-          {/* <span className="contact absolute w-0 h-0 block rounded-none translate-x-[50%] translate-y-[40%] group-hover:w-[200%] group-hover:h-[500px] group-hover:bg-[#000] group-hover:z-[-1]"></span> */}
         </MenuItem>
       </Typography>
-      {/* <Button
-        size="md"
-        variant="text"
-        className="lg:hidden flex items-center justify-between text-md text-[#626161] 
-        hover:bg-[#fff] hover:text-black hover:transition-all duration-[0.4s] delay-0 ease-in-out"
-      >
-        <BsFillPersonFill size={20} />
-        <span className="mr-1">ورود</span>
-      </Button> */}
       <Typography
         as="a"
         href="#"
@@ -389,40 +370,7 @@ export function ComplexNavbar({ isScroll }) {
         >
           <Bars2Icon className="h-6 w-6" />
         </IconButton>
-        {/* 
-        {isScroll ? (
-          <div className="flex justify-center items-center gap-4">
-            <Typography
-              as="a"
-              href="#"
-              variant="medium"
-              color="gray"
-              className="relative font-medium font-iransans text-blue-gray-500"
-            >
-              <MenuItem
-                className={`n lg:flex items-center justify-between text-md text-[#626161] border-l rounded-none border-[#ccc]
-                hover:text-black hover:transition-all duration-[0.4s] delay-0 ease-in-out hover:bg-transparent focus:bg-transparent active:bg-transparent`}
-              >
-                // {/* {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "} 
-                <BsFillPersonFill size={20} />
-                <span className="mr-1">ورود</span>
-              </MenuItem>
-            </Typography>
-            <ConvertLanguageBtn />
-          </div>
-          <></>
-        ) : (
-          <></>
-        )} */}
-
-        {/* <Button
-          size="md"
-          variant="text"
-          className="hidden lg:mr-auto lg:flex items-center justify-between text-md"
-        >
-          <span>ورود</span>
-          <HiOutlineLogin size={25} />
-        </Button> */}
+  
         {/* <ProfileMenu /> */}
       </div>
       <Collapse open={isNavOpen} className="overflow-scroll ">
