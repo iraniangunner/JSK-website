@@ -295,15 +295,20 @@ function NavList({ navIsScroll }) {
         as="a"
         href="#"
         variant="medium"
-        color="gray"
-        className="relative font-medium font-iransans text-blue-gray-500"
+        // color="gray"
+        className="font-medium font-iransans"
       >
         <MenuItem
-          className={`flex group relative items-center gap-2 rounded-none overflow-hidden text-gray-900 text-md lg:bg-[#ffa500] lg:text-[#fff] h-full py-3 hover:bg-[#fff]
-           `}
+          className="contact font-bold relative flex items-center gap-2 rounded-none overflow-hidden text-md transition-all duration-[0.4s] text-[#fff] hover:text-[#ffa500] h-full py-3 z-[1]"
         >
+
+          {/* <div className="first"> */}
+          تماس با ما
+          {/* </div> */}
           {/* {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "} */}
-          <div>تماس با ما</div>
+          {/* <div className="last"> */}
+        
+          {/* </div> */}
           {/* <span className="contact absolute w-0 h-0 block rounded-none translate-x-[50%] translate-y-[40%] group-hover:w-[200%] group-hover:h-[500px] group-hover:bg-[#000] group-hover:z-[-1]"></span> */}
         </MenuItem>
       </Typography>
@@ -327,7 +332,6 @@ function NavList({ navIsScroll }) {
           className={`lg:hidden flex items-center justify-between text-md text-[#626161] rounded-none
           hover:bg-[#fff] hover:text-black hover:transition-all duration-[0.4s] delay-0 ease-in-out`}
         >
-          
           <BsFillPersonFill size={20} />
           <span className="mr-1">ورود</span>
         </MenuItem>
@@ -385,7 +389,7 @@ export function ComplexNavbar({ isScroll }) {
         >
           <Bars2Icon className="h-6 w-6" />
         </IconButton>
-{/* 
+        {/* 
         {isScroll ? (
           <div className="flex justify-center items-center gap-4">
             <Typography

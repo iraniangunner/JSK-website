@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
 @font-face {
   font-family: "iran_sans";
   src: url("../public/fonts/IRANSansX-Regular.woff");
@@ -42,7 +39,6 @@ body {
   }
 }
 
-
 /* .navlink:after {
   display:block;
   content: '';
@@ -52,31 +48,75 @@ body {
 }
 .navlink:hover:after { transform: scaleX(1); } */
 
-
-.main_nav{
-  background: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%);
+.main_nav {
+  background: linear-gradient(
+    to top,
+    lightgrey 0%,
+    lightgrey 1%,
+    #e0e0e0 26%,
+    #efefef 48%,
+    #d9d9d9 75%,
+    #bcbcbc 100%
+  );
 }
 
-
 /* after:hidden after:lg:block after:content-[''] after:border-b-[3px] after:border-b-[#ffa500] after:scale-0 after:transition-all hover:after:scale-100 after:duration-200 */
 
 /* after:hidden after:lg:block after:content-[''] after:border-b-[3px] after:border-b-[#ffa500] after:scale-0 after:transition-all hover:after:scale-100 after:duration-200 */
 
-
-
-
-
-.contact:hover{
+/* .contact:hover{
   width: 200%;
   height: 500px;
-}
-.contact{
-  transition: width 0.5s ease-in-out , height 0.5s ease-in-out ;
+} */
+.contact {
+  transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
   transition-delay: 0;
 }
 
+/* .contact_link{
+  transition: width 0.5s ease-in-out , height 0.5s ease-in-out ;
+  transition-delay: 0;
+} */
 
-.login_btn{
+.login_btn {
   line-height: unset;
+}
+
+.contact:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  /* transform: translateX(-50%) , translateY(-50%); */
+  width: 200%;
+  height: 500px;
+  /* background-color: $color; */
+  background-color: #ffa500;
+  color: #ffa500;
+  display: inline-block;
+  /* border-radius: 10rem; */
+  z-index: -2;
+}
+
+.contact:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  /* transform: translateX(-50%) , translateY(-50%); */
+  background-color: #fff;
+ /* background-color: darken($color, 15%); */
+  transition: width 0.5s ease-in-out , height 0.5s ease-in-out;
+  transition-delay: 0;
+  /* border-radius: 10rem; */
+  z-index: -1;
+} 
+
+.contact:hover::before{
+  width: 200%;
+  height: 500px;
+  /* color: #ffa500; */
 }
 
