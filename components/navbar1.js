@@ -30,7 +30,7 @@ import {
   RocketLaunchIcon,
   Bars2Icon,
 } from "@heroicons/react/24/solid";
-import { ConvertLanguageBtn } from "./convertLanguageBtn";
+import jsk from "../public/images/jsk .png";
 
 // profile menu component
 const profileMenuItems = [
@@ -341,19 +341,19 @@ export function ComplexNavbar({ isScroll }) {
           href="#"
           className="block lg:hidden cursor-pointer py-1.5 font-medium ml-auto"
         >
-          <Image src="./jsk.svg" alt="JSK Logo" width={200} height={24} />
+          <Image src={jsk} alt="JSK logo" width={200} height={24}/>
         </Typography>
         {isScroll ? (
-          // <Typography
-          //   as="a"
-          //   href="#"
-          //   className="mr-4 cursor-pointer py-1.5 font-medium ml-auto hidden lg:block"
-          // >
-          //   <Image src="./jsk.svg" alt="JSK Logo" width={200} height={24} />
-          // </Typography>
-          <></>
+          <Typography
+            as="a"
+            href="#"
+            className="cursor-pointer font-medium hidden lg:block"
+          >
+            <Image src={jsk} alt="JSK logo" width={200} height={24}/>
+          </Typography>
+         
         ) : (
-          // <></>
+        
           <></>
         )}
         <div

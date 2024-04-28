@@ -24,7 +24,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  min-height: 3000px;
+  /* min-height: 3000px; */
 }
 
 @layer utilities {
@@ -88,6 +88,11 @@ body {
   height: 500px;
 }
 
+
+
+.footer_bar{
+  background: -webkit-linear-gradient(90deg, #db8e00, #ffa500);
+}
 
 
 

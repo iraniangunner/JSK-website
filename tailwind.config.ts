@@ -15,7 +15,8 @@ const config: Config = withMT({
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        'footer-pattern': "url('../public/images/footer.jpg')",
       },
     },
   },
