@@ -1,4 +1,8 @@
 import { Typography } from "@material-tailwind/react";
+import { FaMapLocationDot } from "react-icons/fa6";
+import { FaPhone } from "react-icons/fa";
+import { HiOutlineMail } from "react-icons/hi";
+import { MdEmail } from "react-icons/md";
 
 const LINKS = [
   {
@@ -21,14 +25,14 @@ export default function Footer() {
   return (
     <footer
       className="relative w-full bg-footer-pattern bg-cover overflow-hidden bg-no-repeat bg-fixed bg-center before:content-[''] 
-    before:absolute before:left-0 before:top-0 before:w-full before:h-full before:opacity-[0.9] before:z-[0] before:bg-[#042038]" 
+    before:absolute before:left-0 before:top-0 before:w-full before:h-full before:opacity-[0.9] before:z-[0] before:bg-[#042038]"
     >
       <div className="mx-auto w-full max-w-7xl px-8 z-[2] relative py-4 md:py-8 lg:py-12 xl:py-18">
         <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2 lg:grid-cols-3 ">
           <Typography variant="h5" className="mb-6 text-white">
             Material Tailwind
           </Typography>
-          <div className="grid grid-cols-3 justify-between gap-4">
+          <div className="flex flex-col justify-between items-start gap-4">
             {LINKS.map(({ title, items }) => (
               <ul key={title}>
                 <Typography
@@ -53,6 +57,37 @@ export default function Footer() {
                 ))}
               </ul>
             ))}
+          </div>
+          <div className="text-white flex flex-col gap-3">
+            <div>
+              <h1 className="text-md mb-2">آدرس:</h1>
+              <p className="flex gap-4">
+                <FaMapLocationDot color="#fff" size={20} />{" "}
+                <span className="text-[15px]">
+                  تهران، میدان ونک، خیابان ملاصدرا، خیابان شاد، کوچه باغسرا،
+                  پلاک ۱۳
+                </span>
+              </p>
+            </div>
+
+            <div>
+              <h1 className="text-md mb-2">تلفن:</h1>
+              <p className="flex gap-4">
+                <FaPhone size={14} />
+                <span className="text-[15px]">021-88660368</span>
+              </p>
+              <p className="flex gap-4">
+                <FaPhone size={14} />
+                <span className="text-[15px]">021-88660628</span>
+              </p>
+            </div>
+            <div>
+              <h1 className="text-md mb-2">پست الکترونیکی:</h1>
+              <p className="flex gap-4">
+                <MdEmail color="#fff" size={20} />
+                <span>info@jsk-co.com</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>

@@ -37,7 +37,7 @@ export default function TopNav() {
             <p className="mb-2 font-bold">آدرس</p>
             <p className="text-sm">
               {" "}
-              تهران میدان ونک خیابان ملاصدرا خیابان شاد کوچه باغسرا پلاک ۱۳
+              تهران، میدان ونک، خیابان ملاصدرا، خیابان شاد، کوچه باغسرا، پلاک ۱۳
             </p>
           </div>
         </div>
