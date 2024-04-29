@@ -7,11 +7,14 @@ import Image from "next/image";
 import { ConvertLanguageBtn } from "./convertLanguageBtn";
 import { MenuItem } from "@material-tailwind/react";
 import { FaShoppingCart } from "react-icons/fa";
+import { FaPhoneFlip } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
+import { FaLocationDot } from "react-icons/fa6";
 import jsk from "../public/images/jsk .png";
 
 export default function TopNav() {
   return (
-    <div className="hidden sticky top-0 lg:grid grid-cols-4 bg-white pt-4">
+    <div className="hidden sticky top-0 lg:flex items-center justify-center gap-4 lg:gap-8 bg-white pt-4">
       <div className="flex justify-center items-center">
         <Typography
           as="a"
@@ -23,15 +26,20 @@ export default function TopNav() {
           after:content-[''] after:absolute after:left-[100%] 
           after:bottom-0 after:min-w-[100vw] after:h-[100%] after:bg-[#ffa500] xl:mr-auto"
         >
-          {/* <Image src="./jsk.svg" alt="JSK Logo" width={200} height={24} /> */}
-          <Image src={jsk} alt="JSK logo" width={200} height={24} className="bg-[#ffa500] w-full h-full" />
+          <Image
+            src={jsk}
+            alt="JSK logo"
+            width={200}
+            height={24}
+            className="bg-[#ffa500] w-full h-full"
+          />
         </Typography>
       </div>
 
-      <div className="flex justify-center items-center gap-4 col-span-2">
-        <div className="flex items-center justify-center ml-4">
+      <div className="flex justify-center items-center gap-3 2xl:gap-4 col-span-2 lg:mr-10 2xl:mr-4">
+        <div className="lg:hidden 2xl:flex items-center justify-center ml-4">
           <div className="border border-[#ffa500] text-[#ffa500] hover:bg-[#ffa500] hover:text-white transition-all rounded-full p-2 ml-3">
-            <MdOutlineLocationOn size={20} />
+            <FaLocationDot size={20} />
           </div>
           <div>
             <p className="mb-2 font-bold">آدرس</p>
@@ -43,19 +51,19 @@ export default function TopNav() {
         </div>
         <div className="flex justify-center items-center ml-4">
           <div className="border border-[#ffa500] text-[#ffa500] hover:bg-[#ffa500] hover:text-white transition-all rounded-full p-2 ml-3">
-            <FiPhoneIncoming size={20} />
+            <FaPhoneFlip size={20} />
           </div>
           <div>
             <p className="mb-2 font-bold">تلفن</p>
             <p className="text-sm">021-88660368</p>
           </div>
         </div>
-        <div className="flex justify-center items-center ">
+        <div className="flex justify-center items-center">
           <div
             className="border border-[#ffa500] text-[#ffa500] hover:bg-[#ffa500] 
           hover:text-white transition-all rounded-full p-2 ml-3"
           >
-            <HiOutlineMail size={20} />
+            <MdEmail size={20} />
           </div>
           <div>
             <p className="mb-2 font-bold">ایمیل</p>
@@ -63,7 +71,7 @@ export default function TopNav() {
           </div>
         </div>
       </div>
-      <div className="flex justify-start items-center gap-1">
+      <div className="flex justify-center items-center gap-1 lg:mr-10 2xl:mr-[80px]">
         <Typography
           as="a"
           href="#"
@@ -72,9 +80,9 @@ export default function TopNav() {
           className="relative font-medium font-iransans text-blue-gray-500 login_btn"
         >
           <MenuItem
-            className={`lg:flex items-center justify-between text-md hover:bg-opacity-0 rounded-none border-l border-[#ccc] py-3 
+            className="lg:flex items-center justify-between text-md hover:bg-opacity-0 rounded-none border-l border-[#ccc] py-3 
             focus:bg-opacity-0 active:bg-opacity-0 text-[#737272] 
-            hover:text-[#323131] hover:transition-all duration-[0.4s] delay-0 ease-in-out`}
+            hover:text-[#323131] hover:transition-all duration-[0.4s] delay-0 ease-in-out"
           >
             <BsFillPersonFill size={17} />
             <span className="mr-1">ورود</span>

@@ -132,7 +132,7 @@ export default function Footer() {
           // variant="medium"
           className="mt-4 text-[17px] font-iransans text-[#fff] text-center md:mt-0"
         >
-          کلیه حقوق این وبسایت محفوظ و متعلق به شرکت ژیوار صنعت کیان می باشد.
+          کلیه حقوق این وب سایت محفوظ و متعلق به شرکت ژیوار صنعت کیان می باشد.
         </Typography>
         <div className="flex gap-4 text-[#fff] justify-center">
           <Typography

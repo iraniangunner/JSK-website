@@ -141,7 +141,7 @@ function NavListMenu({ navIsScroll }) {
 
   const renderItems = navListMenuItems.map(({ title, description }) => (
     <a href="#" key={title}>
-      <MenuItem className=" rounded-none px-0 py-0">
+      <MenuItem className="rounded-none px-0 py-0">
         <Typography
           variant="small"
           color="blue-gray"
@@ -183,7 +183,7 @@ function NavListMenu({ navIsScroll }) {
                 navIsScroll
                   ? "hover:text-[#ffa500] hover:bg-opacity-0"
                   : "hover:bg-[#fff] hover:transition-all duration-[0.4s] delay-0 ease-in-out"
-              } lg:flex lg:rounded-none  focus:bg-opacity-0 active:bg-opacity-0`}
+              } lg:flex lg:rounded-none focus:bg-opacity-0 active:bg-opacity-0`}
             >
               {/* <Square3Stack3DIcon className="h-[18px] w-[18px] text-blue-gray-500" />{" "} */}
               خدمات{" "}
@@ -310,8 +310,8 @@ function NavList({ navIsScroll }) {
         className="relative font-medium font-iransans"
       >
         <MenuItem
-          className={`lg:hidden flex items-center justify-between text-md text-[#626161] rounded-none
-          hover:bg-[#fff] hover:text-black hover:transition-all duration-[0.4s] delay-0 ease-in-out`}
+          className="lg:hidden flex items-center justify-between text-md text-[#626161] rounded-none
+          hover:bg-[#fff] hover:text-black hover:transition-all duration-[0.4s] delay-0 ease-in-out"
         >
           <BsFillPersonFill size={20} />
           <span className="mr-1">ورود</span>
@@ -335,13 +335,13 @@ export function ComplexNavbar({ isScroll }) {
 
   return (
     <Navbar className="mx-auto max-w-screen-3xl shadow-none rounded-none px-2 lg:px-8 py-0 lg:pl-6 font-iransans">
-      <div className="relative mx-auto flex items-center justify-center xl:gap-16 text-blue-gray-900">
+      <div className="relative mx-auto flex items-center justify-center xl:gap-20 text-blue-gray-900">
         <Typography
           as="a"
           href="#"
           className="block lg:hidden cursor-pointer py-1.5 font-medium ml-auto"
         >
-          <Image src={jsk} alt="JSK logo" width={200} height={24}/>
+          <Image src={jsk} alt="JSK logo" width={200} height={24} />
         </Typography>
         {isScroll ? (
           <Typography
@@ -349,11 +349,9 @@ export function ComplexNavbar({ isScroll }) {
             href="#"
             className="cursor-pointer font-medium hidden lg:block"
           >
-            <Image src={jsk} alt="JSK logo" width={200} height={24}/>
+            <Image src={jsk} alt="JSK logo" width={200} height={24} className="w-full h-full" />
           </Typography>
-         
         ) : (
-        
           <></>
         )}
         <div
@@ -371,7 +369,7 @@ export function ComplexNavbar({ isScroll }) {
         >
           <Bars2Icon className="h-6 w-6" />
         </IconButton>
-  
+
         {/* <ProfileMenu /> */}
       </div>
       <Collapse open={isNavOpen} className="overflow-scroll ">
