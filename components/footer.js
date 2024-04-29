@@ -3,11 +3,21 @@ import { FaMapLocationDot } from "react-icons/fa6";
 import { FaPhone } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import { MdEmail } from "react-icons/md";
+import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
+import jsk from "../public/images/jsk .png";
+import Image from "next/image";
 
 const LINKS = [
   {
     title: "لینک های مفید",
-    items: ["درباره ما", "پروژه ها", "مناقصات", "تماس با ما"],
+    items: [
+      "درباره ما",
+      "پروژه ها",
+      "مناقصات",
+      "تماس با ما",
+      "خدمات",
+      "گواهینامه ها",
+    ],
   },
   //   {
   //     title: "Company",
@@ -24,41 +34,68 @@ const currentYear = new Date().getFullYear();
 export default function Footer() {
   return (
     <footer
-      className="relative w-full bg-footer-pattern bg-cover overflow-hidden bg-no-repeat bg-fixed bg-center before:content-[''] 
+      className="relative w-full bg-footer-pattern bg-cover overflow-hidden bg-no-repeat bg-center before:content-[''] 
     before:absolute before:left-0 before:top-0 before:w-full before:h-full before:opacity-[0.9] before:z-[0] before:bg-[#042038]"
     >
-      <div className="mx-auto w-full max-w-7xl px-8 z-[2] relative py-4 md:py-8 lg:py-12 xl:py-18">
-        <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2 lg:grid-cols-3 ">
-          <Typography variant="h5" className="mb-6 text-white">
-            Material Tailwind
-          </Typography>
-          <div className="flex flex-col justify-between items-start gap-4">
+      <div className="mx-auto w-full max-w-7xl px-8 z-[2] relative py-4 md:py-8 lg:py-12 xl:py-19">
+        <div className="grid grid-cols-1 justify-between gap-4 lg:gap-8 xl:gap-12 md:grid-cols-2 lg:grid-cols-3 ">
+          <div className="mb-6 text-white">
+            <Image
+              src={jsk}
+              alt="JSK logo"
+              width={300}
+              height={30}
+              // className="w-full h-full"
+            />
+
+            <p className="mt-3">
+              The journey from concept to completion in the world of
+              construction is a fascinating dance between the architect's
+              vision, the builder's expertise, and the building itself.
+            </p>
+          </div>
+          <div>
             {LINKS.map(({ title, items }) => (
-              <ul key={title}>
+              <>
                 <Typography
-                  variant="medium"
+                  variant="h5"
                   color="white"
-                  className="mb-3 font-medium font-iransans"
+                  className="mb-3 text-[18px] font-bold font-iransans relative 
+                  before:content-[''] before:absolute before:left-0 before:bottom-[-8px] before:h-[2px] before:w-full before:bg-[#ffa502]"
                 >
                   {title}
                 </Typography>
-                {items.map((link) => (
-                  <li key={link}>
-                    <Typography
-                      as="a"
-                      href="#"
-                      variant="small"
-                      color="white"
-                      className="py-1.5 my-1 font-normal transition-colors font-iransans"
-                    >
-                      {link}
-                    </Typography>
-                  </li>
-                ))}
-              </ul>
+                <ul
+                  key={title}
+                  className="flex flex-col justify-between items-start gap-1"
+                >
+                  {items.map((link) => (
+                    <li key={link}>
+                      <Typography
+                        as="a"
+                        href="#"
+                        variant="medium"
+                        color="white"
+                        className="py-2 w-full font-normal text-[#fff] font-iransans flex items-center gap-2 hover:text-[#ffa500] hover:mr-[10px] transition-all duration-[0.4s]"
+                      >
+                        <MdKeyboardDoubleArrowLeft size={18} />
+                        {link}
+                      </Typography>
+                    </li>
+                  ))}
+                </ul>
+              </>
             ))}
           </div>
-          <div className="text-white flex flex-col gap-3">
+          <div className="text-white flex flex-col gap-4">
+            <Typography
+              variant="h5"
+              color="white"
+              className="mb-3 text-[18px] font-bold font-iransans relative 
+              before:content-[''] before:absolute before:left-0 before:bottom-[-10px] before:h-[2px] before:w-full before:bg-[#ffa502]"
+            >
+              ارتباط با ما
+            </Typography>
             <div>
               <h1 className="text-md mb-2">آدرس:</h1>
               <p className="flex gap-4">
@@ -69,7 +106,6 @@ export default function Footer() {
                 </span>
               </p>
             </div>
-
             <div>
               <h1 className="text-md mb-2">تلفن:</h1>
               <p className="flex gap-4">
@@ -91,8 +127,14 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="footer_bar mt-12 w-full grid grid-cols-1 md:grid-cols-2 border-t border-blue-gray-50 py-4 relative">
-        <div className="flex gap-4 text-blue-gray-900 justify-center">
+      <div className="footer_bar mt-12 w-full grid grid-cols-1 md:grid-cols-2 border-t border-blue-gray-50 py-4 lg:py-6 relative">
+        <Typography
+          // variant="medium"
+          className="mt-4 text-[17px] font-iransans text-[#fff] text-center md:mt-0"
+        >
+          کلیه حقوق این وبسایت محفوظ و متعلق به شرکت ژیوار صنعت کیان می باشد.
+        </Typography>
+        <div className="flex gap-4 text-[#fff] justify-center">
           <Typography
             as="a"
             href="#"
@@ -180,15 +222,6 @@ export default function Footer() {
             </svg>
           </Typography>
         </div>
-        <Typography
-          variant="small"
-          className="mt-4 text-center font-normal text-blue-gray-900 md:mt-0"
-        >
-          {/* &copy; {currentYear}{" "}
-          <a href="https://material-tailwind.com/">Material Tailwind</a>. All
-          Rights Reserved. */}
-          BuildZone © 2024 - Designed by Zr Themes
-        </Typography>
       </div>
     </footer>
   );
