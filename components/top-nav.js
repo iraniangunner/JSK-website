@@ -1,3 +1,4 @@
+"use client"
 import { FiPhoneIncoming } from "react-icons/fi";
 import { MdOutlineLocationOn } from "react-icons/md";
 import { Typography } from "@material-tailwind/react";

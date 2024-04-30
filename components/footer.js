@@ -1,7 +1,7 @@
+"use client";
 import { Typography } from "@material-tailwind/react";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { FaPhone } from "react-icons/fa";
-import { HiOutlineMail } from "react-icons/hi";
 import { MdEmail } from "react-icons/md";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import jsk from "../public/images/jsk .png";
@@ -40,18 +40,13 @@ export default function Footer() {
       <div className="mx-auto w-full max-w-7xl px-8 z-[2] relative py-4 md:py-8 lg:py-12 xl:py-19">
         <div className="grid grid-cols-1 justify-between gap-4 lg:gap-8 xl:gap-12 md:grid-cols-2 lg:grid-cols-3 ">
           <div className="mb-6 text-white">
-            <Image
-              src={jsk}
-              alt="JSK logo"
-              width={300}
-              height={30}
-              // className="w-full h-full"
-            />
+            <Image src={jsk} alt="JSK logo" width={300} height={30} />
 
-            <p className="mt-3">
-              The journey from concept to completion in the world of
-              construction is a fascinating dance between the architect's
-              vision, the builder's expertise, and the building itself.
+            <p className="mt-3 text-justify leading-7">
+              خدمات شرکت ژیوار صنعت کیان شامل طیف گسترده ای از فعالیت های مربوط
+              به خدمات مهندسی، تأمین تجهیزات، نصب و راه اندازی و بهره برداری
+              (تعمیر و نگهداری، تأمین و مدیریت نیروی انسانی و ...) پروژه های
+              صنعتی و معدنی می باشد.
             </p>
           </div>
           <div>

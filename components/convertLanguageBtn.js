@@ -14,16 +14,18 @@ export function ConvertLanguageBtn() {
   return (
     <Menu className="hidden lg:flex" open={openMenu} handler={setOpenMenu}>
       <MenuHandler>
-        <Button className="flex justify-between items-center text-[#737272] hover:text-[#323131] text-md font-iransans rounded-none
-         gap-1 px-3 border-l border-[#ccc] bg-transparent shadow-none hover:shadow-none font-medium">
+        <Button
+          className="flex justify-between items-center text-[#737272] hover:text-[#323131] text-md font-iransans rounded-none
+         gap-1 px-3 border-l border-[#ccc] bg-transparent shadow-none hover:shadow-none font-medium"
+        >
           <span className="">فارسی</span>
           <ChevronDownIcon
-                strokeWidth={2}
-                // fontSize={17}
-                className={`w-3 transition-transform ${
-                  openMenu ? "rotate-180" : ""
-                }`}
-              />
+            strokeWidth={2}
+            // fontSize={17}
+            className={`w-3 transition-transform ${
+              openMenu ? "rotate-180" : ""
+            }`}
+          />
         </Button>
       </MenuHandler>
       <MenuList>

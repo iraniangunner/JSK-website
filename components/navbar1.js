@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { BsFillPersonFill } from "react-icons/bs";
 import {
   Navbar,
@@ -176,7 +177,7 @@ function NavListMenu({ navIsScroll }) {
             className="font-normal focus-visible:outline-none"
           >
             <MenuItem
-              className={`hidden items-center gap-2 font-medium font-iransans py-3 text-gray-900  ${
+              className={`hidden items-center gap-2 font-medium font-iransans py-3 text-gray-900 ${
                 isMenuOpen && navIsScroll ? "text-[#ffa500]" : ""
               } 
                ${isMenuOpen && !navIsScroll ? "bg-[#fff]" : ""}  ${
@@ -289,19 +290,16 @@ function NavList({ navIsScroll }) {
           </MenuItem>
         </Typography>
       ))}
-      <Typography
-        as="a"
-        href="#"
-        variant="medium"
-        className="font-medium font-iransans"
-      >
-        <MenuItem
-          className="contact font-bold relative flex items-center gap-2 rounded-none py-3
+
+      <Link
+        href="/contact"
+        className="contact font-bold relative flex items-center gap-2 rounded-none py-3 px-3
         overflow-hidden text-md transition-all duration-[0.5s] text-[#fff] hover:text-[#ffa500] h-full z-[1]"
-        >
-          تماس با ما
-        </MenuItem>
-      </Typography>
+      >
+        {" "}
+        تماس با ما
+      </Link>
+
       <Typography
         as="a"
         href="#"
@@ -349,7 +347,13 @@ export function ComplexNavbar({ isScroll }) {
             href="#"
             className="cursor-pointer font-medium hidden lg:block"
           >
-            <Image src={jsk} alt="JSK logo" width={200} height={24} className="w-full h-full" />
+            <Image
+              src={jsk}
+              alt="JSK logo"
+              width={200}
+              height={24}
+              className="w-full h-full"
+            />
           </Typography>
         ) : (
           <></>

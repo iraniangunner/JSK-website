@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 import "./globals.css";
 
 // const inter = Inter({ subsets: ["latin"] });
-const iranSans = localFont({src:"../public/fonts/IRANSansX-Regular.woff"});
+const iranSans = localFont({ src: "../public/fonts/IRANSansX-Regular.woff" });
 
 export const metadata: Metadata = {
   title: "JSK Company",
@@ -18,7 +20,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl">
-      <body className={iranSans.className}>{children}</body>
+      <body className={iranSans.className}>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
