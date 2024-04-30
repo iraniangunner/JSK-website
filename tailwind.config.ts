@@ -9,20 +9,18 @@ const config: Config = withMT({
   ],
   theme: {
     fontFamily: {
-      iransans: ["iran_sans", "sans-serif"],  
+      iransans: ["iran_sans", "sans-serif"],
     },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
-        "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        'footer-pattern': "url('../public/images/footer1.jpg')",
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "footer-pattern": "url('../public/images/footer1.jpg')",
+        "contact-pattern": "url('../public/images/contact-banner1.jpg')",
       },
     },
   },
   plugins: [],
 });
 export default config;
-
-
-
