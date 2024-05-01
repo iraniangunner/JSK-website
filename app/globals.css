@@ -94,6 +94,14 @@ body {
   background: -webkit-linear-gradient(90deg, #db8e00, #ffa500);
 }
 
+/* [data-name]::after{
+  content:attr(data-name);
+  width: 100px;
+  height: 100px;
+  color: #ccc;
+  font-size: 30px;
+} */
+
 
 
 
