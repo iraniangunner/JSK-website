@@ -1,6 +1,5 @@
 import Hero from "@/components/hero";
 import Link from "next/link";
-import { FaPhoneVolume } from "react-icons/fa6";
 import { FaPhone } from "react-icons/fa";
 import { RiNumber1 } from "react-icons/ri";
 import { RiNumber2 } from "react-icons/ri";
@@ -11,8 +10,7 @@ import { MdEmail } from "react-icons/md";
 export default function Contact() {
   return (
     <>
-      <div
-        className="relative bg-contact-pattern pt-[80px] lg:pt-[260px] 
+      <div className="relative bg-contact-pattern pt-[80px] lg:pt-[260px] 
         lg:pb-[10px] bg-[top_right] bg-no-repeat bg-fixed
         before:absolute before:content-[''] before:left-0 before:top-0
         before:w-full before:h-full before:opacity-0 before:z-[-1]"
@@ -36,8 +34,7 @@ export default function Contact() {
           </ol>
         </nav>
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-[50px] pb-[20px] lg:pt-[60px] lg:pb-[30px] px-10 lg:px-30 2xl:px-60 mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-[50px] pb-[20px] lg:pt-[60px] lg:pb-[30px] px-10 lg:px-30 xl:px-40 mx-auto">
         <div className="relative group flex items-center py-5 px-10 lg:py-[20px] lg:px-[30px] shadow-[0_5px_20px_0_rgba(0,0,0,0.15)] overflow-hidden bg-white hover:shadow-[0_5px_60px_0_rgba(0,0,0,0.15)] hover:translate-y-[-10px] transition-all duration-[0.8s]">
           <RiNumber1 className="absolute text-[80px] left-[10px] bottom-[5px] leading-[1px] font-[700] text-[#000] transition-all duration-[0.8s] opacity-[0.05] group-hover:scale-[2]" />
           <FaPhone size={45} className="ml-[20px]" color="#ffa500" />
