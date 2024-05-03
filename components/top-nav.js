@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { FiPhoneIncoming } from "react-icons/fi";
 import { MdOutlineLocationOn } from "react-icons/md";
 import { Typography } from "@material-tailwind/react";
@@ -9,18 +9,18 @@ import { ConvertLanguageBtn } from "./convertLanguageBtn";
 import { MenuItem } from "@material-tailwind/react";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaPhoneFlip } from "react-icons/fa6";
+import Link from "next/link";
 import { MdEmail } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 import jsk from "../public/images/jsk .png";
 
 export default function TopNav() {
   return (
-    <div className="hidden sticky top-0 lg:flex items-center justify-center gap-4 lg:gap-8 bg-white pt-4">
+    <div className="hidden sticky top-0 lg:flex items-center justify-center gap-4 lg:gap-8 bg-white pt-[10px]">
       <div className="flex justify-center items-center">
-        <Typography
-          as="a"
-          href="#"
-          className="relative cursor-pointer font-medium 
+        <Link
+          href="/"
+          className="relative cursor-pointer font-medium
           before:content-[''] before:absolute before:right-[100%] 
           before:bottom-0 before:border-l-[50px] before:border-l-transparent 
           before:border-b-[68px] before:border-b-[#ffa500]
@@ -31,13 +31,13 @@ export default function TopNav() {
             src={jsk}
             alt="JSK logo"
             width={200}
-            height={24}
-            className="bg-[#ffa500] w-full h-full"
+            // height={500}
+            className="bg-[#ffa500]"
           />
-        </Typography>
+        </Link>
       </div>
 
-      <div className="flex justify-center items-center gap-3 2xl:gap-4 col-span-2 lg:mr-10 2xl:mr-4">
+      <div className="flex justify-center items-center gap-3 lg:mr-10">
         <div className="lg:hidden 2xl:flex items-center justify-center ml-4">
           <div className="border border-[#ffa500] text-[#ffa500] hover:bg-[#ffa500] hover:text-white transition-all rounded-full p-2 ml-3">
             <FaLocationDot size={20} />
@@ -72,7 +72,7 @@ export default function TopNav() {
           </div>
         </div>
       </div>
-      <div className="flex justify-center items-center gap-1 lg:mr-10 2xl:mr-[80px]">
+      <div className="flex justify-center items-center gap-1 lg:mr-10">
         <Typography
           as="a"
           href="#"
