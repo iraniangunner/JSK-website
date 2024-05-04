@@ -6,6 +6,7 @@ import { RiNumber2 } from "react-icons/ri";
 import { RiNumber3 } from "react-icons/ri";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
+import GoogleMaps from "../../components/googlemap";
 
 export default function Contact() {
   return (
@@ -76,6 +77,10 @@ export default function Contact() {
             </p>
           </div>
         </div>
+      </div>
+
+      <div>
+        <GoogleMaps/>
       </div>
       <Hero />
     </>
