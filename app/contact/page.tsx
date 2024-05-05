@@ -1,4 +1,4 @@
-import Hero from "@/components/hero";
+// import Hero from "@/components/hero";
 import Link from "next/link";
 import { FaPhone } from "react-icons/fa";
 import { RiNumber1 } from "react-icons/ri";
@@ -6,12 +6,14 @@ import { RiNumber2 } from "react-icons/ri";
 import { RiNumber3 } from "react-icons/ri";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
-import GoogleMaps from "../../components/googlemap";
+import Map from "../../components/googlemap";
+// import { GoogleMap } from "@react-google-maps/api";
 
 export default function Contact() {
   return (
     <>
-      <div className="relative bg-contact-pattern pt-[80px] lg:pt-[260px] 
+      <div
+        className="relative bg-contact-pattern pt-[80px] lg:pt-[260px] 
         lg:pb-[10px] bg-[top_right] bg-no-repeat bg-fixed
         before:absolute before:content-[''] before:left-0 before:top-0
         before:w-full before:h-full before:opacity-0 before:z-[-1]"
@@ -79,10 +81,42 @@ export default function Contact() {
         </div>
       </div>
 
-      <div>
-        <GoogleMaps/>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-[50px] pb-[20px] lg:pt-[60px] lg:pb-[30px] px-10 lg:px-30 xl:px-40 2xl:px-80 mx-auto">
+        <div className="py-[40px] px-[45px] border border-solid border-[#fea925]">
+          <div className="text-center">
+            <h2 className="mb-[10px] text-[25px] font-bold">با ما در ارتباط باشید</h2>
+            <p className="text-[#848484] mb-[20px]">
+             نظرات و پیشنهادات خود را برای ما ارسال کنید
+            </p>
+          </div>
+          <form>
+            <div>
+              <div>
+                <input className="w-full mb-[30px] py-3 border border-solid border-[#ddd] pr-[20px] rounded-[15px]" placeholder= "نام شما"/>
+              </div>
+              <div>
+                <input className="w-full mb-[30px] py-3 border border-solid border-[#ddd] pr-[20px] rounded-[15px]" placeholder="پست الکترونیکی" />
+              </div>
+              <div>
+                <input className="w-full mb-[30px] py-3 border border-solid border-[#ddd] pr-[20px] rounded-[15px]" placeholder="آدرس وب سایت" />
+              </div>
+            </div>
+            <div>
+              <textarea rows={6} className="w-full mb-[30px] py-3 border border-solid border-[#ddd] pr-[20px] rounded-[15px]" placeholder="پیام خود را تایپ کنید"></textarea>
+            </div>
+            <div>
+              <input
+                type="submit"
+                value="ارسال پیام"
+                className="w-full text-center bg-[#fea925] rounded-[15px] cursor-pointer border 
+                border-solid border-[#fea925] h-[52px] font-[600] text-[#fff] text-[18px]
+                 hover:bg-[#2c4050] hover:border-[#2c4050] transition-all duration-[0.5s]"
+              />
+            </div>
+          </form>
+        </div>
+        <Map />
       </div>
-      <Hero />
     </>
   );
 }
