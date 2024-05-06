@@ -17,7 +17,7 @@ const config: Config = withMT({
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "footer-pattern": "url('../public/images/footer1.jpg')",
-        "contact-pattern": "url('../public/images/contact-banner1.jpg')",
+        "contact-pattern": "url('../public/images/contact-banner3.jpg')",
       },
     },
   },

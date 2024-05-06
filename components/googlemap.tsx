@@ -57,7 +57,7 @@ export default function Map(){
     initMap();
   },[])
  return (
-  <div className="h-[400px]" ref={mapRef}></div>
+  <div className="h-full" ref={mapRef}></div>
  )
 }
 
