@@ -39,7 +39,7 @@ export default function Footer() {
     >
       <div className="mx-auto w-full max-w-7xl px-8 z-[2] relative py-4 md:py-8 lg:py-12 xl:py-19">
         <div className="grid grid-cols-1 justify-between gap-4 lg:gap-8 xl:gap-12 md:grid-cols-2 lg:grid-cols-3 ">
-          <div className="mb-6 text-white">
+          <div className="mb-6 px-2 ml-6 text-white">
             <Image src={jsk} alt="JSK logo" width={300} height={30} />
 
             <p className="mt-3 text-justify leading-7">
