@@ -34,7 +34,7 @@ const currentYear = new Date().getFullYear();
 export default function Footer() {
   return (
     <footer
-      className="relative w-full bg-footer-pattern bg-cover my-6 overflow-hidden bg-no-repeat bg-center before:content-[''] 
+      className="relative w-full bg-footer-pattern bg-cover mt-6 overflow-hidden bg-no-repeat bg-center before:content-[''] 
     before:absolute before:left-0 before:top-0 before:w-full before:h-full before:opacity-[0.9] before:z-[0] before:bg-[#042038]"
     >
       <div className="mx-auto w-full max-w-7xl px-8 z-[2] relative py-4 md:py-8 lg:py-12 xl:py-19">
