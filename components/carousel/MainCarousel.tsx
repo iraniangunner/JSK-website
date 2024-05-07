@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
-import { Autoplay, Navigation, Pagination, EffectFade } from "swiper/modules";
+import { Autoplay, Navigation, EffectFade } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useSwiperSlide } from 'swiper/react';
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import 'swiper/css/effect-fade';
-import { useSwiper } from 'swiper/react';
+import "swiper/css/effect-fade";
 import SliderButtons from "./SliderButtons";
 
 interface Slide {
@@ -29,18 +29,23 @@ interface MainCarouselProps {
 }
 
 const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
+
+  const swiperSlide = useSwiperSlide();
+
   return (
     <section className="w-full">
       <div className="h-screen">
         <ul className="h-full w-full">
-       
           <Swiper
-            navigation
-            effect="fade"           
-            // pagination={{ type: "bullets", clickable: true }}
+            // navigation
+            navigation={{
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            }}
+            effect="fade"
             autoplay={true}
             loop={true}
-            modules={[Autoplay, Navigation, Pagination , EffectFade]}
+            modules={[Autoplay, Navigation, EffectFade]}
             className="h-full"
           >
             {data.map(({ id, image, tagline, title, buttons }) => (
@@ -51,7 +56,7 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                     background: `url(${image}) center center / cover scroll no-repeat`,
                   }}
                 ></div>
-               
+
                 <div className="h-full w-full absolute left-0 top-0 bg-black opacity-20"></div>
                 <div className="relative z-10 h-full flex items-center justify-center">
                   <div className="text-center">
@@ -72,6 +77,8 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                 </div>
               </SwiperSlide>
             ))}
+            <div className="swiper-button-prev"></div>
+            <div className="swiper-button-next"></div>
           </Swiper>
         </ul>
       </div>
