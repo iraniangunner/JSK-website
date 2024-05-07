@@ -21,6 +21,8 @@ const config: Config = withMT({
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+  ],
 });
 export default config;
