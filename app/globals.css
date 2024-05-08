@@ -102,6 +102,26 @@ body {
   font-size: 30px;
 } */
 
+.swiper-button-next{
+  width: 80px !important;
+  height: 100px !important;
+  right: 0 !important;
+}
+
+.next_icon{
+  width: 25px !important;
+  height: 25px !important;
+}
+
+/* .swiper-button-next:hover {
+
+  height: 100px !important;
+} */
+
+/* .swiper-button-next:hover{
+  height: 100px;
+} */
+
 
 
 

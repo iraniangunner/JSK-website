@@ -2,12 +2,12 @@
 import React, { useState } from "react";
 import { Autoplay, Navigation, EffectFade } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useSwiperSlide, useSwiper } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import SliderButtons from "./SliderButtons";
+import { FaArrowRight } from "react-icons/fa";
 
 interface Slide {
   id: number;
@@ -111,34 +111,50 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                 {/* {activeSlideIndex} */}
               </div>
             </div>
-            <div
-              className="swiper-button-next group transition-all duration-500"
-            >
+            <div className="swiper-button-next flex group after:hidden transition-all duration-500">
               <div
-                className={`relative before:absolute before:content-[''] p-[40px] pl-[10px] before:skew-x-[-10deg] before:transition-all duration-500
-            before:inline-block before:top-0 before:left-0 before:bottom-0 before:right-0 before:bg-[#ccc] ${activeSlideIndex === data.length - 1 ?"before:hidden":""}  origin-[50%_100%] before:z-[-1]`}
-              ></div>
+                className={`relative before:absolute before:content-[''] before:skew-x-[-10deg] before:transition-all before:duration-500 before:inline-block before:top-0 before:left-0 before:bottom-0 before:right-0 before:bg-[#ccc] ${
+                  activeSlideIndex === data.length - 1 ? "before:hidden" : ""
+                }  before:origin-[50%_100%] before:z-[-1] pl-[10px] flex justify-center items-center w-[80px] h-[100px]`}
+                style={{ transition: "inherit" }}
+              >
+                <FaArrowRight className="next_icon" />
+              </div>
 
               <div
+                className={`w-0 h-[100px] ${
+                  activeSlideIndex !== data.length - 1
+                    ? "group-hover:w-[200px] group-hover:h-[100px] transition-all duration-500"
+                    : ""
+                }`}
+              >
+                <div
+                  style={{
+                    background: `url(${
+                      activeSlideIndex === 0
+                        ? data[activeSlideIndex + 1].image
+                        : data[activeSlideIndex + 1]
+                        ? data[activeSlideIndex + 1].image
+                        : ""
+                    }) 
+                    center center / cover  no-repeat`,
+                    width: "inherit",
+                    height: "inherit",
+                  }}
+                ></div>
+              </div>
+
+              {/* <div
                 className={`w-0 h-[72px] ${
                   activeSlideIndex !== data.length - 1
                     ? "group-hover:w-[180px] group-hover:h-[100px] transition-all duration-500"
                     : ""
                 }
                absolute right-0`}
-                style={{
-                  background: `url(${
-                    activeSlideIndex === 0
-                      ? data[activeSlideIndex + 1].image
-                      : data[activeSlideIndex + 1]
-                      ? data[activeSlideIndex + 1].image
-                      : ""
-                  }) 
-                    center center / cover scroll no-repeat`,
-                }}
+                
               >
-                {/* {activeSlideIndex} */}
-              </div>
+               
+              </div> */}
             </div>
           </Swiper>
         </ul>
@@ -148,3 +164,6 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
 };
 
 export default MainCarousel;
+
+// {`relative before:absolute before:content-[''] p-[40px] pl-[10px] before:skew-x-[-10deg] before:transition-all duration-500
+//             before:inline-block before:top-0 before:left-0 before:bottom-0 before:right-0 before:bg-[#ccc] ${activeSlideIndex === data.length - 1 ?"before:hidden":""}  origin-[50%_100%] before:z-[-1]`}
