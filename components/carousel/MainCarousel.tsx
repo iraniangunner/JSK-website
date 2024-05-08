@@ -29,7 +29,6 @@ interface MainCarouselProps {
 }
 
 const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
-
   const [activeSlideIndex, setActiveStyleIndex] = useState<number>(0);
   //   function geSlideDataIndex(swipe:any){
   //     var activeIndex = swipe.activeIndex;
@@ -101,10 +100,35 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
               </SwiperSlide>
             ))}
             <div className="swiper-button-prev">
-              <div className="">{activeSlideIndex}</div>
+              <div
+                className="w-80 h-80 absolute top-20"
+                style={{
+                  background: `url(${
+                    data[activeSlideIndex - 1]
+                      ? data[activeSlideIndex - 1].image
+                      : "none"
+                  }) center center / cover scroll no-repeat`,
+                }}
+              >
+                {activeSlideIndex}
+              </div>
             </div>
             <div className="swiper-button-next">
-              <div className="">{activeSlideIndex}</div>
+              <div
+                className="w-80 h-80 absolute top-20"
+                style={{
+                  background: `url(${
+                    activeSlideIndex === 0
+                      ? data[activeSlideIndex + 1].image
+                      : data[activeSlideIndex + 1]
+                      ? data[activeSlideIndex + 1].image
+                      : ""
+                  }) 
+                    center center / cover scroll no-repeat`,
+                }}
+              >
+                {activeSlideIndex}
+              </div>
             </div>
           </Swiper>
         </ul>

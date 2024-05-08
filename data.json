@@ -1,12 +1,12 @@
 [
     {
-      "id": 1,
+      "id": 0,
       "title": "ARE AWESOME",
       "tagline": "NEXTJS 13 & SWIPER SLIDER",
       "image": "/images/slide1.jpg",
       "buttons": [
         {
-          "id": 1,
+          "id": 0,
           "text": "Roberto Nickson",
           "link": "https://www.pexels.com/@rpnickson/",
           "type": "btn-dark btn-circle"
@@ -14,7 +14,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": 1,
       "title": "GIVE IT A SHOOT",
       "tagline": "IF YOU LIKE IT",
       "image": "/images/slide2.jpg",
@@ -28,13 +28,13 @@
       ]
     },
     {
-        "id": 3,
+        "id": 2,
         "title": "GIVE IT A SHOOT",
         "tagline": "IF YOU LIKE IT",
         "image": "/images/slide3.jpg",
         "buttons": [
           {
-            "id": 1,
+            "id": 2,
             "text": "Julia M Cameron",
             "link": "https://www.pexels.com/@julia-m-cameron/",
             "type": "btn-dark btn-circle"
@@ -42,13 +42,13 @@
         ]
       },
       {
-        "id": 4,
+        "id": 3,
         "title": "GIVE IT A SHOOT",
         "tagline": "IF YOU LIKE IT",
         "image": "/images/slide4.jpg",
         "buttons": [
           {
-            "id": 1,
+            "id": 3,
             "text": "Julia M Cameron",
             "link": "https://www.pexels.com/@julia-m-cameron/",
             "type": "btn-dark btn-circle"
