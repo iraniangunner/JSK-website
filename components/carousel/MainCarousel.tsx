@@ -51,7 +51,7 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
   // }
 
   return (
-    <section className="w-full">
+    <section className="w-full" dir="ltr">
       <div className="h-screen">
         <ul className="h-full w-full">
           <Swiper
@@ -61,9 +61,8 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
               prevEl: ".swiper-button-prev",
             }}
             effect="fade"
-            autoplay={true}
+            // autoplay={true}
             // loop={true}
-            dir="rtl"
             onSlideChange={(el) =>
               setActiveStyleIndex((activeSlideIndex) => el.activeIndex)
             }
@@ -78,7 +77,6 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                     background: `url(${image}) center center / cover scroll no-repeat`,
                   }}
                 ></div>
-
                 <div className="h-full w-full absolute left-0 top-0 bg-black opacity-20"></div>
                 <div className="relative z-10 h-full flex items-center justify-center">
                   <div className="text-center">
@@ -106,16 +104,28 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                   background: `url(${
                     data[activeSlideIndex - 1]
                       ? data[activeSlideIndex - 1].image
-                      : "none"
+                      : ""
                   }) center center / cover scroll no-repeat`,
                 }}
               >
-                {activeSlideIndex}
+                {/* {activeSlideIndex} */}
               </div>
             </div>
-            <div className="swiper-button-next">
+            <div
+              className="swiper-button-next group transition-all duration-500"
+            >
               <div
-                className="w-80 h-80 absolute top-20"
+                className={`relative before:absolute before:content-[''] p-[40px] pl-[10px] before:skew-x-[-10deg] before:transition-all duration-500
+            before:inline-block before:top-0 before:left-0 before:bottom-0 before:right-0 before:bg-[#ccc] ${activeSlideIndex === data.length - 1 ?"before:hidden":""}  origin-[50%_100%] before:z-[-1]`}
+              ></div>
+
+              <div
+                className={`w-0 h-[72px] ${
+                  activeSlideIndex !== data.length - 1
+                    ? "group-hover:w-[180px] group-hover:h-[100px] transition-all duration-500"
+                    : ""
+                }
+               absolute right-0`}
                 style={{
                   background: `url(${
                     activeSlideIndex === 0
@@ -127,7 +137,7 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                     center center / cover scroll no-repeat`,
                 }}
               >
-                {activeSlideIndex}
+                {/* {activeSlideIndex} */}
               </div>
             </div>
           </Swiper>
