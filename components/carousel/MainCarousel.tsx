@@ -1,8 +1,8 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Autoplay, Navigation, EffectFade } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useSwiperSlide } from 'swiper/react';
+import { useSwiperSlide, useSwiper } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -30,7 +30,26 @@ interface MainCarouselProps {
 
 const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
 
-  const swiperSlide = useSwiperSlide();
+  const [activeSlideIndex, setActiveStyleIndex] = useState<number>(0);
+  //   function geSlideDataIndex(swipe:any){
+  //     var activeIndex = swipe.activeIndex;
+  //     var slidesLen = swipe.slides.length;
+
+  //     console.log(slidesLen)
+  //     if(swipe.params.loop){
+  //         switch(swipe.activeIndex){
+  //             case 0:
+  //                 activeIndex = slidesLen-3;
+  //                 break;
+  //             case slidesLen-1:
+  //                 activeIndex = 0;
+  //                 break;
+  //             default:
+  //                 --activeIndex;
+  //         }
+  //     }
+  //     return  activeIndex;
+  // }
 
   return (
     <section className="w-full">
@@ -44,7 +63,11 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
             }}
             effect="fade"
             autoplay={true}
-            loop={true}
+            // loop={true}
+            dir="rtl"
+            onSlideChange={(el) =>
+              setActiveStyleIndex((activeSlideIndex) => el.activeIndex)
+            }
             modules={[Autoplay, Navigation, EffectFade]}
             className="h-full"
           >
@@ -77,8 +100,12 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                 </div>
               </SwiperSlide>
             ))}
-            <div className="swiper-button-prev"></div>
-            <div className="swiper-button-next"></div>
+            <div className="swiper-button-prev">
+              <div className="">{activeSlideIndex}</div>
+            </div>
+            <div className="swiper-button-next">
+              <div className="">{activeSlideIndex}</div>
+            </div>
           </Swiper>
         </ul>
       </div>
