@@ -8,6 +8,7 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import SliderButtons from "./SliderButtons";
 import { FaArrowRight } from "react-icons/fa";
+import { FaArrowLeft } from "react-icons/fa6";
 
 interface Slide {
   id: number;
@@ -61,7 +62,7 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
               prevEl: ".swiper-button-prev",
             }}
             effect="fade"
-            // autoplay={true}
+            autoplay={true}
             // loop={true}
             onSlideChange={(el) =>
               setActiveStyleIndex((activeSlideIndex) => el.activeIndex)
@@ -97,18 +98,34 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                 </div>
               </SwiperSlide>
             ))}
-            <div className="swiper-button-prev">
+
+            <div className="swiper-button-prev flex group after:hidden transition-all duration-500">
               <div
-                className="w-80 h-80 absolute top-20"
-                style={{
-                  background: `url(${
-                    data[activeSlideIndex - 1]
-                      ? data[activeSlideIndex - 1].image
-                      : ""
-                  }) center center / cover scroll no-repeat`,
-                }}
+                className={`w-0 h-[100px] ${
+                  activeSlideIndex !== 0
+                    ? "group-hover:w-[200px] group-hover:h-[100px] transition-all duration-500"
+                    : ""
+                }`}
               >
-                {/* {activeSlideIndex} */}
+                <div
+                  style={{
+                    background: `url(${
+                      data[activeSlideIndex - 1]
+                        ? data[activeSlideIndex - 1].image
+                        : ""
+                    }) center center / cover scroll no-repeat`,
+                    width: "inherit",
+                    height: "inherit",
+                  }}
+                ></div>
+              </div>
+              <div
+                className={`relative before:absolute before:content-[''] before:skew-x-[10deg] before:transition-all before:duration-500 before:inline-block before:top-0 before:left-0 before:bottom-0 before:right-0 before:bg-[#ccc] ${
+                  activeSlideIndex === 0 ? "before:hidden" : ""
+                }  before:origin-[50%_100%] before:z-[-1] pr-[10px] flex justify-center items-center w-[80px] h-[100px]`}
+                style={{ transition: "inherit" }}
+              >
+                <FaArrowLeft className="next_icon" />
               </div>
             </div>
             <div className="swiper-button-next flex group after:hidden transition-all duration-500">
@@ -143,18 +160,6 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                   }}
                 ></div>
               </div>
-
-              {/* <div
-                className={`w-0 h-[72px] ${
-                  activeSlideIndex !== data.length - 1
-                    ? "group-hover:w-[180px] group-hover:h-[100px] transition-all duration-500"
-                    : ""
-                }
-               absolute right-0`}
-                
-              >
-               
-              </div> */}
             </div>
           </Swiper>
         </ul>
@@ -164,6 +169,3 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
 };
 
 export default MainCarousel;
-
-// {`relative before:absolute before:content-[''] p-[40px] pl-[10px] before:skew-x-[-10deg] before:transition-all duration-500
-//             before:inline-block before:top-0 before:left-0 before:bottom-0 before:right-0 before:bg-[#ccc] ${activeSlideIndex === data.length - 1 ?"before:hidden":""}  origin-[50%_100%] before:z-[-1]`}
