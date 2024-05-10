@@ -1,13 +1,8 @@
-// import Hero from "@/components/hero";
 import Link from "next/link";
 import { FaPhone } from "react-icons/fa";
-import { RiNumber1 } from "react-icons/ri";
-import { RiNumber2 } from "react-icons/ri";
-import { RiNumber3 } from "react-icons/ri";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import Map from "../../components/googlemap";
-// import { GoogleMap } from "@react-google-maps/api";
 
 export default function Contact() {
   return (
