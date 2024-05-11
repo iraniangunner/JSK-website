@@ -5,36 +5,17 @@ import Link from "next/link";
 import { BsFillPersonFill } from "react-icons/bs";
 import {
   Navbar,
-  MobileNav,
   Typography,
-  Button,
   Menu,
   MenuHandler,
   MenuList,
   MenuItem,
-  Avatar,
-  Card,
   IconButton,
   Collapse,
 } from "@material-tailwind/react";
 
-import {
-  CubeTransparentIcon,
-  UserCircleIcon,
-  CodeBracketSquareIcon,
-  Square3Stack3DIcon,
-  ChevronDownIcon,
-  Cog6ToothIcon,
-  InboxArrowDownIcon,
-  LifebuoyIcon,
-  PowerIcon,
-  RocketLaunchIcon,
-  Bars2Icon,
-} from "@heroicons/react/24/solid";
+import { ChevronDownIcon, Bars2Icon } from "@heroicons/react/24/solid";
 import jsk from "../public/images/jsk .png";
-// import { link } from "fs";
-
-// profile menu component
 
 // nav list menu
 const navListMenuItems = [
@@ -68,9 +49,6 @@ function NavListMenu({ navIsScroll }) {
         >
           {title}
         </Typography>
-        {/* <Typography variant="small" color="gray" className="font-normal">
-          {description}
-        </Typography> */}
       </MenuItem>
     </a>
   ));
@@ -104,7 +82,6 @@ function NavListMenu({ navIsScroll }) {
                   : "hover:bg-[#fff] hover:transition-all duration-[0.4s] delay-0 ease-in-out"
               } lg:flex lg:rounded-none focus:bg-opacity-0 active:bg-opacity-0`}
             >
-              {/* <Square3Stack3DIcon className="h-[18px] w-[18px] text-blue-gray-500" />{" "} */}
               خدمات{" "}
               <ChevronDownIcon
                 strokeWidth={2}
@@ -116,21 +93,12 @@ function NavListMenu({ navIsScroll }) {
           </Typography>
         </MenuHandler>
         <MenuList className="hidden w-[18rem] rounded-none gap-3 overflow-visible py-0 px-0 lg:grid grid-cols-3 ">
-          {/* <Card
-            color="blue"
-            shadow={false}
-            variant="gradient"
-            className="col-span-3 grid h-full w-full place-items-center rounded-md"
-          >
-            <RocketLaunchIcon strokeWidth={1} className="h-28 w-28" />
-          </Card> */}
           <ul className="col-span-3 flex w-full flex-col  group-hover:text-[#ffa500] focus-visible:outline-none">
             {renderItems}
           </ul>
         </MenuList>
       </Menu>
       <MenuItem className="flex items-center gap-2 font-medium font-iransans text-blue-gray-900 lg:hidden">
-        {/* <Square3Stack3DIcon className="h-[18px] w-[18px] text-blue-gray-500" />{" "} */}
         خدمات{" "}
       </MenuItem>
       <ul className="ml-6 flex w-full flex-col gap-1 lg:hidden">
@@ -164,11 +132,7 @@ function NavList({ navIsScroll }) {
   return (
     <ul className="mt-2 mb-4 py-2 flex flex-col gap-2 lg:gap-8 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
       <Link
-        // key={label}
-        // as="a"
         href="/"
-        // variant="medium"
-        // color="gray"
         className="relative font-medium font-iransans text-blue-gray-500"
       >
         <MenuItem
@@ -186,10 +150,7 @@ function NavList({ navIsScroll }) {
       {navListItems.map(({ label, icon, link }, key) => (
         <Link
           key={label}
-          // as="a"
           href={link}
-          // variant="medium"
-          // color="gray"
           className="relative font-medium font-iransans text-blue-gray-500 "
         >
           <MenuItem
@@ -199,7 +160,6 @@ function NavList({ navIsScroll }) {
                 : "hover:bg-[#fff] hover:transition-all duration-[0.4s] delay-0 ease-in-out"
             }  focus:bg-opacity-0 active:bg-opacity-0`}
           >
-            {/* {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "} */}
             <div> {label}</div>
           </MenuItem>
         </Link>

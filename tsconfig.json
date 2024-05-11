@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/components/menuModal/menuModal.js", "components/navbar.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/components/menuModal/menuModal.js", "components/navbar.js", "components/footer.js", "components/convertLanguageBtn.js"],
   "exclude": ["node_modules"]
 }

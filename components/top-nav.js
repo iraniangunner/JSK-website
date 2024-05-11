@@ -1,8 +1,5 @@
 "use client";
-import { FiPhoneIncoming } from "react-icons/fi";
-import { MdOutlineLocationOn } from "react-icons/md";
 import { Typography } from "@material-tailwind/react";
-import { HiOutlineMail } from "react-icons/hi";
 import { BsFillPersonFill } from "react-icons/bs";
 import Image from "next/image";
 import { ConvertLanguageBtn } from "./convertLanguageBtn";
@@ -31,7 +28,6 @@ export default function TopNav() {
             src={jsk}
             alt="JSK logo"
             width={200}
-            // height={500}
             className="bg-[#ffa500]"
           />
         </Link>

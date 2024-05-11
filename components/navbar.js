@@ -66,7 +66,6 @@ const NavAnimations = {
   },
   animate: {
     y: 0,
-    // x: "-50%",
     opacity: 1,
     transition: {
       type: "ease-in-out",
