@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
 import { Table } from "antd";
 import type { GetProp, TableProps } from "antd";
@@ -24,6 +23,16 @@ interface DataType {
   };
 }
 
+// interface DataType {
+//   id: number;
+//   type: string;
+//   T_number: number;
+//   start_date: string;
+//   end_date: string;
+//   status: string;
+//   description: string;
+// }
+
 interface TableParams {
   pagination?: TablePaginationConfig;
   sortField?: string;
@@ -33,24 +42,27 @@ interface TableParams {
 
 const columns: ColumnsType<DataType> = [
   {
-    title: "Name",
+    title: "عنوان فراخوان",
     dataIndex: "name",
-    sorter: true,
+    // dataIndex: "type",
+    // sorter: true,
     render: (name) => `${name.first} ${name.last}`,
     width: "20%",
   },
   {
-    title: "Gender",
+    title: "نوع فراخوان",
     dataIndex: "gender",
-    filters: [
-      { text: "Male", value: "male" },
-      { text: "Female", value: "female" },
-    ],
+    // dataIndex: "start_date",
+    // filters: [
+    //   { text: "Male", value: "male" },
+    //   { text: "Female", value: "female" },
+    // ],
     width: "20%",
   },
   {
-    title: "Email",
+    title: "شماره فراخوان",
     dataIndex: "email",
+    // dataIndex:"end_date"
   },
 ];
 
@@ -123,14 +135,19 @@ const TenderTable: React.FC = () => {
         expandable={{
           expandedRowRender: (record) => (
             <p style={{ margin: 0 }}>{record.login.uuid}</p>
+            // <p style={{ margin: 0 }}>{record.id}</p>
           ),
           expandedRowKeys: [expandedKey],
           onExpand: (record, expanded) =>
             expandedKey === expanded.login.uuid
               ? setExpandedKey("")
               : setExpandedKey(expanded.login.uuid),
+            // expandedKey === expanded.id.toString()
+            //   ? setExpandedKey("")
+            //   : setExpandedKey(expanded.id.toString()),
         }}
         rowKey={(record) => record.login.uuid}
+        // rowKey={(record) => record.id}
         dataSource={data}
         pagination={tableParams.pagination}
         loading={loading}
