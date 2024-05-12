@@ -120,8 +120,10 @@ body {
   height: 25px !important;
 }
 
-.ant-table-content{
-  font-family: "iran-sans";
+
+.ant-table-pagination-left{
+  justify-content: center !important;
 }
+
 
 

@@ -4,6 +4,7 @@ import { Table } from "antd";
 import type { GetProp, TableProps } from "antd";
 import qs from "qs";
 import { ConfigProvider } from "antd";
+import Tender from "./tender";
 
 type ColumnsType<T> = TableProps<T>["columns"];
 type TablePaginationConfig = Exclude<
@@ -20,18 +21,19 @@ interface DataType {
   email: string;
   login: {
     uuid: string;
+    username: string;
+    password: string;
+  };
+  location: {
+    street: {
+      number: number;
+      name: string;
+    };
+    city: string;
+    state: string;
+    country: string;
   };
 }
-
-// interface DataType {
-//   id: number;
-//   type: string;
-//   T_number: number;
-//   start_date: string;
-//   end_date: string;
-//   status: string;
-//   description: string;
-// }
 
 interface TableParams {
   pagination?: TablePaginationConfig;
@@ -44,25 +46,42 @@ const columns: ColumnsType<DataType> = [
   {
     title: "عنوان فراخوان",
     dataIndex: "name",
-    // dataIndex: "type",
-    // sorter: true,
+
     render: (name) => `${name.first} ${name.last}`,
     width: "20%",
   },
   {
     title: "نوع فراخوان",
-    dataIndex: "gender",
-    // dataIndex: "start_date",
-    // filters: [
-    //   { text: "Male", value: "male" },
-    //   { text: "Female", value: "female" },
-    // ],
+    dataIndex: "login",
+    render: (login) => `${login.username} ${login.password}`,
+
     width: "20%",
   },
   {
     title: "شماره فراخوان",
-    dataIndex: "email",
-    // dataIndex:"end_date"
+    dataIndex: "location",
+    render: (location) => location.street.number,
+
+    width: "10%",
+  },
+  {
+    title: "تاریخ شروع",
+    dataIndex: "location",
+    render: (location) => location.country,
+
+    width: "10%",
+  },
+  {
+    title: "تاریخ پایان",
+    dataIndex: "location",
+    render: (location) => location.city,
+
+    width: "10%",
+  },
+  {
+    title: "وضعیت",
+    dataIndex: "location",
+    render: (location) => location.state,
   },
 ];
 
@@ -129,25 +148,27 @@ const TenderTable: React.FC = () => {
   };
 
   return (
-    <ConfigProvider direction="rtl">
+    <ConfigProvider
+      direction="rtl"
+      theme={{
+        token: {
+          fontFamily: "iran_sans",
+        },
+      }}
+    >
       <Table
         columns={columns}
         expandable={{
           expandedRowRender: (record) => (
-            <p style={{ margin: 0 }}>{record.login.uuid}</p>
-            // <p style={{ margin: 0 }}>{record.id}</p>
+            <Tender first={record.name.first} last={record.name.last} />
           ),
           expandedRowKeys: [expandedKey],
           onExpand: (record, expanded) =>
             expandedKey === expanded.login.uuid
               ? setExpandedKey("")
               : setExpandedKey(expanded.login.uuid),
-            // expandedKey === expanded.id.toString()
-            //   ? setExpandedKey("")
-            //   : setExpandedKey(expanded.id.toString()),
         }}
         rowKey={(record) => record.login.uuid}
-        // rowKey={(record) => record.id}
         dataSource={data}
         pagination={tableParams.pagination}
         loading={loading}
