@@ -62,14 +62,14 @@ const columns: ColumnsType<DataType> = [
     dataIndex: "location",
     render: (location) => location.street.number,
 
-    width: "10%",
+    width: "20%",
   },
   {
     title: "تاریخ شروع",
     dataIndex: "location",
     render: (location) => location.country,
 
-    width: "10%",
+    width: "20%",
   },
   {
     title: "تاریخ پایان",
@@ -169,6 +169,7 @@ const TenderTable: React.FC = () => {
               : setExpandedKey(expanded.login.uuid),
         }}
         rowKey={(record) => record.login.uuid}
+        style={{ maxWidth: 960 , marginRight:"auto" , marginLeft:"auto" }}
         dataSource={data}
         pagination={tableParams.pagination}
         loading={loading}
