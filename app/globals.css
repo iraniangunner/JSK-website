@@ -123,8 +123,8 @@ body {
 }
 
 .ant-table-thead > tr > th {
-  /* background: #262b31 !important;
-  color: #fff !important; */
+  background: #262b31 !important;
+  color: #fff !important;
 }
 
 :where(.css-dev-only-do-not-override-1fyvwjc).ant-table-wrapper
@@ -190,4 +190,11 @@ body {
 :where(.css-dev-only-do-not-override-1fyvwjc).ant-table-wrapper
   .ant-table-filter-column {
   flex-direction: row-reverse;
+}
+
+:where(.css-dev-only-do-not-override-1fyvwjc).ant-table-wrapper .ant-table-filter-trigger{
+  color: #fff;
+}
+:where(.css-dev-only-do-not-override-1fyvwjc).ant-table-wrapper .ant-table-filter-trigger:hover{
+  color: #ffa500;
 }
