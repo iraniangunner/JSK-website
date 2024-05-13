@@ -151,12 +151,12 @@ export default function TenderSearch() {
           </div>
           <div className="flex justify-center items-center gap-4 mt-2">
             <div>
-              <Button type="primary" icon={<SearchOutlined />}>
+              <Button type="primary" className="rounded-none" icon={<SearchOutlined />}>
                 Search
               </Button>
             </div>
             <div>
-              <Button type="primary" className="px-7">Reset</Button>
+              <Button type="primary" className="px-7 rounded-none">Reset</Button>
             </div>
           </div>
         </div>

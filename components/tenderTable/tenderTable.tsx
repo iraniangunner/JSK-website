@@ -4,6 +4,7 @@ import { Table } from "antd";
 import type { GetProp, TableProps } from "antd";
 import qs from "qs";
 import { ConfigProvider } from "antd";
+import faIR from 'antd/es/locale/fa_IR';
 import Tender from "./tender";
 
 type ColumnsType<T> = TableProps<T>["columns"];
@@ -53,6 +54,22 @@ const columns: ColumnsType<DataType> = [
   {
     title: "نوع فراخوان",
     dataIndex: "login",
+    filters: [
+      {
+        text: "مناقصه",
+        value: "tender",
+      },
+      {
+        text: " مزایده",
+        value: "auction",
+      },
+      {
+        text: "استعلام",
+        value: "inquiry",
+      },
+    ],
+    onFilter: (value, record) =>
+      record.login.username.startsWith(value as string),
     render: (login) => `${login.username} ${login.password}`,
 
     width: "20%",
@@ -61,7 +78,6 @@ const columns: ColumnsType<DataType> = [
     title: "شماره فراخوان",
     dataIndex: "location",
     render: (location) => location.street.number,
-
     width: "20%",
   },
   {
@@ -76,11 +92,31 @@ const columns: ColumnsType<DataType> = [
     dataIndex: "location",
     render: (location) => location.city,
 
-    width: "10%",
+    width: "20%",
   },
   {
     title: "وضعیت",
     dataIndex: "location",
+    filters: [
+      {
+        text: "فعال",
+        value: "active",
+      },
+      {
+        text: "غیر فعال",
+        value: "inactive",
+      },
+      {
+        text: "لغو",
+        value: "canceled",
+      },
+      {
+        text: "تمدید",
+        value: "extend",
+      },
+    ],
+    onFilter: (value, record) =>
+      record.location.state.startsWith(value as string),
     render: (location) => location.state,
   },
 ];
@@ -98,6 +134,7 @@ const TenderTable: React.FC = () => {
     pagination: {
       current: 1,
       pageSize: 10,
+      // locale:{ items_per_page: 'gfdtrd' }
     },
   });
 
@@ -150,6 +187,7 @@ const TenderTable: React.FC = () => {
   return (
     <ConfigProvider
       direction="rtl"
+      locale={faIR}
       theme={{
         token: {
           fontFamily: "iran_sans",
@@ -169,7 +207,7 @@ const TenderTable: React.FC = () => {
               : setExpandedKey(expanded.login.uuid),
         }}
         rowKey={(record) => record.login.uuid}
-        style={{ maxWidth: 960 , marginRight:"auto" , marginLeft:"auto" }}
+        style={{ maxWidth: 960, marginRight: "auto", marginLeft: "auto" }}
         dataSource={data}
         pagination={tableParams.pagination}
         loading={loading}
