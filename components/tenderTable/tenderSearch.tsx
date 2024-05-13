@@ -14,7 +14,7 @@ export default function TenderSearch() {
   };
   return (
     <div className="my-16 w-full xl:max-w-[50%] 3xl:max-w-[40%] mx-auto">
-      <div className="flex flex-wrap justify-around border py-3 rounded-sm">
+      <div className="flex flex-wrap justify-around border border-[#ffa500] py-3 rounded-sm">
         <div className="flex flex-wrap  flex-col gap-6">
           <div>
             <p className="mb-1 text-[14px] font-bold">نوع فراخوان</p>
@@ -151,12 +151,12 @@ export default function TenderSearch() {
           </div>
           <div className="flex justify-center items-center gap-4 mt-2">
             <div>
-              <Button type="primary" className="rounded-none" icon={<SearchOutlined />}>
-                Search
+              <Button type="primary" className="rounded-none font-iransans" icon={<SearchOutlined />}>
+                جستجو
               </Button>
             </div>
             <div>
-              <Button type="primary" className="px-7 rounded-none">Reset</Button>
+              <Button type="primary" className="px-7 rounded-none font-iransans">پاک کردن</Button>
             </div>
           </div>
         </div>

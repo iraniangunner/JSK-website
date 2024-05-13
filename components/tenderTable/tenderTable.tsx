@@ -115,6 +115,7 @@ const columns: ColumnsType<DataType> = [
         value: "extend",
       },
     ],
+    width:"20%",
     onFilter: (value, record) =>
       record.location.state.startsWith(value as string),
     render: (location) => location.state,
