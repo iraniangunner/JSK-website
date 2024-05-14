@@ -13,7 +13,7 @@ export default function TenderSearch() {
     console.log(value);
   };
   return (
-    <div className="my-16 w-full lg:max-w-[80%] xl:max-w-[50%] 2xl:max-w-[40%] mx-auto">
+    <div className="my-16 w-full lg:max-w-[80%] xl:max-w-[60%] 2xl:max-w-[50%] mx-auto">
       <div className="flex flex-wrap justify-around border border-[#ffa500] py-3 px-1 rounded-sm">
         <div className="flex flex-wrap flex-col gap-4">
           <div>
