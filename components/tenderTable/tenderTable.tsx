@@ -4,7 +4,7 @@ import { Table } from "antd";
 import type { GetProp, TableProps } from "antd";
 import qs from "qs";
 import { ConfigProvider } from "antd";
-import faIR from 'antd/es/locale/fa_IR';
+import faIR from "antd/es/locale/fa_IR";
 import Tender from "./tender";
 
 type ColumnsType<T> = TableProps<T>["columns"];
@@ -49,7 +49,7 @@ const columns: ColumnsType<DataType> = [
     dataIndex: "name",
 
     render: (name) => `${name.first} ${name.last}`,
-    width: "20%",
+    width: "30%",
   },
   {
     title: "نوع فراخوان",
@@ -72,27 +72,27 @@ const columns: ColumnsType<DataType> = [
       record.login.username.startsWith(value as string),
     render: (login) => `${login.username} ${login.password}`,
 
-    width: "20%",
+    width: "15%",
   },
   {
     title: "شماره فراخوان",
     dataIndex: "location",
     render: (location) => location.street.number,
-    width: "20%",
+    width: "15%",
   },
   {
     title: "تاریخ شروع",
     dataIndex: "location",
     render: (location) => location.country,
 
-    width: "20%",
+    width: "15%",
   },
   {
     title: "تاریخ پایان",
     dataIndex: "location",
     render: (location) => location.city,
 
-    width: "20%",
+    width: "15%",
   },
   {
     title: "وضعیت",
@@ -115,7 +115,7 @@ const columns: ColumnsType<DataType> = [
         value: "extend",
       },
     ],
-    width:"20%",
+    width: "10%",
     onFilter: (value, record) =>
       record.location.state.startsWith(value as string),
     render: (location) => location.state,
@@ -197,6 +197,11 @@ const TenderTable: React.FC = () => {
     >
       <Table
         columns={columns}
+        onRow={(record, rowIndex) => {
+          return {
+            className: "custom",
+          };
+        }}
         expandable={{
           expandedRowRender: (record) => (
             <Tender first={record.name.first} last={record.name.last} />

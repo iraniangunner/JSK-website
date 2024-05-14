@@ -13,16 +13,16 @@ export default function TenderSearch() {
     console.log(value);
   };
   return (
-    <div className="my-16 w-full xl:max-w-[50%] 3xl:max-w-[40%] mx-auto">
-      <div className="flex flex-wrap justify-around border border-[#ffa500] py-3 rounded-sm">
-        <div className="flex flex-wrap  flex-col gap-6">
+    <div className="my-16 w-full lg:max-w-[80%] xl:max-w-[50%] 2xl:max-w-[40%] mx-auto">
+      <div className="flex flex-wrap justify-around border border-[#ffa500] py-3 px-1 rounded-sm">
+        <div className="flex flex-wrap flex-col gap-4">
           <div>
-            <p className="mb-1 text-[14px] font-bold">نوع فراخوان</p>
+            <p className="mb-1 text-[13px] font-bold">نوع فراخوان</p>
             <ConfigProvider
               theme={{
                 token: {
                   fontFamily: "iran_sans",
-                  fontSize: 13,
+                  fontSize: 12,
                   borderRadius: 0,
                 },
               }}
@@ -45,12 +45,12 @@ export default function TenderSearch() {
             </ConfigProvider>
           </div>
           <div>
-            <p className="mb-1 text-[14px] font-bold">وضعیت فراخوان</p>
+            <p className="mb-1 text-[13px] font-bold">وضعیت فراخوان</p>
             <ConfigProvider
               theme={{
                 token: {
                   fontFamily: "iran_sans",
-                  fontSize: 13,
+                  fontSize: 12,
                   borderRadius: 0,
                 },
               }}
@@ -79,12 +79,12 @@ export default function TenderSearch() {
             </ConfigProvider>
           </div>
           <div>
-            <p className="mb-1 text-[14px] font-bold">نوع برگزاری</p>
+            <p className="mb-1 text-[13px] font-bold">نوع برگزاری</p>
             <ConfigProvider
               theme={{
                 token: {
                   fontFamily: "iran_sans",
-                  fontSize: 13,
+                  fontSize: 12,
                   borderRadius: 0,
                 },
               }}
@@ -105,16 +105,16 @@ export default function TenderSearch() {
             </ConfigProvider>
           </div>
         </div>
-        <div className="flex flex-wrap flex-col gap-6">
+        <div className="flex flex-wrap flex-col gap-4">
           <div>
-            <p className="mb-1 text-[14px] font-bold">
+            <p className="mb-1 text-[13px] font-bold">
               جستجو بر اساس شماره فراخوان
             </p>
             <ConfigProvider
               theme={{
                 token: {
                   fontFamily: "iran_sans",
-                  fontSize: 13,
+                  fontSize: 12,
                   borderRadius: 0,
                 },
               }}
@@ -124,19 +124,18 @@ export default function TenderSearch() {
                 allowClear
                 onChange={onChange}
                 style={{ width: 280 }}
-                // className="w-full"
               />
             </ConfigProvider>
           </div>
           <div>
-            <p className="mb-1 text-[14px] font-bold">
+            <p className="mb-1 text-[13px] font-bold">
               جستجو بر اساس کلید واژه
             </p>
             <ConfigProvider
               theme={{
                 token: {
                   fontFamily: "iran_sans",
-                  fontSize: 13,
+                  fontSize: 12,
                   borderRadius: 0,
                 },
               }}
@@ -149,14 +148,19 @@ export default function TenderSearch() {
               />
             </ConfigProvider>
           </div>
-          <div className="flex justify-center items-center gap-4 mt-2">
+          <div className="flex justify-center items-center gap-4">
             <div>
-              <Button type="primary" className="rounded-none font-iransans" icon={<SearchOutlined />}>
+              <Button
+                className="rounded-none font-iransans bg-[#007F38] text-white"
+                icon={<SearchOutlined />}
+              >
                 جستجو
               </Button>
             </div>
             <div>
-              <Button type="primary" className="px-7 rounded-none font-iransans">پاک کردن</Button>
+              <Button className="px-7 rounded-none font-iransans bg-[#696969] text-white">
+                پاک کردن
+              </Button>
             </div>
           </div>
         </div>

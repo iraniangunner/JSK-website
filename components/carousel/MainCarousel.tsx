@@ -154,7 +154,7 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                         ? data[activeSlideIndex + 1].image
                         : ""
                     }) 
-                    center center / cover  no-repeat`,
+                    center center / cover no-repeat`,
                     width: "inherit",
                     height: "inherit",
                   }}
