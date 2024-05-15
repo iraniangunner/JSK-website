@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import MainCarousel from "@/components/carousel/MainCarousel";
 import Hero from "../components/hero";
 import dataSlider from "../data.json";
