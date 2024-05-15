@@ -141,6 +141,8 @@ const TenderTable: React.FC = () => {
 
   const [expandedKey, setExpandedKey] = useState("");
 
+  // console.log("I am client component how to change me to server component?!")
+
   const fetchData = () => {
     setLoading(true);
     fetch(
@@ -197,20 +199,22 @@ const TenderTable: React.FC = () => {
     >
       <Table
         columns={columns}
-        onRow={(record, rowIndex) => {
-          return {
-            className: "custom",
-          };
-        }}
+        rowClassName={(record, index) =>
+          index % 2 === 0 ? "table-row-light" : "table-row-dark"
+        }
+        rowHoverable={false}
         expandable={{
-          expandedRowRender: (record) => (
+          expandedRowRender: (record, index) => (
             <Tender first={record.name.first} last={record.name.last} />
           ),
           expandedRowKeys: [expandedKey],
+          expandedRowClassName: (record, expandedKey) =>
+            expandedKey % 2 === 0 ? "table-row-light" : "table-row-dark",
           onExpand: (record, expanded) =>
             expandedKey === expanded.login.uuid
               ? setExpandedKey("")
               : setExpandedKey(expanded.login.uuid),
+          expandRowByClick: true,
         }}
         rowKey={(record) => record.login.uuid}
         style={{ maxWidth: 960, marginRight: "auto", marginLeft: "auto" }}

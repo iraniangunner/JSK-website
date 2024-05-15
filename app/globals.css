@@ -157,6 +157,8 @@ body {
   left: 0;
 }
 
+/*ant select width */
+
 :where(.css-dev-only-do-not-override-1fyvwjc).ant-select {
   width: 200px;
 }
@@ -212,10 +214,6 @@ body {
   border-radius: 0;
 }
 
-.custom {
-  font-size: 12px;
-}
-
 .ant-table-wrapper .ant-table-thead > tr > th {
   text-align: center;
 }
@@ -228,6 +226,18 @@ body {
   text-align: center;
 }
 
+.table-row-light {
+  background: #ffffff;
+}
+
+.table-row-dark {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.ant-table-wrapper tr.ant-table-expanded-row > td {
+  background: unset;
+}
+
 .ant-table-wrapper .ant-table-tbody > .ant-table-row-level-0 > td:nth-child(2) {
   text-align: right;
   font-weight: bold;
@@ -235,7 +245,8 @@ body {
 }
 
 .ant-table-wrapper .ant-table-tbody > tr > td {
-  padding: 7px 7px;
+  padding: 7px;
+  font-size: 12px;
 }
 
 .ant-table-wrapper .ant-table-thead > tr > th {
