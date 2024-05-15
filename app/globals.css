@@ -238,6 +238,10 @@ body {
   background: unset;
 }
 
+.ant-table-tbody > tr.ant-table-expanded-row:hover > td {
+  background: unset;
+}
+
 .ant-table-wrapper .ant-table-tbody > .ant-table-row-level-0 > td:nth-child(2) {
   text-align: right;
   font-weight: bold;
