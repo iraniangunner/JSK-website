@@ -33,7 +33,7 @@ export function ProjectsGallery() {
   };
 
   return (
-    <div>
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-[960px] mx-auto">
       {projects.map((project) => {
         return <Project key={project.id} projectDetails={project} />;
       })}
