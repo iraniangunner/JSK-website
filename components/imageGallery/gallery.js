@@ -1,9 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Project } from "./project";
+import { Filter } from "./filter";
 
 export function ProjectsGallery() {
   const [projects, setProjects] = useState([]);
+
+  const [filtered, setFiltered] = useState([]);
+
+  const[activeProject , setActiveProject] = useState(0);
 
   useEffect(() => {
     fetchPopular();
@@ -27,16 +32,20 @@ export function ProjectsGallery() {
       const projects = await data.json();
       console.log(projects);
       setProjects(projects.results);
+      setFiltered(projects.results);
     } catch (err) {
       console.log(err);
     }
   };
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-[960px] mx-auto">
-      {projects.map((project) => {
-        return <Project key={project.id} projectDetails={project} />;
-      })}
+    <div className="max-w-[960px] mx-auto">
+      <Filter />
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        {projects.map((project) => {
+          return <Project key={project.id} projectDetails={project} />;
+        })}
+      </div>
     </div>
   );
 }
