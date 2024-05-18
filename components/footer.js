@@ -6,27 +6,19 @@ import { MdEmail } from "react-icons/md";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import jsk from "../public/images/jsk .png";
 import Image from "next/image";
+import Link from "next/link";
 
 const LINKS = [
   {
     title: "لینک های مفید",
     items: [
-      "درباره ما",
-      "پروژه ها",
-      "مناقصات",
-      "تماس با ما",
-      "خدمات",
-      "گواهینامه ها",
+      { title: "درباره ما", link: "/about" },
+      { title: "پروژه ها", link: "/projects" },
+      { title: "مناقصات", link: "/tender" },
+      { title: "تماس با ما", link: "/contact" },
+      { title: "گواهینامه ها", link: "/certifications" },
     ],
   },
-  //   {
-  //     title: "Company",
-  //     items: ["About us", "Careers", "Press", "News"],
-  //   },
-  //   {
-  //     title: "Resource",
-  //     items: ["Blog", "Newsletter", "Events", "Help center"],
-  //   },
 ];
 
 const currentYear = new Date().getFullYear();
@@ -64,18 +56,15 @@ export default function Footer() {
                   key={title}
                   className="flex flex-col justify-between items-start gap-1"
                 >
-                  {items.map((link) => (
-                    <li key={link}>
-                      <Typography
-                        as="a"
-                        href="#"
-                        variant="medium"
-                        color="white"
+                  {items.map((item) => (
+                    <li key={item.title}>
+                      <Link
+                        href={item.link}
                         className="py-2 w-full font-normal text-[#fff] font-iransans flex items-center gap-2 hover:text-[#ffa500] hover:mr-[10px] transition-all duration-[0.4s]"
                       >
                         <MdKeyboardDoubleArrowLeft size={18} />
-                        {link}
-                      </Typography>
+                        {item.title}
+                      </Link>
                     </li>
                   ))}
                 </ul>

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FaPhone } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
-import Map from "../../components/googlemap";
+import Map from "@/components/googlemap";
 
 export default function Contact() {
   return (
