@@ -31,7 +31,7 @@ export function ProjectsGallery() {
         options
       );
       const projects = await data.json();
-      // console.log(projects);
+      console.log(projects);
       setProjects(projects.results);
       setFiltered(projects.results);
     } catch (err) {
