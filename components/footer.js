@@ -14,7 +14,7 @@ const LINKS = [
     items: [
       { title: "درباره ما", link: "/about" },
       { title: "پروژه ها", link: "/projects" },
-      { title: "مناقصات", link: "/tender" },
+      { title: "مناقصات", link: "/tenders" },
       { title: "تماس با ما", link: "/contact" },
       { title: "گواهینامه ها", link: "/certifications" },
     ],

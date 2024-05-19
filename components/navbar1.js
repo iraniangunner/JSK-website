@@ -120,7 +120,7 @@ const navListItems = [
   },
   {
     label: "مناقصات",
-    link: "/tender",
+    link: "/tenders",
   },
   {
     label: "درباره ما",
@@ -216,11 +216,7 @@ export function ComplexNavbar({ isScroll }) {
           <Image src={jsk} alt="JSK logo" width={200} height={24} />
         </Typography>
         {isScroll ? (
-          <Typography
-            as="a"
-            href="#"
-            className="cursor-pointer font-medium hidden lg:block"
-          >
+          <Link href="/" className="cursor-pointer font-medium hidden lg:block">
             <Image
               src={jsk}
               alt="JSK logo"
@@ -228,7 +224,7 @@ export function ComplexNavbar({ isScroll }) {
               height={24}
               className="w-full h-full"
             />
-          </Typography>
+          </Link>
         ) : (
           <></>
         )}
