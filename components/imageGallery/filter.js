@@ -18,7 +18,7 @@ export function Filter({
     setFiltered(filtered);
   }, [activeProject]);
   return (
-    <div className="flex items-center justify-center py-4 md:py-8 flex-wrap">
+    <div className="flex items-center justify-center gap-2 lg:gap-0 py-4 md:py-8 flex-wrap">
       <button
         onClick={() => setActiveProject(0)}
         type="button"
