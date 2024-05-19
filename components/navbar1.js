@@ -93,7 +93,7 @@ function NavListMenu({ navIsScroll }) {
           </Typography>
         </MenuHandler>
         <MenuList className="hidden w-[18rem] rounded-none gap-3 overflow-visible py-0 px-0 lg:grid grid-cols-3 ">
-          <ul className="col-span-3 flex w-full flex-col  group-hover:text-[#ffa500] focus-visible:outline-none">
+          <ul className="col-span-3 flex w-full flex-col group-hover:text-[#ffa500] focus-visible:outline-none">
             {renderItems}
           </ul>
         </MenuList>

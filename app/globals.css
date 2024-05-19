@@ -105,6 +105,10 @@ body {
   height: 25px !important;
 }
 
+
+/**********ant-design-table-styles***************************************/
+
+
 .ant-table-content {
   overflow: auto;
 }
@@ -261,4 +265,57 @@ body {
 .ant-input-affix-wrapper {
   padding-top: 2px;
   padding-bottom: 2px;
+}
+
+/***************************************************************/
+.filter_btn {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  color: #ffa500;
+  font-size: 15px;
+  font-weight: 400;
+  padding: 12px 20px;
+  text-align: center;
+  display: inline-block;
+  background: #fff;
+  box-shadow: 0 7px 25px rgb(41 41 41 / 27%);
+  transition: 0.4s;
+  margin-left: 20px;
+}
+
+.filter_active {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  padding: 12px 20px;
+  text-align: center;
+  display: inline-block;
+  background: #ffa500;
+  box-shadow: 0 7px 25px rgb(41 41 41 / 27%);
+  transition: 0.4s;
+  margin-left: 20px;
+}
+
+
+.filter_btn:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  background-color: #41464b;
+  /* transform: translate(-50%, -50%); */
+  transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+  transition-delay: 0;
+  z-index: -1;
+}
+
+.filter_btn:hover::before {
+  width: 200%;
+  height: 500px;
 }
