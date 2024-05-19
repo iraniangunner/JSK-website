@@ -2,13 +2,14 @@
 import { useEffect, useState } from "react";
 import { Project } from "./project";
 import { Filter } from "./filter";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function ProjectsGallery() {
   const [projects, setProjects] = useState([]);
 
   const [filtered, setFiltered] = useState([]);
 
-  const[activeProject , setActiveProject] = useState(0);
+  const [activeProject, setActiveProject] = useState(0);
 
   useEffect(() => {
     fetchPopular();
@@ -30,7 +31,7 @@ export function ProjectsGallery() {
         options
       );
       const projects = await data.json();
-      console.log(projects);
+      // console.log(projects);
       setProjects(projects.results);
       setFiltered(projects.results);
     } catch (err) {
@@ -40,12 +41,19 @@ export function ProjectsGallery() {
 
   return (
     <div className="max-w-[960px] mx-auto">
-      <Filter />
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        {projects.map((project) => {
-          return <Project key={project.id} projectDetails={project} />;
-        })}
-      </div>
+      <Filter
+        projects={projects}
+        setFiltered={setFiltered}
+        activeProject={activeProject}
+        setActiveProject={setActiveProject}
+      />
+      <motion.div layout className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <AnimatePresence>
+          {filtered.map((project) => {
+            return <Project key={project.id} projectDetails={project} />;
+          })}
+        </AnimatePresence>
+      </motion.div>
     </div>
   );
 }
