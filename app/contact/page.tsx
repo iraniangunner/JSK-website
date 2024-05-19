@@ -17,7 +17,7 @@ export default function Contact() {
           aria-label="breadcrumb"
           className="px-[15px] mx-auto md:max-w-[720px] lg:max-w-[920px]"
         >
-          <ol className="flex flex-wrap items-center rounded-md bg-opacity-60 px-[1rem] py-[0.75rem]">
+          <ol className="flex flex-wrap items-center absolute bottom-[20px] rounded-md bg-opacity-60 px-[1rem]">
             <li className="flex items-center text-lg font-iransans antialiased font-normal leading-normal transition-colors duration-300 cursor-pointer text-blue-gray-900 hover:text-[#ffa500]">
               <Link href="/" className="opacity-60">
                 خانه

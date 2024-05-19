@@ -273,15 +273,15 @@ body {
   z-index: 1;
   overflow: hidden;
   color: #ffa500;
-  font-size: 15px;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight: 600;
   padding: 12px 20px;
   text-align: center;
   display: inline-block;
   background: #fff;
   box-shadow: 0 7px 25px rgb(41 41 41 / 27%);
   transition: 0.4s;
-  margin-left: 20px;
+  margin-left: 25px;
 }
 
 .filter_active {
@@ -289,15 +289,15 @@ body {
   z-index: 1;
   overflow: hidden;
   color: #fff;
-  font-size: 15px;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight: 600;
   padding: 12px 20px;
   text-align: center;
   display: inline-block;
   background: #ffa500;
   box-shadow: 0 7px 25px rgb(41 41 41 / 27%);
   transition: 0.4s;
-  margin-left: 20px;
+  margin-left: 25px;
 }
 
 
