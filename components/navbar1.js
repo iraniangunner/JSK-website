@@ -124,7 +124,7 @@ const navListItems = [
   },
   {
     label: "درباره ما",
-    link: "/about-us",
+    link: "/about",
   },
 ];
 
