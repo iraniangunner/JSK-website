@@ -1,12 +1,17 @@
-import { useEffect } from "react";
+import { useEffect} from "react";
 
 export function Filter({
   projects,
   setFiltered,
   activeProject,
   setActiveProject,
+  setMessage,
 }) {
   useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setMessage(true);
+    }, 4000);
+
     if (activeProject === 0) {
       setFiltered(projects);
       return;
@@ -16,11 +21,16 @@ export function Filter({
       project.genre_ids.includes(activeProject)
     );
     setFiltered(filtered);
+    return () => clearTimeout(timeoutId);
   }, [activeProject]);
+
   return (
     <div className="flex items-center justify-center gap-2 lg:gap-0 py-4 md:py-8 flex-wrap">
       <button
-        onClick={() => setActiveProject(0)}
+        onClick={() => {
+          setActiveProject(0);
+          setMessage(false);
+        }}
         type="button"
         className={`filter_btn hover:text-white ${
           activeProject === 0
@@ -31,7 +41,10 @@ export function Filter({
         همه
       </button>
       <button
-        onClick={() => setActiveProject(35)}
+        onClick={() => {
+          setActiveProject(35);
+          setMessage(false);
+        }}
         type="button"
         className={`filter_btn hover:text-white ${
           activeProject === 35
@@ -42,7 +55,10 @@ export function Filter({
         طراحی و مهندسی
       </button>
       <button
-        onClick={() => setActiveProject(28)}
+        onClick={() => {
+          setActiveProject(28);
+          setMessage(false);
+        }}
         type="button"
         className={`filter_btn hover:text-white ${
           activeProject === 28
@@ -53,7 +69,10 @@ export function Filter({
         خرید
       </button>
       <button
-        onClick={() => setActiveProject(16)}
+        onClick={() => {
+          setActiveProject(16);
+          setMessage(false);
+        }}
         type="button"
         className={`filter_btn hover:text-white ${
           activeProject === 16
@@ -64,7 +83,10 @@ export function Filter({
         نصب
       </button>
       <button
-        onClick={() => setActiveProject(12)}
+        onClick={() => {
+          setActiveProject(12);
+          setMessage(false);
+        }}
         type="button"
         className={`filter_btn hover:text-white ${
           activeProject === 12
@@ -75,7 +97,10 @@ export function Filter({
         اجرا
       </button>
       <button
-        onClick={() => setActiveProject(18)}
+        onClick={() => {
+          setActiveProject(18);
+          setMessage(false);
+        }}
         type="button"
         className={`filter_btn hover:text-white ${
           activeProject === 18

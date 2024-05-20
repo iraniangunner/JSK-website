@@ -13,14 +13,13 @@ export function ProjectsGallery() {
 
   const [message, setMessage] = useState(false);
 
-
   useEffect(() => {
     fetchPopular();
-    const timeoutId = setTimeout(() => {
-      setMessage(true);
-    }, 4000);
+    // const timeoutId = setTimeout(() => {
+    //   setMessage(true);
+    // }, 4000);
 
-    return () => clearTimeout(timeoutId);
+    // return () => clearTimeout(timeoutId);
   }, []);
 
   const options = {
@@ -64,6 +63,7 @@ export function ProjectsGallery() {
         setFiltered={setFiltered}
         activeProject={activeProject}
         setActiveProject={setActiveProject}
+        setMessage={setMessage}
       />
       <motion.div layout className="grid grid-cols-2 md:grid-cols-3 gap-4">
         <AnimatePresence>
