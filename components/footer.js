@@ -43,7 +43,7 @@ export default function Footer() {
           </div>
           <div>
             {LINKS.map(({ title, items }) => (
-              <>
+              <div key={title}>
                 <Typography
                   variant="h5"
                   color="white"
@@ -68,7 +68,7 @@ export default function Footer() {
                     </li>
                   ))}
                 </ul>
-              </>
+              </div>
             ))}
           </div>
           <div className="text-white flex flex-col gap-4">

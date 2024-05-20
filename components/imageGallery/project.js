@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export function Project({ projectDetails }) {
   return (
@@ -8,11 +9,13 @@ export function Project({ projectDetails }) {
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
     >
-      <img
-        src={"https://image.tmdb.org/t/p/w500" + projectDetails.backdrop_path}
-        className="h-auto max-w-full rounded-lg"
-        alt=""
-      />
+      <Link href={`/projects/${projectDetails.id}`}>
+        <img
+          src={"https://image.tmdb.org/t/p/w500" + projectDetails.backdrop_path}
+          className="h-auto max-w-full rounded-lg"
+          alt=""
+        />
+      </Link>
     </motion.div>
   );
 }
