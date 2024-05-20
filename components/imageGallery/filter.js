@@ -7,7 +7,7 @@ export function Filter({
   setActiveProject,
 }) {
   useEffect(() => {
-    if (activeProject == 0) {
+    if (activeProject === 0) {
       setFiltered(projects);
       return;
     }
@@ -64,10 +64,10 @@ export function Filter({
         نصب
       </button>
       <button
-        onClick={() => setActiveProject(99)}
+        onClick={() => setActiveProject(12)}
         type="button"
         className={`filter_btn hover:text-white ${
-          activeProject === 99
+          activeProject === 12
             ? "filter_active hover:before:bg-[#ffa500] hover:before:w-0 hover:before:h-0"
             : ""
         }`}
