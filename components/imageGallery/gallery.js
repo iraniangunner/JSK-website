@@ -11,8 +11,16 @@ export function ProjectsGallery() {
 
   const [activeProject, setActiveProject] = useState(0);
 
+  const [message, setMessage] = useState(false);
+
+
   useEffect(() => {
     fetchPopular();
+    const timeoutId = setTimeout(() => {
+      setMessage(true);
+    }, 4000);
+
+    return () => clearTimeout(timeoutId);
   }, []);
 
   const options = {
@@ -60,7 +68,13 @@ export function ProjectsGallery() {
       <motion.div layout className="grid grid-cols-2 md:grid-cols-3 gap-4">
         <AnimatePresence>
           {filtered.map((project) => {
-            return <Project key={project.id} projectDetails={project} />;
+            return (
+              <Project
+                key={project.id}
+                projectDetails={project}
+                message={message}
+              />
+            );
           })}
         </AnimatePresence>
       </motion.div>
