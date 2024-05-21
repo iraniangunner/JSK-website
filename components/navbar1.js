@@ -21,6 +21,7 @@ import jsk from "../public/images/jsk .png";
 const navListMenuItems = [
   {
     title: "بازرگانی و تامین اقلام پروژه",
+    // href:"/Trading and supply of project items",
     description:
       "Learn how to use @material-tailwind/html, packed with rich components and widgets.",
   },
@@ -67,8 +68,8 @@ function NavListMenu({ navIsScroll }) {
       >
         <MenuHandler>
           <Typography
-            as="a"
-            href="#"
+            as="div"
+            // href="#"
             variant="medium"
             className="font-normal focus-visible:outline-none"
           >

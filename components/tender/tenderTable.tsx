@@ -135,13 +135,11 @@ const TenderTable: React.FC = () => {
     pagination: {
       current: 1,
       pageSize: 10,
-      // locale:{ items_per_page: 'gfdtrd' }
     },
   });
 
   const [expandedKey, setExpandedKey] = useState("");
-
-  // console.log("I am client component how to change me to server component?!")
+  
 
   const fetchData = () => {
     setLoading(true);

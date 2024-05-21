@@ -1,6 +1,7 @@
 export function SingleProject({ project }: any) {
   return (
     <div className="min-h-[100vh]">
+      <img src={"https://image.tmdb.org/t/p/w500" + project.backdrop_path} />
       <h1 className="text-xl">{project.id}</h1>
       <p>{project.title}</p>
       <p>{project.overview}</p>

@@ -1,5 +1,5 @@
-import TenderSearch from "@/components/tenderTable/tenderSearch";
-import TenderTable from "@/components/tenderTable/tenderTable";
+import TenderSearch from "@/components/tender/tenderSearch";
+import TenderTable from "@/components/tender/tenderTable";
 
 export default function Tender(){
   return (

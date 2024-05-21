@@ -15,11 +15,6 @@ export function ProjectsGallery() {
 
   useEffect(() => {
     fetchPopular();
-    // const timeoutId = setTimeout(() => {
-    //   setMessage(true);
-    // }, 4000);
-
-    // return () => clearTimeout(timeoutId);
   }, []);
 
   const options = {
