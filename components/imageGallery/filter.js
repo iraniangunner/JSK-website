@@ -10,7 +10,7 @@ export function Filter({
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setMessage(true);
-    }, 4000);
+    }, 2000);
 
     if (activeProject === 0) {
       setFiltered(projects);
