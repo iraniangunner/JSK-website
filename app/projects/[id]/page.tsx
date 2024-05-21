@@ -1,3 +1,5 @@
+import { SingleProject } from "@/components/singleProject/singleProject";
+
 export async function getProjectById(project_id: string) {
   const options = {
     method: "GET",
@@ -18,12 +20,5 @@ export async function getProjectById(project_id: string) {
 
 export default async function ProjectPage({ params }: any) {
   const project = await getProjectById(params.id);
-  return (
-    <div className="min-h-[100vh]">
-      <h1 className="text-xl">{project.id}</h1>
-      <p>{project.title}</p>
-      <p>{project.overview}</p>
-      <p>{project.release_date}</p>
-    </div>
-  );
+  return <SingleProject project={project} />;
 }
