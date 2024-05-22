@@ -28,7 +28,7 @@ export default function Projects() {
             </li>
           </ol>
         </nav>
-        <h1 className="text-[35px] font-bold mb-2 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+        <h1 className="text-[35px] font-bold absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
           پروژه های ما
         </h1>
       </div>
