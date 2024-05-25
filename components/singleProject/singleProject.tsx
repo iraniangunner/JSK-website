@@ -54,7 +54,11 @@ export function SingleProject({ project }: any) {
         </h1>
       </div>
       <div className="max-w-[1140px] flex gap-8 my-12 mx-auto px-8">
-        <div className={`hidden lg:block lg:w-[50%] xl:w-[30%] h-fit ${isScrolling ?"sticky top-24" :"relative"}`}>
+        <div
+          className={`hidden lg:block lg:w-[50%] xl:w-[30%] h-fit ${
+            isScrolling ? "sticky top-24" : "relative"
+          }`}
+        >
           <ul>
             <li className="flex items-center py-[15px] border-b border-solid border-[#001c472e]">
               <FaBriefcase className="ml-[20px] text-[#FF5E14]" size={20} />
@@ -79,7 +83,7 @@ export function SingleProject({ project }: any) {
               <FaRegCalendar className="ml-[20px] text-[#FF5E14]" size={20} />
               <div>
                 <h4 className="text-[20px] mb-[3px] text-[#001c47] font-[600]">
-                  تاریخ شروع پروژه
+                  تاریخ شروع
                 </h4>
                 <p className="text-[16px] text-[#53545A]">
                   {project.release_date}
