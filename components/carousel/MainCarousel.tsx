@@ -30,43 +30,24 @@ interface MainCarouselProps {
 }
 
 const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
+  console.log(data);
   const [activeSlideIndex, setActiveStyleIndex] = useState<number>(0);
-  //   function geSlideDataIndex(swipe:any){
-  //     var activeIndex = swipe.activeIndex;
-  //     var slidesLen = swipe.slides.length;
-
-  //     console.log(slidesLen)
-  //     if(swipe.params.loop){
-  //         switch(swipe.activeIndex){
-  //             case 0:
-  //                 activeIndex = slidesLen-3;
-  //                 break;
-  //             case slidesLen-1:
-  //                 activeIndex = 0;
-  //                 break;
-  //             default:
-  //                 --activeIndex;
-  //         }
-  //     }
-  //     return  activeIndex;
-  // }
 
   return (
     <section className="w-full" dir="ltr">
       <div className="h-screen">
         <ul className="h-full w-full">
           <Swiper
-            // navigation
             navigation={{
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
             }}
             effect="fade"
             autoplay={true}
-            // loop={true}
-            onSlideChange={(el) =>
-              setActiveStyleIndex((activeSlideIndex) => el.activeIndex)
-            }
+            loop={true}
+            onSlideChange={(el) => {
+              setActiveStyleIndex((activeSlideIndex) => el.realIndex);
+            }}
             modules={[Autoplay, Navigation, EffectFade]}
             className="h-full"
           >
@@ -101,18 +82,14 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
 
             <div className="swiper-button-prev flex group after:hidden transition-all duration-500">
               <div
-                className={`w-0 h-[100px] ${
-                  activeSlideIndex !== 0
-                    ? "group-hover:w-[200px] group-hover:h-[100px] transition-all duration-500"
-                    : ""
-                }`}
+                className={`w-0 h-[100px] group-hover:w-[200px] group-hover:h-[100px] transition-all duration-500`}
               >
                 <div
                   style={{
                     background: `url(${
-                      data[activeSlideIndex - 1]
-                        ? data[activeSlideIndex - 1].image
-                        : ""
+                      activeSlideIndex === 0
+                        ? data[data.length - 1].image
+                        : data[activeSlideIndex - 1].image
                     }) center center / cover scroll no-repeat`,
                     width: "inherit",
                     height: "inherit",
@@ -120,9 +97,9 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                 ></div>
               </div>
               <div
-                className={`relative before:absolute before:content-[''] before:skew-x-[10deg] before:transition-all before:duration-500 before:inline-block before:top-0 before:left-0 before:bottom-0 before:right-0 before:bg-[#ccc] ${
-                  activeSlideIndex === 0 ? "before:hidden" : ""
-                }  before:origin-[50%_100%] before:z-[-1] pr-[10px] flex justify-center items-center w-[80px] h-[100px]`}
+                className={`relative before:absolute before:content-[''] before:skew-x-[10deg] before:transition-all before:duration-500 before:inline-block before:top-0 before:left-0 before:bottom-0 before:right-0 before:bg-[#ccc] 
+                
+                 before:origin-[50%_100%] before:z-[-1] pr-[10px] flex justify-center items-center w-[80px] h-[100px]`}
                 style={{ transition: "inherit" }}
               >
                 <FaArrowLeft className="next_icon" />
@@ -130,29 +107,22 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
             </div>
             <div className="swiper-button-next flex group after:hidden transition-all duration-500">
               <div
-                className={`relative before:absolute before:content-[''] before:skew-x-[-10deg] before:transition-all before:duration-500 before:inline-block before:top-0 before:left-0 before:bottom-0 before:right-0 before:bg-[#ccc] ${
-                  activeSlideIndex === data.length - 1 ? "before:hidden" : ""
-                }  before:origin-[50%_100%] before:z-[-1] pl-[10px] flex justify-center items-center w-[80px] h-[100px]`}
+                className={`relative before:absolute before:content-[''] before:skew-x-[-10deg] before:transition-all before:duration-500 before:inline-block before:top-0 before:left-0 before:bottom-0 before:right-0 before:bg-[#ccc] 
+                before:origin-[50%_100%] before:z-[-1] pl-[10px] flex justify-center items-center w-[80px] h-[100px]`}
                 style={{ transition: "inherit" }}
               >
                 <FaArrowRight className="next_icon" />
               </div>
 
               <div
-                className={`w-0 h-[100px] ${
-                  activeSlideIndex !== data.length - 1
-                    ? "group-hover:w-[200px] group-hover:h-[100px] transition-all duration-500"
-                    : ""
-                }`}
+                className={`w-0 h-[100px] group-hover:w-[200px] group-hover:h-[100px] transition-all duration-500`}
               >
                 <div
                   style={{
                     background: `url(${
-                      activeSlideIndex === 0
-                        ? data[activeSlideIndex + 1].image
-                        : data[activeSlideIndex + 1]
-                        ? data[activeSlideIndex + 1].image
-                        : ""
+                      activeSlideIndex === data.length - 1
+                        ? data[0].image
+                        : data[activeSlideIndex + 1].image
                     }) 
                     center center / cover no-repeat`,
                     width: "inherit",
