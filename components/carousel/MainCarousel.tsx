@@ -42,7 +42,7 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
               prevEl: ".swiper-button-prev",
             }}
             effect="fade"
-            // autoplay={true}
+            autoplay={true}
             loop={true}
             onSlideChange={(el) => {
               setActiveStyleIndex((activeSlideIndex) => el.realIndex);
@@ -90,7 +90,6 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                     }) center center / cover scroll no-repeat`,
                     width: "inherit",
                     height: "inherit",
-                    backgroundPosition:"50%"
                   }}
                 ></div>
               </div>
@@ -123,7 +122,6 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                     center center / cover no-repeat`,
                     width: "inherit",
                     height: "inherit",
-                    backgroundPosition:"50%"
                   }}
                 ></div>
               </div>
