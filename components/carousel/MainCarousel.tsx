@@ -30,7 +30,6 @@ interface MainCarouselProps {
 }
 
 const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
-  console.log(data);
   const [activeSlideIndex, setActiveStyleIndex] = useState<number>(0);
 
   return (
@@ -80,10 +79,8 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
               </SwiperSlide>
             ))}
 
-            <div className="swiper-button-prev flex group after:hidden transition-all duration-500">
-              <div
-                className="w-0 h-[100px] group-hover:w-[200px] group-hover:h-[100px] transition-all duration-500"
-              >
+            <div className="swiper-button-prev hover:w-auto flex group after:hidden transition-all duration-500">
+              <div className="w-0 h-[100px] group-hover:w-[180px] transition-all duration-500">
                 <div
                   style={{
                     background: `url(${
@@ -93,6 +90,7 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                     }) center center / cover scroll no-repeat`,
                     width: "inherit",
                     height: "inherit",
+                    backgroundPosition:"50%"
                   }}
                 ></div>
               </div>
@@ -114,9 +112,7 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                 <FaArrowRight className="next_icon" />
               </div>
 
-              <div
-                className="w-0 h-[100px] group-hover:w-[200px] group-hover:h-[100px] transition-all duration-500"
-              >
+              <div className="w-0 h-[100px] group-hover:w-[180px] transition-all duration-500">
                 <div
                   style={{
                     background: `url(${
@@ -127,6 +123,7 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                     center center / cover no-repeat`,
                     width: "inherit",
                     height: "inherit",
+                    backgroundPosition:"50%"
                   }}
                 ></div>
               </div>
