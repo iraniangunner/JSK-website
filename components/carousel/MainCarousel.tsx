@@ -43,7 +43,7 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
               prevEl: ".swiper-button-prev",
             }}
             effect="fade"
-            autoplay={true}
+            // autoplay={true}
             loop={true}
             onSlideChange={(el) => {
               setActiveStyleIndex((activeSlideIndex) => el.realIndex);
@@ -82,7 +82,7 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
 
             <div className="swiper-button-prev flex group after:hidden transition-all duration-500">
               <div
-                className={`w-0 h-[100px] group-hover:w-[200px] group-hover:h-[100px] transition-all duration-500`}
+                className="w-0 h-[100px] group-hover:w-[200px] group-hover:h-[100px] transition-all duration-500"
               >
                 <div
                   style={{
@@ -97,9 +97,9 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                 ></div>
               </div>
               <div
-                className={`relative before:absolute before:content-[''] before:skew-x-[10deg] before:transition-all before:duration-500 before:inline-block before:top-0 before:left-0 before:bottom-0 before:right-0 before:bg-[#ccc] 
+                className="relative before:absolute before:content-[''] before:skew-x-[10deg] before:transition-all before:duration-500 before:inline-block before:top-0 before:left-0 before:bottom-0 before:right-0 before:bg-[#ccc] 
                 
-                 before:origin-[50%_100%] before:z-[-1] pr-[10px] flex justify-center items-center w-[80px] h-[100px]`}
+                 before:origin-[50%_100%] before:z-[-1] pr-[10px] flex justify-center items-center w-[80px] h-[100px]"
                 style={{ transition: "inherit" }}
               >
                 <FaArrowLeft className="next_icon" />
@@ -107,15 +107,15 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
             </div>
             <div className="swiper-button-next flex group after:hidden transition-all duration-500">
               <div
-                className={`relative before:absolute before:content-[''] before:skew-x-[-10deg] before:transition-all before:duration-500 before:inline-block before:top-0 before:left-0 before:bottom-0 before:right-0 before:bg-[#ccc] 
-                before:origin-[50%_100%] before:z-[-1] pl-[10px] flex justify-center items-center w-[80px] h-[100px]`}
+                className="relative before:absolute before:content-[''] before:skew-x-[-10deg] before:transition-all before:duration-500 before:inline-block before:top-0 before:left-0 before:bottom-0 before:right-0 before:bg-[#ccc] 
+                before:origin-[50%_100%] before:z-[-1] pl-[10px] flex justify-center items-center w-[80px] h-[100px]"
                 style={{ transition: "inherit" }}
               >
                 <FaArrowRight className="next_icon" />
               </div>
 
               <div
-                className={`w-0 h-[100px] group-hover:w-[200px] group-hover:h-[100px] transition-all duration-500`}
+                className="w-0 h-[100px] group-hover:w-[200px] group-hover:h-[100px] transition-all duration-500"
               >
                 <div
                   style={{
