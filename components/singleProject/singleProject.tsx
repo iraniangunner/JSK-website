@@ -99,7 +99,6 @@ export function SingleProject({ project }: any) {
                 <p className="text-[16px] text-[#53545A]">Kerman</p>
               </div>
             </li>
-            <li></li>
           </ul>
         </div>
         <div className="w-full lg-w-[50%] xl:w-[70%] flex flex-col justify-center gap-3">
