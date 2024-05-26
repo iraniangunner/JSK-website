@@ -66,7 +66,7 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                     ></div>
                     <div className="h-full w-full absolute left-0 top-0 bg-black opacity-20"></div>
                     <div className="relative z-10 h-full flex justify-center items-center">
-                      <div className="px-8 py-4 flex flex-col justify-center items-end overflow-hidden">
+                      <div className="max-w-[60%] px-8 py-4 flex flex-col justify-center items-end overflow-hidden">
                         <motion.div
                           initial={{ x: 100, opacity: 0 }}
                           animate={{
