@@ -9,7 +9,7 @@ import "swiper/css/effect-fade";
 import SliderButtons from "./SliderButtons";
 import { FaArrowRight } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa6";
-// import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 
 interface Slide {
   id: number;
@@ -42,8 +42,11 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
             }}
+            autoplay={{
+              delay: 4000,
+            }}
             effect="fade"
-            autoplay={true}
+            // autoplay={true}
             loop={true}
             onSlideChange={(el) => {
               setActiveStyleIndex((activeSlideIndex) => el.realIndex);
@@ -53,30 +56,63 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
           >
             {data.map(({ id, image, tagline, title, buttons }) => (
               <SwiperSlide key={id}>
-                <div
-                  className="h-full w-full absolute left-0 top-0"
-                  style={{
-                    background: `url(${image}) center center / cover scroll no-repeat`,
-                  }}
-                ></div>
-                <div className="h-full w-full absolute left-0 top-0 bg-black opacity-20"></div>
-                <div className="relative z-10 h-full flex items-center justify-center">
-                  <div className="text-center">
-                    {tagline && (
-                      <p className="text-md sm:text-xl lg:text-3xl font-semibold text-white">
-                        {tagline}
-                      </p>
-                    )}
-                    <p className="text-3xl sm:text-6xl lg:text-8xl font-bold text-white">
-                      {title}
-                    </p>
-                    {buttons.length > 0 ? (
-                      <p className=" bg-gray-800 inline-block px-9 py-2 rounded-full text-white mt-10 lg:mt-20">
-                        <SliderButtons buttons={buttons} />
-                      </p>
-                    ) : null}
-                  </div>
-                </div>
+                {({ isActive }) => (
+                  <>
+                    <div
+                      className="h-full w-full absolute left-0 top-0"
+                      style={{
+                        background: `url(${image}) center center / cover scroll no-repeat`,
+                      }}
+                    ></div>
+                    <div className="h-full w-full absolute left-0 top-0 bg-black opacity-20"></div>
+                    <div className="relative z-10 h-full flex justify-center items-center">
+                      <div className="px-8 py-4 flex flex-col justify-center items-center overflow-hidden">
+                        <motion.div
+                          initial={{ x: 100, opacity: 0 }}
+                          animate={{
+                            x: isActive ? 0 : 100,
+                            opacity: isActive ? 1 : 0,
+                          }}
+                          transition={{ duration: 0.5, delay: 0.5 }}
+                        >
+                          <p className="text-3xl sm:text-6xl lg:text-5xl uppercase font-bold text-white relative overflow-hidden">
+                            {title}
+                          </p>
+                        </motion.div>
+                        {tagline && (
+                          <motion.div
+                            initial={{ y: 50, opacity: 0 }}
+                            animate={{
+                              y: isActive ? 0 : 50,
+                              opacity: isActive ? 1 : 0,
+                            }}
+                            transition={{ duration: 0.5 }}
+                          >
+                            <p className="text-md sm:text-xl lg:text-3xl font-semibold text-white mt-8 relative overflow-hidden">
+                              {tagline}
+                            </p>
+                          </motion.div>
+                        )}
+
+                        {buttons.length > 0 ? (
+                          <motion.div
+                            initial={{ x: 100, opacity: 0 }}
+                            animate={{
+                              x: isActive ? 0 : 100,
+                              opacity: isActive ? 1 : 0,
+                            }}
+                            transition={{ duration: 0.5, delay: 0.5 }}
+                            className="self-end"
+                          >
+                            <div className="bg-gray-800 inline-block px-9 py-2 rounded-full text-white mt-10">
+                              <SliderButtons buttons={buttons} />
+                            </div>
+                          </motion.div>
+                        ) : null}
+                      </div>
+                    </div>
+                  </>
+                )}
               </SwiperSlide>
             ))}
 

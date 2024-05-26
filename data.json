@@ -1,8 +1,8 @@
 [
     {
       "id": 0,
-      "title": "ARE AWESOME",
-      "tagline": "NEXTJS 13 & SWIPER SLIDER",
+      "title": "trusted industry leader",
+      "tagline": "High-quality civil engineering projects",
       "image": "/images/slide1.jpg",
       "buttons": [
         {
@@ -15,12 +15,12 @@
     },
     {
       "id": 1,
-      "title": "GIVE IT A SHOOT",
-      "tagline": "IF YOU LIKE IT",
+      "title": "Welcome to civilgroup",
+      "tagline": "Leading civil engineering company",
       "image": "/images/slide2.jpg",
       "buttons": [
         {
-          "id": 1,
+          "id": 0,
           "text": "Julia M Cameron",
           "link": "https://www.pexels.com/@julia-m-cameron/",
           "type": "btn-dark btn-circle"
@@ -29,12 +29,12 @@
     },
     {
         "id": 2,
-        "title": "GIVE IT A SHOOT",
-        "tagline": "IF YOU LIKE IT",
+        "title": "Best performance over the years",
+        "tagline": "We are the award-winning industry leaders",
         "image": "/images/slide3.jpg",
         "buttons": [
           {
-            "id": 2,
+            "id": 0,
             "text": "Julia M Cameron",
             "link": "https://www.pexels.com/@julia-m-cameron/",
             "type": "btn-dark btn-circle"
@@ -48,7 +48,7 @@
         "image": "/images/slide4.jpg",
         "buttons": [
           {
-            "id": 3,
+            "id": 0,
             "text": "Julia M Cameron",
             "link": "https://www.pexels.com/@julia-m-cameron/",
             "type": "btn-dark btn-circle"

@@ -107,9 +107,7 @@ body {
   height: 25px !important;
 }
 
-
 /**********ant-design-table-styles***************************************/
-
 
 .ant-table-content {
   overflow: auto;
@@ -302,7 +300,6 @@ body {
   margin-left: 25px;
 }
 
-
 .filter_btn:before {
   content: "";
   position: absolute;
@@ -320,3 +317,4 @@ body {
   width: 200%;
   height: 500px;
 }
+
