@@ -117,7 +117,7 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
             ))}
 
             <div className="swiper-button-prev flex group after:hidden transition-all duration-500">
-              <div className="w-0 h-[100px] group-hover:w-[180px] transition-all duration-500">
+              <div className="w-0 h-[80px] group-hover:w-[180px] transition-all duration-500">
                 <div
                   style={{
                     background: `url(${
@@ -132,7 +132,7 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
               </div>
               <div
                 className="relative before:absolute before:content-[''] before:skew-x-[10deg] before:transition-all before:duration-500 before:inline-block before:top-0 before:left-0 before:bottom-0 before:right-0 before:bg-[rgba(255_255_255)] before:opacity-[0.2] 
-                 before:origin-[50%_100%] before:z-[-1] pr-[10px] flex justify-center items-center w-[80px] h-[100px] text-white group-hover:before:bg-[#ffa500] group-hover:before:opacity-100 group-hover:text-white"
+                 before:origin-[50%_100%] before:z-[-1] pr-[10px] flex justify-center items-center w-[80px] h-[80px] text-white group-hover:before:bg-[#ffa500] group-hover:before:opacity-100 group-hover:text-white"
                 style={{ transition: "inherit" }}
               >
                 <FaArrowLeft className="next_icon" />
@@ -141,13 +141,13 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
             <div className="swiper-button-next flex group after:hidden transition-all duration-500">
               <div
                 className="relative before:absolute before:content-[''] before:skew-x-[-10deg] before:transition-all before:duration-500 before:inline-block before:top-0 before:left-0 before:bottom-0 before:right-0 before:bg-[rgba(255_255_255)] before:opacity-[0.2] 
-                before:origin-[50%_100%] before:z-[-1] pl-[10px] flex justify-center items-center w-[80px] h-[100px] text-white group-hover:before:bg-[#ffa500] group-hover:before:opacity-100  group-hover:text-white"
+                before:origin-[50%_100%] before:z-[-1] pl-[10px] flex justify-center items-center w-[80px] h-[80px] text-white group-hover:before:bg-[#ffa500] group-hover:before:opacity-100  group-hover:text-white"
                 style={{ transition: "inherit" }}
               >
                 <FaArrowRight className="next_icon" />
               </div>
 
-              <div className="w-0 h-[100px] group-hover:w-[180px] transition-all duration-500">
+              <div className="w-0 h-[80px] group-hover:w-[180px] transition-all duration-500">
                 <div
                   style={{
                     background: `url(${
