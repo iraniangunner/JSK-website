@@ -75,7 +75,7 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                           }}
                           transition={{ duration: 0.5, delay: 0.5 }}
                         >
-                          <p className="text-3xl sm:text-6xl lg:text-5xl uppercase font-bold text-white relative overflow-hidden">
+                          <p className="text-3xl sm:text-6xl lg:text-5xl uppercase font-bold text-white">
                             {title}
                           </p>
                         </motion.div>
@@ -88,7 +88,7 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                             }}
                             transition={{ duration: 0.5 }}
                           >
-                            <p className="text-md sm:text-xl lg:text-3xl font-semibold text-white mt-8 relative overflow-hidden">
+                            <p className="text-md sm:text-xl lg:text-3xl font-semibold text-white mt-8">
                               {tagline}
                             </p>
                           </motion.div>
@@ -104,7 +104,7 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                             transition={{ duration: 0.5, delay: 0.5 }}
                             className="self-end"
                           >
-                            <div className="bg-gray-800 inline-block px-9 py-2 rounded-full text-white mt-10">
+                            <div className="inline-block px-9 py-4 text-white bg-[#ffa500] mt-10">
                               <SliderButtons buttons={buttons} />
                             </div>
                           </motion.div>
