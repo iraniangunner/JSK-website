@@ -12,7 +12,7 @@ export function ProjectsGallery({ projects }) {
   const [message, setMessage] = useState(false);
 
   useEffect(() => {
-    // console.log(projects);
+    console.log(projects);
     setFiltered(projects);
   }, []);
 

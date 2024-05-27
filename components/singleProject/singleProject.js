@@ -5,7 +5,7 @@ import { FaRegUser } from "react-icons/fa";
 import { FaRegCalendar } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
 
-export function SingleProject({ project }: any) {
+export function SingleProject({ project, related }) {
   const [isScrolling, setIsScrolling] = useState(false);
 
   const handleScroll = () => {
@@ -17,6 +17,14 @@ export function SingleProject({ project }: any) {
   };
 
   useEffect(() => {
+    // const related = allProjects.filter(
+    //   (p) =>
+    //     p.genre_ids.some((item) =>
+    //       project.genres.map((g) => g.id).includes(item)
+    //     ) && p.id !== project.id
+    // );
+    // setRelatedPosts(related);
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -53,7 +61,7 @@ export function SingleProject({ project }: any) {
           {project.title}
         </h1>
       </div>
-      <div className="max-w-[1140px] flex gap-8 my-12 mx-auto px-8">
+      <div className="max-w-[1200px] flex gap-8 my-12 mx-auto px-8">
         <div
           className={`hidden lg:block lg:w-[50%] xl:w-[30%] h-fit ${
             isScrolling ? "sticky top-24" : "relative"
@@ -110,7 +118,13 @@ export function SingleProject({ project }: any) {
           <p>{project.overview}</p>
           <p>{project.release_date}</p>
         </div>
+        <div>
+        {related.map((post) => (
+          <div>{post.title}</div>
+        ))}
       </div>
+      </div>
+      
     </>
   );
 }
