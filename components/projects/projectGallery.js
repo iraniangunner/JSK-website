@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Project } from "./project";
-import { Filter } from "./filter";
+import { Project } from "./projectView";
+import { Filter } from "./filterTabs";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function ProjectsGallery({ projects }) {

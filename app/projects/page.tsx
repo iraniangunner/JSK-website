@@ -1,4 +1,4 @@
-import { ProjectsGallery } from "@/components/imageGallery/gallery";
+import { ProjectsGallery } from "@/components/projects/projectGallery";
 import Link from "next/link";
 
 export async function getAllProjects() {
