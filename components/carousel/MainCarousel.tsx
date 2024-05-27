@@ -46,7 +46,6 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
               delay: 4000,
             }}
             effect="fade"
-            // autoplay={true}
             loop={true}
             onSlideChange={(el) => {
               setActiveStyleIndex((activeSlideIndex) => el.realIndex);

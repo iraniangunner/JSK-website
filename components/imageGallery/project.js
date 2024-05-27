@@ -1,3 +1,4 @@
+"use client"
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -10,7 +11,7 @@ export function Project({ projectDetails, message }) {
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
     >
-      <Link href={`/projects/${projectDetails.id}`} className="relative">
+      <Link href={`/projects/${projectDetails.id}`} className="relative block">
         <div
           className={`absolute top-0 left-0 bottom-0 rounded-lg w-full h-0 opacity-0 flex items-center justify-center bg-blue-gray-900 text-white  ${
             message ? "h-full opacity-60" : ""
