@@ -115,7 +115,7 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
               </SwiperSlide>
             ))}
 
-            <div className="swiper-button-prev flex hover:h-[100px] group after:hidden transition-all duration-500">
+            <div className="swiper-button-prev main-prev flex hover:h-[100px] group after:hidden transition-all duration-500">
               <div className="w-0 h-[80px] group-hover:w-[180px] group-hover:h-[100px] transition-all duration-500">
                 <div
                   style={{
@@ -137,7 +137,7 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                 <FaArrowLeft className="next_icon" />
               </div>
             </div>
-            <div className="swiper-button-next flex hover:h-[100px] group after:hidden transition-all duration-500">
+            <div className="swiper-button-next main-next flex hover:h-[100px] group after:hidden transition-all duration-500">
               <div
                 className="relative before:absolute before:content-[''] before:skew-x-[-10deg] before:transition-all before:duration-500 before:inline-block before:top-0 before:left-0 before:bottom-0 before:right-0 before:bg-[rgba(255_255_255)] before:opacity-[0.2] 
                 before:origin-[50%_100%] before:z-[-1] pl-[10px] flex justify-center items-center w-[80px] h-[80px] group-hover:h-[100px] text-white group-hover:before:bg-[#ffa500] group-hover:before:opacity-100  group-hover:text-white"

@@ -1,4 +1,4 @@
-import { SingleProject } from "@/components/projects/singleProject";
+import { SingleProject } from "@/components/project/singleProject";
 
 export async function getProjectById(project_id: string) {
   const options = {
@@ -56,7 +56,6 @@ export default async function ProjectPage({ params }: any) {
     <SingleProject
       project={project}
       related={related}
-      // allProjects={allProjects.results}
     />
   );
 }

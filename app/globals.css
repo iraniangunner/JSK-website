@@ -88,14 +88,14 @@ body {
   background: -webkit-linear-gradient(90deg, #db8e00, #ffa500);
 }
 
-.swiper-button-prev {
+.main-prev {
   width: unset !important;
   height: unset !important;
   margin-top: -80px !important;
   left: 0 !important;
 }
 
-.swiper-button-next {
+.main-next {
   width: unset !important;
   height: unset !important;
   margin-top: -80px !important;
@@ -318,3 +318,14 @@ body {
   height: 500px;
 }
 
+.related-prev {
+  position: unset !important;
+  height: unset !important;
+  margin-top: unset !important;
+}
+
+.related-next {
+  position: unset !important;
+  height: unset !important;
+  margin-top: unset !important;
+}

@@ -4,6 +4,8 @@ import { FaBriefcase } from "react-icons/fa";
 import { FaRegUser } from "react-icons/fa";
 import { FaRegCalendar } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
+import { RelatedCarousel } from "./relatedprojects/relatedProjects";
+
 
 export function SingleProject({ project, related }) {
   const [isScrolling, setIsScrolling] = useState(false);
@@ -42,21 +44,7 @@ export function SingleProject({ project, related }) {
         <nav
           aria-label="breadcrumb"
           className="px-[15px] mx-auto md:max-w-[720px] lg:max-w-[920px] relative"
-        >
-          {/* <ol className="flex flex-wrap items-center absolute bottom-[20px] rounded-md bg-opacity-60 px-[1rem]">
-            <li className="flex items-center text-lg font-iransans antialiased font-normal leading-normal transition-colors duration-300 cursor-pointer text-blue-gray-900 hover:text-[#ffa500]">
-              <Link href="/" className="opacity-60">
-                خانه
-              </Link>
-              <span className="mx-2 font-sans text-lg antialiased font-normal leading-normal pointer-events-none select-none text-blue-gray-500">
-                /
-              </span>
-            </li>
-            <li className="flex items-center font-iransans text-lg antialiased font-normal leading-normal text-blue-gray-900">
-              <span>پروژه ها</span>
-            </li>
-          </ol> */}
-        </nav>
+        ></nav>
         <h1 className="text-[35px] font-bold text-[#fff] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
           {project.title}
         </h1>
@@ -118,13 +106,22 @@ export function SingleProject({ project, related }) {
           <p>{project.overview}</p>
           <p>{project.release_date}</p>
         </div>
-        <div>
-        {related.map((post) => (
-          <div>{post.title}</div>
-        ))}
+        {/* <div>
+          {related.map((post) => (
+            <div>{post.title}</div>
+          ))}
+        </div> */}
       </div>
+      <div className="max-w-[1300px] my-24 mx-auto px-8">
+      {/* <h1 className="mb-8 text-xl">پروژه ها ی مرتبط</h1> */}
+        <RelatedCarousel related={related} size={30} />
       </div>
-      
+
+      <div>
+     
+      </div>
+
+      {/* <ProjectCarousel/> */}
     </>
   );
 }
