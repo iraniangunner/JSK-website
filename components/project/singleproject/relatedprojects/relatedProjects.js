@@ -6,8 +6,10 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import Link from "next/link";
-import { PiArrowFatLineRightFill } from "react-icons/pi";
-import { PiArrowFatLineLeftFill } from "react-icons/pi";
+// import { PiArrowFatLineRightFill } from "react-icons/pi";
+// import { PiArrowFatLineLeftFill } from "react-icons/pi";
+import { FaArrowRightLong } from "react-icons/fa6";
+import { FaArrowLeftLong } from "react-icons/fa6";
 
 export function RelatedCarousel({ related }) {
   return (
@@ -69,12 +71,12 @@ export function RelatedCarousel({ related }) {
         </SwiperSlide>
       ))}
 
-      <div className="absolute right-0 top-0 flex gap-2">
-        <div className="swiper-button-prev related-prev after:hidden border">
-          <PiArrowFatLineLeftFill />
+      <div className="absolute right-[20px] top-0 flex gap-2">
+        <div className="swiper-button-prev related-prev after:hidden border border-[#ffa500] rounded-full p-[8px]">
+          <FaArrowLeftLong />
         </div>
-        <div className="swiper-button-next related-next after:hidden border">
-          <PiArrowFatLineRightFill />
+        <div className="swiper-button-next related-next after:hidden border border-[#ffa500] rounded-full p-[8px]">
+          <FaArrowRightLong />
         </div>
       </div>
     </Swiper>

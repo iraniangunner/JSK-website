@@ -107,6 +107,30 @@ body {
   height: 25px !important;
 }
 
+
+/********Related projects slider buttons**************/
+.related-prev {
+  position: unset !important;
+  height: 40px !important;
+  width: 40px !important;
+  color: unset !important;
+  margin-top: unset !important;
+}
+
+.related-next {
+  position: unset !important;
+  height: 40px !important;
+  width: 40px !important;
+  color: unset !important;
+  margin-top: unset !important;
+}
+
+/********Related projects slider buttons************/
+
+
+
+
+
 /**********ant-design-table-styles***************************************/
 
 .ant-table-content {
@@ -318,14 +342,16 @@ body {
   height: 500px;
 }
 
-.related-prev {
-  position: unset !important;
-  height: unset !important;
-  margin-top: unset !important;
-}
 
-.related-next {
-  position: unset !important;
-  height: unset !important;
-  margin-top: unset !important;
-}
+
+
+
+
+
+
+
+
+
+
+
+

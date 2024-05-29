@@ -5,7 +5,9 @@ import { FaRegUser } from "react-icons/fa";
 import { FaRegCalendar } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
 import { RelatedCarousel } from "./relatedprojects/relatedProjects";
-
+import { VideoPlayer } from "./videoplayer/video-player";
+import { FaCheck } from "react-icons/fa6";
+import ProjectCarousel from "./thumbscarousel/thumbsCarousel";
 
 export function SingleProject({ project, related }) {
   const [isScrolling, setIsScrolling] = useState(false);
@@ -18,6 +20,26 @@ export function SingleProject({ project, related }) {
     }
   };
 
+  const videoJsOptions = {
+    // autoplay: true,
+    controls: true,
+    responsive: true,
+    fluid: true,
+    experimentalSvgIcons: true,
+    playbackRates: [0.5, 1, 1.5, 2],
+    sources: [
+      {
+        src: "//vjs.zencdn.net/v/oceans.mp4",
+        type: "video/mp4",
+      },
+    ],
+    controlBar: {
+      skipButtons: {
+        forward: 10,
+        backward: 10,
+      },
+    },
+  };
   useEffect(() => {
     // const related = allProjects.filter(
     //   (p) =>
@@ -49,7 +71,7 @@ export function SingleProject({ project, related }) {
           {project.title}
         </h1>
       </div>
-      <div className="max-w-[1200px] flex gap-8 my-12 mx-auto px-8">
+      <div className="max-w-[1300px] flex gap-8 lg:gap-9 my-24 mx-auto px-8">
         <div
           className={`hidden lg:block lg:w-[50%] xl:w-[30%] h-fit ${
             isScrolling ? "sticky top-24" : "relative"
@@ -101,27 +123,62 @@ export function SingleProject({ project, related }) {
           <img
             src={"https://image.tmdb.org/t/p/w500" + project.backdrop_path}
           />
+          {/* <ProjectCarousel/> */}
           <h1 className="text-xl">{project.id}</h1>
           <p>{project.title}</p>
           <p>{project.overview}</p>
           <p>{project.release_date}</p>
+
+          <div className="my-8">
+            <h1 className="mb-4 text-lg">چالش های پروژه</h1>
+            <p className="text-justify">
+              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
+              استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
+              در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
+              نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
+              کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان
+              جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای
+              طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان
+              فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری
+              موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد
+              نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل
+              دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 my-8 gap-8">
+            <ul>
+              <li className="mb-3 flex items-center gap-2">
+                <FaCheck color="#ffa500" />
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت </p>
+              </li>
+              <li className="mb-3 flex items-center gap-2">
+                <FaCheck color="#ffa500" />
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت </p>
+              </li>
+              <li className="mb-3 flex items-center gap-2">
+                <FaCheck color="#ffa500" />
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت </p>
+              </li>
+              <li className="flex items-center gap-2">
+                <FaCheck color="#ffa500" />
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت </p>
+              </li>
+            </ul>
+            <div>
+              <VideoPlayer
+                options={videoJsOptions}
+                onReady={() => console.log("The video is ready to play")}
+              />
+            </div>
+          </div>
         </div>
-        {/* <div>
-          {related.map((post) => (
-            <div>{post.title}</div>
-          ))}
-        </div> */}
       </div>
+
       <div className="max-w-[1300px] my-24 mx-auto px-8">
-      {/* <h1 className="mb-8 text-xl">پروژه ها ی مرتبط</h1> */}
-        <RelatedCarousel related={related} size={30} />
+        {/* <h1 className="mb-8 text-xl">پروژه ها ی مرتبط</h1> */}
+        <RelatedCarousel related={related} />
       </div>
-
-      <div>
-     
-      </div>
-
-      {/* <ProjectCarousel/> */}
     </>
   );
 }

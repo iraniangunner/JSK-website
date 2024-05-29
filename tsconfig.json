@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/components/menuModal/menuModal.js", "components/navbar.js", "components/footer.js", "components/convertLanguageBtn.js", "components/project/filterTabs.js", "components/project/projectGallery.js", "components/project/singleProject.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/components/menuModal/menuModal.js", "components/navbar.js", "components/footer.js", "components/convertLanguageBtn.js", "components/project/filterTabs.js", "components/project/projectGallery.js", "components/project/singleproject/singleProject.js", "components/project/singleproject/relatedprojects/relatedProjects.js", "components/project/singleproject/videoplayer/video-player.jsx", "components/project/singleproject/thumbscarousel/thumbsCarousel.jsx"],
   "exclude": ["node_modules"]
 }
