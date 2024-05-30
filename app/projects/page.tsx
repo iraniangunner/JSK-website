@@ -1,5 +1,6 @@
 import { ProjectsGallery } from "@/components/project/projectGallery";
 import Link from "next/link";
+// import { Suspense } from "react";
 
 export async function getAllProjects() {
   const options = {
@@ -52,7 +53,9 @@ export default async function Projects() {
         </h1>
       </div>
       <div className="my-12 mx-8">
-        <ProjectsGallery projects={projects.results} />
+        {/* <Suspense fallback={<p>Loading feed...</p>}> */}
+          <ProjectsGallery projects={projects.results} />
+        {/* </Suspense> */}
       </div>
     </>
   );

@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-// import { AntdRegistry } from "@ant-design/nextjs-registry";
 import "./globals.css";
 
 // const inter = Inter({ subsets: ["latin"] });
@@ -22,11 +21,9 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl">
       <body className={iranSans.className}>
-        {/* <AntdRegistry> */}
         <Header />
         {children}
         <Footer />
-        {/* </AntdRegistry> */}
       </body>
     </html>
   );
