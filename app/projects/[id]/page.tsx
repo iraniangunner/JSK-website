@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import { SingleProject } from "@/components/project/singleproject/singleProject";
 
 export async function getProjectById(project_id: string) {
@@ -11,9 +12,11 @@ export async function getProjectById(project_id: string) {
   };
 
   const project = await fetch(
-    `https://api.themoviedb.org/3/movie/${project_id}`,
+    `https://api.themoviedb.org/3/movies/${project_id}`,
     options
-  ).then((res) => res.json());
+  )
+    .then((res) => res.json())
+    .catch((error) => console.log(error));
 
   const allProjects = await fetch(
     "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
@@ -33,8 +36,6 @@ export async function getAllProjects() {
     },
   };
 
-  
-
   const allProjects = await fetch(
     "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
     options
@@ -44,18 +45,17 @@ export async function getAllProjects() {
 }
 
 export default async function ProjectPage({ params }: any) {
-  const project = await getProjectById(params.id);
-  const allProjects = await getAllProjects();
-  const related = allProjects.results.filter(
-    (p:any) =>
-      p.genre_ids.some((item:any) =>
-        project.genres.map((g:any) => g.id).includes(item)
-      ) && p.id !== project.id
-  );
-  return (
-    <SingleProject
-      project={project}
-      related={related}
-    />
-  );
+  try {
+    const project = await getProjectById(params.id);
+    const allProjects = await getAllProjects();
+    const related = allProjects.results.filter(
+      (p: any) =>
+        p.genre_ids.some((item: any) =>
+          project.genres.map((g: any) => g.id).includes(item)
+        ) && p.id !== project.id
+    );
+    return <SingleProject project={project} related={related} />;
+  } catch (err) {
+    notFound();
+  }
 }
