@@ -18,11 +18,6 @@ export async function getProjectById(project_id: string) {
     .then((res) => res.json())
     .catch((error) => console.log(error));
 
-  const allProjects = await fetch(
-    "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
-    options
-  ).then((res) => res.json());
-
   return project;
 }
 
