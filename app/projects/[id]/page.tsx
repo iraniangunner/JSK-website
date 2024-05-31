@@ -1,5 +1,45 @@
 import { notFound } from "next/navigation";
 import { SingleProject } from "@/components/project/singleproject/singleProject";
+// import type { Metadata, ResolvingMetadata } from "next";
+
+
+// export async function generateMetadata({
+//   params,
+// }: Props): // parent: ResolvingMetadata
+// Promise<Metadata> {
+//   // read route params
+//   const id = params.id;
+
+//   // fetch data
+//   const options = {
+//     method: "GET",
+//     headers: {
+//       accept: "application/json",
+//       Authorization:
+//         "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NDcwNWJkNGQzNWU0MGUyZmUyZGFhZDhjNGVmOGQ0YyIsInN1YiI6IjY2NDg2ZDZmNzNiN2FlNDAzODdhM2M2ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.n49ziu8wMl4nILzUvN3r222fH9-x4oofAlLVtvMkduc",
+//     },
+//   };
+
+//   const project = await fetch(
+//     `https://api.themoviedb.org/3/movie/${id}`,
+//     options
+//   ).then((res) => res.json());
+
+//   // optionally access and extend (rather than replace) parent metadata
+//   // const previousImages = (await parent).openGraph?.images || []
+
+//   return {
+//     title: project.id,
+//     // openGraph: {
+//     //   images: ['/some-specific-page-image.jpg', ...previousImages],
+//     // },
+//   };
+// }
+
+
+type Props = {
+  params: { id: string };
+};
 
 export async function getProjectById(project_id: string) {
   const options = {
@@ -39,7 +79,7 @@ export async function getAllProjects() {
   return allProjects;
 }
 
-export default async function ProjectPage({ params }: any) {
+export default async function ProjectPage({ params }: Props) {
   try {
     const project = await getProjectById(params.id);
     const allProjects = await getAllProjects();
