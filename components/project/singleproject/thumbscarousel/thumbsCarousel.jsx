@@ -1,15 +1,13 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from "react";
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
-
+import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/navigation';
-import 'swiper/css/thumbs';
-
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
 // import required modules
-import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 
 export default function ProjectCarousel() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -18,8 +16,10 @@ export default function ProjectCarousel() {
     <>
       <Swiper
         style={{
-          '--swiper-navigation-color': '#fff',
-          '--swiper-pagination-color': '#fff',
+          "--swiper-navigation-color": "#fff",
+          "--swiper-pagination-color": "#fff",
+          // height:"80%",
+          // width:"100%"
         }}
         loop={true}
         spaceBetween={10}
@@ -61,6 +61,7 @@ export default function ProjectCarousel() {
       </Swiper>
       <Swiper
         onSwiper={setThumbsSwiper}
+        // style={{height:"20%" , padding:"10px 0px"}}
         loop={true}
         spaceBetween={10}
         slidesPerView={4}
@@ -103,3 +104,5 @@ export default function ProjectCarousel() {
     </>
   );
 }
+
+

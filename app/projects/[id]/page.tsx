@@ -1,5 +1,9 @@
 import { notFound } from "next/navigation";
 import { SingleProject } from "@/components/project/singleproject/singleProject";
+import { ErrorBoundary } from "next/dist/client/components/error-boundary";
+import Error from "../../error";
+// import Error from "./error";
+// import ErrorBoundary from "./error";
 // import type { Metadata, ResolvedMetadata } from "next";
 
 type Props = {
@@ -39,7 +43,9 @@ export async function getAllProjects() {
   const allProjects = await fetch(
     "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
     options
-  ).then((res) => res.json());
+  )
+    .then((res) => res.json())
+    .catch((error) => console.log(error));
 
   return allProjects;
 }
@@ -53,17 +59,17 @@ export async function getAllProjects() {
 // }
 
 export default async function ProjectPage({ params }: Props) {
-  try {
-    const project = await getProjectById(params.id);
-    const allProjects = await getAllProjects();
-    const related = allProjects.results.filter(
-      (p: any) =>
-        p.genre_ids.some((item: any) =>
-          project.genres.map((g: any) => g.id).includes(item)
-        ) && p.id !== project.id
-    );
-    return <SingleProject project={project} related={related} />;
-  } catch (err) {
-    notFound();
-  }
+  const project = await getProjectById(params.id);
+  const allProjects = await getAllProjects();
+  const related = allProjects.results.filter(
+    (p: any) =>
+      p.genre_ids.some((item: any) =>
+        project.genres.map((g: any) => g.id).includes(item)
+      ) && p.id !== project.id
+  );
+
+  // if(!project || !allProjects){
+  //   notFound();
+  // }
+  return <SingleProject project={project} related={related} />;
 }

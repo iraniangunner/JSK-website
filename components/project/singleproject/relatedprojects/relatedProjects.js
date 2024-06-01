@@ -6,8 +6,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import Link from "next/link";
-// import { PiArrowFatLineRightFill } from "react-icons/pi";
-// import { PiArrowFatLineLeftFill } from "react-icons/pi";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FaArrowLeftLong } from "react-icons/fa6";
 

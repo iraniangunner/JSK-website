@@ -7,7 +7,8 @@ import { FaLocationDot } from "react-icons/fa6";
 import { RelatedCarousel } from "./relatedprojects/relatedProjects";
 import { VideoPlayer } from "./videoplayer/video-player";
 import { FaCheck } from "react-icons/fa6";
-import ProjectCarousel from "./thumbscarousel/thumbsCarousel";
+// import ProjectCarousel from "./thumbscarousel/thumbsCarousel";
+import Fancybox from "./thumbscarousel/thumbsCarousel";
 
 export function SingleProject({ project, related }) {
   const [isScrolling, setIsScrolling] = useState(false);
