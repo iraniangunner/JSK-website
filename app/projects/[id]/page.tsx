@@ -1,54 +1,9 @@
-import { notFound } from "next/navigation";
 import { SingleProject } from "@/components/project/singleproject/singleProject";
-import { ErrorBoundary } from "next/dist/client/components/error-boundary";
-import Error from "../../error";
+import { getProjectById } from "@/app/api/route";
+import { getAllProjects } from "@/app/api/route";
+// import { notFound } from "next/navigation";
 // import Error from "./error";
-// import ErrorBoundary from "./error";
 // import type { Metadata, ResolvedMetadata } from "next";
-
-type Props = {
-  params: { id: string };
-};
-
-export async function getProjectById(project_id: string) {
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NDcwNWJkNGQzNWU0MGUyZmUyZGFhZDhjNGVmOGQ0YyIsInN1YiI6IjY2NDg2ZDZmNzNiN2FlNDAzODdhM2M2ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.n49ziu8wMl4nILzUvN3r222fH9-x4oofAlLVtvMkduc",
-    },
-  };
-
-  const project = await fetch(
-    `https://api.themoviedb.org/3/movie/${project_id}`,
-    options
-  )
-    .then((res) => res.json())
-    .catch((error) => console.log(error));
-
-  return project;
-}
-
-export async function getAllProjects() {
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NDcwNWJkNGQzNWU0MGUyZmUyZGFhZDhjNGVmOGQ0YyIsInN1YiI6IjY2NDg2ZDZmNzNiN2FlNDAzODdhM2M2ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.n49ziu8wMl4nILzUvN3r222fH9-x4oofAlLVtvMkduc",
-    },
-  };
-
-  const allProjects = await fetch(
-    "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
-    options
-  )
-    .then((res) => res.json())
-    .catch((error) => console.log(error));
-
-  return allProjects;
-}
 
 // export async function generateMetadata({ params }: Props): Promise<Metadata> {
 //   const project = await getProjectById(params.id);
@@ -57,6 +12,10 @@ export async function getAllProjects() {
 //     title: `localhost:3000/projects/${project.id}`,
 //   };
 // }
+
+type Props = {
+  params: { id: string };
+};
 
 export default async function ProjectPage({ params }: Props) {
   const project = await getProjectById(params.id);

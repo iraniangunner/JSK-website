@@ -1,24 +1,8 @@
 import { ProjectsGallery } from "@/components/project/projectGallery";
 import Link from "next/link";
-// import { Suspense } from "react";
+import { Suspense } from "react";
+import { getAllProjects } from "../api/route";
 
-export async function getAllProjects() {
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NDcwNWJkNGQzNWU0MGUyZmUyZGFhZDhjNGVmOGQ0YyIsInN1YiI6IjY2NDg2ZDZmNzNiN2FlNDAzODdhM2M2ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.n49ziu8wMl4nILzUvN3r222fH9-x4oofAlLVtvMkduc",
-    },
-  };
-
-  const projects = await fetch(
-    "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
-    options
-  ).then((res) => res.json());
-
-  return projects;
-}
 
 export default async function Projects() {
   const projects = await getAllProjects();
@@ -53,9 +37,9 @@ export default async function Projects() {
         </h1>
       </div>
       <div className="my-12 mx-8">
-        {/* <Suspense fallback={<p>Loading feed...</p>}> */}
+        <Suspense fallback={<p>Loading feed...</p>}>
           <ProjectsGallery projects={projects.results} />
-        {/* </Suspense> */}
+        </Suspense>
       </div>
     </>
   );

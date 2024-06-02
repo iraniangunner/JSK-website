@@ -7,8 +7,8 @@ import { FaLocationDot } from "react-icons/fa6";
 import { RelatedCarousel } from "./relatedprojects/relatedProjects";
 import { VideoPlayer } from "./videoplayer/video-player";
 import { FaCheck } from "react-icons/fa6";
-// import ProjectCarousel from "./thumbscarousel/thumbsCarousel";
-import Fancybox from "./thumbscarousel/thumbsCarousel";
+import ProjectCarousel from "./thumbscarousel/thumbsCarousel";
+
 
 export function SingleProject({ project, related }) {
   const [isScrolling, setIsScrolling] = useState(false);
@@ -121,10 +121,10 @@ export function SingleProject({ project, related }) {
           </ul>
         </div>
         <div className="w-full lg-w-[50%] xl:w-[70%] flex flex-col justify-center gap-3">
-          <img
+          {/* <img
             src={"https://image.tmdb.org/t/p/w500" + project.backdrop_path}
-          />
-          {/* <ProjectCarousel/> */}
+          /> */}
+          <ProjectCarousel project={project}/>
           <h1 className="text-xl">{project.id}</h1>
           <p>{project.title}</p>
           <p>{project.overview}</p>
