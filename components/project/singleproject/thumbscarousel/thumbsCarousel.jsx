@@ -17,6 +17,7 @@ export default function ProjectCarousel({ project }) {
         <Swiper
           loop={true}
           spaceBetween={10}
+          effect="fade"
           navigation={true}
           thumbs={{
             swiper:

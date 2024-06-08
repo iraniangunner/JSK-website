@@ -1,10 +1,12 @@
 import { ProjectsGallery } from "@/components/project/projectGallery";
 import Link from "next/link";
 import { Suspense } from "react";
-import { getAllProjects } from "../api/route";
+import { getAllProjects } from "./api/route";
+import { unstable_noStore } from "next/cache";
 
 
 export default async function Projects() {
+  // unstable_noStore();
   const projects = await getAllProjects();
   return (
     <>

@@ -1,6 +1,6 @@
 import { SingleProject } from "@/components/project/singleproject/singleProject";
-import { getProjectById } from "@/app/api/route";
-import { getAllProjects } from "@/app/api/route";
+import { getProjectById } from "@/app/projects/api/route";
+import { getAllProjects } from "@/app/projects/api/route";
 // import { notFound } from "next/navigation";
 // import Error from "./error";
 // import type { Metadata, ResolvedMetadata } from "next";
