@@ -9,7 +9,7 @@ export default function Hero() {
           <br /> from the future.
         </h1>
         <h2 className="text-center">
-          Unleash your creativity with Diagram's <br />
+          Unleash your creativity with Diagrams <br />
           AI-powered design tools.
         </h2>
         <button className="flex items-center justify-center gap-2 px-4 py-2 rounded-full transparentContainer">

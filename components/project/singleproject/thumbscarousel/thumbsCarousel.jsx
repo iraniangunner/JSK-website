@@ -16,9 +16,15 @@ export default function ProjectCarousel({ project }) {
       <div>
         <Swiper
           loop={true}
+          freeMode={true}
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          }}
+          dir="ltr"
           spaceBetween={10}
           effect="fade"
-          navigation={true}
+          // navigation={true}
           thumbs={{
             swiper:
               thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
@@ -71,6 +77,13 @@ export default function ProjectCarousel({ project }) {
           <SwiperSlide>
             <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
           </SwiperSlide>
+
+          <div className="swiper-button-prev">
+            
+          </div>
+          <div className="swiper-button-next">
+            
+          </div>
         </Swiper>
 
         {/* Thumbnail */}
@@ -82,6 +95,7 @@ export default function ProjectCarousel({ project }) {
           freeMode={true}
           watchSlidesProgress={true}
           modules={[FreeMode, Navigation, Thumbs]}
+          dir="ltr"
           className="thumbs mt-3 h-32 w-full select-none"
         >
           {/* {images.map((image, index) => (
@@ -96,37 +110,84 @@ export default function ProjectCarousel({ project }) {
             </SwiperSlide>
           ))} */}
           <SwiperSlide>
-            <img
-              src={"https://image.tmdb.org/t/p/w500" + project.backdrop_path}
-              className="w-full h-full"
-            />
+            <div className="h-full w-full absolute left-0 top-0">
+              <img
+                src={"https://image.tmdb.org/t/p/w500" + project.backdrop_path}
+                className="w-full h-full"
+              />
+            </div>
           </SwiperSlide>
           <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+            <div className="h-full w-full absolute left-0 top-0">
+              <img
+                src="https://swiperjs.com/demos/images/nature-2.jpg"
+                className="w-full h-full"
+              />
+            </div>
           </SwiperSlide>
           <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+            <div className="h-full w-full absolute left-0 top-0">
+              <img
+                src="https://swiperjs.com/demos/images/nature-3.jpg"
+                className="w-full h-full"
+              />
+            </div>
           </SwiperSlide>
           <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+            <div className="h-full w-full absolute left-0 top-0">
+              <img
+                src="https://swiperjs.com/demos/images/nature-4.jpg"
+                className="w-full h-full"
+              />
+            </div>
           </SwiperSlide>
           <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+            <div className="h-full w-full absolute left-0 top-0">
+              <img
+                src="https://swiperjs.com/demos/images/nature-5.jpg"
+                className="w-full h-full"
+              />
+            </div>
           </SwiperSlide>
           <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+            <div className="h-full w-full absolute left-0 top-0">
+              <img
+                src="https://swiperjs.com/demos/images/nature-6.jpg"
+                className="w-full h-full"
+              />
+            </div>
           </SwiperSlide>
           <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+            <div className="h-full w-full absolute left-0 top-0">
+              <img
+                src="https://swiperjs.com/demos/images/nature-7.jpg"
+                className="w-full h-full"
+              />
+            </div>
           </SwiperSlide>
           <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
+            <div className="h-full w-full absolute left-0 top-0">
+              <img
+                src="https://swiperjs.com/demos/images/nature-8.jpg"
+                className="w-full h-full"
+              />
+            </div>
           </SwiperSlide>
           <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+            <div className="h-full w-full absolute left-0 top-0">
+              <img
+                src="https://swiperjs.com/demos/images/nature-9.jpg"
+                className="w-full h-full"
+              />
+            </div>
           </SwiperSlide>
           <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
+            <div className="h-full w-full absolute left-0 top-0">
+              <img
+                src="https://swiperjs.com/demos/images/nature-10.jpg"
+                className="w-full h-full"
+              />
+            </div>
           </SwiperSlide>
         </Swiper>
       </div>
