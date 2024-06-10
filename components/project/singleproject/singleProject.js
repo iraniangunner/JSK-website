@@ -9,7 +9,6 @@ import { VideoPlayer } from "./videoplayer/video-player";
 import { FaCheck } from "react-icons/fa6";
 import ProjectCarousel from "./thumbscarousel/thumbsCarousel";
 
-
 export function SingleProject({ project, related }) {
   const [isScrolling, setIsScrolling] = useState(false);
 
@@ -124,12 +123,11 @@ export function SingleProject({ project, related }) {
           {/* <img
             src={"https://image.tmdb.org/t/p/w500" + project.backdrop_path}
           /> */}
-          <ProjectCarousel project={project}/>
+          <ProjectCarousel project={project} />
           <h1 className="text-xl">{project.id}</h1>
           <p>{project.title}</p>
           <p>{project.overview}</p>
           <p>{project.release_date}</p>
-
           <div className="my-8">
             <h1 className="mb-4 text-lg">چالش های پروژه</h1>
             <p className="text-justify">

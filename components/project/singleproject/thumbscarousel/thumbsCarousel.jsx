@@ -47,7 +47,6 @@ export default function ProjectCarousel({ project }) {
           <SwiperSlide>
             <img
               src={"https://image.tmdb.org/t/p/w500" + project.backdrop_path}
-              className="w-full h-full"
             />
           </SwiperSlide>
           <SwiperSlide>
@@ -78,12 +77,8 @@ export default function ProjectCarousel({ project }) {
             <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
           </SwiperSlide>
 
-          <div className="swiper-button-prev">
-            
-          </div>
-          <div className="swiper-button-next">
-            
-          </div>
+          <div className="swiper-button-prev"></div>
+          <div className="swiper-button-next"></div>
         </Swiper>
 
         {/* Thumbnail */}
