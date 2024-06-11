@@ -1,11 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { Autoplay, Navigation, EffectFade } from "swiper/modules";
+import { Autoplay, Navigation, EffectFade, Thumbs, FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
+import "swiper/css/thumbs";
 
 const items = [
   {
@@ -33,6 +34,7 @@ const items = [
 export function SwiperCarousel() {
   const [show, setShow] = useState(false);
   const [index, setIndex] = useState(0);
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   const handleShow = (selectedIndex) => {
     setIndex(selectedIndex);
@@ -91,13 +93,40 @@ export function SwiperCarousel() {
                 spaceBetween={50}
                 navigation
                 loop={true}
-                modules={[Autoplay, Navigation, EffectFade]}
+                thumbs={{
+                  swiper:
+                    thumbsSwiper && !thumbsSwiper.destroyed
+                      ? thumbsSwiper
+                      : null,
+                }}
+                modules={[FreeMode, Navigation, EffectFade, Thumbs]}
                 slidesPerView={1}
               >
                 {items.map((item) => (
                   <SwiperSlide key={item.id}>
                     <img
                       className="carousel-image"
+                      src={item.src}
+                      alt={item.alt}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+              <Swiper
+                onSwiper={setThumbsSwiper}
+                modules={[FreeMode , Navigation , Thumbs]}
+                spaceBetween={10}
+                slidesPerView={3}
+                //   effect="fade"
+                loop
+                freeMode
+                watchSlidesProgress
+                className="thumbnail-slider"
+              >
+                {items.map((item) => (
+                  <SwiperSlide key={item.id}>
+                    <img
+                      className="thumbnail-image"
                       src={item.src}
                       alt={item.alt}
                     />
