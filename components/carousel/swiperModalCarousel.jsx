@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
-import "swiper/css/thumbs";
+// import "swiper/css/thumbs";
 
 const items = [
   {
@@ -34,7 +34,7 @@ const items = [
 export function SwiperCarousel() {
   const [show, setShow] = useState(false);
   const [index, setIndex] = useState(0);
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+//   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   const handleShow = (selectedIndex) => {
     setIndex(selectedIndex);
@@ -93,12 +93,12 @@ export function SwiperCarousel() {
                 spaceBetween={50}
                 navigation
                 loop={true}
-                thumbs={{
-                  swiper:
-                    thumbsSwiper && !thumbsSwiper.destroyed
-                      ? thumbsSwiper
-                      : null,
-                }}
+                // thumbs={{
+                //   swiper:
+                //     thumbsSwiper && !thumbsSwiper.destroyed
+                //       ? thumbsSwiper
+                //       : null,
+                // }}
                 modules={[FreeMode, Navigation, EffectFade, Thumbs]}
                 slidesPerView={1}
               >
@@ -112,7 +112,7 @@ export function SwiperCarousel() {
                   </SwiperSlide>
                 ))}
               </Swiper>
-              <Swiper
+              {/* <Swiper
                 onSwiper={setThumbsSwiper}
                 modules={[FreeMode , Navigation , Thumbs]}
                 spaceBetween={10}
@@ -132,7 +132,7 @@ export function SwiperCarousel() {
                     />
                   </SwiperSlide>
                 ))}
-              </Swiper>
+              </Swiper> */}
             </div>
           </div>
         )}
