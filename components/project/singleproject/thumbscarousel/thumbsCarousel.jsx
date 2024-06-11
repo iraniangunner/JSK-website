@@ -11,6 +11,7 @@ import "swiper/css/thumbs";
 export default function ProjectCarousel({ project }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
+  
   return (
     <section className="py-12">
       <div>
