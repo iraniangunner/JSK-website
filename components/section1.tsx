@@ -5,12 +5,19 @@ import pic2 from "../public/images/pic2.jpg";
 import pic3 from "../public/images/pic3.jpg";
 import { motion } from "framer-motion";
 
-export default function Hero() {
+export default function Section1() {
   return (
     <section className="w-full my-20">
       <div className="grid grid-cols-1 lg:grid-cols-2 w-[90%] mx-auto gap-10">
         <div className="order-2 lg:order-1">
-          <p>
+          <motion.p  initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeIn" }}
+            variants={{
+              visible: { opacity: 1, x: 0 },
+              hidden: { opacity: 0, x: 100 },
+            }}>
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
             استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
             ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز،
@@ -22,9 +29,10 @@ export default function Hero() {
             راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل
             حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود
             طراحی اساسا مورد استفاده قرار گیرد.
-          </p>
+          </motion.p>
         </div>
-        <div className="relative pr-[80px] order-1 lg:order-2">
+        
+        <div className="relative pr-[80px] mx-auto order-1 lg:order-2">
           <motion.div
             initial="hidden"
             whileInView="visible"
