@@ -27,14 +27,14 @@ export default function Navbar() {
         {isScrolling ? (
           <NavbarScroll isScrolling={isScrolling} />
         ) : (
-          <NavbarFixed />
+          <NavbarFixed isScrolling={isScrolling} />
         )}
       </AnimatePresence>
     </>
   );
 }
 
-function NavbarFixed({ isScrolling }) {
+function NavbarFixed({ isScrolling }:{isScrolling:boolean}) {
   return (
     <nav className="sticky top-[72px] z-10 flex justify-between w-full bg-[#737373]">
       <ComplexNavbar isScroll={isScrolling} />
@@ -42,7 +42,7 @@ function NavbarFixed({ isScrolling }) {
   );
 }
 
-function NavbarScroll({ isScrolling }) {
+function NavbarScroll({ isScrolling }:{isScrolling:boolean}) {
   return (
     <motion.nav
       key={1}

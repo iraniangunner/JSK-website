@@ -37,7 +37,7 @@ const navListMenuItems = [
   },
 ];
 
-function NavListMenu({ navIsScroll }) {
+function NavListMenu({ navIsScroll }: { navIsScroll: boolean }) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const renderItems = navListMenuItems.map(({ title, description }) => (
@@ -70,7 +70,7 @@ function NavListMenu({ navIsScroll }) {
           <Typography
             as="div"
             // href="#"
-            variant="medium"
+            // variant="medium"
             className="font-normal focus-visible:outline-none"
           >
             <MenuItem
@@ -129,7 +129,7 @@ const navListItems = [
   },
 ];
 
-function NavList({ navIsScroll }) {
+function NavList({ navIsScroll }: { navIsScroll: boolean }) {
   return (
     <ul className="mt-2 mb-4 py-2 flex flex-col gap-2 lg:gap-8 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
       <Link
@@ -148,7 +148,7 @@ function NavList({ navIsScroll }) {
       </Link>
 
       <NavListMenu navIsScroll={navIsScroll} />
-      {navListItems.map(({ label, icon, link }, key) => (
+      {navListItems.map(({ label, link }, key) => (
         <Link
           key={label}
           href={link}
@@ -178,7 +178,7 @@ function NavList({ navIsScroll }) {
       <Typography
         as="a"
         href="#"
-        variant="medium"
+        // variant="medium"
         color="gray"
         className="relative font-medium font-iransans"
       >
@@ -194,7 +194,7 @@ function NavList({ navIsScroll }) {
   );
 }
 
-export function ComplexNavbar({ isScroll }) {
+export function ComplexNavbar({ isScroll }: { isScroll: boolean }) {
   const [isNavOpen, setIsNavOpen] = React.useState(false);
 
   const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur);
@@ -248,7 +248,7 @@ export function ComplexNavbar({ isScroll }) {
         {/* <ProfileMenu /> */}
       </div>
       <Collapse open={isNavOpen} className="overflow-scroll ">
-        <NavList />
+        <NavList navIsScroll={isScroll} />
       </Collapse>
     </Navbar>
   );

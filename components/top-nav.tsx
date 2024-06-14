@@ -72,7 +72,7 @@ export default function TopNav() {
         <Typography
           as="a"
           href="#"
-          variant="medium"
+          // variant="medium"
           color="gray"
           className="relative font-medium font-iransans text-blue-gray-500 login_btn"
         >
@@ -89,7 +89,7 @@ export default function TopNav() {
         <Typography
           as="a"
           href="#"
-          variant="medium"
+          // variant="medium"
           color="gray"
           className="relative font-medium font-iransans text-blue-gray-500"
         >
