@@ -18,13 +18,11 @@ const config: Config = withMT({
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "footer-pattern": "url('../public/images/footer1.jpg')",
         "contact-pattern": "url('../public/images/contact-banner3.jpg')",
-        "projects-pattern":"url('../public/images/contact-banner2.jpg')",
-        "section-1-pattern":"url('../public/images/section-1.png')",
+        "projects-pattern": "url('../public/images/contact-banner2.jpg')",
+        "section-1-pattern": "url('../public/images/section-1.png')",
       },
     },
   },
-  plugins: [
-    require('flowbite/plugin')
-  ],
+  plugins: [require("flowbite/plugin")],
 });
 export default config;
