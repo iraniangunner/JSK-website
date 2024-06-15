@@ -8,9 +8,10 @@ import { AccordionItem } from "./accordion/accordionItem";
 
 export default function ServicesSection() {
   return (
-    <section className="w-full bg-section-1-pattern bg-right-bottom bg-no-repeat bg-cover">
+    // <section className="w-full bg-section-1-pattern bg-right-bottom bg-no-repeat bg-cover">
+    <section className="w-full">
       <div className="grid grid-cols-1 lg:grid-cols-2 w-[80%] xl:w-[70%] mx-auto gap-10 py-20">
-        <div className="order-2 lg:order-1 flex flex-col justify-center max-w-full">
+        <div className="order-2 lg:order-1  max-w-full">
           <motion.p
             initial="hidden"
             whileInView="visible"
@@ -37,8 +38,8 @@ export default function ServicesSection() {
           <AccordionItem />
         </div>
 
-        <div className="flex justify-center items-center order-1 lg:order-2">
-          <div className="relative pr-[80px]">
+        <div className="flex items-start order-1 lg:order-2">
+          <div className="relative ">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -48,7 +49,7 @@ export default function ServicesSection() {
                 visible: { opacity: 1, y: 0 },
                 hidden: { opacity: 0, y: 100 },
               }}
-              className="w-[75%]"
+              className="w-[75%] mr-[80px]"
             >
               <motion.img
                 src={pic1.src}
@@ -100,7 +101,7 @@ export default function ServicesSection() {
                 visible: { opacity: 1, y: 0 },
                 hidden: { opacity: 0, y: 100 },
               }}
-              className="relative z-[1] mt-[-15%] ml-[-20%] w-[90%]"
+              className="relative z-[1] mt-[-15%] ml-[-20%] pr-[80px]"
             >
               <motion.img
                 src={pic3.src}
