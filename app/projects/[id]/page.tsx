@@ -1,21 +1,27 @@
 import { SingleProject } from "@/components/project/singleproject/singleProject";
 import { getProjectById } from "@/app/projects/api/route";
 import { getAllProjects } from "@/app/projects/api/route";
+import { Metadata } from "next";
 // import { notFound } from "next/navigation";
 // import Error from "./error";
-// import type { Metadata, ResolvedMetadata } from "next";
-
-// export async function generateMetadata({ params }: Props): Promise<Metadata> {
-//   const project = await getProjectById(params.id);
-
-//   return {
-//     title: `localhost:3000/projects/${project.id}`,
-//   };
-// }
 
 type Props = {
   params: { id: string };
 };
+
+export const generateMetadata = async ({
+  params,
+}: Props): Promise<Metadata> => {
+  const project = await getProjectById(params.id);
+
+  return {
+    title: `پروژه ${project.title}`,
+  };
+};
+
+// export const generateMetadata = ({ params }: Props): Metadata => {
+// return {title:`پروژه ${params.id}`}
+// }
 
 export default async function ProjectPage({ params }: Props) {
   const project = await getProjectById(params.id);
