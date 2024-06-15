@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/components/menuModal/menuModal.js", "components/navbar.tsx", "components/footer.tsx", "components/convertLanguageBtn.tsx", "components/project/filterTabs.js", "components/project/projectGallery.js", "components/project/singleproject/singleProject.js", "components/project/singleproject/relatedprojects/relatedProjects.js", "components/project/singleproject/videoplayer/video-player.jsx", "components/project/singleproject/thumbscarousel/thumbsCarousel.jsx", "components/carousel/certificationGallery.tsx", "components/carousel/CertificationCarousel.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/components/menuModal/menuModal.js", "components/navbar/navbar.tsx", "components/footer.tsx", "components/convertLanguageBtn.tsx", "components/project/filterTabs.js", "components/project/projectGallery.js", "components/project/singleproject/singleProject.js", "components/project/singleproject/relatedprojects/relatedProjects.js", "components/project/singleproject/videoplayer/video-player.jsx", "components/project/singleproject/thumbscarousel/thumbsCarousel.jsx", "components/carousel/certificationGallery.tsx", "components/carousel/CertificationCarousel.tsx"],
   "exclude": ["node_modules"]
 }

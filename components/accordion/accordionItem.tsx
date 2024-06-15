@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import { useState } from "react";
 import {
@@ -7,30 +6,52 @@ import {
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
-// import type { AccordionHeaderProps } from "@material-tailwind/react";
-// import type { AccordionProps } from "@material-tailwind/react";
-// import type { AccordionBodyProps } from "@material-tailwind/react";
+import { motion } from "framer-motion";
 
 function Icon({ id, open }: { id: number; open: number }) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={2}
-      stroke="currentColor"
-      className={`${
-        id === open ? "rotate-180" : ""
-      } h-5 w-5 transition-transform`}
+    <div
+      className={`border border-[#ffa500] p-3 rounded-full ${
+        id === open ? "bg-white" : ""
+      } bg-[#ffa500] text-white transition-all`}
     >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-      />
-    </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={2}
+        stroke="currentColor"
+        className={`${
+          id === open ? "rotate-180 text-[#ffa500]" : ""
+        } h-5 w-5 transition-all`}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+        />
+      </svg>
+    </div>
   );
 }
+
+const accordionData = [
+  {
+    id: 0,
+    title: "بازرگانی و تامین اقلام پروژه",
+    desc: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد",
+  },
+  {
+    id: 1,
+    title: "بهره برداری پروژه های صنعتی و معدنی",
+    desc: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد",
+  },
+  {
+    id: 2,
+    title: "مدیریت پروژه های صنعتی و معدنی",
+    desc: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد",
+  },
+];
 
 export function AccordionItem() {
   const [open, setOpen] = useState(0);
@@ -39,39 +60,44 @@ export function AccordionItem() {
 
   return (
     <>
-      <Accordion open={open === 1} icon={<Icon id={1} open={open} />}>
-        <AccordionHeader onClick={() => handleOpen(1)}>
-          What is Material Tailwind?
-        </AccordionHeader>
-        <AccordionBody>
-          We&apos;re not always in the position that we want to be at.
-          We&apos;re constantly growing. We&apos;re constantly making mistakes.
-          We&apos;re constantly trying to express ourselves and actualize our
-          dreams.
-        </AccordionBody>
-      </Accordion>
-      <Accordion open={open === 2} icon={<Icon id={2} open={open} />}>
-        <AccordionHeader onClick={() => handleOpen(2)}>
-          How to use Material Tailwind?
-        </AccordionHeader>
-        <AccordionBody>
-          We&apos;re not always in the position that we want to be at.
-          We&apos;re constantly growing. We&apos;re constantly making mistakes.
-          We&apos;re constantly trying to express ourselves and actualize our
-          dreams.
-        </AccordionBody>
-      </Accordion>
-      <Accordion open={open === 3} icon={<Icon id={3} open={open} />}>
-        <AccordionHeader onClick={() => handleOpen(3)}>
-          What can I do with Material Tailwind?
-        </AccordionHeader>
-        <AccordionBody>
-          We&apos;re not always in the position that we want to be at.
-          We&apos;re constantly growing. We&apos;re constantly making mistakes.
-          We&apos;re constantly trying to express ourselves and actualize our
-          dreams.
-        </AccordionBody>
-      </Accordion>
+      {accordionData.map((item: any, index: any) => (
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.8,
+            delay: (index + 1) * 0.2,
+            ease: "easeIn",
+          }}
+          variants={{
+            visible: { opacity: 1, x: 0 },
+            hidden: { opacity: 0, x: 100 },
+          }}
+        >
+          <Accordion
+            className="mb-1 px-4"
+            key={index + 1}
+            open={open === index + 1}
+            icon={<Icon id={index + 1} open={open} />}
+          >
+            <AccordionHeader
+              // className={` font-iransans transition-colors ${
+              //   open === index + 1
+              //     ? "text-[#ffa500] hover:!text-[#ffa600b4]"
+              //     : ""
+              // }`}
+              className="font-iransans"
+              onClick={() => handleOpen(index + 1)}
+            >
+              {item.title}
+            </AccordionHeader>
+            <AccordionBody className="pt-0 text-base font-normal font-iransans">
+              {item.desc}
+            </AccordionBody>
+          </Accordion>
+        </motion.div>
+      ))}
     </>
   );
 }

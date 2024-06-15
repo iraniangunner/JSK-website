@@ -1,6 +1,6 @@
 "use client";
-import TopNav from "./top-nav";
-import Navbar from "./navbar";
+import TopNav from "./navbar/top-nav";
+import Navbar from "./navbar/navbar";
 
 export default function Header() {
   return (

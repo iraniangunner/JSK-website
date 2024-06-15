@@ -19,6 +19,7 @@ const config: Config = withMT({
         "footer-pattern": "url('../public/images/footer1.jpg')",
         "contact-pattern": "url('../public/images/contact-banner3.jpg')",
         "projects-pattern":"url('../public/images/contact-banner2.jpg')",
+        "section-1-pattern":"url('../public/images/section-1.png')",
       },
     },
   },

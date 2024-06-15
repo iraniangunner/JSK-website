@@ -47,7 +47,7 @@ export default function ProjectCarousel({ project }) {
 
           <SwiperSlide>
             <img
-              src={"https://image.tmdb.org/t/p/w500" + project.backdrop_path}
+              src={"https://image.tmdb.org/t/p/w500" + project.backdrop_path} className="w-full"
             />
           </SwiperSlide>
           <SwiperSlide>

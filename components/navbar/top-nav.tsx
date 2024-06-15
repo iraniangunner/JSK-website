@@ -2,14 +2,14 @@
 import { Typography } from "@material-tailwind/react";
 import { BsFillPersonFill } from "react-icons/bs";
 import Image from "next/image";
-import { ConvertLanguageBtn } from "./convertLanguageBtn";
+import { ConvertLanguageBtn } from "../convertLanguageBtn";
 import { MenuItem } from "@material-tailwind/react";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaPhoneFlip } from "react-icons/fa6";
 import Link from "next/link";
 import { MdEmail } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
-import jsk from "../public/images/jsk .png";
+import jsk from "../../public/images/jsk .png";
 
 export default function TopNav() {
   return (
