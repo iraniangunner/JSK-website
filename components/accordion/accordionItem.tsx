@@ -7,6 +7,7 @@ import {
   AccordionBody,
 } from "@material-tailwind/react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 function Icon({ id, open }: { id: number; open: number }) {
   return (
@@ -93,7 +94,13 @@ export function AccordionItem() {
               {item.title}
             </AccordionHeader>
             <AccordionBody className="pt-0 text-base font-normal font-iransans">
-              {item.desc}
+              <p>{item.desc}</p>
+              <Link
+                href="/"
+                className="inline-block px-4 py-2 text-white bg-[#ffa500] mt-4 border border-[#ffa500] hover:bg-white hover:text-[#ffa500] transition-all"
+              >
+                مشاهده بیش تر
+              </Link>
             </AccordionBody>
           </Accordion>
         </motion.div>
