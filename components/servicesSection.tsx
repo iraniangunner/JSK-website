@@ -6,7 +6,7 @@ import pic3 from "../public/images/pic3.jpg";
 import { motion } from "framer-motion";
 import { AccordionItem } from "./accordion/accordionItem";
 
-export default function Section1() {
+export default function ServicesSection() {
   return (
     <section className="w-full bg-section-1-pattern bg-right-bottom bg-no-repeat bg-cover">
       <div className="grid grid-cols-1 lg:grid-cols-2 w-[80%] xl:w-[70%] mx-auto gap-10 py-20">

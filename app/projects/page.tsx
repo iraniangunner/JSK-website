@@ -4,6 +4,9 @@ import { Suspense } from "react";
 import { getAllProjects } from "./api/route";
 import { unstable_noStore } from "next/cache";
 
+export const metadata = {
+  title: "ژیوار صنعت کیان | پروژه ها",
+};
 
 export default async function Projects() {
   // unstable_noStore();

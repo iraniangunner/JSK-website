@@ -4,6 +4,11 @@ import { FaLocationDot } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import Map from "@/components/googlemap";
 
+export const metadata = {
+  title: "ژیوار صنعت کیان | تماس با ما"
+};
+
+
 export default function Contact() {
   return (
     <>
