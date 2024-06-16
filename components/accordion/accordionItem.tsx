@@ -64,6 +64,7 @@ export function AccordionItem() {
       {accordionData.map((item: any, index: any) => (
         <motion.div
           initial="hidden"
+          key={index}
           whileInView="visible"
           viewport={{ once: true }}
           transition={{
