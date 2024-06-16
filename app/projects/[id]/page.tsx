@@ -2,7 +2,7 @@ import { SingleProject } from "@/components/project/singleproject/singleProject"
 import { getProjectById } from "@/app/projects/api/routes";
 import { getAllProjects } from "@/app/projects/api/routes";
 import { Metadata } from "next";
-// import { notFound } from "next/navigation";
+import { notFound } from "next/navigation";
 // import Error from "./error";
 
 type Props = {
@@ -11,17 +11,27 @@ type Props = {
 
 export const generateMetadata = async ({
   params,
-}: Props): Promise<Metadata> => {
+}: Props): Promise<Metadata | undefined> => {
   const project = await getProjectById(params.id);
+
+  if (!project) {
+    return;
+  }
 
   return {
     title: `پروژه ${project.title}`,
+    description: project.overview,
+    openGraph: {
+      title: `پروژه ${project.title}`,
+      description: project.overview,
+      images: [
+        {
+          url: "https://image.tmdb.org/t/p/w500" + project.backdrop_path,
+        },
+      ],
+    },
   };
 };
-
-// export const generateMetadata = ({ params }: Props): Metadata => {
-// return {title:`پروژه ${params.id}`}
-// }
 
 export default async function ProjectPage({ params }: Props) {
   const project = await getProjectById(params.id);
@@ -33,8 +43,8 @@ export default async function ProjectPage({ params }: Props) {
       ) && p.id !== project.id
   );
 
-  // if(!project || !allProjects){
-  //   notFound();
-  // }
+  if (!project || !allProjects) {
+    notFound();
+  }
   return <SingleProject project={project} related={related} />;
 }
