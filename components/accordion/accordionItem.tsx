@@ -93,7 +93,7 @@ export function AccordionItem() {
             >
               {item.title}
             </AccordionHeader>
-            <AccordionBody className="pt-0 text-base font-normal font-iransans">
+            <AccordionBody className="text-base font-normal font-iransans ">
               <p>{item.desc}</p>
               <Link
                 href="/"
