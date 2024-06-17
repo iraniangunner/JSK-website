@@ -1,7 +1,7 @@
 import { ProjectsGallery } from "@/components/project/projectGallery";
 import Link from "next/link";
 import { Suspense } from "react";
-import { getAllProjects } from "./api/routes";
+import { getAllProjects } from "@/utils/projects/getAllProjects";
 import { unstable_noStore } from "next/cache";
 
 export const metadata = {
