@@ -85,11 +85,6 @@ export function AccordionItem() {
             icon={<Icon id={index + 1} open={open} />}
           >
             <AccordionHeader
-              // className={` font-iransans transition-colors ${
-              //   open === index + 1
-              //     ? "text-[#ffa500] hover:!text-[#ffa600b4]"
-              //     : ""
-              // }`}
               className="font-iransans"
               onClick={() => handleOpen(index + 1)}
             >

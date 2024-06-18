@@ -373,6 +373,15 @@ body {
 }
 
 
+.project_slider_container:hover .project_slider_content{
+  background-image: linear-gradient(to top, rgba(3, 15, 39, 1), transparent);
+}
+
+.project_slider_content{
+  background-image: linear-gradient(to top, rgba(3, 15, 39, 0.7), transparent);
+}
+
+
 
 
 

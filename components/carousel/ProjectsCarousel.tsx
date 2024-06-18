@@ -20,6 +20,7 @@ const Slide: React.FC<SlideProps> = ({ delay, children }) => (
   <motion.div
     initial="hidden"
     whileInView="visible"
+    className="h-full"
     viewport={{ once: true }}
     variants={{
       visible: { opacity: 1, y: 0 },
@@ -65,7 +66,7 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
       spaceBetween={10}
       breakpoints={{
         640: {
-          slidesPerView: 2,
+          slidesPerView: 1,
           spaceBetween: 20,
         },
         768: {
@@ -73,8 +74,12 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
           spaceBetween: 40,
         },
         1024: {
-          slidesPerView: 2,
+          slidesPerView: 1,
           spaceBetween: 50,
+        },
+        1280: {
+          slidesPerView: 2,
+          spaceBetween: 30,
         },
       }}
       loop={true}
@@ -86,15 +91,18 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
       {projects.map((p, index) => (
         <SwiperSlide key={p.id}>
           <Slide delay={delays[index] || 0}>
-            <div className="relative flex flex-col mt-6 text-gray-700 bg-white shadow-md bg-clip-border rounded-xl font-iransans">
-              <div className="relative h-56 mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
+            <div className="relative h-full text-gray-700 project_slider_container bg-white font-iransans">
+              <div className="relative h-full">
                 <img
                   src={"https://image.tmdb.org/t/p/w500" + p.backdrop_path}
                   alt="card-image"
                   className="h-full w-full"
                 />
               </div>
-              <div className="p-6">
+              <div className="absolute top-0 left-0 w-full h-full project_slider_content flex flex-col justify-end py-6 px-4">
+                 
+              </div>
+              {/* <div className="p-6">
                 <h5 className="block mb-2 font-sans text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
                   {p.title}
                 </h5>
@@ -111,7 +119,7 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
                 >
                   مشاهده بیشتر
                 </Link>
-              </div>
+              </div> */}
             </div>
           </Slide>
         </SwiperSlide>

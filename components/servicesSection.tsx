@@ -1,5 +1,4 @@
 "use client";
-import React, { useState } from "react";
 import pic1 from "../public/images/pic1.jpg";
 import pic2 from "../public/images/pic2.jpg";
 import pic3 from "../public/images/pic3.jpg";
@@ -10,7 +9,7 @@ export default function ServicesSection() {
   return (
     <section>
       <div className="grid grid-cols-1 lg:grid-cols-2 w-[80%] xl:w-[70%] mx-auto gap-10 py-20 overflow-hidden lg:overflow-visible">
-        <div className="order-2 lg:order-1 max-w-full flex flex-col justify-center">
+        <div className="order-2 lg:order-1 max-w-full">
           <motion.h1
             initial="hidden"
             whileInView="visible"
@@ -27,7 +26,7 @@ export default function ServicesSection() {
           <motion.p
             initial="hidden"
             whileInView="visible"
-            className="mt-6 mb-8 overflow-hidden"
+            className="mt-6 mb-8 text-justify overflow-hidden"
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeIn" }}
             variants={{

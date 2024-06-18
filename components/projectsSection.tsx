@@ -26,7 +26,7 @@ export const ProjectsSection: React.FC<ProjectsCarouselProps> = ({
         <div className="order-2 lg:order-1">
           <ProjectsCarousel projects={projects} />
         </div>
-        <div className="z-[1] w-[80%] xl:w-[70%] order-1 lg:order-2">
+        <div className="z-[1] order-1 lg:order-2">
           <motion.h1
             initial="hidden"
             whileInView="visible"
@@ -43,7 +43,7 @@ export const ProjectsSection: React.FC<ProjectsCarouselProps> = ({
           <motion.p
             initial="hidden"
             whileInView="visible"
-            className="text-white overflow-hidden"
+            className="text-white text-justify overflow-hidden"
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeIn" }}
             variants={{
