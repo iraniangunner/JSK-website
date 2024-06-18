@@ -78,12 +78,13 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
         },
       }}
       loop={true}
-    //autoplay={{ delay: 4000 }}
+      //autoplay={{ delay: 4000 }}
+      grabCursor={true}
       modules={[Autoplay, Navigation, EffectFade]}
-      className="h-full"
+      style={{paddingTop:60 , height:"100%"}}
     >
       {projects.map((p, index) => (
-        <SwiperSlide key={p.id} className="pt-[60px]">
+        <SwiperSlide key={p.id}>
           <Slide delay={delays[index] || 0}>
             <div className="relative flex flex-col mt-6 text-gray-700 bg-white shadow-md bg-clip-border rounded-xl font-iransans">
               <div className="relative h-56 mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">

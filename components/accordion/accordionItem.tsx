@@ -66,6 +66,7 @@ export function AccordionItem() {
           initial="hidden"
           key={index}
           whileInView="visible"
+          className="overflow-hidden"
           viewport={{ once: true }}
           transition={{
             duration: 0.8,

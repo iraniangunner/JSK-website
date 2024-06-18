@@ -1,7 +1,7 @@
 "use client";
 import { ProjectsCarousel } from "./carousel/ProjectsCarousel";
 import Link from "next/link";
-import { Button } from "@material-tailwind/react";
+import { motion } from "framer-motion";
 // import SwiperTabSlider from "./carousel/TabCarousel";
 
 interface Project {
@@ -27,8 +27,30 @@ export const ProjectsSection: React.FC<ProjectsCarouselProps> = ({
           <ProjectsCarousel projects={projects} />
         </div>
         <div className="z-[1] w-[80%] xl:w-[70%] order-1 lg:order-2">
-          <h1 className="text-xl text-white mb-4">برخی پروژه ها ی اخیر</h1>
-          <p className="text-white">
+          <motion.h1
+            initial="hidden"
+            whileInView="visible"
+            className="text-xl text-white mb-4 overflow-hidden"
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeIn" }}
+            variants={{
+              visible: { opacity: 1, y: 0 },
+              hidden: { opacity: 0, y: 100 },
+            }}
+          >
+            برخی پروژه های اخیر
+          </motion.h1>
+          <motion.p
+            initial="hidden"
+            whileInView="visible"
+            className="text-white overflow-hidden"
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeIn" }}
+            variants={{
+              visible: { opacity: 1, y: 0 },
+              hidden: { opacity: 0, y: 100 },
+            }}
+          >
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
             استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
             ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز،
@@ -40,18 +62,30 @@ export const ProjectsSection: React.FC<ProjectsCarouselProps> = ({
             راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل
             حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود
             طراحی اساسا مورد استفاده قرار گیرد.
-          </p>
-          <Link
-            className="align-middle inline-block mt-6 select-none font-bold text-center 
+          </motion.p>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            className="overflow-hidden"
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeIn" }}
+            variants={{
+              visible: { opacity: 1, y: 0 },
+              hidden: { opacity: 0, y: 100 },
+            }}
+          >
+            <Link
+              className="align-middle inline-block mt-6 select-none font-bold text-center 
                     uppercase transition-all disabled:opacity-50 disabled:shadow-none 
-                    disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gray-900 
-                    text-white shadow-md shadow-gray-900/10 hover:shadow-lg 
+                    disabled:pointer-events-none py-3 px-6 rounded-lg bg-white 
+                    text-gray-900 shadow-md shadow-gray-900/10 hover:shadow-lg 
                     hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none 
                     active:opacity-[0.85] active:shadow-none"
-            href="/projects"
-          >
-            مشاهده بیشتر
-          </Link>
+              href="/projects"
+            >
+              مشاهده همه
+            </Link>
+          </motion.div>
         </div>
       </div>
     </section>
