@@ -10,11 +10,24 @@ export default function ServicesSection() {
   return (
     <section>
       <div className="grid grid-cols-1 lg:grid-cols-2 w-[80%] xl:w-[70%] mx-auto gap-10 py-20 overflow-hidden lg:overflow-visible">
-        <div className="order-2 lg:order-1 max-w-full">
+        <div className="order-2 lg:order-1 max-w-full flex flex-col justify-center">
+          <motion.h1
+            initial="hidden"
+            whileInView="visible"
+            className="text-xl"
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeIn" }}
+            variants={{
+              visible: { opacity: 1, x: 0 },
+              hidden: { opacity: 0, x: 100 },
+            }}
+          >
+            خدمات ژیوار صنعت کیان
+          </motion.h1>
           <motion.p
             initial="hidden"
             whileInView="visible"
-            className="my-8"
+            className="mt-6 mb-8"
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeIn" }}
             variants={{

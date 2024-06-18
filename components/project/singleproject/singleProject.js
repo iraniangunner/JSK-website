@@ -167,7 +167,7 @@ export function SingleProject({ project, related }) {
             <div>
               <VideoPlayer
                 options={videoJsOptions}
-                onReady={() => console.log("The video is ready to play")}
+                // onReady={() => console.log("The video is ready to play")}
               />
             </div>
           </div>
