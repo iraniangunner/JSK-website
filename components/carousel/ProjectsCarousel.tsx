@@ -86,8 +86,7 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
         },
       }}
       loop={true}
-      //autoplay={{ delay: 4000 }}
-      // grabCursor={true}
+      autoplay={{ delay: 4000 }}
       modules={[Autoplay, Navigation, EffectFade]}
       style={{ paddingTop: 60, height: "100%" }}
     >
@@ -112,7 +111,7 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
                   <div className="mb-4 h-[1px]  bg-[rgb(225_230_238)] opacity-[0.4]"></div>
                   <div className="mb-6 opacity-0 group-hover:opacity-[1] grop transition-all duration-[0.3] delay-[0.1]">
                     <div className="text-white">
-                      <p>{p.overview.slice(0, 20)}</p>
+                      <p>ساخت و ساز</p>
                     </div>
                   </div>
                 </div>
