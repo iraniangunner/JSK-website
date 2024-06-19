@@ -41,14 +41,6 @@ export function SingleProject({ project, related }) {
     },
   };
   useEffect(() => {
-    // const related = allProjects.filter(
-    //   (p) =>
-    //     p.genre_ids.some((item) =>
-    //       project.genres.map((g) => g.id).includes(item)
-    //     ) && p.id !== project.id
-    // );
-    // setRelatedPosts(related);
-
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);

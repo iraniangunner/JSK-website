@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 export function Project({ projectDetails, message }) {
 
@@ -23,6 +24,8 @@ export function Project({ projectDetails, message }) {
         </div>
         <img
           src={"https://image.tmdb.org/t/p/w500" + projectDetails.backdrop_path}
+          // width={300}
+          // height={300}
           className="h-auto max-w-full rounded-lg"
           alt=""
         />

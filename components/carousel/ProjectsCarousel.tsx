@@ -6,10 +6,12 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import Link from "next/link";
+import Image from "next/image";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { IoIosArrowRoundBack } from "react-icons/io";
 
 interface SlideProps {
   delay: number;
@@ -35,6 +37,7 @@ const Slide: React.FC<SlideProps> = ({ delay, children }) => (
 interface Project {
   id: string;
   title: string;
+  overview: string;
   backdrop_path: string;
 }
 
@@ -84,42 +87,42 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
       }}
       loop={true}
       //autoplay={{ delay: 4000 }}
-      grabCursor={true}
+      // grabCursor={true}
       modules={[Autoplay, Navigation, EffectFade]}
-      style={{paddingTop:60 , height:"100%"}}
+      style={{ paddingTop: 60, height: "100%" }}
     >
       {projects.map((p, index) => (
         <SwiperSlide key={p.id}>
           <Slide delay={delays[index] || 0}>
-            <div className="relative h-full text-gray-700 project_slider_container bg-white font-iransans">
+            <div className="relative h-full text-gray-700 group project_slider_container bg-white font-iransans select-none">
               <div className="relative h-full">
-                <img
+                <Image
                   src={"https://image.tmdb.org/t/p/w500" + p.backdrop_path}
+                  width={500}
+                  height={500}
                   alt="card-image"
-                  className="h-full w-full"
+                  style={{ width: 500, height: 400 }}
                 />
               </div>
               <div className="absolute top-0 left-0 w-full h-full project_slider_content flex flex-col justify-end py-6 px-4">
-                 
+                <div className="translate-y-[80px] group-hover:translate-y-0 mb-[30px] group-hover:mb-0 transition-all duration-[0.3]">
+                  <h3 className="mb-6 text-white">
+                    <Link href={`/projects/${p.id}`}> {p.title}</Link>
+                  </h3>
+                  <div className="mb-4 h-[1px]  bg-[rgb(225_230_238)] opacity-[0.4]"></div>
+                  <div className="mb-6 opacity-0 group-hover:opacity-[1] grop transition-all duration-[0.3] delay-[0.1]">
+                    <div className="text-white">
+                      <p>{p.overview.slice(0, 20)}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="text-white group-hover:text-[#ffa500] transition-all duration-[0.3]">
+                  <Link href={`/projects/${p.id}`} className="flex items-center gap-1 h-full">
+                    <span>مشاهده بیش تر</span>
+                    <IoIosArrowRoundBack size={30} />
+                  </Link>
+                </div>
               </div>
-              {/* <div className="p-6">
-                <h5 className="block mb-2 font-sans text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
-                  {p.title}
-                </h5>
-              </div>
-              <div className="p-6 pt-0 self-center">
-                <Link
-                  className="align-middle select-none font-bold text-center 
-                    uppercase transition-all disabled:opacity-50 disabled:shadow-none 
-                    disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gray-900 
-                    text-white shadow-md shadow-gray-900/10 hover:shadow-lg 
-                    hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none 
-                    active:opacity-[0.85] active:shadow-none"
-                  href={`/projects/${p.id}`}
-                >
-                  مشاهده بیشتر
-                </Link>
-              </div> */}
             </div>
           </Slide>
         </SwiperSlide>

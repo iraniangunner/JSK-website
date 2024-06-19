@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 interface Project {
   id: string;
   title: string;
+  overview:string;
   backdrop_path: string;
 }
 
@@ -26,7 +27,7 @@ export const ProjectsSection: React.FC<ProjectsCarouselProps> = ({
         <div className="order-2 lg:order-1">
           <ProjectsCarousel projects={projects} />
         </div>
-        <div className="z-[1] order-1 lg:order-2">
+        <div className="z-[1] order-1 lg:order-2 flex flex-col justify-center">
           <motion.h1
             initial="hidden"
             whileInView="visible"
