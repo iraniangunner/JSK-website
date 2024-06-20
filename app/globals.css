@@ -107,7 +107,6 @@ body {
   height: 25px !important;
 }
 
-
 /********Related projects slider buttons**************/
 .related-prev {
   position: unset !important;
@@ -126,10 +125,6 @@ body {
 }
 
 /********Related projects slider buttons************/
-
-
-
-
 
 /**********ant-design-table-styles***************************************/
 
@@ -342,7 +337,6 @@ body {
   height: 500px;
 }
 
-
 .thumbs .swiper-slide {
   opacity: 0.25;
 }
@@ -350,7 +344,6 @@ body {
 .thumbs .swiper-slide-thumb-active {
   opacity: 1;
 }
-
 
 .customOverlay {
   background: rgba(0, 0, 0, 0.7) !important;
@@ -362,7 +355,6 @@ body {
   width: 100%;
 }
 
-
 @keyframes customEnterModalAnimation {
   0% {
     transform: scale(0.2);
@@ -372,29 +364,10 @@ body {
   }
 }
 
-
-.project_slider_container:hover .project_slider_content{
+.project_slider_container:hover .project_slider_content {
   background-image: linear-gradient(to top, rgba(3, 15, 39, 1), transparent);
 }
 
-.project_slider_content{
+.project_slider_content {
   background-image: linear-gradient(to top, rgba(3, 15, 39, 0.7), transparent);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

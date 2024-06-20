@@ -128,11 +128,13 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
       ))}
 
       <div className="absolute right-[20px] top-0 flex gap-2">
-        <div className="swiper-button-prev related-prev after:hidden border border-[#ffa500] rounded-full p-[8px]">
-          <FaArrowLeftLong color="white" />
+        <div className="swiper-button-prev related-prev after:hidden border border-[#ffa500] rounded-full
+        hover:bg-white bg-[#ffa500] transition-all">
+          <FaArrowLeftLong className="text-white hover:text-[#ffa500] transition-all p-[8px]" />
         </div>
-        <div className="swiper-button-next related-next after:hidden border border-[#ffa500] rounded-full p-[8px]">
-          <FaArrowRightLong color="white" />
+        <div className="swiper-button-next related-next after:hidden border border-[#ffa500] rounded-full
+        hover:bg-white bg-[#ffa500] transition-all">
+          <FaArrowRightLong className="text-white hover:text-[#ffa500] transition-all p-[8px]" />
         </div>
       </div>
     </Swiper>
