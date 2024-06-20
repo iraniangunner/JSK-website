@@ -94,7 +94,9 @@ export function AccordionItem() {
               <p>{item.desc}</p>
               <Link
                 href="/"
-                className="inline-block px-4 py-2 text-white bg-[#ffa500] mt-4 border border-[#ffa500] hover:bg-white hover:text-[#ffa500] transition-all"
+                className="inline-block px-4 py-2 text-white bg-[#ffa500] 
+                mt-4 border border-[#ffa500] hover:bg-white hover:text-[#ffa500] 
+                transition-all"
               >
                 مشاهده بیش تر
               </Link>

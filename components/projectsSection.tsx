@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 interface Project {
   id: string;
   title: string;
-  overview:string;
+  overview: string;
   backdrop_path: string;
 }
 
@@ -76,13 +76,10 @@ export const ProjectsSection: React.FC<ProjectsCarouselProps> = ({
             }}
           >
             <Link
-              className="align-middle inline-block mt-6 select-none font-bold text-center 
-                    uppercase transition-all disabled:opacity-50 disabled:shadow-none 
-                    disabled:pointer-events-none py-3 px-6 rounded-lg bg-white 
-                    text-gray-900 shadow-md shadow-gray-900/10 hover:shadow-lg 
-                    hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none 
-                    active:opacity-[0.85] active:shadow-none"
               href="/projects"
+              className="inline-block px-4 py-2 text-white bg-[#ffa500] 
+                mt-4 border border-[#ffa500] hover:bg-white hover:text-[#ffa500] 
+                transition-all"
             >
               مشاهده همه
             </Link>
