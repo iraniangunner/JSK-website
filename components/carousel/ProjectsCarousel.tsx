@@ -100,7 +100,7 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
                   width={500}
                   height={500}
                   alt="card-image"
-                  style={{ width: 500, height: 400 }}
+                  className="w-full h-full"
                 />
               </div>
               <div className="absolute top-0 left-0 w-full h-full project_slider_content flex flex-col justify-end py-6 px-4">
@@ -116,7 +116,10 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
                   </div>
                 </div>
                 <div className="text-white group-hover:text-[#ffa500] transition-all duration-[0.3]">
-                  <Link href={`/projects/${p.id}`} className="flex items-center gap-1 h-full">
+                  <Link
+                    href={`/projects/${p.id}`}
+                    className="flex items-center gap-1 h-full"
+                  >
                     <span>مشاهده بیش تر</span>
                     <IoIosArrowRoundBack size={30} />
                   </Link>
@@ -128,12 +131,16 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
       ))}
 
       <div className="absolute right-[20px] top-0 flex gap-2">
-        <div className="swiper-button-prev related-prev after:hidden border border-[#ffa500] rounded-full
-        hover:bg-white bg-[#ffa500] transition-all">
+        <div
+          className="swiper-button-prev related-prev after:hidden border border-[#ffa500] rounded-full
+        hover:bg-white bg-[#ffa500] transition-all"
+        >
           <FaArrowLeftLong className="text-white hover:text-[#ffa500] transition-all p-[8px]" />
         </div>
-        <div className="swiper-button-next related-next after:hidden border border-[#ffa500] rounded-full
-        hover:bg-white bg-[#ffa500] transition-all">
+        <div
+          className="swiper-button-next related-next after:hidden border border-[#ffa500] rounded-full
+        hover:bg-white bg-[#ffa500] transition-all"
+        >
           <FaArrowRightLong className="text-white hover:text-[#ffa500] transition-all p-[8px]" />
         </div>
       </div>
