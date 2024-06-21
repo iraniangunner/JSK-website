@@ -5,9 +5,8 @@ import { MdEmail } from "react-icons/md";
 import Map from "@/components/googlemap";
 
 export const metadata = {
-  title: "ژیوار صنعت کیان | تماس با ما"
+  title: "ژیوار صنعت کیان | تماس با ما",
 };
-
 
 export default function Contact() {
   return (
@@ -74,7 +73,7 @@ export default function Contact() {
             </h4>
             <p className="mb-0 text-[18px] text-[#777777]">
               info@jsk-co.com
-              <br /> 
+              <br />
             </p>
           </div>
         </div>

@@ -10,9 +10,7 @@ export default function Tender() {
   return (
     <div className="my-12 mx-8">
       <TenderSearch />
-      {/* <Suspense fallback={<h1 className="text-[30px]">Loading...</h1>}> */}
       <TenderTable />
-      {/* </Suspense> */}
     </div>
   );
 }

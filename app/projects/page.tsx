@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { getAllProjects } from "@/utils/projects/getAllProjects";
 import { unstable_noStore } from "next/cache";
+import ProjectsGrid from "@/components/project/projectsGrid";
 
 export const metadata = {
   title: "ژیوار صنعت کیان | پروژه ها",
@@ -10,7 +11,7 @@ export const metadata = {
 
 export default async function Projects() {
   // unstable_noStore();
-  const projects = await getAllProjects();
+  // const projects = await getAllProjects();
   return (
     <>
       <div
@@ -42,7 +43,9 @@ export default async function Projects() {
         </h1>
       </div>
       <div className="my-12 mx-8">
-        <ProjectsGallery projects={projects.results} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <ProjectsGrid />
+        </Suspense>
       </div>
     </>
   );
