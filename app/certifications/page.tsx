@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { CertificationsCarousel } from "@/components/carousel/CertificationCarousel";
-import Certificate from "@/components/carousel/certificate";
+import Certificate from "@/components/Certificate";
 import { Suspense } from "react";
 
 export const metadata = {
