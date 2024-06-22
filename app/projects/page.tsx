@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { getAllProjects } from "@/utils/projects/getAllProjects";
 import { unstable_noStore } from "next/cache";
-import ProjectsGrid from "@/components/project/projectsGrid";
 import ProjectsTable from "@/components/project/projectsTbl";
 import Tabs from "@/components/project/projectTabs";
 import ProjectTabs from "@/components/project/projectTabs";
