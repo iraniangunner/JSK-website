@@ -100,7 +100,7 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
                   width={500}
                   height={400}
                   alt="card-image"
-                 style={{width:"100%" , height:"100%"}}
+                 style={{width:500 , height:400}}
                 />
               </div>
               <div className="absolute top-0 left-0 w-full h-full project_slider_content flex flex-col justify-end py-6 px-4">
