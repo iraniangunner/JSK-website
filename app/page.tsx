@@ -1,6 +1,6 @@
 import MainCarousel from "@/components/carousel/MainCarousel";
 import dataSlider from "../data.json";
-import { getAllProjects } from "@/utils/projects/getAllProjects";
+import { getAllProjects } from "@/utils/server-utils/getAllProjects";
 import ServicesSection from "../components/servicesSection";
 import { ProjectsSection } from "@/components/projectsSection";
 

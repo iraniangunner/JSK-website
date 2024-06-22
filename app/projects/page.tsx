@@ -1,7 +1,7 @@
 // import { ProjectsGallerys } from "@/components/project/projectGallery";
 import Link from "next/link";
 import { Suspense } from "react";
-import { getAllProjects } from "@/utils/projects/getAllProjects";
+import { getAllProjects } from "@/utils/server-utils/getAllProjects";
 import { unstable_noStore } from "next/cache";
 import ProjectsTable from "@/components/project/projectsTbl";
 import Tabs from "@/components/project/projectTabs";

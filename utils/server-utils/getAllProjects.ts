@@ -1,3 +1,5 @@
+import "server-only";
+
 export async function getAllProjects(page:number) {
   const options = {
     method: "GET",

@@ -1,4 +1,4 @@
-import { getAllProjects } from "@/utils/projects/getAllProjects";
+import { getAllProjects } from "@/utils/server-utils/getAllProjects";
 import { Project } from "./projectView";
 
 export default async function ProjectsTable({

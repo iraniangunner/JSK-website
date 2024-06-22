@@ -1,3 +1,5 @@
+import "server-only";
+
 export async function getProjectById(project_id: string) {
     const options = {
       method: "GET",
