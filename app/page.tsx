@@ -5,7 +5,7 @@ import ServicesSection from "../components/servicesSection";
 import { ProjectsSection } from "@/components/projectsSection";
 
 export default async function Home() {
-  const projects = await getAllProjects();
+  const projects = await getAllProjects(1);
   const sliderProjects = projects.results.slice(0, 6);
   return (
     <>

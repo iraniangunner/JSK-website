@@ -1,4 +1,4 @@
-export async function getAllProjects() {
+export async function getAllProjects(page:number) {
   const options = {
     method: "GET",
     headers: {
@@ -9,7 +9,7 @@ export async function getAllProjects() {
   };
 
   const allProjects = await fetch(
-    "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+    `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`,
     options
   )
     .then((res) => res.json())

@@ -9,7 +9,7 @@ import { VideoPlayer } from "./videoplayer/video-player";
 import { FaCheck } from "react-icons/fa6";
 import ProjectCarousel from "./thumbscarousel/thumbsCarousel";
 
-export function SingleProject({ project, related }) {
+export function SingleProject({ project}:{project:any}) {
   const [isScrolling, setIsScrolling] = useState(false);
 
   const handleScroll = () => {
@@ -168,7 +168,7 @@ export function SingleProject({ project, related }) {
 
       <div className="max-w-[1300px] my-24 mx-auto px-8">
         {/* <h1 className="mb-8 text-xl">پروژه ها ی مرتبط</h1> */}
-        <RelatedCarousel related={related} />
+        {/* <RelatedCarousel related={related} /> */}
       </div>
     </>
   );

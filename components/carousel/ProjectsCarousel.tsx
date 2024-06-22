@@ -98,9 +98,9 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
                 <Image
                   src={"https://image.tmdb.org/t/p/w500" + p.backdrop_path}
                   width={500}
-                  height={500}
+                  height={400}
                   alt="card-image"
-                  className="w-full h-full"
+                 style={{width:"100%" , height:"100%"}}
                 />
               </div>
               <div className="absolute top-0 left-0 w-full h-full project_slider_content flex flex-col justify-end py-6 px-4">

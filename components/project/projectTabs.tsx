@@ -1,40 +1,22 @@
 "use client";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-export function Filter({
-  projects,
-  setFiltered,
-  activeProject,
-  setActiveProject,
-  setMessage,
-}) {
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setMessage(true);
-    }, 2000);
+export default function ProjectTabs() {
+  const searchParams = useSearchParams();
 
-    if (activeProject === 0) {
-      setFiltered(projects);
-      return;
-    }
-
-    const filtered = projects.filter((project) =>
-      project.genre_ids.includes(activeProject)
-    );
-    setFiltered(filtered);
-    return () => clearTimeout(timeoutId);
-  }, [activeProject]);
+  const router = useRouter();
 
   return (
     <div className="flex items-center justify-center gap-2 lg:gap-0 py-4 md:py-8 flex-wrap">
       <button
         onClick={() => {
-          setActiveProject(0);
-          setMessage(false);
+          router.push(`/projects?type=1`);
         }}
         type="button"
         className={`filter_btn hover:text-white ${
-          activeProject === 0
+          searchParams.get("type") === "1" || searchParams.get("type") === null
             ? "filter_active hover:before:bg-[#ffa500] hover:before:w-0 hover:before:h-0"
             : ""
         }`}
@@ -43,12 +25,11 @@ export function Filter({
       </button>
       <button
         onClick={() => {
-          setActiveProject(35);
-          setMessage(false);
+          router.push(`/projects?type=2`);
         }}
         type="button"
         className={`filter_btn hover:text-white ${
-          activeProject === 35
+          searchParams.get("type") === "2"
             ? "filter_active hover:before:bg-[#ffa500] hover:before:w-0 hover:before:h-0"
             : ""
         }`}
@@ -57,12 +38,11 @@ export function Filter({
       </button>
       <button
         onClick={() => {
-          setActiveProject(28);
-          setMessage(false);
+          router.push(`/projects?type=3`);
         }}
         type="button"
         className={`filter_btn hover:text-white ${
-          activeProject === 28
+          searchParams.get("type") === "3"
             ? "filter_active hover:before:bg-[#ffa500] hover:before:w-0 hover:before:h-0"
             : ""
         }`}
@@ -71,12 +51,11 @@ export function Filter({
       </button>
       <button
         onClick={() => {
-          setActiveProject(16);
-          setMessage(false);
+          router.push(`/projects?type=4`);
         }}
         type="button"
         className={`filter_btn hover:text-white ${
-          activeProject === 16
+          searchParams.get("type") === "4"
             ? "filter_active hover:before:bg-[#ffa500] hover:before:w-0 hover:before:h-0"
             : ""
         }`}
@@ -85,12 +64,11 @@ export function Filter({
       </button>
       <button
         onClick={() => {
-          setActiveProject(12);
-          setMessage(false);
+          router.push(`/projects?type=5`);
         }}
         type="button"
         className={`filter_btn hover:text-white ${
-          activeProject === 12
+          searchParams.get("type") === "5"
             ? "filter_active hover:before:bg-[#ffa500] hover:before:w-0 hover:before:h-0"
             : ""
         }`}
@@ -99,12 +77,11 @@ export function Filter({
       </button>
       <button
         onClick={() => {
-          setActiveProject(18);
-          setMessage(false);
+          router.push(`/projects?type=6`);
         }}
         type="button"
         className={`filter_btn hover:text-white ${
-          activeProject === 18
+          searchParams.get("type") === "6"
             ? "filter_active hover:before:bg-[#ffa500] hover:before:w-0 hover:before:h-0"
             : ""
         }`}

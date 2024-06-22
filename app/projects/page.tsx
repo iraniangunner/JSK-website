@@ -1,15 +1,27 @@
-import { ProjectsGallery } from "@/components/project/projectGallery";
+// import { ProjectsGallerys } from "@/components/project/projectGallery";
 import Link from "next/link";
 import { Suspense } from "react";
 import { getAllProjects } from "@/utils/projects/getAllProjects";
 import { unstable_noStore } from "next/cache";
 import ProjectsGrid from "@/components/project/projectsGrid";
+import ProjectsTable from "@/components/project/projectsTbl";
+import Tabs from "@/components/project/projectTabs";
+import ProjectTabs from "@/components/project/projectTabs";
 
 export const metadata = {
   title: "ژیوار صنعت کیان | پروژه ها",
 };
 
-export default async function Projects() {
+export default async function Projects({
+  searchParams,
+}: {
+  searchParams?: {
+    // query?: string;
+    type?: string;
+  };
+}) {
+  // const query = searchParams?.query || '';
+  const currentType = Number(searchParams?.type) || 1;
   // unstable_noStore();
   // const projects = await getAllProjects();
   return (
@@ -43,9 +55,12 @@ export default async function Projects() {
         </h1>
       </div>
       <div className="my-12 mx-8">
-        <Suspense fallback={<div>Loading...</div>}>
-          <ProjectsGrid />
-        </Suspense>
+        <div className="max-w-[960px] mx-auto">
+          <ProjectTabs />
+          <Suspense key={currentType} fallback={<div>Loading...</div>}>
+            <ProjectsTable currentType={currentType} />
+          </Suspense>
+        </div>
       </div>
     </>
   );
