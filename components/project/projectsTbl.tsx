@@ -9,7 +9,7 @@ export default async function ProjectsTable({
   currentType: number;
 }) {
   const projects = await getAllProjects(currentType);
-  //   await new Promise((resolve) => setTimeout(resolve, 3000));
+  // await new Promise((resolve) => setTimeout(resolve, 3000));
   const results = projects.results;
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 gap-4">

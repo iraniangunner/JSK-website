@@ -11,14 +11,14 @@ export function Project({ projectDetails }:{projectDetails:any}) {
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
     >
-      <Link href={`/projects/${projectDetails.id}`} className="relative block">
+      <Link href={`/projects/${projectDetails.id}`} className="relative block group">
         {/* <div
           className={`absolute top-0 left-0 bottom-0 rounded-lg w-full h-0 opacity-0 flex items-center justify-center bg-blue-gray-900 text-white  ${
             message ? "h-full opacity-60" : ""
           } transition-all duration-200`}
         > */}
         <div
-          className="absolute top-0 left-0 bottom-0 rounded-lg w-full h-0 opacity-0 flex items-center justify-center bg-blue-gray-900 text-white
+          className="absolute group-hover:h-full group-hover:opacity-60 top-0 left-0 bottom-0 rounded-lg w-full h-0 opacity-0 flex items-center justify-center bg-blue-gray-900 text-white
           transition-all duration-200"
         >
           <div className="flex items-center justify-center h-[80%] w-[80%] p-[8px] border border-solid border-[#ccc]">
