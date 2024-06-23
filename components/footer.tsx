@@ -21,7 +21,7 @@ const LINKS = [
   },
 ];
 
-const currentYear = new Date().getFullYear();
+// const currentYear = new Date().getFullYear();
 
 export default function Footer() {
   return (

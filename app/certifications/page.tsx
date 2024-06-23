@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { CertificationsCarousel } from "@/components/carousel/CertificationCarousel";
-import Certificate from "@/components/Certificate";
+import Certificate from "@/components/certificate";
 import { Suspense } from "react";
+import LoadingSpinner from "@/components/loadingSpinner";
 
 export const metadata = {
   title: "ژیوار صنعت کیان | گواهینامه ها",
@@ -40,11 +40,9 @@ export default async function Certifications() {
       </div>
       <div className="flex justify-center my-16">
         <div className="w-[80%] pt-[60px]">
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingSpinner/>}>
             <Certificate />
           </Suspense>
-
-          {/* <CertificationsCarousel /> */}
         </div>
       </div>
     </>

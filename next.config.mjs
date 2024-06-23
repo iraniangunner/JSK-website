@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    remotePatterns: [{ hostname: "image.tmdb.org" }],
+    remotePatterns: [{ protocol: "https", hostname: "image.tmdb.org" }],
   },
   // experimental: {
   //   taint: true,
