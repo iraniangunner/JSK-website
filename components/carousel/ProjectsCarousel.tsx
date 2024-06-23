@@ -73,11 +73,11 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
           spaceBetween: 20,
         },
         768: {
-          slidesPerView: 2,
+          slidesPerView: 1,
           spaceBetween: 40,
         },
         1024: {
-          slidesPerView: 1,
+          slidesPerView: 2,
           spaceBetween: 50,
         },
         1280: {
@@ -99,7 +99,8 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
                   src={"https://image.tmdb.org/t/p/w500" + p.backdrop_path}
                   width={500}
                   height={400}
-                  alt="card-image"
+                  alt="project-image"
+                  sizes="(max-width: 768px) 250px, 400px"
                  style={{width:"100%" , height:400}}
                 />
               </div>

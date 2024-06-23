@@ -1,11 +1,9 @@
-// import { ProjectsGallerys } from "@/components/project/projectGallery";
 import Link from "next/link";
 import { Suspense } from "react";
-import { getAllProjects } from "@/utils/server-utils/getAllProjects";
-import { unstable_noStore } from "next/cache";
 import ProjectsTable from "@/components/project/projectsTbl";
-import Tabs from "@/components/project/projectTabs";
+import { getAllProjects } from "@/utils/server-utils/getAllProjects";
 import ProjectTabs from "@/components/project/projectTabs";
+import Skeleton from "@/components/loadingSkeleton";
 
 export const metadata = {
   title: "ژیوار صنعت کیان | پروژه ها",
@@ -14,17 +12,13 @@ export const metadata = {
 export default async function Projects({
   searchParams,
 }: {
-  searchParams?: {
-    // query?: string;
-    type?: string;
-  };
+  searchParams: { [key: string]: string | string[] | undefined };
 }) {
-  // const query = searchParams?.query || '';
-  const currentType = Number(searchParams?.type) || 1;
-  // unstable_noStore();
-  // const projects = await getAllProjects();
+  const currentType =
+    typeof searchParams.type === "string" ? Number(searchParams.type) : 1;
+
   return (
-    <>
+    <div>
       <div
         className="relative bg-projects-pattern pt-[80px] lg:pt-[260px] 
         lg:pb-[10px] bg-[top_right] bg-no-repeat bg-fixed
@@ -56,11 +50,11 @@ export default async function Projects({
       <div className="my-12 mx-8">
         <div className="max-w-[960px] mx-auto">
           <ProjectTabs />
-          <Suspense key={currentType} fallback={<div>Loading...</div>}>
-            <ProjectsTable currentType={currentType} />
+          <Suspense key={currentType} fallback={<Skeleton />}>
+            <ProjectsTable type={currentType} />
           </Suspense>
         </div>
       </div>
-    </>
+    </div>
   );
 }

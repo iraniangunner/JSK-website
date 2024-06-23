@@ -1,20 +1,14 @@
-import { getAllProjects } from "@/utils/server-utils/getAllProjects";
 import { Project } from "./projectView";
+import { getAllProjects } from "@/utils/server-utils/getAllProjects";
 
-export default async function ProjectsTable({
-  // query,
-  currentType,
-}: {
-  // query: string;
-  currentType: number;
-}) {
-  const projects = await getAllProjects(currentType);
-  // await new Promise((resolve) => setTimeout(resolve, 3000));
-  const results = projects.results;
+export default async function ProjectsTable({ type }: { type: number }) {
+  // await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  const projects = await getAllProjects(type);
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-      {results.map((project: any, index: any) => (
-        <Project projectDetails={project} key={index} />
+      {projects.results.map((project: any) => (
+        <Project projectDetails={project} key={project.id} />
       ))}
     </div>
   );
