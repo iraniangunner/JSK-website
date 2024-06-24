@@ -2,20 +2,30 @@ import Link from "next/link";
 import { Suspense } from "react";
 import ProjectsTable from "@/components/project/projectsTbl";
 import { getAllProjects } from "@/utils/server-utils/getAllProjects";
-import ProjectTabs from "@/components/project/projectTabs";
+// import ProjectTabs fro@/components/project/projectTababs";
 import Skeleton from "@/components/loadingSkeleton";
+import ProjectTab from "@/components/project/projectTab";
 
 export const metadata = {
   title: "ژیوار صنعت کیان | پروژه ها",
 };
+
+const buttonTypes = [
+  { type: "1", text: "همه" },
+  { type: "2", text: "طراحی و مهندسی" },
+  { type: "3", text: "خرید" },
+  { type: "4", text: "نصب" },
+  { type: "5", text: "اجرا" },
+  { type: "6", text: "بهره برداری" },
+];
 
 export default async function Projects({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
-  const currentType =
-    typeof searchParams.type === "string" ? Number(searchParams.type) : 1;
+  const type =
+    typeof searchParams.type === "string" ? String(searchParams.type) : "1";
 
   return (
     <div>
@@ -49,10 +59,18 @@ export default async function Projects({
       </div>
       <div className="my-12 mx-8">
         <div className="max-w-[960px] mx-auto">
-          <ProjectTabs />
-          <Suspense key={currentType} fallback={<Skeleton />}>
-            <ProjectsTable type={currentType} />
-          </Suspense>
+          <div className="flex items-center justify-center gap-2 lg:gap-0 py-4 md:py-8 flex-wrap">
+            {buttonTypes.map((button) => (
+              <ProjectTab
+                key={button.text}
+                type={button.type}
+                text={button.text}
+              />
+            ))}
+          </div>
+
+          {/* <ProjectsTable type={currentType} /> */}
+          <ProjectsTable type={type} />
         </div>
       </div>
     </div>
