@@ -1,27 +1,27 @@
 "use client";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 export default function ProjectTab({
   type,
   text,
 }: {
-  type: string;
+  type: number;
   text: string;
 }) {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const handleClick = () => {
-    router.push(`/projects?type=${type}`);
+  const router = useRouter();
+
+  const handleChangeReleaseType = (newReleaseType: number) => {
+    router.push(`/projects?type=${newReleaseType}&page=1`);
   };
 
   return (
     <button
-      onClick={handleClick}
+      onClick={() => handleChangeReleaseType(type)}
       type="button"
       className={`filter_btn hover:text-white ${
-        searchParams.get("type") === type ||
+        searchParams.get("type") === String(type) ||
         (searchParams.get("type") === null && text === "همه")
           ? "filter_active hover:before:bg-[#ffa500] hover:before:w-0 hover:before:h-0"
           : ""

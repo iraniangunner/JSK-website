@@ -5,18 +5,19 @@ import { getAllProjects } from "@/utils/server-utils/getAllProjects";
 // import ProjectTabs fro@/components/project/projectTababs";
 import Skeleton from "@/components/loadingSkeleton";
 import ProjectTab from "@/components/project/projectTab";
+import Pagination from "@/components/project/projectPagination";
 
 export const metadata = {
   title: "ژیوار صنعت کیان | پروژه ها",
 };
 
 const buttonTypes = [
-  { type: "1", text: "همه" },
-  { type: "2", text: "طراحی و مهندسی" },
-  { type: "3", text: "خرید" },
-  { type: "4", text: "نصب" },
-  { type: "5", text: "اجرا" },
-  { type: "6", text: "بهره برداری" },
+  { type: 2012, text: "همه" },
+  { type: 2013, text: "طراحی و مهندسی" },
+  { type: 2014, text: "خرید" },
+  { type: 2015, text: "نصب" },
+  { type: 2016, text: "اجرا" },
+  { type: 2017, text: "بهره برداری" },
 ];
 
 export default async function Projects({
@@ -25,7 +26,14 @@ export default async function Projects({
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
   const type =
-    typeof searchParams.type === "string" ? String(searchParams.type) : "1";
+    typeof searchParams.type === "string" ? Number(searchParams.type) : 2012;
+
+  const page =
+    typeof searchParams.page === "string" ? Number(searchParams.page) : 1;
+
+  const data = await getAllProjects(page, type);
+
+  // console.log(totalPages.results);
 
   return (
     <div>
@@ -57,6 +65,7 @@ export default async function Projects({
           پروژه های ما
         </h1>
       </div>
+
       <div className="my-12 mx-8">
         <div className="max-w-[960px] mx-auto">
           <div className="flex items-center justify-center gap-2 lg:gap-0 py-4 md:py-8 flex-wrap">
@@ -69,8 +78,11 @@ export default async function Projects({
             ))}
           </div>
 
-          {/* <ProjectsTable type={currentType} /> */}
-          <ProjectsTable type={type} />
+          <Suspense key={type + page} fallback={<Skeleton />}>
+            <ProjectsTable type={type} page={page} />
+          </Suspense>
+
+          <Pagination type={type} total={data.total_pages} />
         </div>
       </div>
     </div>

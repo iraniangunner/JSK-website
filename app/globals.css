@@ -371,3 +371,25 @@ body {
 .project_slider_content {
   background-image: linear-gradient(to top, rgba(3, 15, 39, 0.7), transparent);
 }
+
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  justify-content: center;
+}
+
+
+.pagination li {
+  margin: 0 5px;
+}
+
+.pagination li a {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.pagination .active a {
+  background-color: #0070f3;
+  color: white;
+}

@@ -1,6 +1,7 @@
-import "server-only";
+// import "server-only";
+// import {unstable_noStore as noStore } from "next/cache";
 
-export async function getAllProjects(page: number) {
+export async function getAllProjects(page: number , type:number) {
   const options = {
     method: "GET",
     headers: {
@@ -10,12 +11,38 @@ export async function getAllProjects(page: number) {
     },
   };
 
+  // noStore();
+
   const allProjects = await fetch(
-    `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`,
-    options
+    `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&year=${type}`,
+    {...options , cache:"no-store"}
   )
     .then((res) => res.json())
     .catch((error) => console.log(error));
 
   return allProjects;
 }
+
+
+
+
+// const [data, setData] = useState([]);
+  // const [loading, setLoading] = useState(true);
+  // const [totalPages, setTotalPages] = useState<number>(1);
+
+  // const page = parseInt(searchParams.get("page") || "1", 10);
+  // const type = parseInt(searchParams.get("type") || "1", 10);
+
+  // useEffect(() => {
+  //   setLoading(true);
+  //   fetchData(type, page)
+  //     .then((fetchedData) => {
+  //       setData(fetchedData.results);
+  //       setTotalPages(fetchedData.total_pages);
+  //       setLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching data:", error);
+  //       setLoading(false);
+  //     });
+  // }, [type, page]);
