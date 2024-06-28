@@ -25,24 +25,3 @@ export async function getAllProjects(page: number , type:number) {
 
 
 
-
-// const [data, setData] = useState([]);
-  // const [loading, setLoading] = useState(true);
-  // const [totalPages, setTotalPages] = useState<number>(1);
-
-  // const page = parseInt(searchParams.get("page") || "1", 10);
-  // const type = parseInt(searchParams.get("type") || "1", 10);
-
-  // useEffect(() => {
-  //   setLoading(true);
-  //   fetchData(type, page)
-  //     .then((fetchedData) => {
-  //       setData(fetchedData.results);
-  //       setTotalPages(fetchedData.total_pages);
-  //       setLoading(false);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching data:", error);
-  //       setLoading(false);
-  //     });
-  // }, [type, page]);
