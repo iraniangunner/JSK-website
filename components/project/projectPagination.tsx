@@ -1,4 +1,5 @@
 "use client";
+import { toPersianNumber } from "@/utils/numberUtils";
 import { useRouter } from "next/navigation";
 
 const Pagination = ({
@@ -72,7 +73,7 @@ const Pagination = ({
             className={`page-number ${page === currentPage ? "active" : ""}`}
             onClick={() => onPageChange(page)}
           >
-            {page}
+            {toPersianNumber(page)}
           </button>
         )
       )}

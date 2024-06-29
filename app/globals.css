@@ -377,6 +377,7 @@ body {
   display: flex;
   justify-content: center;
   list-style-type: none;
+  direction: ltr;
   padding: 0;
 }
 
