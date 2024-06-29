@@ -37,7 +37,7 @@ export default async function Projects({
 
   return (
     <div>
-      {/* <div
+      <div
         className="relative bg-projects-pattern pt-[80px] lg:pt-[260px] 
         lg:pb-[10px] bg-[top_right] bg-no-repeat bg-fixed
         before:absolute before:content-[''] before:left-0 before:top-0
@@ -64,7 +64,7 @@ export default async function Projects({
         <h1 className="text-[35px] font-bold absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
           پروژه های ما
         </h1>
-      </div> */}
+      </div>
 
       <div className="my-12 mx-8">
         <div className="max-w-[960px] mx-auto">
