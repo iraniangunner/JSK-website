@@ -13,7 +13,7 @@ export default function ProjectTab({
   const router = useRouter();
 
   const handleChangeReleaseType = (newReleaseType: number) => {
-    router.push(`/projects?type=${newReleaseType}&page=1`);
+    router.push(`/projects?type=${newReleaseType}`);
   };
 
   return (
