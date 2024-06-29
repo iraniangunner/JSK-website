@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Suspense } from "react";
 import ProjectsTable from "@/components/project/projectsTbl";
 import { getAllProjects } from "@/utils/server-utils/getAllProjects";
-// import ProjectTabs fro@/components/project/projectTababs";
 import Skeleton from "@/components/loadingSkeleton";
 import ProjectTab from "@/components/project/projectTab";
 import Pagination from "@/components/project/projectPagination";
@@ -32,8 +31,6 @@ export default async function Projects({
     typeof searchParams.page === "string" ? Number(searchParams.page) : 1;
 
   const data = await getAllProjects(page, type);
-
-  // console.log(totalPages.results);
 
   return (
     <div>
@@ -82,7 +79,11 @@ export default async function Projects({
             <ProjectsTable type={type} page={page} />
           </Suspense>
 
-          <Pagination type={type} totalPages={data.total_pages} currentPage={page} />
+          <Pagination
+            type={type}
+            totalPages={data.total_pages}
+            currentPage={page}
+          />
         </div>
       </div>
     </div>

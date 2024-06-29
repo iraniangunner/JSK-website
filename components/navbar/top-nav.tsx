@@ -69,9 +69,9 @@ export default function TopNav() {
         </div>
       </div>
       <div className="flex justify-center items-center gap-1 lg:mr-10">
-        <Typography
-          as="a"
-          href="#"
+        <Link
+          // as="a"
+          href="/login"
           // variant="medium"
           color="gray"
           className="relative font-medium font-iransans text-blue-gray-500 login_btn"
@@ -84,7 +84,7 @@ export default function TopNav() {
             <BsFillPersonFill size={17} />
             <span className="mr-1">ورود</span>
           </MenuItem>
-        </Typography>
+        </Link>
         <ConvertLanguageBtn />
         <Typography
           as="a"
