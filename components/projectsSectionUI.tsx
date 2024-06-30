@@ -15,7 +15,7 @@ interface ProjectsCarouselProps {
   projects: Project[];
 }
 
-export const ProjectsSection: React.FC<ProjectsCarouselProps> = ({
+export const ProjectsSectionUI: React.FC<ProjectsCarouselProps> = ({
   projects,
 }) => {
   return (
@@ -23,6 +23,7 @@ export const ProjectsSection: React.FC<ProjectsCarouselProps> = ({
       className="relative bg-section-2-pattern bg-cover overflow-hidden bg-no-repeat bg-center before:content-[''] 
     before:absolute before:left-0 before:top-0 before:w-full before:h-full before:opacity-[0.9] before:z-[0] before:bg-[#042038]"
     >
+
       <div className="grid grid-cols-1 lg:grid-cols-2 w-[90%] mx-auto gap-10 py-20 ">
         <div className="order-2 lg:order-1">
           <ProjectsCarousel projects={projects} />
