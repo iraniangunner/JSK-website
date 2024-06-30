@@ -50,7 +50,7 @@ export default function ServicesSection() {
         </div>
 
         <div className="flex items-start order-1 lg:order-2">
-          <div className="relative ">
+          <div className="relative">
             <motion.div
               initial="hidden"
               whileInView="visible"

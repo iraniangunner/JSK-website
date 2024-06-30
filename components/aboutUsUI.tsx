@@ -15,7 +15,7 @@ export function AboutUsDetailsUI({ detail }: { detail: string }) {
       }}
     >
       <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-        درباره شرکت
+        درباره ژیوار صنعت کیان
       </h2>
       <p className="mt-4 text-gray-600 text-lg">{detail}</p>
       <div className="mt-8">
