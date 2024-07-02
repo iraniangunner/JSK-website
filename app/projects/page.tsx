@@ -1,10 +1,8 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import ProjectsTable from "@/components/project/projectsTbl";
-import { getAllProjects } from "@/utils/server-utils/getAllProjects";
 import Skeleton from "@/components/loadingSkeleton";
 import ProjectTab from "@/components/project/projectTab";
-import Pagination from "@/components/project/projectPagination";
 
 export const metadata = {
   title: "ژیوار صنعت کیان | پروژه ها",
@@ -29,8 +27,6 @@ export default async function Projects({
 
   const page =
     typeof searchParams.page === "string" ? Number(searchParams.page) : 1;
-
-  // const data = await getAllProjects(page, type);
 
   return (
     <div>
@@ -78,8 +74,6 @@ export default async function Projects({
           <Suspense key={type + page} fallback={<Skeleton />}>
             <ProjectsTable type={type} page={page} />
           </Suspense>
-
-        
         </div>
       </div>
     </div>
