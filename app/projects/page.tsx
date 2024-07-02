@@ -30,7 +30,7 @@ export default async function Projects({
   const page =
     typeof searchParams.page === "string" ? Number(searchParams.page) : 1;
 
-  const data = await getAllProjects(page, type);
+  // const data = await getAllProjects(page, type);
 
   return (
     <div>
@@ -79,11 +79,7 @@ export default async function Projects({
             <ProjectsTable type={type} page={page} />
           </Suspense>
 
-          <Pagination
-            type={type}
-            totalPages={data.total_pages}
-            currentPage={page}
-          />
+        
         </div>
       </div>
     </div>
