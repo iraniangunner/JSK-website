@@ -2,6 +2,7 @@ import { Project } from "./projectView";
 import { getAllProjects } from "@/utils/server-utils/getAllProjects";
 import Pagination from "@/components/project/projectPagination";
 
+
 export default async function ProjectsTable({
   type,
   page,
