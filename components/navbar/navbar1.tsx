@@ -16,6 +16,7 @@ import {
 
 import { ChevronDownIcon, Bars2Icon } from "@heroicons/react/24/solid";
 import jsk from "../../public/images/jsk .png";
+import { link } from "fs";
 
 // nav list menu
 const navListMenuItems = [
@@ -24,24 +25,28 @@ const navListMenuItems = [
     // href:"/Trading and supply of project items",
     description:
       "Learn how to use @material-tailwind/html, packed with rich components and widgets.",
+    link: "/services/commerce",
   },
+
   {
     title: "بهره برداری پروژه های صنعتی و معدنی",
     description:
       "Learn how to use @material-tailwind/react, packed with rich components for React.",
+    link: "/services/operation",
   },
   {
     title: "مدیریت پروژه های صنعتی و معدنی",
     description:
       "A complete set of UI Elements for building faster websites in less time.",
+    link: "/services/management",
   },
 ];
 
 function NavListMenu({ navIsScroll }: { navIsScroll: boolean }) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const renderItems = navListMenuItems.map(({ title, description }) => (
-    <a href="#" key={title}>
+  const renderItems = navListMenuItems.map(({ title, description , link }) => (
+    <Link href={link} key={title}>
       <MenuItem className="rounded-none px-0 py-0">
         <Typography
           variant="small"
@@ -51,7 +56,7 @@ function NavListMenu({ navIsScroll }: { navIsScroll: boolean }) {
           {title}
         </Typography>
       </MenuItem>
-    </a>
+    </Link>
   ));
 
   return (

@@ -1,4 +1,4 @@
-// import "server-only";
+import "server-only";
 // import {unstable_noStore as noStore } from "next/cache";
 
 export async function getAllProjects(page: number , type:number) {

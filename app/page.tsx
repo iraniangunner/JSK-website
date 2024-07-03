@@ -7,8 +7,6 @@ import { ProjectSection } from "@/components/projectSection";
 import { Suspense } from "react";
 
 export default async function Home() {
-  // const projects = await getAllProjects(1,2014);
-  // const sliderProjects = projects.results.slice(0, 6);
   return (
     <>
       <MainCarousel data={dataSlider} />

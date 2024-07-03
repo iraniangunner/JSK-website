@@ -10,13 +10,14 @@ export async function getProjectById(project_id: string) {
     },
   };
 
-
-    const project = await fetch(
-      `https://api.themoviedb.org/3/movie/${project_id}`,
-      options
-    )
+  const project = await fetch(
+    `https://api.themoviedb.org/3/movie/${project_id}`,
+    options
+  )
     .then((res) => res.json())
     .catch((error) => console.log(error));
 
   return project;
 }
+
+

@@ -35,7 +35,7 @@ export const generateMetadata = async ({
 export default async function ProjectPage({ params}: Props) {
   const project = await getProjectById(params.id);
 
-  if (!project ) {
+  if (!project) {
     notFound();
   }
   return <SingleProject project={project} />;
