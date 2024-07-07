@@ -3,9 +3,15 @@ import { FaPhone } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import Map from "@/components/googlemap";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "ژیوار صنعت کیان | تماس با ما",
+  description: "اطلاعات تماس شرت ژیوار صنعت کیان",
+  openGraph: {
+    title: "ژیوار صنعت کیان | تماس با ما",
+    description: "اطلاعات تماس شرت ژیوار صنعت کیان",
+  },
 };
 
 export default function Contact() {

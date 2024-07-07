@@ -2,9 +2,15 @@ import Link from "next/link";
 import Certificate from "@/components/certificate";
 import { Suspense } from "react";
 import LoadingSpinner from "@/components/loadingSpinner";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "ژیوار صنعت کیان | گواهینامه ها",
+  description: "گواهینامه ها و جوایز شرکت ژیوار صنعت کیان",
+  openGraph: {
+    title: "ژیوار صنعت کیان | گواهینامه ها",
+    description: "گواهینامه ها و جوایز شرکت ژیوار صنعت کیان",
+  },
 };
 
 export default async function Certifications() {
@@ -40,7 +46,7 @@ export default async function Certifications() {
       </div>
       <div className="flex justify-center my-16">
         <div className="w-[80%] pt-[60px]">
-          <Suspense fallback={<LoadingSpinner/>}>
+          <Suspense fallback={<LoadingSpinner />}>
             <Certificate />
           </Suspense>
         </div>

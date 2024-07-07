@@ -3,9 +3,15 @@ import { Suspense } from "react";
 import { AboutUsDetails } from "@/components/aboutUs";
 import LoadingSpinner from "@/components/loadingSpinner";
 import { AboutUsImage } from "@/components/aboutUsImage";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "ژیوار صنعت کیان | درباره ما",
+  description: "درباره شرکت ژیوار صنعت کیان",
+  openGraph: {
+    title: "ژیوار صنعت کیان | درباره ما",
+    description: "درباره شرکت ژیوار صنعت کیان",
+  },
 };
 
 export default function About() {
@@ -41,7 +47,7 @@ export default function About() {
       </div>
 
       <div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-1 lg:grid-cols-2 w-[80%] mx-auto gap-10 py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 w-[80%] mx-auto gap-10 py-20">
           <Suspense fallback={<LoadingSpinner />}>
             <AboutUsDetails />
           </Suspense>

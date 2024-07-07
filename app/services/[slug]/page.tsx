@@ -1,43 +1,41 @@
-import { SingleProject } from "@/components/project/singleproject/singleProject";
 import { SingleService } from "@/components/service/singleService";
 import { getServicesBySlug } from "@/utils/server-utils/getSingleService";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-// import Error from "./error";
 
 type Props = {
   params: { slug: string };
 };
 
-// export const generateMetadata = async ({
-//   params,
-// }: Props): Promise<Metadata | undefined> => {
-//   const project = await getProjectById(params.id);
+export const generateMetadata = async ({
+  params,
+}: Props): Promise<Metadata | undefined> => {
+  const service = await getServicesBySlug(params.slug);
 
-//   if (!project) {
-//     return;
-//   }
+  if (!service) {
+    return;
+  }
 
-//   return {
-//     title: `پروژه ${project.title}`,
-//     description: project.overview,
-//     openGraph: {
-//       title: `پروژه ${project.title}`,
-//       description: project.overview,
-//       images: [
-//         {
-//           url: "https://image.tmdb.org/t/p/w500" + project.backdrop_path,
-//         },
-//       ],
-//     },
-//   };
-// };
+  return {
+    title: `خدمات / ${service.title}`,
+    description: service.overview,
+    openGraph: {
+      title: `خدمات / ${service.title}`,
+      description: service.overview,
+      images: [
+        {
+          url: "https://image.tmdb.org/t/p/w500" + service.backdrop_path,
+        },
+      ],
+    },
+  };
+};
 
 export default async function ServicePage({ params }: Props) {
-  const serviceDetails = await getServicesBySlug(params.slug);
+  const service = await getServicesBySlug(params.slug);
 
-  if (!serviceDetails) {
+  if (!service) {
     notFound();
   }
-  return <SingleService service={serviceDetails} />;
+  return <SingleService service={service} />;
 }

@@ -3,9 +3,15 @@ import { Suspense } from "react";
 import ProjectsTable from "@/components/project/projectsTbl";
 import Skeleton from "@/components/loadingSkeleton";
 import ProjectTab from "@/components/project/projectTab";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "ژیوار صنعت کیان | پروژه ها",
+  description: "پروژه های ژیوار صنعت کیان",
+  openGraph: {
+    title: "ژیوار صنعت کیان | پروژه ها",
+    description: "پروژه های ژیوار صنعت کیان",
+  },
 };
 
 const buttonTypes = [

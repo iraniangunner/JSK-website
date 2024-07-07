@@ -1,9 +1,14 @@
 import TenderSearch from "@/components/tender/tenderSearch";
 import TenderTable from "@/components/tender/tenderTable";
-// import { Suspense } from "react";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "ژیوار صنعت کیان | مناقصات",
+  description: "مناقصات ژیوار صنعت کیان",
+  openGraph: {
+    title: "ژیوار صنعت کیان | مناقصات",
+    description: "مناقصات ژیوار صنعت کیان",
+  },
 };
 
 export default function Tender() {
