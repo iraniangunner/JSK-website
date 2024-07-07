@@ -1,7 +1,6 @@
+import { CustomError } from "../error";
 import { Project } from "./projectView";
-import { getAllProjects } from "@/utils/server-utils/getAllProjects";
 import Pagination from "@/components/project/projectPagination";
-
 
 export default async function ProjectsTable({
   type,
@@ -10,29 +9,37 @@ export default async function ProjectsTable({
   type: number;
   page: number;
 }) {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NDcwNWJkNGQzNWU0MGUyZmUyZGFhZDhjNGVmOGQ0YyIsInN1YiI6IjY2NDg2ZDZmNzNiN2FlNDAzODdhM2M2ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.n49ziu8wMl4nILzUvN3r222fH9-x4oofAlLVtvMkduc",
+    },
+  };
+
   try {
-    const data = await getAllProjects(page, type);
+    const response = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&year=${type}`,
+      { ...options, cache: "no-store" }
+    );
+
+    const projects = await response.json();
     return (
       <>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {data.results.map((project: any) => (
-            <Project projectDetails={project} key={project.id} />
+          {projects.results.map((project: any) => (
+            <Project project={project} key={project.id} />
           ))}
         </div>
         <Pagination
           type={type}
-          totalPages={data.total_pages}
+          totalPages={projects.total_pages}
           currentPage={page}
         />
       </>
     );
   } catch (error) {
-    return (
-      <div>
-        <h2>Something went wrong!</h2>
-        {/* {error.message} */}
-        {/* <button onClick={() => reset()}>Try again</button> */}
-      </div>
-    );
+    return <CustomError />;
   }
 }
