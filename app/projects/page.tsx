@@ -3,6 +3,8 @@ import { Suspense } from "react";
 import ProjectsTable from "@/components/project/projectsTbl";
 import Skeleton from "@/components/loadingSkeleton";
 import ProjectTab from "@/components/project/projectTab";
+import { Project } from "@/components/project/projectView";
+import Pagination from "@/components/project/projectPagination";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -14,6 +16,50 @@ export const metadata: Metadata = {
   },
 };
 
+export async function AllProjects({
+  page,
+  type,
+}: {
+  page: number;
+  type: number;
+}) {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NDcwNWJkNGQzNWU0MGUyZmUyZGFhZDhjNGVmOGQ0YyIsInN1YiI6IjY2NDg2ZDZmNzNiN2FlNDAzODdhM2M2ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.n49ziu8wMl4nILzUvN3r222fH9-x4oofAlLVtvMkduc",
+    },
+  };
+
+  // noStore();
+
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&year=${type}`,
+      { ...options, cache: "no-store" }
+    );
+
+    const projects = await response.json();
+    return (
+      <>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {projects.results.map((project: any) => (
+            <Project projectDetails={project} key={project.id} />
+          ))}
+        </div>
+        <Pagination
+          type={type}
+          totalPages={projects.total_pages}
+          currentPage={page}
+        />
+      </>
+    );
+  } catch (error) {
+    return <div>Error</div>;
+  }
+}
+
 const buttonTypes = [
   { type: 2012, text: "همه" },
   { type: 2013, text: "طراحی و مهندسی" },
@@ -23,7 +69,7 @@ const buttonTypes = [
   { type: 2017, text: "بهره برداری" },
 ];
 
-export default async function Projects({
+export default function Projects({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
@@ -78,7 +124,8 @@ export default async function Projects({
           </div>
 
           <Suspense key={type + page} fallback={<Skeleton />}>
-            <ProjectsTable type={type} page={page} />
+            {/* <ProjectsTable type={type} page={page} /> */}
+            <AllProjects type={type} page={page} />
           </Suspense>
         </div>
       </div>
