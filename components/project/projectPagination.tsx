@@ -13,6 +13,7 @@ const Pagination = ({
 }) => {
   const router = useRouter();
 
+
   const onPageChange = (page: any) => {
     if (page >= 1 && page <= totalPages) {
       router.push(`/projects?type=${type}&page=${page}`);
@@ -56,12 +57,15 @@ const Pagination = ({
 
   return (
     <div className="pagination mt-6">
-      <button
-        onClick={() => onPageChange(currentPage - 1)}
-        disabled={currentPage === 1}
-      >
-        &lt;
-      </button>
+      {totalPages > 1 && (
+        <button
+          onClick={() => onPageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          &lt;
+        </button>
+      )}
+
       {pages.map((page, index) =>
         page === "..." ? (
           <span key={index} className="ellipsis">
@@ -77,12 +81,14 @@ const Pagination = ({
           </button>
         )
       )}
-      <button
-        onClick={() => onPageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
-      >
-        &gt;
-      </button>
+      {totalPages > 1 && (
+        <button
+          onClick={() => onPageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          &gt;
+        </button>
+      )}
     </div>
   );
 };
