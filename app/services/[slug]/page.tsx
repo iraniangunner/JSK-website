@@ -17,10 +17,10 @@ export const generateMetadata = async ({
   }
 
   return {
-    title: `خدمات / ${service.title}`,
+    title: `${service.title} | خدمات`,
     description: service.overview,
     openGraph: {
-      title: `خدمات / ${service.title}`,
+      title: `${service.title} | خدمات`,
       description: service.overview,
       images: [
         {
