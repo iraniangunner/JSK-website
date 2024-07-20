@@ -11,9 +11,7 @@ export default async function Home() {
       <MainCarousel data={dataSlider} />
       <ServicesSection />
       <section
-        className="relative min-h-[500px] bg-section-2-pattern bg-cover overflow-hidden flex justify-center items-center
-        bg-no-repeat bg-center before:content-[''] before:absolute before:left-0 before:top-0
-        before:w-full before:h-full before:opacity-[0.9] before:z-[0] before:bg-[#042038]"
+        className="relative min-h-[500px] overflow-hidden flex justify-center items-center"
       >
         <Suspense fallback={<LoadingSpinner />}>
           <ProjectSection />
