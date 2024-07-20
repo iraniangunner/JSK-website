@@ -6,7 +6,7 @@ export default function AuthLayout({
   return (
     <section>
       {/* Include shared UI here e.g. a header or sidebar */}
-      <nav></nav>
+      {/* <nav></nav> */}
 
       {children}
     </section>

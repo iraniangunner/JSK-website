@@ -27,7 +27,7 @@ export const ProjectsSectionUI: React.FC<ProjectsCarouselProps> = ({
         <motion.h1
           initial="hidden"
           whileInView="visible"
-          className="text-xl text-white mb-4 overflow-hidden"
+          className="text-xl mb-4 overflow-hidden select-none"
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeIn" }}
           variants={{
@@ -40,7 +40,7 @@ export const ProjectsSectionUI: React.FC<ProjectsCarouselProps> = ({
         <motion.p
           initial="hidden"
           whileInView="visible"
-          className="text-white text-justify overflow-hidden"
+          className="text-justify overflow-hidden select-none"
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeIn" }}
           variants={{

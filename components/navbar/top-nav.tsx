@@ -63,7 +63,7 @@ export default function TopNav() {
             <MdEmail size={20} />
           </div>
           <div>
-            <p className="mb-2 font-bold">ایمیل</p>
+            <p className="mb-2 font-bold">پست الکترونیکی</p>
             <p className="text-sm">info@jsk-co.com</p>
           </div>
         </div>
