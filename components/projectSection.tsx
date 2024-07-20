@@ -2,6 +2,7 @@ import { ProjectsSectionUI } from "./projectsSectionUI";
 import { CgDanger } from "react-icons/cg";
 
 export async function ProjectSection() {
+  
   const options = {
     method: "GET",
     headers: {

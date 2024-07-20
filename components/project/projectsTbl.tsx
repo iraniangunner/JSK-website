@@ -1,6 +1,7 @@
 import { CustomError } from "../error";
 import { Project } from "./projectView";
 import Pagination from "@/components/project/projectPagination";
+import { unstable_noStore as noStore } from "next/cache";
 
 export default async function ProjectsTable({
   type,
@@ -18,12 +19,14 @@ export default async function ProjectsTable({
     },
   };
 
+  noStore();
+
   try {
     const response = await fetch(
       `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&year=${type}`,
-      { ...options, cache: "no-store" }
+      { ...options }
     );
-
+  
     const projects = await response.json();
     return (
       <>
