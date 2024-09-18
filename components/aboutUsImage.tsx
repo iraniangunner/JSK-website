@@ -8,7 +8,7 @@ export function AboutUsImage() {
     <motion.div
       initial="hidden"
       whileInView="visible"
-      className="overflow-hidden mt-12 md:mt-0"
+      className="overflow-hidden mt-12 md:mt-0 flex flex-col justify-center items-center"
       viewport={{ once: true }}
       transition={{ duration: 0.8, ease: "easeIn", delay: 0.2 }}
       variants={{

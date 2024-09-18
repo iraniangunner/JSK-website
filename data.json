@@ -1,59 +1,58 @@
 [
-    {
-      "id": 0,
-      "title": "trusted industry leader",
-      "tagline": "High-quality civil engineering projects",
-      "image": "/images/slide1.jpg",
-      "buttons": [
-        {
-          "id": 0,
-          "text": "Roberto Nickson",
-          "link": "https://www.pexels.com/@rpnickson/",
-          "type": "btn-dark btn-circle"
-        }
-      ]
-    },
-    {
-      "id": 1,
-      "title": "Welcome to civilgroup",
-      "tagline": "Leading civil engineering company",
-      "image": "/images/slide2.jpg",
-      "buttons": [
-        {
-          "id": 0,
-          "text": "Julia M Cameron",
-          "link": "https://www.pexels.com/@julia-m-cameron/",
-          "type": "btn-dark btn-circle"
-        }
-      ]
-    },
-    {
-        "id": 2,
-        "title": "trusted industry leader",
-        "tagline": "High-quality civil engineering projects",
-        "image": "/images/slide3.jpg",
-        "buttons": [
-          {
-            "id": 0,
-            "text": "Julia M Cameron",
-            "link": "https://www.pexels.com/@julia-m-cameron/",
-            "type": "btn-dark btn-circle"
-          }
-        ]
-      },
+  {
+    "id": 0,
+    "title": "trusted industry leader",
+    "tagline": "خدمات بهره برداری از خطوط تولید کارخانه های صنعتی و معدنی",
+    "image": "/images/slide1.jpg",
+    "buttons": [
       {
-        "id": 3,
-        "title": "Welcome to civilgroup",
-        "tagline": "Leading civil engineering company",
-        "image": "/images/slide4.jpg",
-        "buttons": [
-          {
-            "id": 0,
-            "text": "Julia M Cameron",
-            "link": "https://www.pexels.com/@julia-m-cameron/",
-            "type": "btn-dark btn-circle"
-          }
-        ]
+        "id": 0,
+        "text": "Roberto Nickson",
+        "link": "https://www.pexels.com/@rpnickson/",
+        "type": "btn-dark btn-circle"
       }
-  ]
-  
+    ]
+  },
+  {
+    "id": 1,
+    "title": "Welcome to civilgroup",
+    "tagline": "خدمات تامین و مدیریت نیروی انسانی مورد نیاز و مرتبط جهت بهره برداری",
+    "image": "/images/slide2.jpg",
+    "buttons": [
+      {
+        "id": 0,
+        "text": "Julia M Cameron",
+        "link": "https://www.pexels.com/@julia-m-cameron/",
+        "type": "btn-dark btn-circle"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "trusted industry leader",
+    "tagline": "ارائه کلیه خدمات بازرگانی خارجی و داخلی، لجستیک و تشریفات گمرکی",
+    "image": "/images/slide3.jpg",
+    "buttons": [
+      {
+        "id": 0,
+        "text": "Julia M Cameron",
+        "link": "https://www.pexels.com/@julia-m-cameron/",
+        "type": "btn-dark btn-circle"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Welcome to civilgroup",
+    "tagline": "خدمات مهندسی، تامین و راه اندازی پروژه های صنعتی و معدنی",
+    "image": "/images/slide4.jpg",
+    "buttons": [
+      {
+        "id": 0,
+        "text": "Julia M Cameron",
+        "link": "https://www.pexels.com/@julia-m-cameron/",
+        "type": "btn-dark btn-circle"
+      }
+    ]
+  }
+]
