@@ -135,7 +135,7 @@ export default function Contact() {
           </form>
         </div>
         <div className=" h-[200px] lg:h-full w-[80%]">
-          <Map />
+          {/* <Map /> */}
         </div>
       </div>
     </>
