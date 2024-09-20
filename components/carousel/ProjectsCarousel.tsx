@@ -34,11 +34,18 @@ const Slide: React.FC<SlideProps> = ({ delay, children }) => (
   </motion.div>
 );
 
+// interface Project {
+//   id: string;
+//   title: string;
+//   overview: string;
+//   backdrop_path: string;
+// }
+
 interface Project {
-  id: string;
+  id: number;
   title: string;
-  overview: string;
-  backdrop_path: string;
+  description: string;
+  image: string;
 }
 
 interface ProjectsCarouselProps {
@@ -96,12 +103,12 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
             <div className="relative h-full text-gray-700 group project_slider_container bg-white font-iransans select-none">
               <div className="relative h-full">
                 <Image
-                  src={"https://image.tmdb.org/t/p/w500" + p.backdrop_path}
+                  src={"/images/" + p.image}
                   width={500}
                   height={400}
                   alt="project-image"
                   sizes="(max-width: 768px) 250px, 400px"
-                 style={{width:"100%" , height:400}}
+                  style={{ width: "100%", height: 400 }}
                 />
               </div>
               <div className="absolute top-0 left-0 w-full h-full project_slider_content flex flex-col justify-end py-6 px-4">
@@ -112,7 +119,9 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
                   <div className="mb-4 h-[1px]  bg-[rgb(225_230_238)] opacity-[0.4]"></div>
                   <div className="mb-6 opacity-0 group-hover:opacity-[1] grop transition-all duration-[0.3] delay-[0.1]">
                     <div className="text-white">
-                      <p>ساخت و ساز</p>
+                      <p className="h-5"></p>
+                      {/*ToDo */}
+                      {/* {p.categories.map((item) => <span>{item}</span>)}*/}
                     </div>
                   </div>
                 </div>

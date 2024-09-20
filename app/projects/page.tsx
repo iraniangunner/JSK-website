@@ -68,13 +68,13 @@ export default function Projects({
       <div className="my-12 mx-8">
         <div className="max-w-[960px] mx-auto">
           <div className="flex items-center justify-center gap-2 lg:gap-0 py-4 md:py-8 flex-wrap">
-            {buttonTypes.map((button) => (
+            {/* {buttonTypes.map((button) => (
               <ProjectTab
                 key={button.text}
                 type={button.type}
                 text={button.text}
               />
-            ))}
+            ))} */}
           </div>
 
           <Suspense key={type + page} fallback={<Skeleton />}>

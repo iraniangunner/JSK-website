@@ -2,16 +2,24 @@ import { SingleProject } from "@/components/project/singleproject/singleProject"
 import { getProjectById } from "@/utils/server-utils/getSingleProject";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import projectsData from "@/data.json";
 // import Error from "./error";
 
 type Props = {
-  params: { id: string };
+  params: { id: number };
 };
+
+// type Props = {
+//   params: { id: string };
+// };
+
 
 export const generateMetadata = async ({
   params,
 }: Props): Promise<Metadata | undefined> => {
-  const project = await getProjectById(params.id);
+  // const project = await getProjectById(params.id);
+
+  const project =projectsData.projects[params.id];
 
   if (!project) {
     return;
@@ -19,24 +27,37 @@ export const generateMetadata = async ({
 
   return {
     title: `پروژه ${project.title}`,
-    description: project.overview,
+    description: project.description,
     openGraph: {
       title: `پروژه ${project.title}`,
-      description: project.overview,
+      description: project.description,
       images: [
         {
-          url: "https://image.tmdb.org/t/p/w500" + project.backdrop_path,
+          url: "/images/" + project.image,
         },
       ],
     },
   };
 };
 
-export default async function ProjectPage({ params}: Props) {
-  const project = await getProjectById(params.id);
+
+
+
+// export default async function ProjectPage({ params }: Props) {
+//   const project = await getProjectById(params.id);
+
+//   if (!project) {
+//     notFound();
+//   }
+//   return <SingleProject project={project} />;
+// }
+
+export default  function ProjectPage({ params }: Props) {
+  const project =projectsData.projects[params.id];
 
   if (!project) {
     notFound();
   }
   return <SingleProject project={project} />;
 }
+

@@ -4,7 +4,7 @@ import { FaMapLocationDot } from "react-icons/fa6";
 import { FaPhone } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
-import jsk from "../public/images/jsk .png";
+import jsk from "../public/images/jsk.png";
 import Image from "next/image";
 import Link from "next/link";
 

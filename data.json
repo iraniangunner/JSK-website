@@ -1,58 +1,111 @@
-[
-  {
-    "id": 0,
-    "title": "trusted industry leader",
-    "tagline": "خدمات بهره برداری از خطوط تولید کارخانه های صنعتی و معدنی",
-    "image": "/images/slide1.jpg",
-    "buttons": [
-      {
-        "id": 0,
-        "text": "Roberto Nickson",
-        "link": "https://www.pexels.com/@rpnickson/",
-        "type": "btn-dark btn-circle"
-      }
-    ]
-  },
-  {
-    "id": 1,
-    "title": "Welcome to civilgroup",
-    "tagline": "خدمات تامین و مدیریت نیروی انسانی مورد نیاز و مرتبط جهت بهره برداری",
-    "image": "/images/slide2.jpg",
-    "buttons": [
-      {
-        "id": 0,
-        "text": "Julia M Cameron",
-        "link": "https://www.pexels.com/@julia-m-cameron/",
-        "type": "btn-dark btn-circle"
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "title": "trusted industry leader",
-    "tagline": "ارائه کلیه خدمات بازرگانی خارجی و داخلی، لجستیک و تشریفات گمرکی",
-    "image": "/images/slide3.jpg",
-    "buttons": [
-      {
-        "id": 0,
-        "text": "Julia M Cameron",
-        "link": "https://www.pexels.com/@julia-m-cameron/",
-        "type": "btn-dark btn-circle"
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "title": "Welcome to civilgroup",
-    "tagline": "خدمات مهندسی، تامین و راه اندازی پروژه های صنعتی و معدنی",
-    "image": "/images/slide4.jpg",
-    "buttons": [
-      {
-        "id": 0,
-        "text": "Julia M Cameron",
-        "link": "https://www.pexels.com/@julia-m-cameron/",
-        "type": "btn-dark btn-circle"
-      }
-    ]
-  }
-]
+{
+  "slides": [
+    {
+      "id": 0,
+      "title": "trusted industry leader",
+      "tagline": "خدمات بهره برداری از خطوط تولید کارخانه های صنعتی و معدنی",
+      "image": "/images/slide1.jpg",
+      "buttons": [
+        {
+          "id": 0,
+          "text": "Roberto Nickson",
+          "link": "https://www.pexels.com/@rpnickson/",
+          "type": "btn-dark btn-circle"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "Welcome to civilgroup",
+      "tagline": "خدمات تامین و مدیریت نیروی انسانی مورد نیاز و مرتبط جهت بهره برداری",
+      "image": "/images/slide2.jpg",
+      "buttons": [
+        {
+          "id": 0,
+          "text": "Julia M Cameron",
+          "link": "https://www.pexels.com/@julia-m-cameron/",
+          "type": "btn-dark btn-circle"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "trusted industry leader",
+      "tagline": "ارائه کلیه خدمات بازرگانی خارجی و داخلی، لجستیک و تشریفات گمرکی",
+      "image": "/images/slide3.jpg",
+      "buttons": [
+        {
+          "id": 0,
+          "text": "Julia M Cameron",
+          "link": "https://www.pexels.com/@julia-m-cameron/",
+          "type": "btn-dark btn-circle"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Welcome to civilgroup",
+      "tagline": "خدمات مهندسی، تامین و راه اندازی پروژه های صنعتی و معدنی",
+      "image": "/images/slide4.jpg",
+      "buttons": [
+        {
+          "id": 0,
+          "text": "Julia M Cameron",
+          "link": "https://www.pexels.com/@julia-m-cameron/",
+          "type": "btn-dark btn-circle"
+        }
+      ]
+    }
+  ],
+
+  "projects": [
+    {
+      "id": 0,
+      "image": "golgohar1.jpg",
+      "title": "پروژه انجام عملیات سیویل کارخانه فولاد سازی و نورد ورق گرم گل گهر",
+      "description": " انجام عملیات سیویل (جدید و کار شده) شامل و نه محدود به اقدامات مربوط به کارهای فولادی با میلگرد قالب بندی، تهیه و اجرای بتن، عملیات خاکی و سایر عملیات مورد نیاز سایت در محدوده فهرست بهای واحد پایه رسته ساختمان و راه در پروژه احداث کارخانه فولاد سازی و نورد گرم گل گهر",
+      "categories": ["اجرا", "طراحی و مهندسی"],
+      "employee": "شرکت مهندسی فکور صنعت تهران",
+      "startDate": "مرداد ماه ۱۴۰۱",
+      "location": "سیرجان",
+      "images": [
+        { "id": 0, "src": "golgohar2.jpg" },
+        { "id": 1, "src": "golgohar3.jpg" },
+        { "id": 2, "src": "golgohar4.jpg" },
+        { "id": 3, "src": "golgohar5.jpg" }
+      ]
+    },
+    {
+      "id": 1,
+      "image": "ravar2.jpg",
+      "title": "پروژه بهره برداری از واحد بریکت، احیا و بوته های کاربیدی کارخانه راور فولاد کرمان",
+      "description": "پروژه بهره برداري از واحد بریکت، احیاء و بوته هاي \nکاربیدي کارخانه فولاد راور کرمان مشتمل بر انجـام \nو راهبـري عملیـات تولیـد، نگهـداري و تعمیـرات \nکارخانه، تامین قطعـات و مـواد مصـرفی(MRO)، \nانجام امور پشتیبانی تولید، اجراي نظام 5S، تامین و \nمدیریت نیروي انسانی مـورد نیـاز و ارائـه هرگونـه\nخدمات جانبی موردنیاز و مرتبط جهت بهره برداري \nاز کارخانه بریکت سـازي راور مشـتمل بـر خطـوط \nاحیـاء(سـالن متریـال هنـدلینگ، ایسـتگاه هـاي \nلودینگ و آنلودینگ، کوره هاي شماره 1 و 2، واگـن \nها و تجهیزات مرتبط)، خطوط بریکت سازي، سـالن \nتولیــد بوتــه هــاي کاربیــدي، کلیــه تاسیســات و \nتجهیزات صنعتی، ساختمان ها وتاسیسات آن هـا و \nسایر تاسیسات و تجهیزات مرتبط",
+      "categories": ["اجرا", "بهره برداری"],
+      "employee": "شرکت کاوند نهان زمین",
+      "startDate": "فروردین ماه ۱۴۰۱",
+      "location": "کرمان",
+      "images": [
+        { "id": 0, "src": "ravar3.jpg" },
+        { "id": 1, "src": "ravar4.jpg" },
+        { "id": 2, "src": "ravar5.jpg" },
+        { "id": 3, "src": "ravar6.jpg" }
+      ]
+    },
+    {
+      "id": 2,
+      "image": "golgohar_1.jpg",
+      "title": "پروژه نصب لوله هاي زیرزمینی پلی اتیلن کارخانه فولادسازي و نورد ورق گرم گل گهر",
+      "description": "نصب لوله هاي زیرزمینی پلی اتیلن از مسیر ESP به \nMRSS در پروژه احداث کارخانه فولادسازي و نـورد \nگرم گل گهر شامل عملیات خاك بـرداري و حفـاري، \nخرید، حمـل و اجـراي ماسـه بـادي، خـاك ریـزي، \nبارگیري و تخلیه خـاك اضـافه تـا محـل دپـو در 5\nکیلومتري، داربست بندي ایمنی و نوارگذاري اطـراف \nکانال، متریال هندلینگ، فیتاپ، ریسه کردن و تسـت \nخطوط",
+      "categories": ["بهره برداری" , "نصب"],
+      "employee": " شرکت مهندسی فکور صنعت تهران",
+      "startDate": "آبان ماه ۱۴۰۱",
+      "location": "سیرجان",
+      "images": [
+        { "id": 0, "src": "golgohar_2.jpg" },
+        { "id": 1, "src": "golgohar_3.jpg" },
+        { "id": 2, "src": "golgohar_4.jpg" },
+        { "id": 3, "src": "golgohar_5.jpg" }
+      ]
+    }
+  ]
+}

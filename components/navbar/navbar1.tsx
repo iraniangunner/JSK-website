@@ -15,8 +15,7 @@ import {
 } from "@material-tailwind/react";
 
 import { ChevronDownIcon, Bars2Icon } from "@heroicons/react/24/solid";
-import jsk from "../../public/images/jsk .png";
-import { link } from "fs";
+import jsk from "../../public/images/jsk.png";
 
 // nav list menu
 const navListMenuItems = [

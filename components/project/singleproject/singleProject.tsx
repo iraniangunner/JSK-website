@@ -9,7 +9,7 @@ import { VideoPlayer } from "./videoplayer/video-player";
 import { FaCheck } from "react-icons/fa6";
 import ProjectCarousel from "./thumbscarousel/thumbsCarousel";
 
-export function SingleProject({ project}:{project:any}) {
+export function SingleProject({ project }: { project: any }) {
   const [isScrolling, setIsScrolling] = useState(false);
 
   const handleScroll = () => {
@@ -86,7 +86,7 @@ export function SingleProject({ project}:{project:any}) {
                 <h4 className="text-[20px] mb-[3px] text-[#001c47] font-[600]">
                   کارفرما
                 </h4>
-                <p className="text-[16px] text-[#53545A]">ThemeForest Envato</p>
+                <p className="text-[16px] text-[#53545A]">{project.employee}</p>
               </div>
             </li>
             <li className="flex items-center py-[15px] border-b border-solid border-[#001c472e]">
@@ -96,7 +96,7 @@ export function SingleProject({ project}:{project:any}) {
                   تاریخ شروع
                 </h4>
                 <p className="text-[16px] text-[#53545A]">
-                  {project.release_date}
+                  {project.startDate}
                 </p>
               </div>
             </li>
@@ -106,21 +106,18 @@ export function SingleProject({ project}:{project:any}) {
                 <h4 className="text-[20px] mb-[3px] text-[#001c47] font-[600]">
                   محل پروژه
                 </h4>
-                <p className="text-[16px] text-[#53545A]">Kerman</p>
+                <p className="text-[16px] text-[#53545A]">{project.location}</p>
               </div>
             </li>
           </ul>
         </div>
         <div className="w-full lg-w-[50%] xl:w-[70%] flex flex-col justify-center gap-3">
-          {/* <img
-            src={"https://image.tmdb.org/t/p/w500" + project.backdrop_path}
-          /> */}
           <ProjectCarousel project={project} />
-          <h1 className="text-xl">{project.id}</h1>
+
           <p>{project.title}</p>
-          <p>{project.overview}</p>
-          <p>{project.release_date}</p>
-          <div className="my-8">
+          <p>{project.description}</p>
+          <p>{project.startDate}</p>
+          {/* <div className="my-8">
             <h1 className="mb-4 text-lg">چالش های پروژه</h1>
             <p className="text-justify">
               لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
@@ -135,9 +132,9 @@ export function SingleProject({ project}:{project:any}) {
               نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل
               دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
             </p>
-          </div>
+          </div> */}
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 my-8 gap-8">
+          {/* <div className="grid grid-cols-1 lg:grid-cols-2 my-8 gap-8">
             <ul>
               <li className="mb-3 flex items-center gap-2">
                 <FaCheck color="#ffa500" />
@@ -162,7 +159,7 @@ export function SingleProject({ project}:{project:any}) {
                 // onReady={() => console.log("The video is ready to play")}
               />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
