@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Certificate from "../../components/certificate";
+import Certificate from "@/components/Certificate";
 import { Suspense } from "react";
 import LoadingSpinner from "@/components/loadingSpinner";
 import { Metadata } from "next";
