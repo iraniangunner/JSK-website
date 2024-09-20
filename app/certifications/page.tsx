@@ -15,6 +15,7 @@ export const metadata: Metadata = {
 
 export default async function Certifications() {
   return (
+    //
     <>
       <div
         className="relative bg-projects-pattern pt-[80px] lg:pt-[260px] 
