@@ -32,7 +32,13 @@ export default function Footer() {
       <div className="mx-auto w-full max-w-7xl px-8 z-[2] relative py-4 md:py-8 lg:py-12 xl:py-19">
         <div className="grid grid-cols-1 justify-between gap-4 lg:gap-8 xl:gap-12 md:grid-cols-2 lg:grid-cols-3 ">
           <div className="mb-6 px-2 ml-6 text-white">
-            <Image src={jsk} alt="JSK logo" width={300} height={30} className="select-none" />
+            <Image
+              src={jsk}
+              alt="JSK logo"
+              width={300}
+              height={30}
+              className="select-none"
+            />
 
             <p className="mt-3 text-justify leading-7 select-none">
               خدمات شرکت ژیوار صنعت کیان شامل طیف گسترده ای از فعالیت های مربوط
@@ -59,7 +65,7 @@ export default function Footer() {
                   {items.map((item) => (
                     <li key={item.title}>
                       <Link
-                        href={item.link}
+                        href={item.link === "/tenders" ? "" : item.link}
                         className="py-2 w-full font-normal text-[#fff] font-iransans flex items-center gap-2 hover:text-[#ffa500] hover:mr-[10px] transition-all duration-[0.4s]"
                       >
                         <MdKeyboardDoubleArrowLeft size={18} />

@@ -9,28 +9,28 @@ import "swiper/css/effect-fade";
 import Modal from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 
-// const items = [
-//   {
-//     id: 1,
-//     src: "https://swiperjs.com/demos/images/nature-2.jpg",
-//     alt: "First slide",
-//   },
-//   {
-//     id: 2,
-//     src: "https://swiperjs.com/demos/images/nature-3.jpg",
-//     alt: "Second slide",
-//   },
-//   {
-//     id: 3,
-//     src: "https://swiperjs.com/demos/images/nature-4.jpg",
-//     alt: "Third slide",
-//   },
-//   {
-//     id: 4,
-//     src: "https://swiperjs.com/demos/images/nature-5.jpg",
-//     alt: "Third slide",
-//   },
-// ];
+const items = [
+  {
+    id: 1,
+    src: "iso-1.jpg",
+    alt: "First slide",
+  },
+  {
+    id: 2,
+    src: "iso-2.jpg",
+    alt: "Second slide",
+  },
+  {
+    id: 3,
+    src: "iso-3.jpg",
+    alt: "Third slide",
+  },
+  {
+    id: 4,
+    src: "iso-2.jpg",
+    alt: "Third slide",
+  },
+];
 
 export function CertificationsCarousel() {
   const [open, setOpen] = useState(false);
@@ -50,7 +50,7 @@ export function CertificationsCarousel() {
         autoplay={{
           delay: 4000,
         }}
-        spaceBetween={10}
+        spaceBetween={20}
         breakpoints={{
           640: {
             slidesPerView: 2,
@@ -68,15 +68,15 @@ export function CertificationsCarousel() {
         modules={[Autoplay, Navigation]}
         slidesPerView={1}
       >
-        {/* {items?.map((item: any, idx: number) => ( */}
+        {items?.map((item: any, idx: number) => (
           <SwiperSlide
-            // key={item.id}
+            key={item.id}
             className="cursor-pointer"
-            // onClick={() => handleOpen(idx)}
+            onClick={() => handleOpen(idx)}
           >
-            {/* <img src={item.src} alt={item.alt} /> */}
+            <img src={"/images/"+item.src} alt={item.alt} />
           </SwiperSlide>
-        {/* ))} */}
+        ))} 
       </Swiper>
       <Modal
         open={open}
@@ -100,11 +100,11 @@ export function CertificationsCarousel() {
           modules={[Navigation, EffectFade]}
           slidesPerView={1}
         >
-          {/* {items.map((item: any) => (
+          {items.map((item: any) => (
             <SwiperSlide key={item.id}>
-              <img src={item.src} alt={item.alt} />
+              <img src={"/images/"+item.src} alt={item.alt} />
             </SwiperSlide>
-          ))} */}
+          ))}
         </Swiper>
       </Modal>
     </>

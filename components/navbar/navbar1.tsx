@@ -123,10 +123,10 @@ const navListItems = [
     label: "پروژه ها",
     link: "/projects",
   },
-  // {
-  //   label: "مناقصات",
-  //   link: "/tenders",
-  // },
+  {
+    label: "مناقصات",
+    link: "/tenders",
+  },
   {
     label: "درباره ما",
     link: "/about",
@@ -155,8 +155,8 @@ function NavList({ navIsScroll }: { navIsScroll: boolean }) {
       {navListItems.map(({ label, link }, key) => (
         <Link
           key={label}
-          href={link}
-          className="relative font-medium font-iransans text-blue-gray-500 "
+          href={link === "/tenders" ? "" : link}
+          className="relative font-medium font-iransans text-blue-gray-500"
         >
           <MenuItem
             className={`flex text-gray-900 items-center gap-2 rounded-none h-full py-3 ${
