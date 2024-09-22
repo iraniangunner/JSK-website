@@ -68,7 +68,7 @@ export default function TopNav() {
           </div>
         </div>
       </div>
-      <div className="flex justify-center items-center gap-1 lg:mr-10">
+      {/* <div className="flex justify-center items-center gap-1 lg:mr-10">
         <Link
           // as="a"
           href="/login"
@@ -101,7 +101,7 @@ export default function TopNav() {
             <FaShoppingCart size={17} />
           </MenuItem>
         </Typography>
-      </div>
+      </div> */}
     </div>
   );
 }

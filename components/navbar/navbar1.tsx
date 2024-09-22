@@ -178,7 +178,7 @@ function NavList({ navIsScroll }: { navIsScroll: boolean }) {
         {" "}
         تماس با ما
       </Link>
-
+{/* 
       <Typography
         as="a"
         href="#"
@@ -193,7 +193,7 @@ function NavList({ navIsScroll }: { navIsScroll: boolean }) {
           <BsFillPersonFill size={20} />
           <span className="mr-1">ورود</span>
         </MenuItem>
-      </Typography>
+      </Typography> */}
     </ul>
   );
 }
