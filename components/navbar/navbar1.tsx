@@ -123,10 +123,10 @@ const navListItems = [
     label: "پروژه ها",
     link: "/projects",
   },
-  {
-    label: "مناقصات",
-    link: "/tenders",
-  },
+  // {
+  //   label: "مناقصات",
+  //   link: "/tenders",
+  // },
   {
     label: "درباره ما",
     link: "/about",

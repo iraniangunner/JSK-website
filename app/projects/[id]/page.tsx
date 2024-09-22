@@ -13,17 +13,16 @@ type Props = {
 //   params: { id: string };
 // };
 
-
 export const generateMetadata = async ({
   params,
 }: Props): Promise<Metadata | undefined> => {
   // const project = await getProjectById(params.id);
 
-  const project =projectsData.projects[params.id];
+  const project = projectsData.projects[params.id];
 
-  if (!project) {
-    return;
-  }
+  // if (!project) {
+  //   return;
+  // }
 
   return {
     title: `پروژه ${project.title}`,
@@ -40,9 +39,6 @@ export const generateMetadata = async ({
   };
 };
 
-
-
-
 // export default async function ProjectPage({ params }: Props) {
 //   const project = await getProjectById(params.id);
 
@@ -52,12 +48,8 @@ export const generateMetadata = async ({
 //   return <SingleProject project={project} />;
 // }
 
-export default  function ProjectPage({ params }: Props) {
-  const project =projectsData.projects[params.id];
+export default function ProjectPage({ params }: Props) {
+  const project = projectsData.projects[params.id];
 
-  if (!project) {
-    notFound();
-  }
   return <SingleProject project={project} />;
 }
-
