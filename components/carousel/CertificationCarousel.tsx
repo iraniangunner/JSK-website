@@ -42,7 +42,6 @@ export function CertificationsCarousel() {
   };
 
   const handleClose = () => setOpen(false);
-
   return (
     <>
       <Swiper
