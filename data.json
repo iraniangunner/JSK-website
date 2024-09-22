@@ -75,7 +75,7 @@
         { "id": 3, "src": "golgohar5.jpg" }
       ]
     },
-   
+
     {
       "id": 1,
       "image": "golgohar_2.jpg",
@@ -103,9 +103,24 @@
       "location": "سیرجان",
       "images": [
         { "id": 0, "src": "gol2.jpg" },
-        { "id": 1, "src": "gol3.jpg" },
-        { "id": 2, "src": "gol4.jpg" },
-        { "id": 3, "src": "gol5.jpg" }
+        { "id": 1, "src": "gol4.jpg" },
+        { "id": 2, "src": "gol5.jpg" },
+        { "id": 3, "src": "gol6.jpg" }
+      ]
+    },
+    {
+      "id": 3,
+      "image": "sangan1.jpg",
+      "title": "پروژه خط انتقال آب از دشت کرات تایباد به \nمخازن فولاد سنگان به صورت EPC",
+      "categories": ["بهره برداری", "اجرا"],
+      "employee": "شرکت فولاد سنگان",
+      "startDate": "آبان ماه ۱۴۰۲",
+      "location": "سیرجان",
+      "images": [
+        { "id": 0, "src": "sangan2.jpg" },
+        { "id": 1, "src": "sangan3.jpg" },
+        { "id": 2, "src": "sangan4.jpg" },
+        { "id": 3, "src": "sangan5.jpg" }
       ]
     }
   ]

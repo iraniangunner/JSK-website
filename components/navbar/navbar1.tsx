@@ -44,7 +44,7 @@ const navListMenuItems = [
 function NavListMenu({ navIsScroll }: { navIsScroll: boolean }) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const renderItems = navListMenuItems.map(({ title, description , link }) => (
+  const renderItems = navListMenuItems.map(({ title, description, link }) => (
     <Link href={link} key={title}>
       <MenuItem className="rounded-none px-0 py-0">
         <Typography
@@ -178,7 +178,7 @@ function NavList({ navIsScroll }: { navIsScroll: boolean }) {
         {" "}
         تماس با ما
       </Link>
-{/* 
+      {/* 
       <Typography
         as="a"
         href="#"
