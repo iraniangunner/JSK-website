@@ -131,6 +131,10 @@ const navListItems = [
     label: "درباره ما",
     link: "/about",
   },
+  {
+    label: "همکاری با ما",
+    link: "/hiring",
+  }
 ];
 
 function NavList({ navIsScroll }: { navIsScroll: boolean }) {
@@ -155,7 +159,7 @@ function NavList({ navIsScroll }: { navIsScroll: boolean }) {
       {navListItems.map(({ label, link }, key) => (
         <Link
           key={label}
-          href={link === "/tenders" ? "" : link}
+          href={link === "/tenders" || link === "/hiring" ? "" : link}
           className="relative font-medium font-iransans text-blue-gray-500"
         >
           <MenuItem
