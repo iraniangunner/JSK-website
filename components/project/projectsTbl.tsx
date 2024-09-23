@@ -8,7 +8,7 @@ import projectsData from "@/data.json";
 import { AnimatePresence, motion } from "framer-motion";
 import { Filter } from "./projectFilter";
 
-export default  function ProjectsTable({
+export default function ProjectsTable({
   type,
   page,
 }: {
@@ -54,11 +54,25 @@ export default  function ProjectsTable({
 
   const [activeProject, setActiveProject] = useState("all");
 
+  // const [message, setMessage] = useState("");
+
   useEffect(() => {
     // fetchPopular();
     setProjects(projectsData.projects);
     setFiltered(projectsData.projects);
   }, []);
+
+  // useEffect(() => {
+  //   // Use setTimeout to update the message after 2000 milliseconds (2 seconds)
+  //   const timeoutId = setTimeout(() => {
+  //     setMessage("Delayed message after 3 seconds!");
+  //   }, 3000);
+
+  //   // Cleanup function to clear the timeout if the component unmounts
+  //   return () => {
+  //     clearTimeout(timeoutId);
+  //   };
+  // }, []);
 
   return (
     <>
