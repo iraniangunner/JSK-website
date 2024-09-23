@@ -71,7 +71,7 @@ export default  function ProjectsTable({
       <motion.div layout className="grid grid-cols-2 md:grid-cols-3 gap-4">
         <AnimatePresence>
           {filtered.map((project: any) => {
-            return <Project key={project.id} projectDetils={project} />;
+            return <Project key={project.id} projectDetails={project} />;
           })}
         </AnimatePresence>
       </motion.div>
