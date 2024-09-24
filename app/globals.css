@@ -300,7 +300,6 @@ body {
   background: #fff;
   box-shadow: 0 7px 25px rgb(41 41 41 / 27%);
   transition: 0.4s;
-  margin-left: 25px;
 }
 
 .filter_active {
@@ -316,7 +315,6 @@ body {
   background: #ffa500;
   box-shadow: 0 7px 25px rgb(41 41 41 / 27%);
   transition: 0.4s;
-  margin-left: 25px;
 }
 
 .filter_btn:before {

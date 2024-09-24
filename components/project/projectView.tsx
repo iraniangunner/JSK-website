@@ -25,27 +25,25 @@ export function Project({ projectDetails }: { projectDetails: any }) {
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
-      className="max-w-sm bg-white border relative border-gray-200 rounded-lg shadow overflow-hidden group dark:bg-gray-800 dark:border-gray-700"
+      className="max-w-sm bg-white border relative border-gray-200 shadow overflow-hidden group"
     >
       <Link href={`/projects/${projectDetails.id}`} className="block">
         <Image
           src={`/images/${projectDetails.image}`}
           width={300}
           height={300}
-          className="h-auto max-w-full rounded-lg w-full"
+          className="h-auto max-w-full w-full"
           alt="project-image"
         />
       </Link>
-      <div
-        className={`absolute bottom-0 z-0 rounded-b-lg left-0 right-0 top-0 w-full h-full bg-[#ffa500] opacity-[0.8] translate-y-[300px] group-hover:translate-y-0 transition-all duration-[0.4]`}
-      ></div>
+      <div className="absolute bottom-0 left-0 right-0 top-0 z-0 w-full h-full bg-black opacity-[0.8] translate-x-[500px] group-hover:translate-x-0 transition-all duration-[0.6s]"></div>
 
       <Link
         href={`/projects/${projectDetails.id}`}
-        className="absolute top-0 bottom-0 left-0 right-0 translate-y-[300px] group-hover:translate-y-0 transition-all duration-[0.4] block w-full h-full z-[2]"
+        className="absolute top-3 bottom-3 left-3 right-3 border flex justify-center items-center translate-x-[500px] group-hover:translate-x-0 transition-all duration-[0.6s] z-[2]"
       >
-        <h5 className="p-5 text-lg font-bold tracking-tight text-white">
-          {projectDetails.title}
+        <h5 className="p-2 lg:p-4 text-lg text-center text-white">
+          {projectDetails.overview}
         </h5>
       </Link>
     </motion.div>
