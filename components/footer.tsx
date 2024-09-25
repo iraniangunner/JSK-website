@@ -117,7 +117,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="footer_bar mt-12 w-full grid grid-cols-1 md:grid-cols-2 border-t border-blue-gray-50 py-4 lg:py-6 relative">
+      <div className="footer_bar mt-12 w-full flex justify-center items-center border-t border-blue-gray-50 py-4 lg:py-6 relative">
         <Typography
           // variant="medium"
           className="mt-4 text-[17px] font-iransans text-[#fff] text-center md:mt-0"
