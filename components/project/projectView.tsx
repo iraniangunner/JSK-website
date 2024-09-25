@@ -1,11 +1,13 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import { motion } from "framer-motion";
 
-export function Project({ projectDetails }: { projectDetails: any }) {
+
+export function Project({projectDetails}:{projectDetails:any}) {
   // const [message, setMessage] = useState("");
+
 
   // useEffect(() => {
   //   // Use setTimeout to update the message after 2000 milliseconds (2 seconds)

@@ -1,36 +1,31 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { ActiveContext, FilterContext, ProjectContext } from "./projectsTbl";
 
-export function Filter({
-  projects,
-  setFiltered,
-  activeProject,
-  setActiveProject,
-}: {
-  projects: any;
-  setFiltered: any;
-  activeProject: any;
-  setActiveProject: any;
-}) {
+export function Filter() {
+  const activeProjectData = useContext(ActiveContext);
+  const projectsData = useContext(ProjectContext);
+  const filteredData = useContext(FilterContext);
+
   useEffect(() => {
-    if (activeProject == "all") {
-      setFiltered(projects);
+    if (activeProjectData.activeProject == "all") {
+      filteredData.setFiltered(projectsData.projects);
       return;
     }
 
-    const filtered = projects.filter((project: any) =>
-      project.categories.includes(activeProject)
+    const filtered = projectsData.projects.filter((project: any) =>
+      project.categories.includes(activeProjectData.activeProject)
     );
-    setFiltered(filtered);
-  }, [activeProject]);
+    filteredData.setFiltered(filtered);
+  }, [activeProjectData.activeProject]);
   return (
     <div className="flex items-center justify-center py-4 md:py-8 gap-6 flex-wrap">
       <button
-        onClick={() => setActiveProject("all")}
+        onClick={() => activeProjectData.setActiveProject("all")}
         type="button"
         className={`filter_btn hover:text-white ${
-          activeProject === "all"
+          activeProjectData.activeProject === "all"
             ? "filter_active hover:before:bg-[#ffa500] hover:before:w-0 hover:before:h-0"
             : ""
         }`}
@@ -38,10 +33,10 @@ export function Filter({
         همه
       </button>
       <button
-        onClick={() => setActiveProject("طراحی و مهندسی")}
+        onClick={() => activeProjectData.setActiveProject("طراحی و مهندسی")}
         type="button"
         className={`filter_btn hover:text-white ${
-          activeProject === "طراحی و مهندسی"
+          activeProjectData.activeProject === "طراحی و مهندسی"
             ? "filter_active hover:before:bg-[#ffa500] hover:before:w-0 hover:before:h-0"
             : ""
         }`}
@@ -49,10 +44,10 @@ export function Filter({
         طراحی و مهندسی
       </button>
       <button
-        onClick={() => setActiveProject("خرید")}
+        onClick={() => activeProjectData.setActiveProject("خرید")}
         type="button"
         className={`filter_btn hover:text-white ${
-          activeProject === "خرید"
+          activeProjectData.activeProject === "خرید"
             ? "filter_active hover:before:bg-[#ffa500] hover:before:w-0 hover:before:h-0"
             : ""
         }`}
@@ -60,10 +55,10 @@ export function Filter({
         خرید
       </button>
       <button
-        onClick={() => setActiveProject("نصب")}
+        onClick={() => activeProjectData.setActiveProject("نصب")}
         type="button"
         className={`filter_btn hover:text-white ${
-          activeProject === "نصب"
+          activeProjectData.activeProject === "نصب"
             ? "filter_active hover:before:bg-[#ffa500] hover:before:w-0 hover:before:h-0"
             : ""
         }`}
@@ -71,10 +66,10 @@ export function Filter({
         نصب
       </button>
       <button
-        onClick={() => setActiveProject("اجرا")}
+        onClick={() => activeProjectData.setActiveProject("اجرا")}
         type="button"
         className={`filter_btn hover:text-white ${
-          activeProject === "اجرا"
+          activeProjectData.activeProject === "اجرا"
             ? "filter_active hover:before:bg-[#ffa500] hover:before:w-0 hover:before:h-0"
             : ""
         }`}
@@ -82,10 +77,10 @@ export function Filter({
         اجرا
       </button>
       <button
-        onClick={() => setActiveProject("بهره برداری")}
+        onClick={() => activeProjectData.setActiveProject("بهره برداری")}
         type="button"
         className={`filter_btn hover:text-white ${
-          activeProject === "بهره برداری"
+          activeProjectData.activeProject === "بهره برداری"
             ? "filter_active hover:before:bg-[#ffa500] hover:before:w-0 hover:before:h-0"
             : ""
         }`}

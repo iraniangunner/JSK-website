@@ -3,10 +3,16 @@ import { CustomError } from "../error";
 import { Project } from "./projectView";
 import Pagination from "@/components/project/projectPagination";
 import { unstable_noStore as noStore } from "next/cache";
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
 import projectsData from "@/data.json";
 import { AnimatePresence, motion } from "framer-motion";
 import { Filter } from "./projectFilter";
+
+export const ProjectContext = createContext<any>({});
+
+export const FilterContext = createContext<any>({});
+
+export const ActiveContext = createContext<any>({});
 
 export default function ProjectsTable({
   type,
@@ -76,19 +82,23 @@ export default function ProjectsTable({
 
   return (
     <>
-      <Filter
-        projects={projects}
-        setFiltered={setFiltered}
-        activeProject={activeProject}
-        setActiveProject={setActiveProject}
-      />
-      <motion.div layout className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        <AnimatePresence>
-          {filtered.map((project: any) => {
-            return <Project key={project.id} projectDetails={project} />;
-          })}
-        </AnimatePresence>
-      </motion.div>
+      <ProjectContext.Provider value={{ projects, setProjects }}>
+        <FilterContext.Provider value={{ filtered, setFiltered }}>
+          <ActiveContext.Provider value={{ activeProject, setActiveProject }}>
+            <Filter />
+            <motion.div
+              layout
+              className="grid grid-cols-2 md:grid-cols-3 gap-4"
+            >
+              <AnimatePresence>
+                {filtered.map((project: any) => {
+                  return <Project key={project.id} projectDetails={project} />;
+                })}
+              </AnimatePresence>
+            </motion.div>
+          </ActiveContext.Provider>
+        </FilterContext.Provider>
+      </ProjectContext.Provider>
     </>
   );
 }
