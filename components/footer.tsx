@@ -124,7 +124,7 @@ export default function Footer() {
         >
           کلیه حقوق این وب سایت محفوظ و متعلق به شرکت ژیوار صنعت کیان می باشد.
         </Typography>
-        <div className="flex gap-4 text-[#fff] justify-center">
+        {/* <div className="flex gap-4 text-[#fff] justify-center">
           <Typography
             as="a"
             href="#"
@@ -211,7 +211,7 @@ export default function Footer() {
               />
             </svg>
           </Typography>
-        </div>
+        </div> */}
       </div>
     </footer>
   );

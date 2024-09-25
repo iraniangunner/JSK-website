@@ -46,7 +46,7 @@ export const ProjectsSectionUI: React.FC<ProjectsCarouselProps> = ({
         <motion.p
           initial="hidden"
           whileInView="visible"
-          className="text-justify overflow-hidden select-none"
+          className="text-justify overflow-hidden select-none leading-8"
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeIn" }}
           variants={{

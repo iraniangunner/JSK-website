@@ -65,8 +65,8 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                     ></div>
                     <div className="h-full w-full absolute left-0 top-0 bg-black opacity-20"></div>
                     <div className="relative z-10 h-full w-full">
-                      <div className="absolute top-[25%] left-[50%] translate-x-[-50%] max-w-[30%]  overflow-hidden">
-                        <motion.div
+                      <div className="absolute top-[25%] left-[50%] translate-x-[-50%] lg:max-w-[30%] overflow-hidden">
+                        {/* <motion.div
                           initial={{ x: 100, opacity: 0 }}
                           animate={{
                             x: isActive ? 0 : 100,
@@ -74,10 +74,10 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                           }}
                           transition={{ duration: 0.5, delay: 0.5 }}
                         >
-                          {/* <p className="text-3xl sm:text-6xl lg:text-5xl uppercase font-bold text-white">
+                          <p className="text-3xl sm:text-6xl lg:text-5xl uppercase font-bold text-white">
                             {title}
-                          </p> */}
-                        </motion.div>
+                          </p>
+                        </motion.div> */}
                         {tagline && (
                           <motion.div
                             initial={{ y: 50, opacity: 0 }}
@@ -89,14 +89,14 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                           >
                             <p
                               dir="rtl"
-                              className="text-md sm:text-xl lg:text-3xl font-semibold text-center text-white"
+                              className="text-[20px] lg:text-[30px] font-semibold leading-10 lg:leading-[70px] text-center text-white"
                             >
                               {tagline}
                             </p>
                           </motion.div>
                         )}
 
-                        {buttons.length > 0 ? (
+                        {/* {buttons.length > 0 ? (
                           <motion.div
                             initial={{ x: 100, opacity: 0 }}
                             animate={{
@@ -106,11 +106,11 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                             transition={{ duration: 0.5, delay: 0.5 }}
                             className="self-center"
                           >
-                            {/* <div className="inline-block px-9 py-4 text-white bg-[#ffa500] mt-10">
+                            <div className="inline-block px-9 py-4 text-white bg-[#ffa500] mt-10">
                               <SliderButtons buttons={buttons} />
-                            </div> */}
+                            </div>
                           </motion.div>
-                        ) : null}
+                        ) : null} */}
                       </div>
                     </div>
                   </>
@@ -119,7 +119,7 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
             ))}
 
             <div className="swiper-button-prev main-prev flex hover:h-[100px] group after:hidden transition-all duration-500">
-              <div className="w-0 h-[80px] group-hover:w-[180px] group-hover:h-[100px] transition-all duration-500">
+              <div className="hidden lg:block w-0 h-[80px] group-hover:w-[180px] group-hover:h-[100px] transition-all duration-500">
                 <div
                   style={{
                     background: `url(${
@@ -133,8 +133,8 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                 ></div>
               </div>
               <div
-                className="relative before:absolute before:content-[''] before:skew-x-[10deg] before:transition-all before:duration-500 before:inline-block before:top-0 before:left-0 before:bottom-0 before:right-0 before:bg-[rgba(255_255_255)] before:opacity-[0.2] 
-                 before:origin-[50%_100%] before:z-[-1] pr-[10px] flex justify-center items-center w-[80px] h-[80px] group-hover:h-[100px] text-white group-hover:before:bg-[#ffa500] group-hover:before:opacity-100 group-hover:text-white"
+                className="flex justify-center items-center relative before:absolute before:content-[''] before:skew-x-[10deg] before:transition-all before:duration-500 before:inline-block before:top-0 before:left-0 before:bottom-0 before:right-0 before:bg-[rgba(255_255_255)] before:opacity-[0.2] 
+                 before:origin-[50%_100%] before:z-[-1] pr-[10px]  w-[80px] h-[80px] group-hover:h-[100px] text-white group-hover:before:bg-[#ffa500] group-hover:before:opacity-100 group-hover:text-white"
                 style={{ transition: "inherit" }}
               >
                 <FaArrowLeft className="next_icon" />
@@ -149,7 +149,7 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                 <FaArrowRight className="next_icon" />
               </div>
 
-              <div className="w-0 h-[80px] group-hover:h-[100px] group-hover:w-[180px] transition-all duration-500">
+              <div className="hidden lg:block w-0 h-[80px] group-hover:h-[100px] group-hover:w-[180px] transition-all duration-500">
                 <div
                   style={{
                     background: `url(${
