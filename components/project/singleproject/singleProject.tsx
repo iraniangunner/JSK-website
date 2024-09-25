@@ -59,15 +59,60 @@ export function SingleProject({ project }: { project: any }) {
           aria-label="breadcrumb"
           className="px-[15px] mx-auto md:max-w-[720px] lg:max-w-[920px] relative"
         ></nav>
-        <h1 className="text-[35px] font-bold text-[#fff] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+        <h1 className="lg:text-[35px] font-bold text-[#fff] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
           {project.title}
         </h1>
       </div>
-      <div className="max-w-[1300px] flex gap-8 lg:gap-9 my-24 mx-auto px-8">
+      <div className="max-w-[1300px] flex flex-col lg:flex-row gap-8 lg:gap-9 my-24 mx-auto px-8">
         <div
           className={`hidden lg:block lg:w-[50%] xl:w-[30%] h-fit ${
             isScrolling ? "sticky top-24" : "relative"
           }`}
+        >
+          <ul>
+            <li className="flex items-center py-[15px] border-b border-solid border-[#001c472e]">
+              <FaBriefcase className="ml-[20px] text-[#FF5E14]" size={20} />
+              <div>
+                <h4 className="text-[20px] mb-[3px] text-[#001c47] font-[600]">
+                  عنوان پروژه
+                </h4>
+                <p className="text-[16px] text-[#53545A]">{project.title}</p>
+              </div>
+            </li>
+
+            <li className="flex items-center py-[15px] border-b border-solid border-[#001c472e]">
+              <FaRegUser className="ml-[20px] text-[#FF5E14]" size={20} />
+              <div>
+                <h4 className="text-[20px] mb-[3px] text-[#001c47] font-[600]">
+                  کارفرما
+                </h4>
+                <p className="text-[16px] text-[#53545A]">{project.employee}</p>
+              </div>
+            </li>
+            <li className="flex items-center py-[15px] border-b border-solid border-[#001c472e]">
+              <FaRegCalendar className="ml-[20px] text-[#FF5E14]" size={20} />
+              <div>
+                <h4 className="text-[20px] mb-[3px] text-[#001c47] font-[600]">
+                  تاریخ شروع
+                </h4>
+                <p className="text-[16px] text-[#53545A]">
+                  {project.startDate}
+                </p>
+              </div>
+            </li>
+            <li className="flex items-center py-[15px]">
+              <FaLocationDot className="ml-[20px] text-[#FF5E14]" size={20} />
+              <div>
+                <h4 className="text-[20px] mb-[3px] text-[#001c47] font-[600]">
+                  محل پروژه
+                </h4>
+                <p className="text-[16px] text-[#53545A]">{project.location}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div
+          className="block lg:hidden"
         >
           <ul>
             <li className="flex items-center py-[15px] border-b border-solid border-[#001c472e]">
