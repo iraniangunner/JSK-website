@@ -44,7 +44,7 @@ export default function Projects({
       >
         <nav
           aria-label="breadcrumb"
-          className="px-[15px] mx-auto md:max-w-[720px] lg:max-w-[920px] relative"
+          className="px-[15px] mx-auto md:max-w-[720px] lg:max-w-[920px] relative hidden md:block"
         >
           <ol className="flex flex-wrap items-center absolute bottom-[20px] rounded-md bg-opacity-60 px-[1rem]">
             <li className="flex items-center text-lg font-iransans antialiased font-normal leading-normal transition-colors duration-300 cursor-pointer text-blue-gray-900 hover:text-[#ffa500]">
@@ -60,7 +60,7 @@ export default function Projects({
             </li>
           </ol>
         </nav>
-        <h1 className="text-[35px] font-bold absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+        <h1 className="lg:text-[35px] font-bold absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
           پروژه های ما
         </h1>
       </div>
