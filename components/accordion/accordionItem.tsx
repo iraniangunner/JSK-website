@@ -88,7 +88,7 @@ export function AccordionItem() {
             icon={<Icon id={index + 1} open={open} />}
           >
             <AccordionHeader
-              className="font-iransans"
+              className="font-iransans text-right"
               onClick={() => handleOpen(index + 1)}
             >
               {item.title}
