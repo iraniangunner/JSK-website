@@ -82,7 +82,7 @@ export function AccordionItem() {
           }}
         >
           <Accordion
-            className="mb-1 px-4"
+            className="mb-1"
             key={index + 1}
             open={open === index + 1}
             icon={<Icon id={index + 1} open={open} />}

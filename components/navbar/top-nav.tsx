@@ -20,7 +20,7 @@ export default function TopNav() {
           className="block relative cursor-pointer font-medium
           before:content-[''] before:absolute before:right-[100%] 
           before:bottom-0 before:border-l-[50px] before:border-l-transparent 
-          before:border-b-[65px] before:border-b-[#ffa500]
+          before:border-b-[68px] before:border-b-[#ffa500]
           after:content-[''] after:absolute after:left-[100%] 
           after:bottom-0 after:min-w-[100vw] after:h-[100%] after:bg-[#ffa500] xl:mr-auto"
         >
@@ -28,7 +28,8 @@ export default function TopNav() {
             src={jsk}
             alt="JSK logo"
             width={200}
-            className="bg-[#ffa500] h-[64px]"
+            height={24}
+            className="w-full h-full bg-[#ffa500]"
           />
         </Link>
       </div>

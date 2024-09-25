@@ -114,7 +114,7 @@ export function SingleProject({ project }: { project: any }) {
         <div className="w-full lg-w-[50%] xl:w-[70%] flex flex-col justify-center gap-3">
           <ProjectCarousel project={project} />
 
-          <h1 className="font-bold text-lg">شرح مختصر پروژه</h1>
+          <h1 className="font-bold text-lg">معرفی پروژه</h1>
           <p className="text-justify w-[100%] leading-7">
             {project.description}
           </p>

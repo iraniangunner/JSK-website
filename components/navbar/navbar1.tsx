@@ -134,7 +134,7 @@ const navListItems = [
   {
     label: "همکاری با ما",
     link: "/hiring",
-  }
+  },
 ];
 
 function NavList({ navIsScroll }: { navIsScroll: boolean }) {
@@ -179,7 +179,6 @@ function NavList({ navIsScroll }: { navIsScroll: boolean }) {
         className="contact font-bold relative flex items-center gap-2 rounded-none py-3 px-3
         overflow-hidden text-md transition-all duration-[0.5s] text-[#fff] hover:text-[#ffa500] h-full z-[1]"
       >
-        {" "}
         تماس با ما
       </Link>
       {/* 

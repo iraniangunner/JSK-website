@@ -65,7 +65,7 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                     ></div>
                     <div className="h-full w-full absolute left-0 top-0 bg-black opacity-20"></div>
                     <div className="relative z-10 h-full w-full">
-                      <div className="absolute top-[20%] right-[20%] backdrop-blur-sm max-w-[30%] px-8 py-8 overflow-hidden">
+                      <div className="absolute top-[25%] left-[50%] translate-x-[-50%] max-w-[30%]  overflow-hidden">
                         <motion.div
                           initial={{ x: 100, opacity: 0 }}
                           animate={{
@@ -89,7 +89,7 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                           >
                             <p
                               dir="rtl"
-                              className="text-md sm:text-xl lg:text-3xl font-semibold text-justify text-white"
+                              className="text-md sm:text-xl lg:text-3xl font-semibold text-center text-white"
                             >
                               {tagline}
                             </p>

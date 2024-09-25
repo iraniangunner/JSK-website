@@ -41,7 +41,7 @@ export const ProjectsSectionUI: React.FC<ProjectsCarouselProps> = ({
             hidden: { opacity: 0, y: 100 },
           }}
         >
-          برخی پروژه های اخیر
+          پروژه های اخیر
         </motion.h1>
         <motion.p
           initial="hidden"
