@@ -32,7 +32,7 @@
       "id": 2,
       "title": "trusted industry leader",
       "tagline": "ارائه کلیه خدمات بازرگانی خارجی و داخلی، لجستیک و تشریفات گمرکی",
-      "image": "/images/slide3.jpg",
+      "image": "/images/slide5.jpg",
       "buttons": [
         {
           "id": 0,
@@ -73,7 +73,10 @@
         { "id": 0, "src": "ravar2.jpg" },
         { "id": 1, "src": "ravar3.jpg" },
         { "id": 2, "src": "ravar4.jpg" },
-        { "id": 3, "src": "ravar5.jpg" }
+        { "id": 3, "src": "ravar5.jpg" },
+        { "id": 4, "src": "ravar6.jpg" },
+        { "id": 5, "src": "ravar7.jpg" },
+        { "id": 6, "src": "ravar8.jpg" }
       ]
     },
     {

@@ -57,9 +57,9 @@ export function SingleProject({ project }: { project: any }) {
       >
         <nav
           aria-label="breadcrumb"
-          className="px-[15px] mx-auto md:max-w-[720px] lg:max-w-[920px] relative"
+          className="p-[10px] mx-auto md:max-w-[720px] lg:max-w-[920px] relative"
         ></nav>
-        <h1 className="lg:text-[35px] font-bold text-[#fff] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+        <h1 className="lg:text-[35px] font-bold text-center text-[#fff] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
           {project.title}
         </h1>
       </div>
