@@ -116,7 +116,7 @@ export function SingleProject({ project }: { project: any }) {
         >
           <ul>
             <li className="flex items-center py-[15px] border-b border-solid border-[#001c472e]">
-              <FaBriefcase className="ml-[20px] text-[#FF5E14]" size={20} />
+              {/* <FaBriefcase className="ml-[20px] text-[#FF5E14]" size={20} /> */}
               <div>
                 <h4 className="text-[20px] mb-[3px] text-[#001c47] font-[600]">
                   عنوان پروژه
