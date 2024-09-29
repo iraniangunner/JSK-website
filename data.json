@@ -90,10 +90,10 @@
       "startDate": "مرداد ماه ۱۴۰۱",
       "location": "سیرجان",
       "images": [
-        { "id": 0, "src": "golgohar2.jpg" },
-        { "id": 1, "src": "golgohar3.jpg" },
-        { "id": 2, "src": "golgohar4.jpg" },
-        { "id": 3, "src": "golgohar5.jpg" }
+        { "id": 0, "src": "gol5.jpg" },
+        { "id": 1, "src": "gol4.jpg" },
+        { "id": 2, "src": "gol2.jpg" },
+        { "id": 3, "src": "gol6.jpg" }
       ]
     },
 
@@ -108,10 +108,10 @@
       "startDate": "آبان ماه ۱۴۰۱",
       "location": "سیرجان",
       "images": [
-        { "id": 0, "src": "golgohar_3.jpg" },
-        { "id": 1, "src": "golgohar_4.jpg" },
-        { "id": 2, "src": "golgohar_5.jpg" },
-        { "id": 3, "src": "golgohar_6.jpg" }
+        { "id": 0, "src": "gol4.jpg" },
+        { "id": 1, "src": "gol2.jpg" },
+        { "id": 2, "src": "gol3.jpg" },
+        { "id": 3, "src": "gol6.jpg" }
       ]
     },
     {
@@ -160,9 +160,9 @@
       "location": "سنگان",
       "images": [
         { "id": 0, "src": "sang_2.jpg" },
-        { "id": 1, "src": "sang_3.jpg" },
+        { "id": 1, "src": "sang_3.png" },
         { "id": 2, "src": "sang_4.jpg" },
-        { "id": 3, "src": "sang_5.jpg" }
+        { "id": 3, "src": "sang_5.png" }
       ]
     },
     {
@@ -176,10 +176,10 @@
       "startDate": "دی ماه ۱۴۰۱",
       "location": "سنگان",
       "images": [
-        { "id": 0, "src": "sang2.jpg" },
-        { "id": 1, "src": "sang3.png" },
+        { "id": 0, "src": "sang2.png" },
+        { "id": 1, "src": "sang3.jpg" },
         { "id": 2, "src": "sang4.jpg" },
-        { "id": 3, "src": "sang5.png" }
+        { "id": 3, "src": "sang5.jpg" }
       ]
     },
     {
