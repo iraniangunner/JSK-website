@@ -113,10 +113,10 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
               </div>
               <div className="absolute top-0 left-0 w-full h-full project_slider_content flex flex-col justify-end py-6 px-4">
                 <div className="translate-y-[80px] group-hover:translate-y-0 mb-[30px] group-hover:mb-0 transition-all duration-[0.3]">
-                  <h3 className="mb-6 text-white">
+                  <h3 className="mb-6 text-white text-center">
                     <Link href={`/projects/${p.id}`}> {p.title}</Link>
                   </h3>
-                  <div className="mb-4 h-[1px]  bg-[rgb(225_230_238)] opacity-[0.4]"></div>
+                  <div className="mb-4 h-[1px] bg-[rgb(225_230_238)] opacity-[0.4]"></div>
                   <div className="mb-6 opacity-0 group-hover:opacity-[1] grop transition-all duration-[0.3] delay-[0.1]">
                     <div className="text-white">
                       <p className="h-5"></p>

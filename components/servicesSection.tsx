@@ -8,8 +8,8 @@ import { AccordionItem } from "./accordion/accordionItem";
 export default function ServicesSection() {
   return (
     <section>
-      <div className="grid grid-cols-1 lg:grid-cols-2 w-[80%] xl:w-[70%] mx-auto gap-10 py-20 overflow-hidden lg:overflow-visible">
-        <div className="order-2 lg:order-1 max-w-full">
+      <div className="grid grid-cols-1 lg:grid-cols-2 w-[80%] xl:w-[70%] mx-auto gap-10 pb-10 pt-20 overflow-hidden lg:overflow-visible">
+        <div className="order-2 lg:order-1 max-w-full flex flex-col  justify-center">
           <motion.h1
             initial="hidden"
             whileInView="visible"

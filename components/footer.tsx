@@ -40,7 +40,7 @@ export default function Footer() {
               className="select-none"
             />
 
-            <p className="mt-3 text-justify leading-7 select-none">
+            <p className="mt-3 text-justify leading-7 select-none text-[16px]">
               خدمات شرکت ژیوار صنعت کیان شامل طیف گسترده ای از فعالیت های مربوط
               به خدمات مهندسی، تأمین تجهیزات، نصب و راه اندازی و بهره برداری
               (تعمیر و نگهداری، تأمین و مدیریت نیروی انسانی و ...) پروژه های
@@ -117,14 +117,14 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="footer_bar mt-12 w-full flex justify-center items-center border-t border-blue-gray-50 py-4 lg:py-6 relative">
+      <div className="footer_bar mt-12 w-full flex justify-around items-center border-t border-blue-gray-50 py-4 lg:py-6 relative">
         <Typography
           // variant="medium"
-          className="mt-4 text-[17px] font-iransans text-[#fff] text-center md:mt-0"
+          className="mt-4 text-[17px] font-iransans text-[#fff] md:mt-0"
         >
           کلیه حقوق این وب سایت محفوظ و متعلق به شرکت ژیوار صنعت کیان می باشد.
         </Typography>
-        {/* <div className="flex gap-4 text-[#fff] justify-center">
+        <div className="flex gap-4 text-[#fff]">
           <Typography
             as="a"
             href="#"
@@ -211,7 +211,7 @@ export default function Footer() {
               />
             </svg>
           </Typography>
-        </div> */}
+        </div>
       </div>
     </footer>
   );
