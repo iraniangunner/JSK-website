@@ -37,7 +37,7 @@ export default function Footer() {
               alt="JSK logo"
               width={300}
               height={30}
-              className="select-none lg:mr-[-20px]"
+              className="select-none mr-[-20px]"
             />
 
             <p className="text-justify leading-7 select-none text-[16px]">
