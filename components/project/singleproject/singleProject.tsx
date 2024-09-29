@@ -63,7 +63,7 @@ export function SingleProject({ project }: { project: any }) {
           {project.title}
         </h1>
       </div>
-      <div className="max-w-[1300px] flex flex-col xl:flex-row gap-8 lg:gap-9 my-24 mx-auto px-8">
+      <div className="max-w-[1300px] flex flex-col xl:flex-row gap-8 lg:gap-9 my-10 lg:my-24 mx-auto px-8">
         <div
           className={`hidden lg:block lg:w-[50%] xl:w-[30%] h-fit ${
             isScrolling ? "xl:sticky xl:top-24" : "xl:relative"
