@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence} from "framer-motion";
-import { ComplexNavbar } from "./navbar1";
+import { ComplexNavbar } from "./complexNavbar";
 
 export default function Navbar() {
   const [isScrolling, setIsScrolling] = useState(false);

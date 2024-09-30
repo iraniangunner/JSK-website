@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { BsFillPersonFill } from "react-icons/bs";
@@ -13,7 +13,8 @@ import {
   IconButton,
   Collapse,
 } from "@material-tailwind/react";
-
+import MenuModal from "./responsiveNavbar";
+import { AnimatePresence } from "framer-motion";
 import { ChevronDownIcon, Bars2Icon } from "@heroicons/react/24/solid";
 import jsk from "../../public/images/jsk.png";
 
@@ -42,7 +43,7 @@ const navListMenuItems = [
 ];
 
 function NavListMenu({ navIsScroll }: { navIsScroll: boolean }) {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const renderItems = navListMenuItems.map(({ title, description, link }) => (
     <Link href={link} key={title}>
@@ -59,7 +60,7 @@ function NavListMenu({ navIsScroll }: { navIsScroll: boolean }) {
   ));
 
   return (
-    <React.Fragment>
+    <>
       <Menu
         allowHover
         open={isMenuOpen}
@@ -109,7 +110,7 @@ function NavListMenu({ navIsScroll }: { navIsScroll: boolean }) {
       <ul className="ml-6 flex w-full flex-col gap-1 lg:hidden">
         {renderItems}
       </ul>
-    </React.Fragment>
+    </>
   );
 }
 
@@ -181,37 +182,49 @@ function NavList({ navIsScroll }: { navIsScroll: boolean }) {
       >
         تماس با ما
       </Link>
-      {/* 
-      <Typography
-        as="a"
-        href="#"
-        // variant="medium"
-        color="gray"
-        className="relative font-medium font-iransans"
-      >
-        <MenuItem
-          className="lg:hidden flex items-center justify-between text-md text-[#626161] rounded-none
-          hover:bg-[#fff] hover:text-black hover:transition-all duration-[0.4s] delay-0 ease-in-out"
-        >
-          <BsFillPersonFill size={20} />
-          <span className="mr-1">ورود</span>
-        </MenuItem>
-      </Typography> */}
     </ul>
   );
 }
 
 export function ComplexNavbar({ isScroll }: { isScroll: boolean }) {
-  const [isNavOpen, setIsNavOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur);
+  const [browserWidth, setBrowserWidth] = useState(0);
 
-  React.useEffect(() => {
-    window.addEventListener(
-      "resize",
-      () => window.innerWidth >= 960 && setIsNavOpen(false)
-    );
+  const closeMenu = () => setIsMenuOpen(false);
+  const openMenu = () => setIsMenuOpen(true);
+
+  useEffect(() => {
+    if (browserWidth >= 992) {
+      setIsMenuOpen(false);
+
+      document.body.style.overflow = "visible";
+    }
+  }, [browserWidth]);
+
+  useEffect(() => {
+    function handleResize() {
+      setBrowserWidth(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "visible";
+    }
+
+    return () => {
+      document.documentElement.style.overflow = "visible";
+    };
+  }, [isMenuOpen]);
 
   return (
     <Navbar className="mx-auto max-w-screen-3xl shadow-none rounded-none px-2 lg:px-8 py-0 lg:pl-6 font-iransans">
@@ -246,17 +259,23 @@ export function ComplexNavbar({ isScroll }: { isScroll: boolean }) {
           size="sm"
           color="blue-gray"
           variant="text"
-          onClick={toggleIsNavOpen}
+          onClick={openMenu}
           className="mr-2 lg:hidden"
         >
           <Bars2Icon className="h-6 w-6" />
         </IconButton>
-
-        {/* <ProfileMenu /> */}
       </div>
-      <Collapse open={isNavOpen} className="overflow-scroll ">
-        <NavList navIsScroll={isScroll} />
-      </Collapse>
+
+      {/* Responsive navbar */}
+      <AnimatePresence
+        initial={false}
+        // exitBeforeEnter={true}
+        onExitComplete={() => null}
+      >
+        {isMenuOpen && (
+          <MenuModal modalOpen={openMenu} handleClose={closeMenu} />
+        )}
+      </AnimatePresence>
     </Navbar>
   );
 }

@@ -25,7 +25,7 @@ export default function Contact() {
       >
         <nav
           aria-label="breadcrumb"
-          className="px-[15px] mx-auto md:max-w-[720px] lg:max-w-[920px]"
+          className="px-[15px] mx-auto md:max-w-[720px] lg:max-w-[920px] hidden md:block"
         >
           <ol className="flex flex-wrap items-center absolute bottom-[20px] rounded-md bg-opacity-60 px-[1rem]">
             <li className="flex items-center text-lg font-iransans antialiased font-normal leading-normal transition-colors duration-300 cursor-pointer text-blue-gray-900 hover:text-[#ffa500]">
@@ -41,6 +41,9 @@ export default function Contact() {
             </li>
           </ol>
         </nav>
+        <h1 className="text-[35px] font-bold absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+         تماس با ما
+        </h1>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-[50px] pb-[20px] lg:pt-[60px] lg:pb-[30px] px-10 lg:px-30 xl:px-40 mx-auto">
         <div className="relative group flex items-center py-5 px-10 lg:py-[20px] lg:px-[30px] 2xl:py-[25px] shadow-[0_5px_20px_0_rgba(0,0,0,0.15)] overflow-hidden bg-white hover:shadow-[0_5px_60px_0_rgba(0,0,0,0.15)] hover:translate-y-[-10px] transition-all duration-[0.8s]">
@@ -86,7 +89,7 @@ export default function Contact() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-[50px] pb-[20px] lg:pt-[60px] lg:pb-[30px] px-10 lg:px-30 xl:px-40 mx-auto">
-        <div className="py-[40px] px-[45px] border border-solid border-[#fea925] w-[80%] mr-auto">
+        <div className="py-[40px] px-[45px] border border-solid border-[#fea925] w-[80%] lg:mr-auto">
           <div className="text-center">
             <h2 className="mb-[10px] text-[25px] font-bold">
               با ما در ارتباط باشید
