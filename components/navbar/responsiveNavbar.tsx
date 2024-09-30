@@ -127,7 +127,10 @@ const MenuModal = ({
                   <AccordionBody className="font-inherit font-[500]">
                     <ul>
                       {link.subLinks.map((subLink) => (
-                        <li className="my-2 text-[#04244c] hover:text-black transition-colors ease-linear duration-200">
+                        <li
+                          className="my-2 text-[#04244c] hover:text-black transition-colors ease-linear duration-200"
+                          key={subLink.linkAddress}
+                        >
                           <Link
                             href={
                               subLink.linkAddress === "/tenders" ||
