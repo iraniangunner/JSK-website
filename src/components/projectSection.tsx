@@ -1,6 +1,6 @@
 import { ProjectsSectionUI } from "./projectsSectionUI";
 import { CgDanger } from "react-icons/cg";
-import projectsData from "@/data.json";
+import projectsData from "../../data.json";
 
 export function ProjectSection() {
   

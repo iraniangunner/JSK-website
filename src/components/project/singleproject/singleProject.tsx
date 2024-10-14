@@ -5,7 +5,7 @@ import { FaRegUser } from "react-icons/fa";
 import { FaRegCalendar } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
 import { RelatedCarousel } from "./relatedprojects/relatedProjects";
-import { VideoPlayer } from "./videoplayer/video-player";
+// import { VideoPlayer } from "./videoplayer/video-player";
 import { FaCheck } from "react-icons/fa6";
 import ProjectCarousel from "./thumbscarousel/thumbsCarousel";
 

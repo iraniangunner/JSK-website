@@ -2,7 +2,7 @@ import { SingleProject } from "@/components/project/singleproject/singleProject"
 import { getProjectById } from "@/utils/server-utils/getSingleProject";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import projectsData from "@/data.json";
+import projectsData from "../../../../data.json";
 // import Error from "./error";
 
 type Props = {

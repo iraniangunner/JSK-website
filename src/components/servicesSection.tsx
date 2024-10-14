@@ -1,7 +1,7 @@
 "use client";
-import pic1 from "../public/images/pic1.jpg";
-import pic2 from "../public/images/pic2.jpg";
-import pic3 from "../public/images/pic3.jpg";
+import pic1 from "../../public/images/pic1.jpg";
+import pic2 from "../../public/images/pic2.jpg";
+import pic3 from "../../public/images/pic3.jpg";
 import { motion } from "framer-motion";
 import { AccordionItem } from "./accordion/accordionItem";
 

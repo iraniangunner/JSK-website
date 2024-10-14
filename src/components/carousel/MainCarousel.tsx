@@ -30,7 +30,7 @@ interface MainCarouselProps {
   data: Slide[];
 }
 
-const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
+const MainCarousel = ({ data }: { data: any }) => {
   const [activeSlideIndex, setActiveStyleIndex] = useState<number>(0);
 
   return (
@@ -53,20 +53,29 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
             modules={[Autoplay, Navigation, EffectFade]}
             className="h-full"
           >
-            {data.map(({ id, image, tagline, title, buttons }) => (
-              <SwiperSlide key={id}>
-                {({ isActive }) => (
-                  <>
-                    <div
-                      className="h-full w-full absolute left-0 top-0"
-                      style={{
-                        background: `url(${image}) center center / cover scroll no-repeat`,
-                      }}
-                    ></div>
-                    <div className="h-full w-full absolute left-0 top-0 bg-black opacity-20"></div>
-                    <div className="relative z-10 h-full w-full">
-                      <div className="absolute top-[25%] left-[50%] translate-x-[-50%] lg:max-w-[30%] overflow-hidden">
-                        {/* <motion.div
+            {data.map(
+              ({
+                id,
+                image,
+                text,
+              }: {
+                id: number;
+                image: string;
+                text: string;
+              }) => (
+                <SwiperSlide key={id}>
+                  {({ isActive }) => (
+                    <>
+                      <div
+                        className="h-full w-full absolute left-0 top-0"
+                        style={{
+                          background: `url(https://jsk-co.com/storage/${image}) center center / cover scroll no-repeat`,
+                        }}
+                      ></div>
+                      <div className="h-full w-full absolute left-0 top-0 bg-black opacity-20"></div>
+                      <div className="relative z-10 h-full w-full">
+                        <div className="absolute top-[25%] left-[50%] translate-x-[-50%] lg:max-w-[30%] overflow-hidden">
+                          {/* <motion.div
                           initial={{ x: 100, opacity: 0 }}
                           animate={{
                             x: isActive ? 0 : 100,
@@ -78,25 +87,25 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                             {title}
                           </p>
                         </motion.div> */}
-                        {tagline && (
-                          <motion.div
-                            initial={{ y: 50, opacity: 0 }}
-                            animate={{
-                              y: isActive ? 0 : 50,
-                              opacity: isActive ? 1 : 0,
-                            }}
-                            transition={{ duration: 0.5 }}
-                          >
-                            <p
-                              dir="rtl"
-                              className="text-[20px] lg:text-[30px] font-semibold leading-10 lg:leading-[70px] text-center text-white"
+                          {text && (
+                            <motion.div
+                              initial={{ y: 50, opacity: 0 }}
+                              animate={{
+                                y: isActive ? 0 : 50,
+                                opacity: isActive ? 1 : 0,
+                              }}
+                              transition={{ duration: 0.5 }}
                             >
-                              {tagline}
-                            </p>
-                          </motion.div>
-                        )}
+                              <p
+                                dir="rtl"
+                                className="text-[20px] lg:text-[30px] font-semibold leading-10 lg:leading-[70px] text-center text-white"
+                              >
+                                {text}
+                              </p>
+                            </motion.div>
+                          )}
 
-                        {/* {buttons.length > 0 ? (
+                          {/* {buttons.length > 0 ? (
                           <motion.div
                             initial={{ x: 100, opacity: 0 }}
                             animate={{
@@ -111,18 +120,19 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
                             </div>
                           </motion.div>
                         ) : null} */}
+                        </div>
                       </div>
-                    </div>
-                  </>
-                )}
-              </SwiperSlide>
-            ))}
+                    </>
+                  )}
+                </SwiperSlide>
+              )
+            )}
 
             <div className="swiper-button-prev main-prev flex hover:h-[100px] group after:hidden transition-all duration-500">
               <div className="hidden lg:block w-0 h-[80px] group-hover:w-[180px] group-hover:h-[100px] transition-all duration-500">
                 <div
                   style={{
-                    background: `url(${
+                    background: `url(https://jsk-co.com/storage/${
                       activeSlideIndex === 0
                         ? data[data.length - 1].image
                         : data[activeSlideIndex - 1].image
@@ -152,7 +162,7 @@ const MainCarousel: React.FC<MainCarouselProps> = ({ data }) => {
               <div className="hidden lg:block w-0 h-[80px] group-hover:h-[100px] group-hover:w-[180px] transition-all duration-500">
                 <div
                   style={{
-                    background: `url(${
+                    background: `url(https://jsk-co.com/storage/${
                       activeSlideIndex === data.length - 1
                         ? data[0].image
                         : data[activeSlideIndex + 1].image

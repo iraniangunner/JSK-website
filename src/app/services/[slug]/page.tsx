@@ -2,7 +2,7 @@ import { SingleService } from "@/components/service/singleService";
 import { getServicesBySlug } from "@/utils/server-utils/getSingleService";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import projectsData from "@/data.json";
+import projectsData from "../../../../data.json";
 
 // type Props = {
 //   params: { slug: string };

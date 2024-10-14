@@ -6,6 +6,7 @@ const config: Config = withMT({
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     fontFamily: {
@@ -16,10 +17,10 @@ const config: Config = withMT({
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        "footer-pattern": "url('../public/images/footer1.jpg')",
-        "contact-pattern": "url('../public/images/contact-banner3.jpg')",
-        "projects-pattern": "url('../public/images/contact-banner2.jpg')",
-        "section-2-pattern": "url('../public/images/section-2.jpg')",
+        "footer-pattern": "url('../../public/images/footer1.jpg')",
+        "contact-pattern": "url('../../public/images/contact-banner3.jpg')",
+        "projects-pattern": "url('../../public/images/contact-banner2.jpg')",
+        "section-2-pattern": "url('../../public/images/section-2.jpg')",
       },
     },
   },

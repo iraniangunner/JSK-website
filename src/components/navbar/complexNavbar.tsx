@@ -16,7 +16,7 @@ import {
 import MenuModal from "./responsiveNavbar";
 import { AnimatePresence } from "framer-motion";
 import { ChevronDownIcon, Bars2Icon } from "@heroicons/react/24/solid";
-import jsk from "../../public/images/jsk.png";
+import jsk from "../../../public/images/jsk.png";
 
 // nav list menu
 const navListMenuItems = [

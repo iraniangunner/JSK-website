@@ -4,7 +4,7 @@ import { Project } from "./projectView";
 import Pagination from "@/components/project/projectPagination";
 import { unstable_noStore as noStore } from "next/cache";
 import { useState, useEffect, createContext } from "react";
-import projectsData from "@/data.json";
+import projectsData from "../../../data.json";
 import { AnimatePresence, motion } from "framer-motion";
 import { Filter } from "./projectFilter";
 
