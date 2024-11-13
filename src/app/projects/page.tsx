@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Suspense } from "react";
 import ProjectsTable from "@/components/project/projectsTbl";
 import Skeleton from "@/components/loadingSkeleton";
-import ProjectTab from "@/components/project/projectTab";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -14,26 +13,33 @@ export const metadata: Metadata = {
   },
 };
 
-const buttonTypes = [
-  { type: 2012, text: "همه" },
-  { type: 2013, text: "طراحی و مهندسی" },
-  { type: 2014, text: "خرید" },
-  { type: 2015, text: "نصب" },
-  { type: 2016, text: "اجرا" },
-  { type: 2017, text: "بهره برداری" },
-];
+async function getProjects() {
+  const res = await fetch("https://jsk-co.com/api/projects", {
+    next: { revalidate: 3600 },
+  });
 
-export default function Projects({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  const type =
-    typeof searchParams.type === "string" ? Number(searchParams.type) : 2012;
+  if (!res.ok) {
+    throw new Error("Failed to fetch projects");
+  }
 
-  const page =
-    typeof searchParams.page === "string" ? Number(searchParams.page) : 1;
+  return res.json();
+}
 
+async function getCategories() {
+  const res = await fetch("https://jsk-co.com/api/categories", {
+    next: { revalidate: 3600 },
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch categories");
+  }
+
+  return res.json();
+}
+
+export default async function Projects() {
+  const projectsData = await getProjects();
+  const categoriesData = await getCategories();
   return (
     <div>
       <div
@@ -67,19 +73,14 @@ export default function Projects({
 
       <div className="my-12 mx-8">
         <div className="max-w-[960px] mx-auto">
-          <div className="flex items-center justify-center gap-2 lg:gap-0 py-4 md:py-8 flex-wrap">
-            {/* {buttonTypes.map((button) => (
-              <ProjectTab
-                key={button.text}
-                type={button.type}
-                text={button.text}
-              />
-            ))} */}
-          </div>
+          <div className="flex items-center justify-center gap-2 lg:gap-0 py-4 md:py-8 flex-wrap"></div>
 
-          <Suspense key={type + page} fallback={<Skeleton />}>
-            <ProjectsTable type={type} page={page} />
-          </Suspense>
+          {/* <Suspense fallback={<Skeleton />}> */}
+          <ProjectsTable
+            projectsData={projectsData}
+            categories={categoriesData}
+          />
+          {/* </Suspense> */}
         </div>
       </div>
     </div>
