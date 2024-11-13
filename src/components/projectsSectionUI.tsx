@@ -3,27 +3,24 @@ import { ProjectsCarousel } from "./carousel/ProjectsCarousel";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-// interface Project {
-//   id: string;
-//   title: string;
-//   overview: string;
-//   backdrop_path: string;
-// }
-
-interface Project {
+type Project = {
   id: number;
   title: string;
-  description: string;
-  image: string;
-}
+  text: string;
+  employer: string;
+  start_date: string;
+  location: string;
+  images: { full_path: string }[];
+  categories: { id: number; title: string }[];
+};
 
-interface ProjectsCarouselProps {
-  projects: Project[];
-}
+type ProjectsData = {
+  data: Project[];
+};
 
-export const ProjectsSectionUI: React.FC<ProjectsCarouselProps> = ({
+export const ProjectsSectionUI = ({
   projects,
-}) => {
+}:{projects:ProjectsData}) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 w-[90%] mx-auto gap-10 py-20 ">
       <div className="order-2 lg:order-1">

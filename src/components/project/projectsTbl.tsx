@@ -7,6 +7,7 @@ import { Project } from "./projectView";
 type Project = {
   id: number;
   title: string;
+  text: string;
   employer: string;
   start_date: string;
   location: string;

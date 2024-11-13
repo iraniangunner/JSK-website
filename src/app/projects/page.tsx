@@ -71,16 +71,12 @@ export default async function Projects() {
         </h1>
       </div>
 
-      <div className="my-12 mx-8">
+      <div className="my-10 mx-8">
         <div className="max-w-[960px] mx-auto">
-          <div className="flex items-center justify-center gap-2 lg:gap-0 py-4 md:py-8 flex-wrap"></div>
-
-          {/* <Suspense fallback={<Skeleton />}> */}
           <ProjectsTable
             projectsData={projectsData}
             categories={categoriesData}
           />
-          {/* </Suspense> */}
         </div>
       </div>
     </div>

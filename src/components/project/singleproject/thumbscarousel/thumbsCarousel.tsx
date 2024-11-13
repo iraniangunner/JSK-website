@@ -8,8 +8,21 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
-export default function ProjectCarousel({ project }) {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+type ImageType = {
+  full_path: string;
+  alt?: string;
+};
+
+type ProjectType = {
+  images: ImageType[];
+};
+
+interface ProjectCarouselProps {
+  project: ProjectType;
+}
+
+export default function ProjectCarousel({ project }: ProjectCarouselProps) {
+  const [thumbsSwiper, setThumbsSwiper] = useState<any | null>(null);
 
   return (
     <section className="py-12">
@@ -24,24 +37,17 @@ export default function ProjectCarousel({ project }) {
           dir="ltr"
           spaceBetween={10}
           effect="fade"
-          // navigation={true}
           thumbs={{
-            swiper:
-              thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
+            swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
           }}
           modules={[FreeMode, Navigation, Thumbs]}
           className="lg:h-96 w-full select-none"
         >
-          {project.images.map((image, index) => (
+          {project.images.slice(1).map((image, index) => (
             <SwiperSlide key={index}>
               <div className="flex h-full w-full items-center justify-center">
-                {/* <Image
-                  src={image.src}
-                  alt={image.alt}
-                  className="block h-full w-full object-cover"
-                /> */}
-
-                <img src={"/images/" + image.src} className="w-full" />
+                {/* Using <img> for simplicity since next/image has issues with Swiper */}
+                <img src={image.full_path} alt={image.alt || "project image"} className="w-full" />
               </div>
             </SwiperSlide>
           ))}
@@ -62,15 +68,10 @@ export default function ProjectCarousel({ project }) {
           dir="ltr"
           className="thumbs mt-3 h-32 w-full select-none"
         >
-          {project.images.map((image, index) => (
+          {project.images.slice(1).map((image, index) => (
             <SwiperSlide key={index}>
               <button className="flex h-full w-full items-center justify-center">
-                {/* <Image
-                  src={image.src}
-                  alt={image.alt}
-                  className="block h-full w-full object-cover"
-                /> */}
-                <img src={"/images/" + image.src} className="w-full" />
+                <img src={image.full_path} alt={image.alt || "thumbnail image"} className="w-full" />
               </button>
             </SwiperSlide>
           ))}
@@ -79,3 +80,4 @@ export default function ProjectCarousel({ project }) {
     </section>
   );
 }
+

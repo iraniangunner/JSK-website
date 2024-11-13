@@ -1,15 +1,26 @@
 "use client";
 import { useEffect, useState } from "react";
-import { FaBriefcase } from "react-icons/fa";
 import { FaRegUser } from "react-icons/fa";
 import { FaRegCalendar } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
-import { RelatedCarousel } from "./relatedprojects/relatedProjects";
-// import { VideoPlayer } from "./videoplayer/video-player";
-import { FaCheck } from "react-icons/fa6";
 import ProjectCarousel from "./thumbscarousel/thumbsCarousel";
+// import { FaBriefcase } from "react-icons/fa";
+// import { RelatedCarousel } from "./relatedprojects/relatedProjects";
+// import { VideoPlayer } from "./videoplayer/video-player";
+// import { FaCheck } from "react-icons/fa6";
 
-export function SingleProject({ project }: { project: any }) {
+type Project = {
+  id: number;
+  title: string;
+  text: string;
+  employer: string;
+  start_date: string;
+  location: string;
+  images: { full_path: string }[];
+  categories: { id: number; title: string }[];
+};
+
+export function SingleProject({ project }: { project: Project }) {
   const [isScrolling, setIsScrolling] = useState(false);
 
   const handleScroll = () => {
@@ -71,7 +82,6 @@ export function SingleProject({ project }: { project: any }) {
         >
           <ul>
             <li className="flex items-center py-[15px] border-b border-solid border-[#001c472e]">
-              {/* <FaBriefcase className="ml-[20px] text-[#FF5E14]" size={20} /> */}
               <div>
                 <h4 className="text-[20px] mb-[3px] text-[#001c47] font-[600]">
                   عنوان پروژه
@@ -86,7 +96,7 @@ export function SingleProject({ project }: { project: any }) {
                 <h4 className="text-[20px] mb-[3px] text-[#001c47] font-[600]">
                   کارفرما
                 </h4>
-                <p className="text-[16px] text-[#53545A]">{project.employee}</p>
+                <p className="text-[16px] text-[#53545A]">{project.employer}</p>
               </div>
             </li>
             <li className="flex items-center py-[15px] border-b border-solid border-[#001c472e]">
@@ -96,7 +106,7 @@ export function SingleProject({ project }: { project: any }) {
                   تاریخ شروع
                 </h4>
                 <p className="text-[16px] text-[#53545A]">
-                  {project.startDate}
+                  {project.start_date}
                 </p>
               </div>
             </li>
@@ -111,12 +121,9 @@ export function SingleProject({ project }: { project: any }) {
             </li>
           </ul>
         </div>
-        <div
-          className="block lg:hidden"
-        >
+        <div className="block lg:hidden">
           <ul>
             <li className="flex items-center py-[15px] border-b border-solid border-[#001c472e]">
-              {/* <FaBriefcase className="ml-[20px] text-[#FF5E14]" size={20} /> */}
               <div>
                 <h4 className="text-[20px] mb-[3px] text-[#001c47] font-[600]">
                   عنوان پروژه
@@ -131,7 +138,7 @@ export function SingleProject({ project }: { project: any }) {
                 <h4 className="text-[20px] mb-[3px] text-[#001c47] font-[600]">
                   کارفرما
                 </h4>
-                <p className="text-[16px] text-[#53545A]">{project.employee}</p>
+                <p className="text-[16px] text-[#53545A]">{project.employer}</p>
               </div>
             </li>
             <li className="flex items-center py-[15px] border-b border-solid border-[#001c472e]">
@@ -141,7 +148,7 @@ export function SingleProject({ project }: { project: any }) {
                   تاریخ شروع
                 </h4>
                 <p className="text-[16px] text-[#53545A]">
-                  {project.startDate}
+                  {project.start_date}
                 </p>
               </div>
             </li>
@@ -160,9 +167,7 @@ export function SingleProject({ project }: { project: any }) {
           <ProjectCarousel project={project} />
 
           <h1 className="font-bold text-lg">معرفی پروژه</h1>
-          <p className="text-justify w-[100%] leading-7">
-            {project.description}
-          </p>
+          <p className="text-justify w-[100%] leading-7">{project.text}</p>
           {/* <p>{project.startDate}</p> */}
           {/* <div className="my-8">
             <h1 className="mb-4 text-lg">چالش های پروژه</h1>

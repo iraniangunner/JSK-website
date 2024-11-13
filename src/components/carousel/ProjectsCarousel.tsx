@@ -13,6 +13,20 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { IoIosArrowRoundBack } from "react-icons/io";
 
+type Project = {
+  id: number;
+  title: string;
+  text: string;
+  employer: string;
+  start_date: string;
+  location: string;
+  images: { full_path: string }[];
+  categories: { id: number; title: string }[];
+};
+interface ProjectsData {
+  data: Project[];
+}
+
 interface SlideProps {
   delay: number;
   children: React.ReactNode;
@@ -34,27 +48,7 @@ const Slide: React.FC<SlideProps> = ({ delay, children }) => (
   </motion.div>
 );
 
-// interface Project {
-//   id: string;
-//   title: string;
-//   overview: string;
-//   backdrop_path: string;
-// }
-
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-}
-
-interface ProjectsCarouselProps {
-  projects: Project[];
-}
-
-export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
-  projects,
-}) => {
+export const ProjectsCarousel = ({ projects }: { projects: ProjectsData }) => {
   const [delays, setDelays] = useState<number[]>([]);
 
   const handleSwiperInit = (swiper: any) => {
@@ -97,13 +91,13 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
       modules={[Autoplay, Navigation, EffectFade]}
       style={{ paddingTop: 60, height: "100%" }}
     >
-      {projects.map((p, index) => (
+      {projects.data.map((p, index) => (
         <SwiperSlide key={p.id}>
           <Slide delay={delays[index] || 0}>
             <div className="relative h-full text-gray-700 group project_slider_container bg-white font-iransans select-none">
               <div className="relative h-full">
                 <Image
-                  src={"/images/" + p.image}
+                  src="https://jsk-co.com/storage/project/2024/11/12/kRtiEPaCaF2DfdzJ6Tz5rXr65mDogw28FlpfA7w7.webp"
                   width={500}
                   height={400}
                   alt="project-image"
