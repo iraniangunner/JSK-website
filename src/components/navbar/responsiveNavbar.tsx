@@ -139,7 +139,6 @@ const MenuModal = ({
                                 : subLink.linkAddress
                             }
                             className="flex items-center p-2"
-                            // href={subLink.linkAddress}
                             onClick={handleClose}
                           >
                             <span className="ml-4">{subLink.title}</span>

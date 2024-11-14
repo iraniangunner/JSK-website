@@ -1,35 +1,15 @@
 "use client";
 import { useState, useMemo } from "react";
-import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { Project } from "./projectView";
-
-type Project = {
-  id: number;
-  title: string;
-  text: string;
-  employer: string;
-  start_date: string;
-  location: string;
-  images: { full_path: string }[];
-  categories: { id: number; title: string }[];
-};
-
-type ProjectsData = {
-  data: Project[];
-};
-
-type Category = {
-  order: string;
-  title: string;
-};
+import { ProjectView } from "./projectView";
+import { ProjectCategory, ProjectsData } from "@/types/projectTypes";
 
 export default function ProjectsTable({
   projectsData,
   categories,
 }: {
   projectsData: ProjectsData;
-  categories: Category[];
+  categories: ProjectCategory[];
 }) {
   const [selectedCategory, setSelectedCategory] = useState<string>("1");
 
@@ -72,7 +52,7 @@ export default function ProjectsTable({
       >
         <AnimatePresence>
           {filteredProjects.map((project: any) => {
-            return <Project key={project.id} projectDetails={project} />;
+            return <ProjectView key={project.id} projectDetails={project} />;
           })}
         </AnimatePresence>
       </motion.div>

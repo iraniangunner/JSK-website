@@ -22,22 +22,15 @@ import jsk from "../../../public/images/jsk.png";
 const navListMenuItems = [
   {
     title: "بازرگانی و تامین اقلام پروژه",
-    // href:"/Trading and supply of project items",
-    description:
-      "Learn how to use @material-tailwind/html, packed with rich components and widgets.",
     link: "/services/commerce",
   },
 
   {
     title: "بهره برداری پروژه های صنعتی و معدنی",
-    description:
-      "Learn how to use @material-tailwind/react, packed with rich components for React.",
     link: "/services/operation",
   },
   {
     title: "مدیریت پروژه های صنعتی و معدنی",
-    description:
-      "A complete set of UI Elements for building faster websites in less time.",
     link: "/services/management",
   },
 ];
@@ -45,7 +38,7 @@ const navListMenuItems = [
 function NavListMenu({ navIsScroll }: { navIsScroll: boolean }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const renderItems = navListMenuItems.map(({ title, description, link }) => (
+  const renderItems = navListMenuItems.map(({ title, link }) => (
     <Link href={link} key={title}>
       <MenuItem className="rounded-none px-0 py-0">
         <Typography
@@ -74,9 +67,7 @@ function NavListMenu({ navIsScroll }: { navIsScroll: boolean }) {
         <MenuHandler>
           <Typography
             as="div"
-            // href="#"
-            // variant="medium"
-            className="font-normal focus-visible:outline-none"
+            className="font-normal focus-visible:outline-none text-sm 3xl:text-lg"
           >
             <MenuItem
               className={`hidden items-center gap-2 font-medium font-iransans py-3 text-gray-900 ${
@@ -143,7 +134,7 @@ function NavList({ navIsScroll }: { navIsScroll: boolean }) {
     <ul className="mt-2 mb-4 py-2 flex flex-col gap-2 lg:gap-8 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
       <Link
         href="/"
-        className="relative font-medium font-iransans text-blue-gray-500"
+        className="relative font-medium text-sm 3xl:text-lg font-iransans text-blue-gray-500"
       >
         <MenuItem
           className={`flex text-gray-900 items-center gap-2 rounded-none h-full py-3 ${
@@ -157,11 +148,11 @@ function NavList({ navIsScroll }: { navIsScroll: boolean }) {
       </Link>
 
       <NavListMenu navIsScroll={navIsScroll} />
-      {navListItems.map(({ label, link }, key) => (
+      {navListItems.map(({ label, link }) => (
         <Link
           key={label}
           href={link === "/tenders" || link === "/hiring" ? "" : link}
-          className="relative font-medium font-iransans text-blue-gray-500"
+          className="relative font-medium text-sm 3xl:text-lg font-iransans text-blue-gray-500"
         >
           <MenuItem
             className={`flex text-gray-900 items-center gap-2 rounded-none h-full py-3 ${
@@ -178,7 +169,7 @@ function NavList({ navIsScroll }: { navIsScroll: boolean }) {
       <Link
         href="/contact"
         className="contact font-bold relative flex items-center gap-2 rounded-none py-3 px-3
-        overflow-hidden text-md transition-all duration-[0.5s] text-[#fff] hover:text-[#ffa500] h-full z-[1]"
+        overflow-hidden text-sm 3xl:text-lg transition-all duration-[0.5s] text-[#fff] hover:text-[#ffa500] h-full z-[1]"
       >
         تماس با ما
       </Link>
@@ -231,7 +222,7 @@ export function ComplexNavbar({ isScroll }: { isScroll: boolean }) {
       <div className="relative mx-auto flex items-center justify-center xl:gap-20 text-blue-gray-900">
         <Typography
           as="a"
-          href="#"
+          href="/"
           className="block lg:hidden cursor-pointer py-1.5 font-medium ml-auto"
         >
           <Image src={jsk} alt="JSK logo" width={200} height={24} />

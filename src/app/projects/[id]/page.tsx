@@ -1,4 +1,4 @@
-import { SingleProject } from "@/components/project/singleproject/singleProject";
+import { SingleProject } from "@/components/project/singleProject";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 

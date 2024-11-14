@@ -12,20 +12,7 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { IoIosArrowRoundBack } from "react-icons/io";
-
-type Project = {
-  id: number;
-  title: string;
-  text: string;
-  employer: string;
-  start_date: string;
-  location: string;
-  images: { full_path: string }[];
-  categories: { id: number; title: string }[];
-};
-interface ProjectsData {
-  data: Project[];
-}
+import { ProjectsData } from "@/types/projectTypes";
 
 interface SlideProps {
   delay: number;
@@ -97,7 +84,7 @@ export const ProjectsCarousel = ({ projects }: { projects: ProjectsData }) => {
             <div className="relative h-full text-gray-700 group project_slider_container bg-white font-iransans select-none">
               <div className="relative h-full">
                 <Image
-                  src="https://jsk-co.com/storage/project/2024/11/12/kRtiEPaCaF2DfdzJ6Tz5rXr65mDogw28FlpfA7w7.webp"
+                  src={p.images[0].full_path}
                   width={500}
                   height={400}
                   alt="project-image"

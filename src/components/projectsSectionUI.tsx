@@ -2,25 +2,9 @@
 import { ProjectsCarousel } from "./carousel/ProjectsCarousel";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { ProjectsData } from "@/types/projectTypes";
 
-type Project = {
-  id: number;
-  title: string;
-  text: string;
-  employer: string;
-  start_date: string;
-  location: string;
-  images: { full_path: string }[];
-  categories: { id: number; title: string }[];
-};
-
-type ProjectsData = {
-  data: Project[];
-};
-
-export const ProjectsSectionUI = ({
-  projects,
-}:{projects:ProjectsData}) => {
+export const ProjectsSectionUI = ({ projects }: { projects: ProjectsData }) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 w-[90%] mx-auto gap-10 py-20 ">
       <div className="order-2 lg:order-1">

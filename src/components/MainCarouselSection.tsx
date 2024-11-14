@@ -1,5 +1,5 @@
 import MainCarousel from "./carousel/MainCarousel";
-import { CgDanger } from "react-icons/cg";
+import { CustomError } from "./error";
 
 export async function MainCarouselSection() {
   try {
@@ -9,15 +9,6 @@ export async function MainCarouselSection() {
 
     return <MainCarousel data={data} />;
   } catch (error) {
-    return (
-      <div className="mx-auto max-w-screen-sm text-center z-[1] relative">
-        <div className="mb-4 text-7xl flex justify-center items-center font-extrabold tracking-tight lg:text-9xl">
-          <CgDanger color="red" />
-        </div>
-        <p className="mb-4 text-lg font-light">
-          مشکلی پیش آمده دوباره تلاش کنید
-        </p>
-      </div>
-    );
+    return <CustomError />;
   }
 }

@@ -1,4 +1,3 @@
-"use client";
 import TopNav from "./navbar/top-nav";
 import Navbar from "./navbar/navbar";
 

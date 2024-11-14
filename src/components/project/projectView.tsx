@@ -2,18 +2,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Project } from "@/types/projectTypes";
 
-type Project = {
-  id: number;
-  title: string;
-  employer: string;
-  start_date: string;
-  location: string;
-  images: { full_path: string; image: string }[];
-  categories: { id: number; title: string }[];
-};
-
-export function Project({ projectDetails }: { projectDetails: Project }) {
+export function ProjectView({ projectDetails }: { projectDetails: Project }) {
   return (
     <motion.div
       layout
@@ -23,11 +14,10 @@ export function Project({ projectDetails }: { projectDetails: Project }) {
       className="max-w-sm bg-white border relative border-gray-200 shadow overflow-hidden group"
     >
       <Link href={`/projects/${projectDetails.id}`} className="block">
-        <img
-          // src={projectDetails.images[0].full_path}
-          src="https://jsk-co.com/storage/project/2024/11/12/kRtiEPaCaF2DfdzJ6Tz5rXr65mDogw28FlpfA7w7.webp"
-          // width={300}
-          // height={300}
+        <Image
+          src={projectDetails.images[0].full_path}
+          width={300}
+          height={300}
           className="h-auto max-w-full w-full"
           alt="project-image"
         />
