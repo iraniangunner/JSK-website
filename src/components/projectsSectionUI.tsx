@@ -1,5 +1,5 @@
 "use client";
-import { ProjectsCarousel } from "./carousel/ProjectsCarousel";
+import { ProjectsCarousel } from "./carousel/projectsCarousel";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ProjectsData } from "@/types/projectTypes";

@@ -1,7 +1,5 @@
 import { SingleService } from "@/components/service/singleService";
-import { getServicesBySlug } from "@/utils/server-utils/getSingleService";
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
 import projectsData from "../../../../data.json";
 
 // type Props = {
@@ -52,10 +50,6 @@ export const generateMetadata = async ({
     params.slug === "commerce" ? 0 : params.slug === "operation" ? 1 : 2;
   const service = projectsData.services[index];
 
-  // if (!service) {
-  //   return;
-  // }
-
   return {
     title: `${service.title} | خدمات`,
     description: service.description,
@@ -76,8 +70,5 @@ export default function ProjectPage({ params }: Props) {
     params.slug === "commerce" ? 0 : params.slug === "operation" ? 1 : 2;
   const service = projectsData.services[index];
 
-  // if (!service) {
-  //   notFound();
-  // }
   return <SingleService service={service} />;
 }

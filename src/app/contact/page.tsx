@@ -1,9 +1,8 @@
-
 import Link from "next/link";
 import { FaPhone } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
-import Map from "@/components/googlemap";
+import Map from "@/components/googleMap";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -29,20 +28,20 @@ export default function Contact() {
           className="px-[15px] mx-auto md:max-w-[720px] lg:max-w-[920px] hidden md:block"
         >
           <ol className="flex flex-wrap items-center absolute bottom-[20px] rounded-md bg-opacity-60 px-[1rem]">
-            <li className="flex items-center text-lg font-iransans antialiased font-normal leading-normal transition-colors duration-300 cursor-pointer text-blue-gray-900 hover:text-[#ffa500]">
-              <Link href="/" className="opacity-60">
+            <li className="flex items-center text-lg font-iransans antialiased font-normal leading-normal transition-colors duration-300 cursor-pointer text-white hover:text-[#ffa500]">
+              <Link href="/" className="opacity-60 text-white">
                 خانه
               </Link>
-              <span className="mx-2 font-sans text-lg antialiased font-normal leading-normal pointer-events-none select-none text-blue-gray-500">
+              <span className="mx-2 font-sans text-lg antialiased font-normal leading-normal pointer-events-none select-none text-white">
                 /
               </span>
             </li>
-            <li className="flex items-center font-iransans text-lg antialiased font-normal leading-normal text-blue-gray-900">
+            <li className="flex items-center font-iransans text-lg antialiased font-normal leading-normal text-white">
               <span>تماس با ما</span>
             </li>
           </ol>
         </nav>
-        <h1 className="text-[35px] font-bold absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+        <h1 className="text-[35px] text-white font-bold absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
          تماس با ما
         </h1>
       </div>
@@ -90,7 +89,7 @@ export default function Contact() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-[50px] pb-[20px] lg:pt-[60px] lg:pb-[30px] px-10 lg:px-30 xl:px-40 mx-auto">
-        <div className="py-[40px] px-[45px] border border-solid border-[#fea925] w-[80%] lg:mr-auto">
+        <div className="py-[40px] px-[45px] border border-solid border-[#fea925] lg:w-[80%] lg:mr-auto">
           <div className="text-center">
             <h2 className="mb-[10px] text-[25px] font-bold">
               با ما در ارتباط باشید
@@ -138,7 +137,7 @@ export default function Contact() {
             </div>
           </form>
         </div>
-        <div className=" h-[200px] lg:h-full w-[80%]">
+        <div className=" h-[200px] lg:h-full lg:w-[80%]">
           <Map />
         </div>
       </div>

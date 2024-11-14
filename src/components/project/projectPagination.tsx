@@ -1,5 +1,5 @@
 "use client";
-import { toPersianNumber } from "@/utils/numberUtils";
+import { toPersianNumber } from "@/utils/client/numberUtils";
 import { useRouter } from "next/navigation";
 
 const Pagination = ({

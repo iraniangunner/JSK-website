@@ -1,12 +1,10 @@
-import MainCarousel from "./carousel/MainCarousel";
-import { CustomError } from "./error";
+import { getCarouselData } from "@/utils/server/mainCarouselApi";
+import MainCarousel from "./carousel/mainCarousel";
+import { CustomError } from "./customError";
 
 export async function MainCarouselSection() {
   try {
-    const response = await fetch(`https://jsk-co.com/api/sliders`);
-
-    const data = await response.json();
-
+    const data = await getCarouselData();
     return <MainCarousel data={data} />;
   } catch (error) {
     return <CustomError />;

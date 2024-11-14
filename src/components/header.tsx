@@ -1,4 +1,4 @@
-import TopNav from "./navbar/top-nav";
+import TopNav from "./navbar/topNav";
 import Navbar from "./navbar/navbar";
 
 export default function Header() {

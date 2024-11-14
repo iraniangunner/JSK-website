@@ -1,17 +1,6 @@
-import { CustomError } from "./error";
+import { getProjects } from "@/utils/server/projectsApi";
+import { CustomError } from "./customError";
 import { ProjectsSectionUI } from "./projectsSectionUI";
-
-async function getProjects() {
-  const res = await fetch("https://jsk-co.com/api/projects", {
-    next: { revalidate: 3600 },
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch projects");
-  }
-
-  return res.json();
-}
 
 export async function ProjectSection() {
   try {
