@@ -26,7 +26,7 @@ export default function ProjectsTable({
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
-        <div className="flex items-center justify-center py-4 md:py-8 gap-6 flex-wrap">
+        <div className="flex items-center justify-center gap-6 flex-wrap">
           {categories.map((category) => (
             <button
               key={category.order}
