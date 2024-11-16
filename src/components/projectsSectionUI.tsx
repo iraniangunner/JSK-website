@@ -14,7 +14,7 @@ export const ProjectsSectionUI = ({ projects }: { projects: ProjectsData }) => {
         <motion.h1
           initial="hidden"
           whileInView="visible"
-          className="text-xl mb-4 overflow-hidden select-none"
+          className="text-xl mb-4 overflow-hidden select-none text-black"
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeIn" }}
           variants={{
@@ -27,7 +27,7 @@ export const ProjectsSectionUI = ({ projects }: { projects: ProjectsData }) => {
         <motion.p
           initial="hidden"
           whileInView="visible"
-          className="text-justify overflow-hidden select-none leading-8"
+          className="text-justify overflow-hidden select-none leading-8 text-black"
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeIn" }}
           variants={{

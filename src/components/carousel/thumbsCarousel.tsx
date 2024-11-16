@@ -8,13 +8,15 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { Project } from "@/types/projectTypes";
+import { ChevronLeftIcon } from "@heroicons/react/24/solid";
+import { ChevronRightIcon } from "@heroicons/react/24/solid";
 
 export default function ProjectCarousel({ project }: { project: Project }) {
   const [thumbsSwiper, setThumbsSwiper] = useState<any | null>(null);
 
   return (
-    <section className="py-12">
-      <div>
+    <section className="lg:py-12">
+      <div className="relative">
         <Swiper
           loop={true}
           freeMode={true}
@@ -45,10 +47,13 @@ export default function ProjectCarousel({ project }: { project: Project }) {
               </div>
             </SwiperSlide>
           ))}
-
-          <div className="swiper-button-prev"></div>
-          <div className="swiper-button-next"></div>
         </Swiper>
+        <button className="swiper-button-prev project-prev after:hidden absolute bg-white rounded-full shadow-md">
+          <ChevronLeftIcon color="#ffa500" />
+        </button>
+        <button className="swiper-button-next project-next after:hidden absolute border bg-white rounded-full shadow-md">
+          <ChevronRightIcon color="#ffa500" />
+        </button>
 
         {/* Thumbnail */}
         <Swiper
@@ -60,7 +65,7 @@ export default function ProjectCarousel({ project }: { project: Project }) {
           watchSlidesProgress={true}
           modules={[FreeMode, Navigation, Thumbs]}
           dir="ltr"
-          className="thumbs mt-3 h-32 w-full select-none"
+          className="thumbs mt-[-30px] sm:mt-1 lg:mt-3 h-32 w-full select-none"
         >
           {project.images.slice(1).map((image, index) => (
             <SwiperSlide key={index}>

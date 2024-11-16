@@ -13,7 +13,7 @@ export default function ServicesSection() {
           <motion.h1
             initial="hidden"
             whileInView="visible"
-            className="text-xl overflow-hidden"
+            className="text-xl overflow-hidden text-black"
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeIn" }}
             variants={{
@@ -26,7 +26,7 @@ export default function ServicesSection() {
           <motion.p
             initial="hidden"
             whileInView="visible"
-            className="mt-6 mb-8 text-justify overflow-hidden leading-8"
+            className="mt-6 mb-8 text-justify overflow-hidden leading-8 text-black"
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeIn" }}
             variants={{

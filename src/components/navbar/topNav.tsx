@@ -39,8 +39,8 @@ export default function TopNav() {
           <div className="border border-[#ffa500] text-[#ffa500] hover:bg-[#ffa500] hover:text-white transition-all rounded-full p-2 ml-3">
             <FaLocationDot size={20} />
           </div>
-          <div>
-            <p className="mb-2 font-bold">آدرس</p>
+          <div className="text-black">
+            <p className="mb-2 font-bold text-black">آدرس</p>
             <p className="text-sm">
               {" "}
               تهران، میدان ونک، خیابان ملاصدرا، خیابان شاد، کوچه باغسرا، پلاک ۱۳
@@ -52,8 +52,8 @@ export default function TopNav() {
             <FaPhoneFlip size={20} />
           </div>
           <div>
-            <p className="mb-2 font-bold">تلفن</p>
-            <p className="text-sm">021-88660368</p>
+            <p className="mb-2 font-bold text-black">تلفن</p>
+            <p className="text-sm text-black">021-88660368</p>
           </div>
         </div>
         <div className="flex justify-center items-center">
@@ -64,8 +64,8 @@ export default function TopNav() {
             <MdEmail size={20} />
           </div>
           <div>
-            <p className="mb-2 font-bold">پست الکترونیکی</p>
-            <p className="text-sm">info@jsk-co.com</p>
+            <p className="mb-2 font-bold text-black">پست الکترونیکی</p>
+            <p className="text-sm text-black">info@jsk-co.com</p>
           </div>
         </div>
       </div>
