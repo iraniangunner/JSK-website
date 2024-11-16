@@ -9,27 +9,9 @@ import "swiper/css/effect-fade";
 import { FaArrowRight } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa6";
 import { motion } from "framer-motion";
+import { Slide } from "@/types/mainSliderTypes";
 
-interface Slide {
-  id: number;
-  title: string;
-  tagline: string;
-  image: string;
-  buttons: ButtonProps[];
-}
-
-interface ButtonProps {
-  id: number;
-  text: string;
-  link: string;
-  type: string;
-}
-
-interface MainCarouselProps {
-  data: Slide[];
-}
-
-const MainCarousel = ({ data }: { data: any }) => {
+export const MainCarousel = ({ data }: { data: Slide[] }) => {
   const [activeSlideIndex, setActiveStyleIndex] = useState<number>(0);
 
   return (
@@ -179,5 +161,3 @@ const MainCarousel = ({ data }: { data: any }) => {
     </section>
   );
 };
-
-export default MainCarousel;

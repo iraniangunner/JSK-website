@@ -3,8 +3,6 @@ import { CustomError } from "@/components/customError";
 import { SingleProject } from "@/components/project/singleProject";
 import { getProjectById } from "@/utils/server/projectsApi";
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
-
 type Props = {
   params: { id: number };
 };
@@ -37,11 +35,9 @@ export default async function ProjectPage({ params }: Props) {
     const project = await getProjectById(params.id);
     return <SingleProject project={project} />;
   } catch (error) {
-    // console.log(error?.message)
     if (error instanceof Error && error.message === "No such project") {
       return <NotFound />;
     }
-
     return <CustomError />;
   }
 }

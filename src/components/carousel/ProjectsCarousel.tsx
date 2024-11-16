@@ -41,7 +41,8 @@ export const ProjectsCarousel = ({ projects }: { projects: ProjectsData }) => {
   const handleSwiperInit = (swiper: any) => {
     const newDelays = [];
     for (let i = 0; i < swiper.params.slidesPerView; i++) {
-      newDelays.push(i * 0.6); // Apply delay incrementally to initial visible slides
+      // Apply delay incrementally to initial visible slides
+      newDelays.push(i * 0.6);
     }
     setDelays(newDelays);
   };

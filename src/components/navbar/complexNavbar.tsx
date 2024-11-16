@@ -67,7 +67,7 @@ function NavListMenu({ navIsScroll }: { navIsScroll: boolean }) {
         <MenuHandler>
           <Typography
             as="div"
-            className="font-normal focus-visible:outline-none text-sm 3xl:text-lg"
+            className="font-normal focus-visible:outline-none text-sm 2xl:text-[16px]"
           >
             <MenuItem
               className={`hidden items-center gap-2 font-medium font-iransans py-3 text-gray-900 ${
@@ -89,7 +89,7 @@ function NavListMenu({ navIsScroll }: { navIsScroll: boolean }) {
             </MenuItem>
           </Typography>
         </MenuHandler>
-        <MenuList className="hidden w-[18rem] rounded-none gap-3 overflow-visible py-0 px-0 lg:grid grid-cols-3 ">
+        <MenuList className="hidden w-[18rem] rounded-none gap-3 overflow-visible py-0 px-0 lg:grid grid-cols-3">
           <ul className="col-span-3 flex w-full flex-col group-hover:text-[#ffa500] focus-visible:outline-none">
             {renderItems}
           </ul>
@@ -131,10 +131,10 @@ const navListItems = [
 
 function NavList({ navIsScroll }: { navIsScroll: boolean }) {
   return (
-    <ul className="mt-2 mb-4 py-2 flex flex-col gap-2 lg:gap-8 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
+    <ul className="mt-2 mb-4 py-2 flex flex-col gap-2 2xl:gap-6 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
       <Link
         href="/"
-        className="relative font-medium text-sm 3xl:text-lg font-iransans text-blue-gray-500"
+        className="relative font-medium text-sm 2xl:text-[16px] font-iransans text-blue-gray-500"
       >
         <MenuItem
           className={`flex text-gray-900 items-center gap-2 rounded-none h-full py-3 ${
@@ -152,7 +152,7 @@ function NavList({ navIsScroll }: { navIsScroll: boolean }) {
         <Link
           key={label}
           href={link === "/tenders" || link === "/hiring" ? "" : link}
-          className="relative font-medium text-sm 3xl:text-lg font-iransans text-blue-gray-500"
+          className="relative font-medium text-sm 2xl:text-[16px] font-iransans text-blue-gray-500"
         >
           <MenuItem
             className={`flex text-gray-900 items-center gap-2 rounded-none h-full py-3 ${
@@ -169,7 +169,7 @@ function NavList({ navIsScroll }: { navIsScroll: boolean }) {
       <Link
         href="/contact"
         className="contact font-bold relative flex items-center gap-2 rounded-none py-3 px-3
-        overflow-hidden text-sm 3xl:text-lg transition-all duration-[0.5s] text-[#fff] hover:text-[#ffa500] h-full z-[1]"
+        overflow-hidden text-sm 2xl:text-[16px] transition-all duration-[0.5s] text-[#fff] hover:text-[#ffa500] h-full z-[1]"
       >
         تماس با ما
       </Link>
@@ -219,7 +219,7 @@ export function ComplexNavbar({ isScroll }: { isScroll: boolean }) {
 
   return (
     <Navbar className="mx-auto max-w-screen-3xl shadow-none rounded-none px-2 lg:px-8 py-0 lg:pl-6 font-iransans">
-      <div className="relative mx-auto flex items-center justify-center xl:gap-20 text-blue-gray-900">
+      <div className="relative mx-auto flex items-center justify-center xl:gap-10 text-blue-gray-900">
         <Typography
           as="a"
           href="/"

@@ -84,10 +84,10 @@ export function SingleService({ service }: { service: any }) {
           alt="project-image"
         /> */}
         <div className="flex items-center justify-center">
-          <img
+          {/* <img
             src={"/images/" + service.image}
             className="h-auto max-w-full w-full"
-          />
+          /> */}
         </div>
 
         {!service.description && (
@@ -97,7 +97,6 @@ export function SingleService({ service }: { service: any }) {
               {commerceItems.map((item) => (
                 <li className="my-3 flex items-center gap-2" key={item.id}>
                   {/* <FaCheck color="#ffa500" /> */}
-
                   <p>{item.text}</p>
                 </li>
               ))}
@@ -127,19 +126,19 @@ export function SingleService({ service }: { service: any }) {
               </ul>
             </div>
             <div className="flex items-center justify-center">
-              <img
+              {/* <img
                 src={"/images/" + "golgohar_2.jpg"}
                 className="h-auto max-w-full w-full"
-              />
+              /> */}
             </div>
           </div>
 
           <div className="max-w-[960px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="flex items-center justify-center">
-              <img
+              {/* <img
                 src={"/images/" + "gol1.jpg"}
                 className="h-auto max-w-full w-full"
-              />
+              /> */}
             </div>
             <div>
               <p className="mt-6 text-lg font-bold">

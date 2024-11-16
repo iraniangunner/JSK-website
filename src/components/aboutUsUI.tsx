@@ -17,7 +17,7 @@ export function AboutUsDetailsUI() {
       <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
         درباره ژیوار صنعت کیان
       </h2>
-      {/* <p className="mt-4 text-gray-600 text-lg">{detail}</p> */}
+
       <p className="mt-4 text-gray-600 text-lg text-justify">
         از بدو تاسیس شرکت ژیوار صنعت کیان، با جذب مدیران با تجربه و آشنا به
         مجموعه هاي تولیدي و بهره برداري در زمینه ي تخصص هاي مختلف گام هاي محکمی

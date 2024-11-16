@@ -16,8 +16,7 @@ export function AboutUsImage() {
         hidden: { opacity: 0, x: -100 },
       }}
     >
-      {/* <img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86" alt="About Us Image" className="object-cover rounded-lg shadow-md" /> */}
-      <Image src={pic3.src} width={500} height={200} alt="about_img" />
+      {/* <Image src={pic3.src} width={500} height={200} alt="about_img" /> */}
     </motion.div>
   );
 }

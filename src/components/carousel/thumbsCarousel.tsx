@@ -7,21 +7,9 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import { Project } from "@/types/projectTypes";
 
-type ImageType = {
-  full_path: string;
-  alt?: string;
-};
-
-type ProjectType = {
-  images: ImageType[];
-};
-
-interface ProjectCarouselProps {
-  project: ProjectType;
-}
-
-export default function ProjectCarousel({ project }: ProjectCarouselProps) {
+export default function ProjectCarousel({ project }: { project: Project }) {
   const [thumbsSwiper, setThumbsSwiper] = useState<any | null>(null);
 
   return (
@@ -38,7 +26,8 @@ export default function ProjectCarousel({ project }: ProjectCarouselProps) {
           spaceBetween={10}
           effect="fade"
           thumbs={{
-            swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
+            swiper:
+              thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
           }}
           modules={[FreeMode, Navigation, Thumbs]}
           className="lg:h-96 w-full select-none"
@@ -46,8 +35,13 @@ export default function ProjectCarousel({ project }: ProjectCarouselProps) {
           {project.images.slice(1).map((image, index) => (
             <SwiperSlide key={index}>
               <div className="flex h-full w-full items-center justify-center">
-                {/* Using <img> for simplicity since next/image has issues with Swiper */}
-                <img src={image.full_path} alt={image.alt || "project image"} className="w-full" />
+                <Image
+                  src={image.full_path}
+                  alt="project image"
+                  width={1280}
+                  height={675}
+                  className="w-full"
+                />
               </div>
             </SwiperSlide>
           ))}
@@ -71,7 +65,13 @@ export default function ProjectCarousel({ project }: ProjectCarouselProps) {
           {project.images.slice(1).map((image, index) => (
             <SwiperSlide key={index}>
               <button className="flex h-full w-full items-center justify-center">
-                <img src={image.full_path} alt={image.alt || "thumbnail image"} className="w-full" />
+                <Image
+                  src={image.full_path}
+                  width={300}
+                  height={100}
+                  alt="thumbnail image"
+                  className="w-full"
+                />
               </button>
             </SwiperSlide>
           ))}
@@ -80,4 +80,3 @@ export default function ProjectCarousel({ project }: ProjectCarouselProps) {
     </section>
   );
 }
-
