@@ -9,6 +9,10 @@
 # testing
 /coverage
 
+# local fonts
+
+/public/fonts
+
 # next.js
 /.next/
 /out/

@@ -1,11 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/* 
 @font-face {
   font-family: "iran_sans";
   src: url("../../public/fonts/IRANSansX-Regular.woff");
-}
+} */
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -13,6 +13,11 @@
   --background-end-rgb: 255, 255, 255;
   direction: rtl;
 }
+
+html {
+  font-family: var(--font-yekanbakh);
+}
+
 
 @media (prefers-color-scheme: dark) {
   :root {

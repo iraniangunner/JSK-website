@@ -5,8 +5,44 @@ import Footer from "@/components/footer";
 import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
 
-const iranSans = localFont({
-  src: "../../public/fonts/IRANSansX-Regular.woff",
+// const iranSans = localFont({
+//   src: "../../public/fonts/IRANSansX-Regular.woff",
+// });
+
+export const yekanbakh = localFont({
+  src: [
+    {
+      path: "../../public/fonts/yekanbakh/YekanBakhFaNum-Thin.woff2",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/yekanbakh/YekanBakhFaNum-Light.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/yekanbakh/YekanBakhFaNum-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/yekanbakh/YekanBakhFaNum-SemiBold.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/yekanbakh/YekanBakhFaNum-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/yekanbakh/YekanBakhFaNum-Black.woff2",
+      weight: "900",
+      style: "normal",
+    },
+  ],
+  variable: "--font-yekanbakh",
 });
 
 export const metadata: Metadata = {
@@ -30,8 +66,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fa" dir="rtl">
-      <body className={iranSans.className}>
+    <html lang="fa" dir="rtl"  className={`${yekanbakh.variable}`}>
+      <body>
         <NextTopLoader
           color="#2299DD"
           initialPosition={0.08}
