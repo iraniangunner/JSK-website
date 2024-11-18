@@ -1,5 +1,5 @@
 import { getCarouselData } from "@/utils/server/mainCarouselApi";
-import { MainCarousel } from "./carousel/mainCarousel";
+import { MainCarousel } from "./carousel/MainCarousel";
 import { CustomError } from "./customError";
 
 export async function MainCarouselSection() {

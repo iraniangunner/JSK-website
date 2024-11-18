@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ProjectsCarousel } from "./carousel/projectsCarousel";
+import { ProjectsCarousel } from "./carousel/ProjectsCarousel";
 import { ProjectsData } from "@/types/projectTypes";
 
 export const ProjectsSectionUI = ({ projects }: { projects: ProjectsData }) => {

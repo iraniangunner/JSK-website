@@ -5,25 +5,11 @@ import { FaRegCalendar } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
 import ProjectCarousel from "../carousel/thumbsCarousel";
 import { Project } from "@/types/projectTypes";
+import { useScroll } from "@/hooks/useScroll";
 
 
 export function SingleProject({ project }: { project: Project }) {
-  const [isScrolling, setIsScrolling] = useState(false);
-
-  const handleScroll = () => {
-    if (window.scrollY >= 80) {
-      setIsScrolling(true);
-    } else {
-      setIsScrolling(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const [isScrolling] = useScroll(80);
 
   return (
     <>
