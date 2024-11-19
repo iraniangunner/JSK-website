@@ -5,17 +5,16 @@ import Link from "next/link";
 import {
   Navbar,
   Typography,
-  Menu,
-  MenuHandler,
-  MenuList,
   MenuItem,
   IconButton,
 } from "@material-tailwind/react";
-import MenuModal from "./menuModal";
+import MenuModal from "./navModal";
 import { AnimatePresence } from "framer-motion";
-import { ChevronDownIcon, Bars2Icon } from "@heroicons/react/24/solid";
+import { Bars2Icon } from "@heroicons/react/24/solid";
 import jsk from "../../../public/images/jsk.png";
 import { useBrowserWidth } from "@/hooks/useBrowserWidth";
+import { useScroll } from "@/hooks/useScroll";
+import { DropdownMenu } from "./dropdownMenu";
 
 const strings = [
   { linkTitle: "صفحه اصلی", linkAddress: "/" },
@@ -46,8 +45,8 @@ const strings = [
   { linkTitle: "تماس با ما", linkAddress: "/contact" },
 ];
 
-export function ComplexNavbar({ isScroll }: { isScroll: boolean }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export function ScrollNav() {
+  const [isScrolling] = useScroll(70);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [browserWidth] = useBrowserWidth();
 
@@ -74,6 +73,13 @@ export function ComplexNavbar({ isScroll }: { isScroll: boolean }) {
   }, [browserWidth]);
 
   return (
+    <div
+    className={`z-10 w-full ${
+      isScrolling
+        ? 'fixed flex justify-between animate-slideIn main_nav'
+        : 'sticky top-[72px] flex justify-between bg-[#737373]'
+    }`}
+  >
     <Navbar className="mx-auto max-w-screen-3xl shadow-none rounded-none px-2 lg:px-8 py-0 lg:pl-6">
       <div className="relative mx-auto flex items-center justify-center xl:gap-10 text-blue-gray-900">
         <Typography
@@ -83,7 +89,7 @@ export function ComplexNavbar({ isScroll }: { isScroll: boolean }) {
         >
           <Image src={jsk} alt="JSK logo" width={200} height={24} />
         </Typography>
-        {isScroll ? (
+        {isScrolling ? (
           <Link href="/" className="cursor-pointer font-medium hidden lg:block">
             <Image
               src={jsk}
@@ -101,80 +107,10 @@ export function ComplexNavbar({ isScroll }: { isScroll: boolean }) {
           after:bottom-[-3px] after:h-[3px] after:bg-[#ffa502]"
         >
           <ul className="mt-2 mb-4 py-2 flex flex-col gap-2 2xl:gap-6 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
-            {strings.map((item, index) =>
+            {strings.map((item) =>
               item.subLinks ? (
                 <div key={item.linkTitle}>
-                  <Menu
-                    allowHover
-                    open={isMenuOpen}
-                    handler={setIsMenuOpen}
-                    offset={{ mainAxis: 10 }}
-                    animate={{
-                      mount: { y: 0 },
-                      unmount: { y: 25 },
-                    }}
-                  >
-                    <MenuHandler>
-                      <Typography
-                        as="div"
-                        className="font-normal focus-visible:outline-none text-sm 2xl:text-[16px]"
-                      >
-                        <MenuItem
-                          className={`hidden items-center gap-2 font-medium py-3 text-gray-900 ${
-                            isMenuOpen && isScroll ? "text-[#ffa500]" : ""
-                          } 
-               ${isMenuOpen && !isScroll ? "bg-[#fff]" : ""}  ${
-                            isScroll
-                              ? "hover:text-[#ffa500] hover:bg-opacity-0"
-                              : "hover:bg-[#fff] hover:transition-all duration-[0.4s] delay-0 ease-in-out"
-                          } lg:flex lg:rounded-none focus:bg-opacity-0 active:bg-opacity-0`}
-                        >
-                          {item.linkTitle}
-                          <ChevronDownIcon
-                            strokeWidth={2}
-                            className={`h-3 w-3 transition-transform ${
-                              isMenuOpen ? "rotate-180" : ""
-                            }`}
-                          />
-                        </MenuItem>
-                      </Typography>
-                    </MenuHandler>
-                    <MenuList className="hidden w-[18rem] rounded-none gap-3 overflow-visible py-0 px-0 lg:grid grid-cols-3">
-                      <ul className="col-span-3 flex w-full flex-col group-hover:text-[#ffa500] focus-visible:outline-none">
-                        {item.subLinks.map((item) => (
-                          <Link href={item.linkAddress} key={item.title}>
-                            <MenuItem className="rounded-none px-0 py-0">
-                              <Typography
-                                variant="small"
-                                color="blue-gray"
-                                className="px-3 py-3 hover:text-white hover:bg-[#ffa500] transition-all duration-[0.4s]"
-                              >
-                                {item.title}
-                              </Typography>
-                            </MenuItem>
-                          </Link>
-                        ))}
-                      </ul>
-                    </MenuList>
-                  </Menu>
-                  <MenuItem className="flex items-center gap-2 font-medium text-blue-gray-900 lg:hidden">
-                    {item.linkTitle}
-                  </MenuItem>
-                  <ul className="ml-6 flex w-full flex-col gap-1 lg:hidden">
-                    {item.subLinks.map((item) => (
-                      <Link href={item.linkAddress} key={item.title}>
-                        <MenuItem className="rounded-none px-0 py-0">
-                          <Typography
-                            variant="small"
-                            color="blue-gray"
-                            className="px-3 py-3 hover:text-white hover:bg-[#ffa500] transition-all duration-[0.4s]"
-                          >
-                            {item.title}
-                          </Typography>
-                        </MenuItem>
-                      </Link>
-                    ))}
-                  </ul>
+                  <DropdownMenu isScroll={isScrolling} dropdownItem={item} />
                 </div>
               ) : item.linkAddress === "/contact" ? (
                 <Link
@@ -197,7 +133,7 @@ export function ComplexNavbar({ isScroll }: { isScroll: boolean }) {
                 >
                   <MenuItem
                     className={`flex text-gray-900 items-center gap-2 rounded-none h-full py-3 ${
-                      isScroll
+                      isScrolling
                         ? "hover:text-[#ffa500] hover:bg-opacity-0"
                         : "hover:bg-[#fff] hover:transition-all duration-[0.4s] delay-0 ease-in-out"
                     }  focus:bg-opacity-0 active:bg-opacity-0`}
@@ -229,5 +165,6 @@ export function ComplexNavbar({ isScroll }: { isScroll: boolean }) {
         {isNavOpen && <MenuModal modalOpen={openNav} handleClose={closeNav} />}
       </AnimatePresence>
     </Navbar>
+    </div>
   );
 }

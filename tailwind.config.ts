@@ -22,6 +22,24 @@ const config: Config = withMT({
         "projects-pattern": "url('../../public/images/contact-banner2.jpg')",
         "section-2-pattern": "url('../../public/images/section-2.jpg')",
       },
+
+      keyframes: {
+        slideInWithDamping: {
+          "0%": { transform: "translateY(-50px)", opacity: "0" },
+          "60%": { transform: "translateY(5px)", opacity: "1" }, // Slight overshoot for spring effect
+          "100%": { transform: "translateY(0)", opacity: "1" },
+        },
+        slideOutWithDamping: {
+          "0%": { transform: "translateY(0)", opacity: "1" },
+          "100%": { transform: "translateY(-50px)", opacity: "0" },
+        },
+      },
+      animation: {
+        slideIn:
+          "slideInWithDamping 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards",
+        slideOut:
+          "slideOutWithDamping 0.5s cubic-bezier(0.3, 1.2, 0.5, 1) forwards",
+      },
     },
   },
   plugins: [require("flowbite/plugin")],
