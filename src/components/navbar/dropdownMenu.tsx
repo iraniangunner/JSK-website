@@ -37,6 +37,7 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
             className="font-normal focus-visible:outline-none text-sm 2xl:text-[16px]"
           >
             <MenuItem
+              style={{ fontFamily: "var(--font-yekanbakh)" }}
               className={`hidden items-center gap-2 font-medium py-3 text-gray-900 ${
                 isMenuOpen && isScroll ? "text-[#ffa500]" : ""
               } 
@@ -57,14 +58,18 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
           </Typography>
         </MenuHandler>
         <MenuList className="hidden w-[18rem] rounded-none gap-3 overflow-visible py-0 px-0 lg:grid grid-cols-3">
-          <ul className="col-span-3 flex w-full flex-col group-hover:text-[#ffa500] focus-visible:outline-none">
+          <ul
+            className="col-span-3 flex w-full flex-col group-hover:text-[#ffa500] focus-visible:outline-none"
+            
+          >
             {dropdownItem.subLinks.map((item) => (
               <Link href={item.linkAddress} key={item.title}>
-                <MenuItem className="rounded-none px-0 py-0">
+                <MenuItem className="rounded-none px-0 py-0" >
                   <Typography
                     variant="small"
                     color="blue-gray"
                     className="px-3 py-3 hover:text-white hover:bg-[#ffa500] transition-all duration-[0.4s]"
+                    style={{ fontFamily: "var(--font-yekanbakh)" }}
                   >
                     {item.title}
                   </Typography>

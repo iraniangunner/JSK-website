@@ -1,9 +1,10 @@
-import Link from "next/link";
+
 import { FaPhone } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { Map } from "@/components/googleMap";
 import { Metadata } from "next";
+import { PageCover } from "@/components/pageCover";
 
 export const metadata: Metadata = {
   title: "ژیوار صنعت کیان | تماس با ما",
@@ -17,34 +18,7 @@ export const metadata: Metadata = {
 export default function Contact() {
   return (
     <>
-      <div
-        className="relative bg-contact-pattern pt-[80px] lg:pt-[260px] 
-        lg:pb-[10px] bg-[top_right] bg-no-repeat bg-fixed
-        before:absolute before:content-[''] before:left-0 before:top-0
-        before:w-full before:h-full before:opacity-0 before:z-[-1]"
-      >
-        <nav
-          aria-label="breadcrumb"
-          className="px-[15px] mx-auto md:max-w-[720px] lg:max-w-[920px] hidden md:block"
-        >
-          <ol className="flex flex-wrap items-center absolute bottom-[20px] rounded-md bg-opacity-60 px-[1rem]">
-            <li className="flex items-center text-lg font-iransans antialiased font-normal leading-normal transition-colors duration-300 cursor-pointer text-white hover:text-[#ffa500]">
-              <Link href="/" className="opacity-60 text-white">
-                خانه
-              </Link>
-              <span className="mx-2 font-sans text-lg antialiased font-normal leading-normal pointer-events-none select-none text-white">
-                /
-              </span>
-            </li>
-            <li className="flex items-center font-iransans text-lg antialiased font-normal leading-normal text-white">
-              <span>تماس با ما</span>
-            </li>
-          </ol>
-        </nav>
-        <h1 className="text-[35px] text-white font-bold absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-         تماس با ما
-        </h1>
-      </div>
+      <PageCover title="تماس با ما" bgImage="contact-pattern" />
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-[50px] pb-[20px] lg:pt-[60px] lg:pb-[30px] px-10 lg:px-30 xl:px-40 mx-auto">
         <div className="relative group flex items-center py-5 px-10 lg:py-[20px] lg:px-[30px] 2xl:py-[25px] shadow-[0_5px_20px_0_rgba(0,0,0,0.15)] overflow-hidden bg-white hover:shadow-[0_5px_60px_0_rgba(0,0,0,0.15)] hover:translate-y-[-10px] transition-all duration-[0.8s]">
           <FaPhone className="absolute text-[70px] left-[10px] bottom-[5px] leading-[1px] font-[700] text-[#000] transition-all duration-[0.8s] opacity-[0.05] group-hover:scale-[2]" />

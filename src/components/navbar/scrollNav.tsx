@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   Navbar,
-  Typography,
   MenuItem,
   IconButton,
 } from "@material-tailwind/react";
@@ -82,13 +81,12 @@ export function ScrollNav() {
   >
     <Navbar className="mx-auto max-w-screen-3xl shadow-none rounded-none px-2 lg:px-8 py-0 lg:pl-6">
       <div className="relative mx-auto flex items-center justify-center xl:gap-10 text-blue-gray-900">
-        <Typography
-          as="a"
+        <Link
           href="/"
           className="block lg:hidden cursor-pointer py-1.5 font-medium ml-auto"
         >
-          <Image src={jsk} alt="JSK logo" width={200} height={24} />
-        </Typography>
+          <Image src={jsk} alt="JSK logo" width={200} height={24}  className="w-full h-full"/>
+        </Link>
         {isScrolling ? (
           <Link href="/" className="cursor-pointer font-medium hidden lg:block">
             <Image

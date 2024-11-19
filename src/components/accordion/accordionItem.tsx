@@ -88,12 +88,16 @@ export function AccordionItem() {
             icon={<Icon id={index + 1} open={open} />}
           >
             <AccordionHeader
-              className="font-iransans text-right"
+              className="text-right"
+              style={{ fontFamily: "var(--font-yekanbakh)" }}
               onClick={() => handleOpen(index + 1)}
             >
               {item.title}
             </AccordionHeader>
-            <AccordionBody className="text-base font-normal font-iransans ">
+            <AccordionBody
+              className="text-base font-normal"
+              style={{ fontFamily: "var(--font-yekanbakh)" }}
+            >
               <p>{item.desc}</p>
               <Link
                 href={item.link}

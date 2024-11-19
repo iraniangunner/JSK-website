@@ -109,8 +109,8 @@ export function SingleService({ service }: { service: any }) {
         <>
           <div className="max-w-[960px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div>
-              <p className="mt-6 text-lg font-bold">خدمات حمل خارجی و داخلی </p>
-              <p className="mt-6">
+              <p className="mt-6 text-lg font-bold text-black">خدمات حمل خارجی و داخلی </p>
+              <p className="mt-6 text-black">
                 شرکت ژیوار صنعت کیان در بخش حمل و نقل و ارسال کالا به طرق مختلف
                 در حوزه واردات و صادرات، با نمایندگی در کشورهای آسیایی، اروپایی،
                 خاورمیانه و با کمک نمایندگان خارجی مناسب‌ترین و بهترین قیمت و
@@ -120,7 +120,7 @@ export function SingleService({ service }: { service: any }) {
                 {commerceSecondItems.map((item) => (
                   <li className="my-3 flex items-center gap-2" key={item.id}>
                     {/* <FaCheck color="#ffa500" /> */}
-                    <p>{item.text}</p>
+                    <p className="text-black">{item.text}</p>
                   </li>
                 ))}
               </ul>
@@ -141,10 +141,10 @@ export function SingleService({ service }: { service: any }) {
               /> */}
             </div>
             <div>
-              <p className="mt-6 text-lg font-bold">
+              <p className="mt-6 text-lg font-bold text-black">
                 خدمات واردات و صادرات کالا
               </p>
-              <p className="mt-6">
+              <p className="mt-6 text-black">
                 واردات و صادرات کالا یکی از روش‌های افزایش تولید ناخالص ملی است
                 و برای اقتصاد هر کشور حیاتی محسوب می‌شود. صادرات علاوه بر این که
                 سود فراوانی برای شرکت یا فرد صادرکننده دارد، با ورود ارز موجب
@@ -152,13 +152,13 @@ export function SingleService({ service }: { service: any }) {
                 حساسیت‌های خاصی برخوردار است و در صورت عدم رعایت نکات اصولی،
                 باعث اتلاف سرمایه مالی و انسانی می‌شود.
               </p>
-              <p className="mt-6">
+              <p className="mt-6 text-black">
                 اولین قدم در انجام واردات و صادرات کالا، بازاریابی است. واردات و
                 صادرات کالا انواع مختلفی دارد و می‌توان آن را از منظری به ۲ نوع
                 قطعی و موقت و از منظری دیگر به ۲ نوع مستقیم و غیر مستقیم
                 بخش‌بندی کرد.
               </p>
-              <p className="mt-6">
+              <p className="mt-6 text-black">
                 اما برای واردات و صادرات کالا چه باید کرد؟ بازرگانی از نظر خیلی
                 از افراد کاری بسیار جالب و هیجان انگیز است. ولی صادرات و واردات
                 هم مانند هر کار دیگری نیاز به دانش، تخصص و تجربه دارد. اگر

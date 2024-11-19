@@ -82,7 +82,10 @@ export const ProjectsCarousel = ({ projects }: { projects: ProjectsData }) => {
       {projects.data.map((p, index) => (
         <SwiperSlide key={p.id}>
           <Slide delay={delays[index] || 0}>
-            <div className="relative h-full text-gray-700 group project_slider_container bg-white font-iransans select-none">
+            <div
+              className="relative h-full text-gray-700 group project_slider_container bg-white select-none"
+              style={{ fontFamily: "var(--font-yekanbakh)" }}
+            >
               <div className="relative h-full">
                 <Image
                   src={p.images[0].full_path}
@@ -96,7 +99,7 @@ export const ProjectsCarousel = ({ projects }: { projects: ProjectsData }) => {
               <div className="absolute top-0 left-0 w-full h-full project_slider_content flex flex-col justify-end py-6 px-4">
                 <div className="translate-y-[80px] group-hover:translate-y-0 mb-[30px] group-hover:mb-0 transition-all duration-[0.3]">
                   <h3 className="mb-6 text-white text-center">
-                    <Link href={`/projects/${p.id}`}> {p.title}</Link>
+                    <Link href={`/projects/${p.id}`}>{p.title}</Link>
                   </h3>
                   <div className="mb-4 h-[1px] bg-[rgb(225_230_238)] opacity-[0.4]"></div>
                   <div className="mb-6 opacity-0 group-hover:opacity-[1] grop transition-all duration-[0.3] delay-[0.1]">

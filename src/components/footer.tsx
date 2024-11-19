@@ -51,7 +51,9 @@ export default function Footer() {
                 <Typography
                   variant="h5"
                   color="white"
-                  className="mb-3 text-[18px] font-bold font-iransans relative 
+                  style={{ fontFamily: "var(--font-yekanbakh)" }}
+                  className="mb-5 text-[18px] font-bold relative 
+                  
                   before:content-[''] before:absolute before:left-0 before:bottom-[-8px] before:h-[2px] before:w-full before:bg-[#ffa502]"
                 >
                   {title}
@@ -59,12 +61,13 @@ export default function Footer() {
                 <ul
                   key={title}
                   className="flex flex-col justify-between items-start gap-1"
+                  style={{ fontFamily: "var(--font-yekanbakh)" }}
                 >
                   {items.map((item) => (
                     <li key={item.title}>
                       <Link
                         href={item.link === "/tenders" ? "" : item.link}
-                        className="py-2 w-full font-normal text-[#fff] font-iransans flex items-center gap-2 hover:text-[#ffa500] hover:mr-[10px] transition-all duration-[0.4s]"
+                        className="py-2 w-full font-normal text-[#fff] flex items-center gap-2 hover:text-[#ffa500] hover:mr-[10px] transition-all duration-[0.4s]"
                       >
                         <MdKeyboardDoubleArrowLeft size={18} />
                         {item.title}
@@ -79,7 +82,8 @@ export default function Footer() {
             <Typography
               variant="h5"
               color="white"
-              className="mb-3 text-[18px] font-bold font-iransans relative 
+              style={{ fontFamily: "var(--font-yekanbakh)" }}
+              className="mb-3 text-[18px] font-bold relative 
               before:content-[''] before:absolute before:left-0 before:bottom-[-10px] before:h-[2px] before:w-full before:bg-[#ffa502]"
             >
               ارتباط با ما
@@ -115,10 +119,11 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="footer_bar mt-12 w-full flex justify-around items-center border-t border-blue-gray-50 py-4 lg:py-6 relative">
+      <div className="footer_bar mt-12 px-6 w-full flex flex-col justify-center md:flex-row md:justify-around items-center border-t border-blue-gray-50 py-4 lg:py-6 relative">
         <Typography
           // variant="medium"
-          className="mt-4 text-[17px] font-iransans text-[#fff] md:mt-0"
+          className="my-4 text-[17px] text-[#fff] md:mt-0 md:mb-0"
+          style={{ fontFamily: "var(--font-yekanbakh)" }}
         >
           کلیه حقوق این وب سایت محفوظ و متعلق به شرکت ژیوار صنعت کیان می باشد.
         </Typography>
