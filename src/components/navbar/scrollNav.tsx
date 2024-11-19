@@ -112,6 +112,7 @@ export function ScrollNav() {
                 </div>
               ) : item.linkAddress === "/contact" ? (
                 <Link
+                  key={item.linkTitle}
                   href={item.linkAddress}
                   className="contact font-bold relative flex items-center gap-2 rounded-none py-3 px-3
         overflow-hidden text-sm 2xl:text-[16px] transition-all duration-[0.5s] text-[#fff] hover:text-[#ffa500] h-full z-[1]"

@@ -2,7 +2,7 @@
 import { FaPhone } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
-import { Map } from "@/components/googleMap";
+import { Map } from "@/components/googlemap";
 import { Metadata } from "next";
 import { PageCover } from "@/components/pageCover";
 
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export default function Contact() {
   return (
     <>
-      <PageCover title="تماس با ما" bgImage="contact-pattern" />
+      <PageCover title="تماس با ما" bgImage="projects-pattern" />
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-[50px] pb-[20px] lg:pt-[60px] lg:pb-[30px] px-10 lg:px-30 xl:px-40 mx-auto">
         <div className="relative group flex items-center py-5 px-10 lg:py-[20px] lg:px-[30px] 2xl:py-[25px] shadow-[0_5px_20px_0_rgba(0,0,0,0.15)] overflow-hidden bg-white hover:shadow-[0_5px_60px_0_rgba(0,0,0,0.15)] hover:translate-y-[-10px] transition-all duration-[0.8s]">
           <FaPhone className="absolute text-[70px] left-[10px] bottom-[5px] leading-[1px] font-[700] text-[#000] transition-all duration-[0.8s] opacity-[0.05] group-hover:scale-[2]" />
