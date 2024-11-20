@@ -16,7 +16,7 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-const ContactForm = () => {
+export const ContactForm = () => {
   //const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const {
     register,
@@ -160,4 +160,3 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;

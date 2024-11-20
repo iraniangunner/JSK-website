@@ -4,7 +4,7 @@ import { MdEmail } from "react-icons/md";
 import { Map } from "@/components/googleMap";
 import { Metadata } from "next";
 import { PageCover } from "@/components/pageCover";
-import ContactForm from "@/components/contactForm";
+import {ContactForm} from "@/components/contactForm";
 
 export const metadata: Metadata = {
   title: "ژیوار صنعت کیان | تماس با ما",
