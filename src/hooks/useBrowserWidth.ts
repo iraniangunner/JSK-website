@@ -1,7 +1,9 @@
+"use client";
+
 import { useState, useEffect } from "react";
 
-export function useBrowserWidth(): [number] {
-  const [browserWidth, setBrowserWidth] = useState(window.innerWidth);
+export function useBrowserWidth(): [number | undefined] {
+  const [browserWidth, setBrowserWidth] = useState(<number | undefined>(undefined));
 
   useEffect(() => {
     const handleResize = () => setBrowserWidth(window.innerWidth);

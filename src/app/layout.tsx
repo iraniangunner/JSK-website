@@ -9,7 +9,7 @@ import "./globals.css";
 //   src: "../../public/fonts/IRANSansX-Regular.woff",
 // });
 
-export const yekanbakh = localFont({
+const yekanbakh = localFont({
   src: [
     {
       path: "../../public/fonts/yekanbakh/YekanBakhFaNum-Thin.woff2",

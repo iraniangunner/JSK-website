@@ -24,7 +24,7 @@ export function SingleProject({ project }: { project: Project }) {
           className="p-[10px] mx-auto md:max-w-[720px] lg:max-w-[920px] relative"
         ></nav>
         <h1 className="lg:text-[35px] font-bold text-center text-[#fff] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-          {project.title}
+          پروژه {project.title}
         </h1>
       </div>
       <div className="max-w-[1300px] flex flex-col xl:flex-row gap-8 lg:gap-9 my-10 lg:my-24 mx-auto px-8">

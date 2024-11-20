@@ -1,6 +1,8 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
-export function useScroll(height:number) {
+export function useScroll(height: number) {
   const [isScrolling, setIsScrolling] = useState(false);
 
   const handleScroll = () => {
