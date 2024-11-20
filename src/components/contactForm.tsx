@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { ToastContainer, toast } from "react-toastify"; 
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // Define Zod schema for form validation
@@ -17,7 +17,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const ContactForm = () => {
-//const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  //const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -49,7 +49,7 @@ const ContactForm = () => {
         reset();
       } else {
         toast.success("پیام شما با موفقیت ارسال شد!");
-        // window.open("https://jsk-co.com", "_blank"); 
+        // window.open("https://jsk-co.com", "_blank");
         reset();
       }
     } catch (error) {
@@ -74,6 +74,9 @@ const ContactForm = () => {
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <div>
           <div>
+            {errors.name && (
+              <p className="text-red-500 text-sm mb-1">{errors.name.message}</p>
+            )}
             <input
               {...register("name")}
               className={`w-full mb-[30px] py-3 border border-solid ${
@@ -82,11 +85,13 @@ const ContactForm = () => {
               placeholder="نام شما"
               onChange={(e) => handleChange(e, "name")} // Trimming spaces as the user types
             />
-            {errors.name && (
-              <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
-            )}
           </div>
           <div>
+            {errors.email && (
+              <p className="text-red-500 text-sm mb-1">
+                {errors.email.message}
+              </p>
+            )}
             <input
               {...register("email")}
               className={`w-full mb-[30px] py-3 border border-solid ${
@@ -95,13 +100,13 @@ const ContactForm = () => {
               placeholder="پست الکترونیکی"
               onChange={(e) => handleChange(e, "email")} // Trimming spaces as the user types
             />
-            {errors.email && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.email.message}
-              </p>
-            )}
           </div>
           <div>
+          {errors.website && (
+              <p className="text-red-500 text-sm mb-1">
+                {errors.website.message}
+              </p>
+            )}
             <input
               {...register("website")}
               className={`w-full mb-[30px] py-3 border border-solid ${
@@ -110,14 +115,13 @@ const ContactForm = () => {
               placeholder="آدرس وب سایت"
               onChange={(e) => handleChange(e, "website")} // Trimming spaces as the user types
             />
-            {errors.website && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.website.message}
-              </p>
-            )}
+            
           </div>
         </div>
         <div>
+         {errors.text && (
+            <p className="text-red-500 text-sm mb-1">{errors.text.message}</p>
+          )}
           <textarea
             {...register("text")}
             rows={6}
@@ -127,9 +131,7 @@ const ContactForm = () => {
             placeholder="پیام خود را تایپ کنید"
             onChange={(e) => handleChange(e, "text")} // Trimming spaces as the user types
           ></textarea>
-          {errors.text && (
-            <p className="text-red-500 text-sm mt-1">{errors.text.message}</p>
-          )}
+         
         </div>
         <div>
           <button
