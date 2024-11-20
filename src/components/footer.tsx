@@ -121,11 +121,11 @@ export default function Footer() {
       </div>
       <div className="footer_bar mt-12 px-6 w-full flex flex-col justify-center md:flex-row md:justify-around items-center border-t border-blue-gray-50 py-4 lg:py-6 relative">
         <Typography
-          // variant="medium"
           className="my-4 text-[17px] text-[#fff] md:mt-0 md:mb-0"
           style={{ fontFamily: "var(--font-yekanbakh)" }}
         >
-          کلیه حقوق این وب سایت محفوظ و متعلق به شرکت ژیوار صنعت کیان می باشد.
+          © کلیه حقوق این وبسایت محفوظ و متعلق به{" "}
+          <strong>شرکت ژیوار صنعت کیان</strong> می باشد.
         </Typography>
         <div className="flex gap-4 text-[#fff]">
           <Typography

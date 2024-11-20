@@ -1,10 +1,10 @@
-
 import { FaPhone } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { Map } from "@/components/googleMap";
 import { Metadata } from "next";
 import { PageCover } from "@/components/pageCover";
+import ContactForm from "@/components/contactForm";
 
 export const metadata: Metadata = {
   title: "ژیوار صنعت کیان | تماس با ما",
@@ -72,44 +72,7 @@ export default function Contact() {
               نظرات و پیشنهادات خود را برای ما ارسال کنید
             </p>
           </div>
-          <form>
-            <div>
-              <div>
-                <input
-                  className="w-full mb-[30px] py-3 border border-solid border-[#ddd] pr-[20px] rounded-[15px]"
-                  placeholder="نام شما"
-                />
-              </div>
-              <div>
-                <input
-                  className="w-full mb-[30px] py-3 border border-solid border-[#ddd] pr-[20px] rounded-[15px]"
-                  placeholder="پست الکترونیکی"
-                />
-              </div>
-              <div>
-                <input
-                  className="w-full mb-[30px] py-3 border border-solid border-[#ddd] pr-[20px] rounded-[15px]"
-                  placeholder="آدرس وب سایت"
-                />
-              </div>
-            </div>
-            <div>
-              <textarea
-                rows={6}
-                className="w-full mb-[30px] py-3 border border-solid border-[#ddd] pr-[20px] rounded-[15px]"
-                placeholder="پیام خود را تایپ کنید"
-              ></textarea>
-            </div>
-            <div>
-              <input
-                type="submit"
-                value="ارسال پیام"
-                className="w-full text-center bg-[#fea925] rounded-[15px] cursor-pointer border 
-                border-solid border-[#fea925] h-[52px] font-[600] text-[#fff] text-[18px]
-                 hover:bg-[#2c4050] hover:border-[#2c4050] transition-all duration-[0.5s]"
-              />
-            </div>
-          </form>
+          <ContactForm />
         </div>
         <div className=" h-[200px] lg:h-full lg:w-[80%]">
           <Map />
