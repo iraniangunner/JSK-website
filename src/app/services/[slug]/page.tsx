@@ -58,11 +58,11 @@ export const generateMetadata = async ({
     openGraph: {
       title: `خدمات | ${service.title}`,
       description: service.description,
-      images: [
-        {
-          url: "https://image.tmdb.org/t/p/w500" + service.image,
-        },
-      ],
+      // images: [
+      //   {
+      //     url: "https://image.tmdb.org/t/p/w500" + service.image,
+      //   },
+      // ],
     },
   };
 };

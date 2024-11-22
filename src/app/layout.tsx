@@ -54,16 +54,10 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
-  // openGraph: {
-  //   title: "ژیوار صنعت کیان | صفحه اصلی",
-  //   description: "ژیوار صنعت کیان - اجرا و بهره برداری پروژه های صنعتی و معدنی",
-  //   type: "website",
-  //   images: [
-  //     {
-  //       url: "/images/" + "jsk.png",
-  //     },
-  //   ],
-  // },
+  openGraph: {
+    title: "ژیوار صنعت کیان | صفحه اصلی",
+    description: "ژیوار صنعت کیان - اجرا و بهره برداری پروژه های صنعتی و معدنی",
+  },
 };
 
 export default function RootLayout({
