@@ -13,12 +13,12 @@ export const generateMetadata = async ({
   try {
     const project = await getProjectById(params.id);
     return {
-      title:{
-        absolute:`پروژه ها | پروژه ${project.title}`
+      title: {
+        absolute: `پروژه ها | پروژه ${project.title}`,
       },
       description: project.text,
       openGraph: {
-        title:`پروژه ها | پروژه ${project.title}`,
+        title: `پروژه ها | پروژه ${project.title}`,
         description: project.text,
         images: [
           {
@@ -28,7 +28,18 @@ export const generateMetadata = async ({
       },
     };
   } catch (error) {
-    return;
+    return {
+      title: {
+        absolute: "ژیوار صنعت کیان",
+      },
+      description:
+        "ژیوار صنعت کیان - اجرا و بهره برداری پروژه های صنعتی و معدنی",
+      openGraph: {
+        title: "ژیوار صنعت کیان",
+        description:
+          "ژیوار صنعت کیان - اجرا و بهره برداری پروژه های صنعتی و معدنی",
+      },
+    };
   }
 };
 

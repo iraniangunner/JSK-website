@@ -17,7 +17,7 @@ export default function TopNav() {
       <div className="flex justify-center items-center">
         <Link
           href="/"
-          className="block relative cursor-pointer font-medium
+          className="block relative cursor-pointer font-medium h-auto lg:h-[68px]
           before:content-[''] before:absolute before:right-[100%] 
           before:bottom-0 before:border-l-[50px] before:border-l-transparent 
           before:border-b-[68px] before:border-b-[#ffa500]

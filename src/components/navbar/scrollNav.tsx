@@ -86,7 +86,7 @@ export function ScrollNav() {
             <Image
               src={jsk}
               alt="JSK logo"
-              width={200}
+              width={120}
               height={24}
               className="w-full h-full"
             />
@@ -94,7 +94,7 @@ export function ScrollNav() {
           {isScrolling ? (
             <Link
               href="/"
-              className="cursor-pointer font-medium hidden lg:block"
+              className="cursor-pointer font-medium hidden lg:block lg:h-[68px]"
             >
               <Image
                 src={jsk}
