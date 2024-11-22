@@ -7,7 +7,7 @@ import { Metadata } from "next";
 import { PageCover } from "@/components/pageCover";
 
 export const metadata: Metadata = {
-  title: "ژیوار صنعت کیان | درباره ما",
+  title: "درباره ما",
   description: "درباره شرکت ژیوار صنعت کیان",
   openGraph: {
     title: "ژیوار صنعت کیان | درباره ما",

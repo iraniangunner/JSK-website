@@ -6,7 +6,7 @@ import Skeleton from "@/components/loadingSkeleton";
 import { PageCover } from "@/components/pageCover";
 
 export const metadata: Metadata = {
-  title: "ژیوار صنعت کیان | پروژه ها",
+  title: "پروژه ها",
   description: "پروژه های ژیوار صنعت کیان",
   openGraph: {
     title: "ژیوار صنعت کیان | پروژه ها",

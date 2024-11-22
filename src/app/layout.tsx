@@ -46,18 +46,24 @@ const yekanbakh = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "ژیوار صنعت کیان | صفحه اصلی",
-  description: "ژیوار صنعت کیان - اجرا و بهره برداری پروژه های صنعتی و معدنی",
-  openGraph: {
-    title: "ژیوار صنعت کیان | صفحه اصلی",
-    description: "ژیوار صنعت کیان - اجرا و بهره برداری پروژه های صنعتی و معدنی",
-    type: "website",
-    images: [
-      {
-        url: "/images/" + "jsk.png",
-      },
-    ],
+  title: {
+    template: "ژیوار صنعت کیان | %s",
+    default: "ژیوار صنعت کیان | صفحه اصلی",
   },
+  description: "ژیوار صنعت کیان - اجرا و بهره برداری پروژه های صنعتی و معدنی",
+  twitter: {
+    card: "summary_large_image",
+  },
+  // openGraph: {
+  //   title: "ژیوار صنعت کیان | صفحه اصلی",
+  //   description: "ژیوار صنعت کیان - اجرا و بهره برداری پروژه های صنعتی و معدنی",
+  //   type: "website",
+  //   images: [
+  //     {
+  //       url: "/images/" + "jsk.png",
+  //     },
+  //   ],
+  // },
 };
 
 export default function RootLayout({
@@ -66,7 +72,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fa" dir="rtl"  className={`${yekanbakh.variable}`}>
+    <html lang="fa" dir="rtl" className={`${yekanbakh.variable}`}>
       <body>
         <NextTopLoader
           color="#2299DD"

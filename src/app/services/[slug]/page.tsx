@@ -51,10 +51,12 @@ export const generateMetadata = async ({
   const service = projectsData.services[index];
 
   return {
-    title: `${service.title} | خدمات`,
+    title:{
+      absolute:`خدمات | ${service.title}`
+    },
     description: service.description,
     openGraph: {
-      title: `${service.title} | خدمات`,
+      title: `خدمات | ${service.title}`,
       description: service.description,
       images: [
         {

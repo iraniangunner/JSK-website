@@ -7,11 +7,11 @@ import { PageCover } from "@/components/pageCover";
 import {ContactForm} from "@/components/contactForm";
 
 export const metadata: Metadata = {
-  title: "ژیوار صنعت کیان | تماس با ما",
-  description: "اطلاعات تماس شرت ژیوار صنعت کیان",
+  title: "تماس با ما",
+  description: "اطلاعات تماس شرکت ژیوار صنعت کیان",
   openGraph: {
     title: "ژیوار صنعت کیان | تماس با ما",
-    description: "اطلاعات تماس شرت ژیوار صنعت کیان",
+    description: "اطلاعات تماس شرکت ژیوار صنعت کیان",
   },
 };
 
