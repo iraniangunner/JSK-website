@@ -1,5 +1,4 @@
 "use client";
-import { useEffect, useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import { FaRegCalendar } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";

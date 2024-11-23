@@ -8,6 +8,9 @@ import { PageCover } from "@/components/pageCover";
 export const metadata: Metadata = {
   title: "گواهینامه ها",
   description: "گواهینامه ها و جوایز شرکت ژیوار صنعت کیان",
+  alternates: {
+    canonical: "/certifications",
+  },
   openGraph: {
     title: "ژیوار صنعت کیان | گواهینامه ها",
     description: "گواهینامه ها و جوایز شرکت ژیوار صنعت کیان",

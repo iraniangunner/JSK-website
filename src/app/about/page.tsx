@@ -9,6 +9,9 @@ import { PageCover } from "@/components/pageCover";
 export const metadata: Metadata = {
   title: "درباره ما",
   description: "درباره شرکت ژیوار صنعت کیان",
+  alternates: {
+    canonical: "/about",
+  },
   openGraph: {
     title: "ژیوار صنعت کیان | درباره ما",
     description: "درباره شرکت ژیوار صنعت کیان",

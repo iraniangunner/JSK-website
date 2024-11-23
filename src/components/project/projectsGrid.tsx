@@ -1,5 +1,4 @@
 import { CustomError } from "../customError";
-import Skeleton from "../loadingSkeleton";
 import ProjectsTable from "./projectsTbl";
 import { getProjects } from "@/utils/server/projectsApi";
 import { getCategories } from "@/utils/server/projectsApi";

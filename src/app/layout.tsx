@@ -46,14 +46,12 @@ const yekanbakh = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase:new URL("https://jsk-co.com"),
   title: {
     template: "ژیوار صنعت کیان | %s",
     default: "ژیوار صنعت کیان | صفحه اصلی",
   },
   description: "ژیوار صنعت کیان - اجرا و بهره برداری پروژه های صنعتی و معدنی",
-  twitter: {
-    card: "summary_large_image",
-  },
   openGraph: {
     title: "ژیوار صنعت کیان | صفحه اصلی",
     description: "ژیوار صنعت کیان - اجرا و بهره برداری پروژه های صنعتی و معدنی",

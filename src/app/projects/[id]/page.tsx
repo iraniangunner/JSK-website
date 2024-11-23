@@ -17,6 +17,9 @@ export const generateMetadata = async ({
         absolute: `پروژه ها | پروژه ${project.title}`,
       },
       description: project.text,
+      alternates: {
+        canonical: `/projects/${params.id}`,
+      },
       openGraph: {
         title: `پروژه ها | پروژه ${project.title}`,
         description: project.text,

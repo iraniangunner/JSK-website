@@ -4,6 +4,7 @@ import pic2 from "../../public/images/pic2.jpg";
 import pic3 from "../../public/images/pic3.jpg";
 import { motion } from "framer-motion";
 import { AccordionItem } from "./accordion/accordionItem";
+import Image from "next/image";
 
 export default function ServicesSection() {
   return (
@@ -61,10 +62,7 @@ export default function ServicesSection() {
               }}
               className="w-[75%] mr-[80px]"
             >
-              <motion.img
-                src={pic1.src}
-                alt="pic1"
-                className="border-[5px] border-solid border-[#fff] max-w-full"
+              <motion.div
                 animate={{
                   translateX: [0, 10, 5, 10, 0],
                   translateY: [0, 10, 5, -5, 0],
@@ -74,7 +72,15 @@ export default function ServicesSection() {
                   ease: "linear",
                   repeat: Infinity,
                 }}
-              />
+              >
+                <Image
+                  src={pic1}
+                  alt=""
+                  width={370}
+                  height={500}
+                  className="block h-full border-[5px] border-solid border-[#fff] max-w-full"
+                />
+              </motion.div>
             </motion.div>
             <motion.div
               initial="hidden"
@@ -87,10 +93,7 @@ export default function ServicesSection() {
               }}
               className="w-[75%] absolute right-0 top-[25%]"
             >
-              <motion.img
-                src={pic2.src}
-                alt="pic2"
-                className="border-[5px] border-solid border-[#fff] max-w-full"
+              <motion.div
                 animate={{
                   translateX: [0, 10, 5, 10, 0],
                   translateY: [0, 10, 5, -5, 0],
@@ -100,7 +103,13 @@ export default function ServicesSection() {
                   ease: "linear",
                   repeat: Infinity,
                 }}
-              />
+              >
+                <Image
+                  src={pic2}
+                  alt=""
+                  className="block h-full border-[5px] border-solid border-[#fff] max-w-full"
+                />
+              </motion.div>
             </motion.div>
             <motion.div
               initial="hidden"
@@ -113,10 +122,7 @@ export default function ServicesSection() {
               }}
               className="relative z-[1] mt-[-15%] ml-[-20%] pr-[80px]"
             >
-              <motion.img
-                src={pic3.src}
-                alt="pic3"
-                className="border-[5px] border-solid border-[#fff] max-w-full"
+              <motion.div
                 animate={{
                   translateX: [0, 10, 5, 10, 0],
                   translateY: [0, 10, 5, -5, 0],
@@ -126,7 +132,13 @@ export default function ServicesSection() {
                   ease: "linear",
                   repeat: Infinity,
                 }}
-              />
+              >
+                <Image
+                  src={pic3}
+                  alt=""
+                  className="block h-full border-[5px] border-solid border-[#fff] max-w-full"
+                />
+              </motion.div>
             </motion.div>
           </div>
         </div>
