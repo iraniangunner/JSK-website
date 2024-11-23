@@ -1,10 +1,5 @@
 "use client";
-import { Typography } from "@material-tailwind/react";
-import { BsFillPersonFill } from "react-icons/bs";
 import Image from "next/image";
-import { ConvertLanguageBtn } from "../convertLanguageBtn";
-import { MenuItem } from "@material-tailwind/react";
-import { FaShoppingCart } from "react-icons/fa";
 import { FaPhoneFlip } from "react-icons/fa6";
 import Link from "next/link";
 import { MdEmail } from "react-icons/md";
@@ -12,6 +7,13 @@ import { FaLocationDot } from "react-icons/fa6";
 import jsk from "../../../public/images/jsk.png";
 
 export default function TopNav() {
+  const location = {
+    latitude: 35.75547446326668,
+    longitude: 51.40515220751757,
+  };
+
+  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${location.latitude},${location.longitude}`;
+
   return (
     <div className="hidden sticky top-0 lg:flex items-center justify-center gap-4 lg:gap-8 bg-white pt-[10px]">
       <div className="flex justify-center items-center">
@@ -36,9 +38,14 @@ export default function TopNav() {
 
       <div className="flex justify-center items-center gap-3 lg:mr-10">
         <div className="lg:hidden 2xl:flex items-center justify-center ml-4">
-          <div className="border border-[#ffa500] text-[#ffa500] hover:bg-[#ffa500] hover:text-white transition-all rounded-full p-2 ml-3">
+          <a
+            href={googleMapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-[#ffa500] text-[#ffa500] hover:bg-[#ffa500] hover:text-white transition-all rounded-full p-2 ml-3"
+          >
             <FaLocationDot size={20} />
-          </div>
+          </a>
           <div className="text-black">
             <p className="mb-2 font-bold text-black">آدرس</p>
             <p className="text-sm">
@@ -48,21 +55,25 @@ export default function TopNav() {
           </div>
         </div>
         <div className="flex justify-center items-center ml-4">
-          <div className="border border-[#ffa500] text-[#ffa500] hover:bg-[#ffa500] hover:text-white transition-all rounded-full p-2 ml-3">
+          <a
+            href="tel:02188660368"
+            className="border border-[#ffa500] text-[#ffa500] hover:bg-[#ffa500] hover:text-white transition-all rounded-full p-2 ml-3"
+          >
             <FaPhoneFlip size={20} />
-          </div>
+          </a>
           <div>
             <p className="mb-2 font-bold text-black">تلفن</p>
             <p className="text-sm text-black">021-88660368</p>
           </div>
         </div>
         <div className="flex justify-center items-center">
-          <div
+          <a
+            href="mailto:info@jsk-co.com"
             className="border border-[#ffa500] text-[#ffa500] hover:bg-[#ffa500] 
           hover:text-white transition-all rounded-full p-2 ml-3"
           >
             <MdEmail size={20} />
-          </div>
+          </a>
           <div>
             <p className="mb-2 font-bold text-black">پست الکترونیکی</p>
             <p className="text-sm text-black">info@jsk-co.com</p>
