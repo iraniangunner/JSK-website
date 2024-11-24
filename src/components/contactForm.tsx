@@ -8,10 +8,22 @@ import "react-toastify/dist/ReactToastify.css";
 
 // Define Zod schema for form validation
 const formSchema = z.object({
-  name: z.string().min(1, "نام الزامی است"), // At least 1 character
-  email: z.string().email("ایمیل معتبر نیست"), // Valid email format
-  website: z.string().url("آدرس وب سایت معتبر نیست").optional(), // Optional URL
-  text: z.string().min(5, "پیام باید حداقل ۵ کاراکتر باشد"), // At least 5 characters
+  name: z
+    .string()
+    .min(1, "نام الزامی است")
+    .transform((value) => value.trimEnd()), // , // At least 1 character
+  email: z
+    .string()
+    .email("ایمیل معتبر نیست")
+    .transform((value) => value.trimEnd()), // , // Valid email format
+  website: z
+    .string()
+    .url("آدرس وب سایت معتبر نیست")
+    .transform((value) => value.trimEnd()), // .optional(), // Optional URL
+  text: z
+    .string()
+    .min(5, "پیام باید حداقل ۵ کاراکتر باشد")
+    .transform((value) => value.trimEnd()), // , // At least 5 characters
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -30,30 +42,25 @@ export const ContactForm = () => {
 
   const onSubmit = async (data: FormValues) => {
     try {
-      // Trim spaces from all input fields before submission
-      const trimmedData = {
-        name: data.name.trim(),
-        email: data.email.trim(),
-        website: data.website ? data.website.trim() : "",
-        text: data.text.trim(),
-      };
-
       const response = await fetch("https://jsk-co.com/api/comments", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(trimmedData),
+        body: JSON.stringify(data),
       });
+
+      const { id } = await response.json();
 
       if (!response.ok) {
         toast.error("خطایی رخ داده است. لطفا دوباره تلاش کنید.");
-        reset();
       } else {
-        toast.success("پیام شما با موفقیت ارسال شد!");
-        // window.open("https://jsk-co.com", "_blank");
+        // toast.success("پیام شما با موفقیت ارسال شد!");
+        window.open(
+          `http://192.168.2.14:85/sysworkflow/en/neoclassic/8342895506741c0432e73e2039423696/1650390626741c073376e14096097197.php?id=${id}`
+        ,"_blank");
         reset();
       }
     } catch (error) {
-      console.error("Error submitting form:", error);
+      // console.error("Error submitting form:", error);
       toast.error("خطایی رخ داده است. لطفا دوباره تلاش کنید.");
     }
   };
@@ -63,7 +70,7 @@ export const ContactForm = () => {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     field: keyof FormValues
   ) => {
-    setValue(field, e.target.value.trim());
+    setValue(field, e.target.value);
   };
 
   return (
@@ -78,6 +85,7 @@ export const ContactForm = () => {
               <p className="text-red-500 text-sm mb-1">{errors.name.message}</p>
             )}
             <input
+              type="text"
               {...register("name")}
               className={`w-full mb-[30px] py-3 border border-solid ${
                 errors.name ? "border-red-500" : "border-[#ddd]"
@@ -93,6 +101,7 @@ export const ContactForm = () => {
               </p>
             )}
             <input
+              type="email"
               {...register("email")}
               className={`w-full mb-[30px] py-3 border border-solid ${
                 errors.email ? "border-red-500" : "border-[#ddd]"
@@ -102,12 +111,13 @@ export const ContactForm = () => {
             />
           </div>
           <div>
-          {errors.website && (
+            {errors.website && (
               <p className="text-red-500 text-sm mb-1">
                 {errors.website.message}
               </p>
             )}
             <input
+              type="text"
               {...register("website")}
               className={`w-full mb-[30px] py-3 border border-solid ${
                 errors.website ? "border-red-500" : "border-[#ddd]"
@@ -115,11 +125,10 @@ export const ContactForm = () => {
               placeholder="آدرس وب سایت"
               onChange={(e) => handleChange(e, "website")} // Trimming spaces as the user types
             />
-            
           </div>
         </div>
         <div>
-         {errors.text && (
+          {errors.text && (
             <p className="text-red-500 text-sm mb-1">{errors.text.message}</p>
           )}
           <textarea
@@ -131,7 +140,6 @@ export const ContactForm = () => {
             placeholder="پیام خود را تایپ کنید"
             onChange={(e) => handleChange(e, "text")} // Trimming spaces as the user types
           ></textarea>
-         
         </div>
         <div>
           <button
@@ -159,4 +167,3 @@ export const ContactForm = () => {
     </>
   );
 };
-

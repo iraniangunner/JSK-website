@@ -7,12 +7,6 @@ import { FaLocationDot } from "react-icons/fa6";
 import jsk from "../../../public/images/jsk.png";
 
 export default function TopNav() {
-  const location = {
-    latitude: 35.75547446326668,
-    longitude: 51.40515220751757,
-  };
-
-  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${location.latitude},${location.longitude}`;
 
   return (
     <div className="hidden sticky top-0 lg:flex items-center justify-center gap-4 lg:gap-8 bg-white pt-[10px]">
@@ -39,7 +33,7 @@ export default function TopNav() {
       <div className="flex justify-center items-center gap-3 lg:mr-10">
         <div className="lg:hidden 2xl:flex items-center justify-center ml-4">
           <a
-            href={googleMapsUrl}
+            href={process.env.GOOGLE_MAP_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="border border-[#ffa500] text-[#ffa500] hover:bg-[#ffa500] hover:text-white transition-all rounded-full p-2 ml-3"
@@ -81,38 +75,9 @@ export default function TopNav() {
         </div>
       </div>
       {/* <div className="flex justify-center items-center gap-1 lg:mr-10">
-        <Link
-          // as="a"
-          href="/login"
-          // variant="medium"
-          color="gray"
-          className="relative font-medium font-iransans text-blue-gray-500 login_btn"
-        >
-          <MenuItem
-            className="lg:flex items-center justify-between text-md hover:bg-opacity-0 rounded-none border-l border-[#ccc] py-3 
-            focus:bg-opacity-0 active:bg-opacity-0 text-[#737272] 
-            hover:text-[#323131] hover:transition-all duration-[0.4s] delay-0 ease-in-out"
-          >
-            <BsFillPersonFill size={17} />
-            <span className="mr-1">ورود</span>
-          </MenuItem>
-        </Link>
+       
         <ConvertLanguageBtn />
-        <Typography
-          as="a"
-          href="#"
-          // variant="medium"
-          color="gray"
-          className="relative font-medium font-iransans text-blue-gray-500"
-        >
-          <MenuItem
-            className={`lg:flex items-center justify-between text-md hover:bg-opacity-0 rounded-none
-            focus:bg-opacity-0 active:bg-opacity-0 text-[#737272] 
-            hover:text-[#323131] hover:transition-all duration-[0.4s] delay-0 ease-in-out`}
-          >
-            <FaShoppingCart size={17} />
-          </MenuItem>
-        </Typography>
+      
       </div> */}
     </div>
   );
