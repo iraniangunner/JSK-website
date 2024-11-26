@@ -19,7 +19,6 @@ export const metadata: Metadata = {
 
 export default async function Certifications() {
   return (
-
     <>
       <PageCover title="گواهینامه ها و جوایز" bgImage="projects-pattern" />
       <div className="flex justify-center my-16">

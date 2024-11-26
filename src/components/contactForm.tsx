@@ -1,76 +1,132 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { ToastContainer, toast } from "react-toastify";
+import ReCAPTCHA from "react-google-recaptcha";
 import "react-toastify/dist/ReactToastify.css";
 
 // Define Zod schema for form validation
 const formSchema = z.object({
-  name: z
-    .string()
-    .min(1, "نام الزامی است")
-    .transform((value) => value.trimEnd()), // , // At least 1 character
-  email: z
-    .string()
-    .email("ایمیل معتبر نیست")
-    .transform((value) => value.trimEnd()), // , // Valid email format
-  website: z
-    .string()
-    .url("آدرس وب سایت معتبر نیست")
-    .transform((value) => value.trimEnd()), // .optional(), // Optional URL
-  text: z
-    .string()
-    .min(5, "پیام باید حداقل ۵ کاراکتر باشد")
-    .transform((value) => value.trimEnd()), // , // At least 5 characters
+  name: z.string().min(1, "نام الزامی است"), // At least 1 character
+  email: z.string().email("ایمیل معتبر نیست"), // Valid email format
+  website: z.string().url("آدرس وب سایت معتبر نیست").optional(), // Optional URL
+  text: z.string().min(5, "پیام باید حداقل ۵ کاراکتر باشد"), // At least 5 characters
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
 export const ContactForm = () => {
-  //const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null); // Reference to the reCAPTCHA instance
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  // const [popupBlocked, setPopupBlocked] = useState(false);
+
   const {
     register,
     handleSubmit,
     reset,
-    setValue, // We need this to manually set values if we want to trim while typing.
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = async (data: FormValues) => {
+
+  // const openPopupAndCheck = () => {
+  //   // Open the popup in response to the user's click
+  //   const popup = window.open(
+  //     "http://example.com", // The link you want to open
+  //     "_blank"
+  //   );
+
+  //   // Check if the popup was blocked
+  //   if (!popup || popup.closed || typeof popup.closed === "undefined") {
+  //     setPopupBlocked(true);
+  //     return false; // Popup is blocked
+  //   }
+
+  //   // Close the popup immediately if it's not blocked
+  //   popup.close();
+  //   setPopupBlocked(false);
+  //   return true; // Popup is not blocked
+  // };
+ 
+
+
+  const onSubmit = async (data: FormValues, event: any) => {
+    event.preventDefault();
+    if (!recaptchaToken) {
+      toast.error("لطفاً reCAPTCHA را تکمیل کنید.");
+      return;
+    }
+
+    // if (!openPopupAndCheck()) {
+    //   toast.error("لطفاً popup را مجاز کنید تا لینک باز شود.");
+    //   return; // Prevent form submission if popup is blocked
+    // }
+
     try {
+      // Step 1: Validate reCAPTCHA with Next.js API
+      const recaptchaValidationResponse = await fetch(
+        "/api/validate-recaptcha",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token: recaptchaToken }),
+        }
+      );
+
+      const recaptchaValidationResult =
+        await recaptchaValidationResponse.json();
+
+      if (!recaptchaValidationResult.success) {
+        toast.error("تأیید reCAPTCHA شکست خورد. لطفاً دوباره امتحان کنید.");
+        recaptchaRef.current?.reset(); // Reset reCAPTCHA if validation fails
+        setRecaptchaToken(null);
+        return;
+      }
+
+      // Step 2: Submit form data to /comments endpoint
+      const trimmedData = {
+        name: data.name.trim(),
+        email: data.email.trim(),
+        website: data.website ? data.website.trim() : "",
+        text: data.text.trim(),
+      };
+
       const response = await fetch("https://jsk-co.com/api/comments", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(trimmedData),
       });
 
       const { id } = await response.json();
 
       if (!response.ok) {
         toast.error("خطایی رخ داده است. لطفا دوباره تلاش کنید.");
-      } else {
-        // toast.success("پیام شما با موفقیت ارسال شد!");
-        window.open(
-          `http://192.168.2.14:85/sysworkflow/en/neoclassic/8342895506741c0432e73e2039423696/1650390626741c073376e14096097197.php?id=${id}`
-        ,"_blank");
         reset();
+        recaptchaRef.current?.reset(); // Reset reCAPTCHA after submission failure
+        setRecaptchaToken(null);
+      } else {
+        window.open(
+          `http://192.168.2.14:85/sysworkflow/en/neoclassic/8342895506741c0432e73e2039423696/1650390626741c073376e14096097197.php?id=${id}`,
+          "_blank"
+        );
+        reset();
+        recaptchaRef.current?.reset(); // Reset reCAPTCHA after successful submission
+        setRecaptchaToken(null);
       }
     } catch (error) {
-      // console.error("Error submitting form:", error);
+      console.error("Error submitting form:", error);
       toast.error("خطایی رخ داده است. لطفا دوباره تلاش کنید.");
+      recaptchaRef.current?.reset(); // Reset reCAPTCHA after catching an error
+      setRecaptchaToken(null);
     }
   };
 
-  // Trim spaces as the user types (optional)
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    field: keyof FormValues
-  ) => {
-    setValue(field, e.target.value);
+  // reCAPTCHA onChange handler
+  const handleRecaptchaChange = (token: string | null) => {
+    setRecaptchaToken(token);
   };
 
   return (
@@ -85,13 +141,12 @@ export const ContactForm = () => {
               <p className="text-red-500 text-sm mb-1">{errors.name.message}</p>
             )}
             <input
-              type="text"
               {...register("name")}
+              type="text"
               className={`w-full mb-[30px] py-3 border border-solid ${
                 errors.name ? "border-red-500" : "border-[#ddd]"
               } pr-[20px] rounded-[15px]`}
               placeholder="نام شما"
-              onChange={(e) => handleChange(e, "name")} // Trimming spaces as the user types
             />
           </div>
           <div>
@@ -101,13 +156,12 @@ export const ContactForm = () => {
               </p>
             )}
             <input
-              type="email"
               {...register("email")}
+              type="email"
               className={`w-full mb-[30px] py-3 border border-solid ${
                 errors.email ? "border-red-500" : "border-[#ddd]"
               } pr-[20px] rounded-[15px]`}
               placeholder="پست الکترونیکی"
-              onChange={(e) => handleChange(e, "email")} // Trimming spaces as the user types
             />
           </div>
           <div>
@@ -117,13 +171,12 @@ export const ContactForm = () => {
               </p>
             )}
             <input
-              type="text"
               {...register("website")}
+              type="text"
               className={`w-full mb-[30px] py-3 border border-solid ${
                 errors.website ? "border-red-500" : "border-[#ddd]"
               } pr-[20px] rounded-[15px]`}
               placeholder="آدرس وب سایت"
-              onChange={(e) => handleChange(e, "website")} // Trimming spaces as the user types
             />
           </div>
         </div>
@@ -138,8 +191,18 @@ export const ContactForm = () => {
               errors.text ? "border-red-500" : "border-[#ddd]"
             } pr-[20px] rounded-[15px]`}
             placeholder="پیام خود را تایپ کنید"
-            onChange={(e) => handleChange(e, "text")} // Trimming spaces as the user types
           ></textarea>
+        </div>
+        {/* Add reCAPTCHA Component */}
+        <div className="mb-[30px]">
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            sitekey="6LdmdIoqAAAAAPEu4G4i9ba4eQbxDsZ5Ux2FBJ8B" // Replace with your Site Key
+            onChange={handleRecaptchaChange}
+            onExpired={() => setRecaptchaToken(null)} // Reset token if expired
+            hl="fa" // Set language to Persian (for RTL support)
+            //dir="rtl" // Enable RTL direction
+          />
         </div>
         <div>
           <button

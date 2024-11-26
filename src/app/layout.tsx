@@ -5,10 +5,6 @@ import Footer from "@/components/footer";
 import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
 
-// const iranSans = localFont({
-//   src: "../../public/fonts/IRANSansX-Regular.woff",
-// });
-
 const yekanbakh = localFont({
   src: [
     {
@@ -46,7 +42,7 @@ const yekanbakh = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase:new URL("https://jsk-co.com"),
+  metadataBase: new URL("https://jsk-co.com"),
   title: {
     template: "ژیوار صنعت کیان | %s",
     default: "ژیوار صنعت کیان | صفحه اصلی",
