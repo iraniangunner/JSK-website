@@ -109,7 +109,7 @@ export const ContactForm = () => {
         setRecaptchaToken(null);
       } else {
         window.open(
-          `http://192.168.2.14:85/sysworkflow/en/neoclassic/8342895506741c0432e73e2039423696/1650390626741c073376e14096097197.php?id=${id}`,
+          `http://79.127.63.91:85/sysworkflow/en/neoclassic/8342895506741c0432e73e2039423696/1650390626741c073376e14096097197.php?id=${id}`,
           "_blank"
         );
         reset();
