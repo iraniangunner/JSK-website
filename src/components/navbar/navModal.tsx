@@ -34,7 +34,7 @@ const strings = [
   { linkTitle: "مناقصات", linkAddress: "/tenders" },
 
   { linkTitle: "درباره ما", linkAddress: "/about" },
-  { linkTitle: "همکاری با ما", linkAddress: "/hiring" },
+  { linkTitle: "همکاری با ما", linkAddress: "/hiring/jobs" },
   { linkTitle: "تماس با ما", linkAddress: "/contact" },
 ];
 
@@ -133,8 +133,7 @@ const MenuModal = ({
                         >
                           <Link
                             href={
-                              subLink.linkAddress === "/tenders" ||
-                              subLink.linkAddress === "/hiring"
+                              subLink.linkAddress === "/tenders"
                                 ? ""
                                 : subLink.linkAddress
                             }

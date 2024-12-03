@@ -36,7 +36,7 @@ const strings = [
   { linkTitle: "مناقصات", linkAddress: "/tenders" },
 
   { linkTitle: "درباره ما", linkAddress: "/about" },
-  { linkTitle: "همکاری با ما", linkAddress: "/hiring" },
+  { linkTitle: "همکاری با ما", linkAddress: "/hiring/jobs" },
   { linkTitle: "تماس با ما", linkAddress: "/contact" },
 ];
 
@@ -130,8 +130,8 @@ export function ScrollNav() {
                   <Link
                     key={item.linkTitle}
                     href={
-                      item.linkAddress === "/tenders" ||
-                      item.linkAddress === "/hiring"
+                      item.linkAddress === "/tenders"
+                 
                         ? ""
                         : item.linkAddress
                     }

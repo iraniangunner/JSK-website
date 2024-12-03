@@ -44,7 +44,7 @@ export default function ProjectsTable({
       </div>
       {!filteredProjects ||
         (!filteredProjects.length && (
-          <div className="text-center py-8">پروژه ای یافت نشد.</div>
+          <div className="text-center py-8 text-gray-500">پروژه ای یافت نشد.</div>
         ))}
       <motion.div
         layout
