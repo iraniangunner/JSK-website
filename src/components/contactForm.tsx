@@ -30,26 +30,6 @@ export const ContactForm = () => {
   } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
   });
-
-
-  // const openPopupAndCheck = () => {
-  //   // Open the popup in response to the user's click
-  //   const popup = window.open(
-  //     "http://example.com", // The link you want to open
-  //     "_blank"
-  //   );
-
-  //   // Check if the popup was blocked
-  //   if (!popup || popup.closed || typeof popup.closed === "undefined") {
-  //     setPopupBlocked(true);
-  //     return false; // Popup is blocked
-  //   }
-
-  //   // Close the popup immediately if it's not blocked
-  //   popup.close();
-  //   setPopupBlocked(false);
-  //   return true; // Popup is not blocked
-  // };
  
 
 
@@ -59,11 +39,6 @@ export const ContactForm = () => {
       toast.error("لطفاً reCAPTCHA را تکمیل کنید.");
       return;
     }
-
-    // if (!openPopupAndCheck()) {
-    //   toast.error("لطفاً popup را مجاز کنید تا لینک باز شود.");
-    //   return; // Prevent form submission if popup is blocked
-    // }
 
     try {
       // Step 1: Validate reCAPTCHA with Next.js API

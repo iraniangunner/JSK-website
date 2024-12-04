@@ -49,13 +49,13 @@ const MOCK_JOBS: Job[] = [
     isUrgent: false,
   },
   // Add more mock jobs here to test pagination
-  ...Array.from({ length: 10 }, (_, i) => ({
-    id: `${i + 7}`,
-    title: `مشاور سرمایه گذاری(شهر ${i + 7})`,
-    location: `شهر ${i + 7}`,
-    category: "investment",
-    isUrgent: i % 2 === 0,
-  })),
+  // ...Array.from({ length: 10 }, (_, i) => ({
+  //   id: `${i + 7}`,
+  //   title: `مشاور سرمایه گذاری(شهر ${i + 7})`,
+  //   location: `شهر ${i + 7}`,
+  //   category: "investment",
+  //   isUrgent: i % 2 === 0,
+  // })),
 ];
 
 const CITIES: FilterOption[] = [
@@ -75,14 +75,14 @@ const CATEGORIES: FilterOption[] = [
   { value: "sales", label: "فروش" },
 ];
 
-const ITEMS_PER_PAGE = 6;
+// const ITEMS_PER_PAGE = 6;
 
 export const JobGrid: React.FC = () => {
   const [selectedCity, setSelectedCity] = useState("all");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
-  const [visibleJobs, setVisibleJobs] = useState(ITEMS_PER_PAGE);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [visibleJobs, setVisibleJobs] = useState(ITEMS_PER_PAGE);
+  // const [isLoading, setIsLoading] = useState(false);
 
   const filteredJobs = MOCK_JOBS.filter((job) => {
     const cityMatch = selectedCity === "all" || job.location === selectedCity;
@@ -93,14 +93,14 @@ export const JobGrid: React.FC = () => {
       .includes(searchTerm.toLowerCase());
     return cityMatch && categoryMatch && searchMatch;
   });
-  const handleLoadMore = () => {
-    setIsLoading(true);
-    // Simulate API call
-    setTimeout(() => {
-      setVisibleJobs((prevVisible: number) => prevVisible + ITEMS_PER_PAGE);
-      setIsLoading(false);
-    }, 1000);
-  };
+  // const handleLoadMore = () => {
+  //   setIsLoading(true);
+  //   // Simulate API call
+  //   setTimeout(() => {
+  //     setVisibleJobs((prevVisible: number) => prevVisible + ITEMS_PER_PAGE);
+  //     setIsLoading(false);
+  //   }, 1000);
+  // };
 
   return (
     <>
@@ -113,13 +113,13 @@ export const JobGrid: React.FC = () => {
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredJobs.slice(0, visibleJobs).map((job) => (
+        {filteredJobs.map((job) => (
           <JobCard key={job.id} job={job} />
         ))}
-        {isLoading &&
+        {/* {isLoading &&
           Array.from({ length: ITEMS_PER_PAGE }).map((_, index) => (
             <JobCardSkeleton key={`skeleton-${index}`} />
-          ))}
+          ))} */}
       </div>
       {filteredJobs.length === 0 && (
         <div className="text-center py-10">
@@ -128,7 +128,7 @@ export const JobGrid: React.FC = () => {
           </p>
         </div>
       )}
-      {filteredJobs.length > visibleJobs && (
+      {/* {filteredJobs.length > visibleJobs && (
         <div className="text-center mt-8">
           <button
             onClick={handleLoadMore}
@@ -138,7 +138,7 @@ export const JobGrid: React.FC = () => {
             {isLoading ? "در حال بارگذاری..." : "نمایش بیشتر"}
           </button>
         </div>
-      )}
+      )} */}
     </>
   );
 };

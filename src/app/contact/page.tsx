@@ -1,7 +1,7 @@
 import { FaPhone } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
-import { Map } from "@/components/googleMap";
+import { Map } from "@/components/googlemap";
 import { Metadata } from "next";
 import { PageCover } from "@/components/pageCover";
 import { ContactForm } from "@/components/contactForm";

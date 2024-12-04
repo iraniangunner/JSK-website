@@ -18,10 +18,6 @@ export function SingleProject({ project }: { project: Project }) {
         before:absolute before:content-[''] before:left-0 before:top-0
         before:w-full before:h-full before:opacity-[0.9] before:z-[0] before:bg-[#042038]"
       >
-        <nav
-          aria-label="breadcrumb"
-          className="p-[10px] mx-auto md:max-w-[720px] lg:max-w-[920px] relative"
-        ></nav>
         <h1 className="lg:text-[35px] font-bold text-center text-[#fff] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
           پروژه {project.title}
         </h1>

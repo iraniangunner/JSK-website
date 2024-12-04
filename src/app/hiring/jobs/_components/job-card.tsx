@@ -11,18 +11,13 @@ export function JobCard({ job }: JobCardProps) {
       <div className="p-6">
         <div className="flex justify-between items-start">
           <h3 className="text-lg font-semibold text-gray-900 hover:text-gray-700">
-            <Link
-              href={`/hiring/jobs/${job.id}`}
-              className="outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 rounded"
-            >
-              {job.title}
-            </Link>
+            {job.title}
           </h3>
-          {job.isUrgent && (
+          {/* {job.isUrgent && (
             <span className="px-2 py-1 text-xs font-medium text-red-700 bg-red-100 rounded-full">
               استخدام فوری
             </span>
-          )}
+          )} */}
         </div>
         <div className="mt-2 flex items-center text-gray-600">
           <svg
@@ -47,6 +42,14 @@ export function JobCard({ job }: JobCardProps) {
           </svg>
           <span className="text-sm">{job.location}</span>
         </div>
+        <Link
+          href={`/hiring/jobs/${job.id}`}
+          className="flex justify-center items-center w-[80%] xl:w-[40%] px-2 py-2 mt-8 text-center bg-[#fea925] cursor-pointer border 
+                  border-solid border-[#e6e5e5] font-[600] text-[#fff]
+                   hover:bg-[#2c4050] hover:border-[#2c4050] transition-all duration-[0.5s]"
+        >
+          مشاهده جزئیات
+        </Link>
       </div>
     </div>
   );

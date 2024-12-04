@@ -6,7 +6,6 @@ export function PageCover({
   bgImage: string;
   title: string;
 }) {
-  // bg-projects-pattern
   return (
     <div
       className={`relative bg-${bgImage} pt-[80px] lg:pt-[260px] 
@@ -32,7 +31,7 @@ export function PageCover({
           </li>
         </ol>
       </nav>
-      <h1 className="text-[35px] font-bold absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+      <h1 className="lg:text-[35px] font-bold absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
         {title}
       </h1>
     </div>

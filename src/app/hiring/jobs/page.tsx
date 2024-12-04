@@ -1,5 +1,6 @@
 import { JobGrid } from "./_components/job-grid";
 import { Metadata } from "next";
+import { PageCover } from "@/components/pageCover";
 
 export const metadata: Metadata = {
   title: "فرصت های شغلی",
@@ -15,14 +16,9 @@ export const metadata: Metadata = {
 
 export default function JobsPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div>
+      <PageCover title="فرصت های شغلی" bgImage="projects-pattern" />
       <div className="container mx-auto px-4 py-12">
-        <div className="text-center mb-12">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">
-            فرصت‌های همکاری با ژیوار صنعت کیان
-          </h1>
-          <p className="text-gray-600">کار در قله‌های موفقیت</p>
-        </div>
         <JobGrid />
       </div>
     </div>
