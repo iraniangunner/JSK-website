@@ -4,6 +4,7 @@ import { JobFilters } from "./job-filters";
 import { JobCard } from "./job-card";
 import { JobCardSkeleton } from "./job-card-skeleton";
 import { useState } from "react";
+import ResumeForm from "./resume-form";
 
 const MOCK_JOBS: Job[] = [
   {
@@ -121,13 +122,15 @@ export const JobGrid: React.FC = () => {
             <JobCardSkeleton key={`skeleton-${index}`} />
           ))} */}
       </div>
-      {filteredJobs.length === 0 && (
-        <div className="text-center py-10">
+
+      <div className="text-center py-10 lg:py-20">
+        {filteredJobs.length === 0 && (
           <p className="text-gray-500">
             هیچ شغلی با فیلترهای انتخاب شده یافت نشد.
           </p>
-        </div>
-      )}
+        )}
+      </div>
+
       {/* {filteredJobs.length > visibleJobs && (
         <div className="text-center mt-8">
           <button
@@ -139,6 +142,8 @@ export const JobGrid: React.FC = () => {
           </button>
         </div>
       )} */}
+
+      <ResumeForm />
     </>
   );
 };
