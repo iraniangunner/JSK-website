@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import DatePicker from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
@@ -33,9 +33,16 @@ export default function ResumeForm() {
     handleSubmit,
     formState: { errors },
     control,
+    setValue,
   } = useForm<FormInputs>();
   const [file, setFile] = useState<File | null>(null);
   const [selectedGender, setSelectedGender] = useState("");
+
+  useEffect(() => {
+    if (selectedGender === "زن") {
+      setValue("militaryService", "");
+    }
+  }, [selectedGender]);
 
   const onSubmit: SubmitHandler<FormInputs> = (data) => {
     // if (data.birthDate) {
@@ -324,7 +331,7 @@ export default function ResumeForm() {
                 </label>
                 <input
                   {...register("email", {
-                    required: "ایمیل ضروریست",
+                    required: "ایمیل الزامیست",
                     pattern: {
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                       message: "آدرس ایمیل معتبر نیست",
