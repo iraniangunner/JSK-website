@@ -2,7 +2,7 @@
 
 export function TenderFilters() {
   return (
-    <div className="bg-white p-6 rounded-lg border border-gray-200">
+    <div className="bg-white p-6 rounded-lg border border-gray-200 self-start">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-semibold">Filter Tenders</h2>
         <button className="text-gray-500 hover:text-gray-700"></button>
