@@ -28,6 +28,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${process.env.NEXT_PUBLIC_BASE_URL}/contact`,
       lastModified: new Date(),
     },
+    {
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/tenders`,
+      lastModified: new Date(),
+    },
 
     ...projectEntries,
   ];

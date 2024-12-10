@@ -3,7 +3,7 @@ import TenderTable from "@/components/tender/tenderTable";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "ژیوار صنعت کیان | مناقصات",
+  title: "مناقصات",
   description: "مناقصات ژیوار صنعت کیان",
   openGraph: {
     title: "ژیوار صنعت کیان | مناقصات",
@@ -14,7 +14,8 @@ export const metadata: Metadata = {
 export default function Tender() {
   return (
     <div className="my-12 mx-8">
-      <TenderSearch />
+      {/* <TenderSearch />
+      <TenderTable /> */}
       <TenderTable />
     </div>
   );

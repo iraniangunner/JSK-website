@@ -2,14 +2,13 @@
 import React from "react";
 
 interface MyTenderProps {
-  first: string;
-  last: string;
+  name: string;
 }
 
-export default function Tender({ first, last }: MyTenderProps) {
+export default function Tender({ name }: MyTenderProps) {
   return (
     <div>
-      <h1 className="text-[22px]">{first + " " + last}</h1>
+      <h1 className="text-[22px]">{name}</h1>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div>
           <h1 className="font-bold mt-3 mb-2">قوانین و مقررات :</h1>
