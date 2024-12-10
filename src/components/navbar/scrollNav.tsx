@@ -129,12 +129,7 @@ export function ScrollNav() {
                 ) : (
                   <Link
                     key={item.linkTitle}
-                    href={
-                      item.linkAddress === "/tenders"
-                 
-                        ? ""
-                        : item.linkAddress
-                    }
+                    href={item.linkAddress}
                     className="relative font-medium text-sm 2xl:text-[16px] text-blue-gray-500"
                   >
                     <MenuItem

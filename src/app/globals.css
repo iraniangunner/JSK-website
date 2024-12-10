@@ -134,6 +134,7 @@ html {
 
 .ant-table-content {
   overflow: auto;
+  font-family: var(--font-yekanbakh);
 }
 
 .ant-table-pagination-left {

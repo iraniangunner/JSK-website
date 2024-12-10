@@ -132,11 +132,7 @@ const MenuModal = ({
                           key={subLink.linkAddress}
                         >
                           <Link
-                            href={
-                              subLink.linkAddress === "/tenders"
-                                ? ""
-                                : subLink.linkAddress
-                            }
+                            href={subLink.linkAddress}
                             className="flex items-center p-2"
                             onClick={handleClose}
                           >
@@ -154,12 +150,7 @@ const MenuModal = ({
                 className="my-4 text-[#04244c] text-[18px] font-[600] hover:text-black transition-colors ease-linear duration-200"
               >
                 <Link
-                  href={
-                    link.linkAddress === "/tenders" ||
-                    link.linkAddress === "/hiring"
-                      ? ""
-                      : link.linkAddress
-                  }
+                  href={link.linkAddress}
                   className="flex items-center py-2"
                   onClick={handleClose}
                 >
