@@ -16,7 +16,7 @@ export default function TendersPage() {
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pb-4">
             <h1 className="text-2xl font-semibold">لیست مناقصات</h1>
             <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-600">Per Page:</span>
+              <span className="text-sm text-gray-600">تعداد آیتم ها:</span>
               <select
                 className="border rounded px-2 py-1"
                 value={itemsPerPage}

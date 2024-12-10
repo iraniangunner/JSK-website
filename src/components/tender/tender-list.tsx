@@ -4,12 +4,15 @@ import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 // import { ChevronDownIcon, ChevronUpIcon } from "@/components/icons";
 
-
-
 // Mock data for tenders
 const mockTenders = Array.from({ length: 100 }, (_, i) => ({
   id: `1115${i.toString().padStart(4, "0")}`,
-  title: `Supply Of Item ${i + 1} At Location ${i + 1}`,
+  title: "مناقصه عمومی یک مرحله ای...",
+  type: "مناقصه",
+  T_number: 7253465234,
+  start_date: "1399/04/21",
+  end_date: "1400/01/30",
+  status: "بسته",
   country: "India",
   value: "Refer Document",
   deadline: `${(i % 30) + 1} Dec 2024`,
@@ -25,7 +28,6 @@ interface TenderListProps {
   itemsPerPage: number;
   setCurrentPage: (page: number) => void;
 }
-
 
 // const fetchData = () => {
 //     setLoading(true);
@@ -94,15 +96,14 @@ export function TenderList({
                       className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                       onClick={() => toggleTenderDetails(tender.id)}
                     >
+                      مشاهده جزئیات
                       {openTenderId === tender.id ? (
                         <>
-                          Hide Details
                           {/* <ChevronUpIcon className="ml-2 h-4 w-4 inline" /> */}
                           <ChevronUpIcon className="mr-2 h-4 w-4 inline" />
                         </>
                       ) : (
                         <>
-                          View Details
                           {/* <ChevronDownIcon className="ml-2 h-4 w-4 inline" /> */}
                           <ChevronDownIcon className="mr-2 h-4 w-4 inline" />
                         </>
@@ -111,28 +112,27 @@ export function TenderList({
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                     <div className="flex items-center gap-2">
-                      <span className="text-gray-600">Country:</span>
+                      <span className="text-gray-600">دسته بندی:</span>
                       <div className="flex items-center gap-2">
-                        <img
-                          alt="India"
-                          src="/placeholder.svg?height=16&width=24"
-                          className="h-4 w-6 rounded"
-                        />
-                        <span>{tender.country}</span>
+                        <span>{tender.type}</span>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-gray-600">TOT Ref. No.:</span>
-                      <span>{tender.id}</span>
+                      <span className="text-gray-600">شماره:</span>
+                      <span>{tender.T_number}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-gray-600">Value:</span>
-                      <span>{tender.value}</span>
+                      <span className="text-gray-600">تاریخ شروع:</span>
+                      <span>{tender.start_date}</span>
                     </div>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <span className="text-gray-600">Deadline:</span>
-                    <span className="font-medium">{tender.deadline}</span>
+                    <div className="flex items-center gap-2 text-sm">
+                      <span className="text-gray-600">تاریخ پایان:</span>
+                      <span className="font-medium">{tender.end_date}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <span className="text-gray-600">وضعیت:</span>
+                      <span className="font-medium">{tender.status}</span>
+                    </div>
                   </div>
                   {openTenderId === tender.id && (
                     <div className="mt-4 p-4 bg-gray-50 rounded-md">

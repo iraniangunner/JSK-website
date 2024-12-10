@@ -2,9 +2,9 @@
 
 export function TenderFilters() {
   return (
-    <div className="bg-white p-6 rounded-lg border border-gray-200">
+    <div className="bg-white p-6 rounded-lg border border-gray-200 self-start">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold">Filter Tenders</h2>
+        <h2 className="text-lg font-semibold">جستجوی پیشرفته</h2>
         <button className="text-gray-500 hover:text-gray-700"></button>
       </div>
 
@@ -14,7 +14,7 @@ export function TenderFilters() {
             htmlFor="region"
             className="block text-sm font-medium text-gray-700 mb-1"
           >
-            جستجوی عنوان فراخوان
+            عنوان فراخوان
           </label>
           <div className="relative">
             <input
