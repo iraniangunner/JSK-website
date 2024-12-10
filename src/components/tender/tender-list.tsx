@@ -7,7 +7,8 @@ import { useState } from "react";
 // Mock data for tenders
 const mockTenders = Array.from({ length: 100 }, (_, i) => ({
   id: `1115${i.toString().padStart(4, "0")}`,
-  title: "مناقصه عمومی یک مرحله ای...",
+  // title: "مناقصه عمومی یک مرحله ای...",
+  title: `Supply Of Item ${i + 1} At Location ${i + 1}`,
   type: "مناقصه",
   T_number: 7253465234,
   start_date: "1399/04/21",
