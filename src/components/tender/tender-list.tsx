@@ -19,7 +19,7 @@ const mockTenders = Array.from({ length: 100 }, (_, i) => ({
   T_number: 7253465234,
   start_date: "1399/04/21",
   end_date: "1400/01/30",
-  status: "بسته",
+  status: "فعال",
   country: "India",
   value: "Refer Document",
   deadline: `${(i % 30) + 1} Dec 2024`,
@@ -89,7 +89,7 @@ export function TenderList({
           {currentTenders?.map((tender) => (
             <div
               key={tender.id}
-              className="bg-white shadow rounded-lg overflow-hidden"
+              className="bg-white border border-gray-200 shadow rounded-lg overflow-hidden"
             >
               <div className="p-6">
                 <div className="grid gap-4">

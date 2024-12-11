@@ -14,17 +14,17 @@ export default function TendersPage() {
         <TenderFilters />
         <div className="lg:col-span-3 space-y-4">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pb-4">
-            <h1 className="text-2xl font-semibold">لیست مناقصات</h1>
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-600">تعداد آیتم ها:</span>
+            <h1 className="text-2xl font-semibold">لیست فراخوان ها</h1>
+            <div className="flex items-center">
+              {/* <span className="text-sm text-gray-600">تعداد آیتم ها:</span> */}
               <select
-                className="border rounded px-2 py-1"
+                className="border rounded px-8 py-1 w-[150px]"
                 value={itemsPerPage}
                 onChange={(e) => setItemsPerPage(Number(e.target.value))}
               >
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="50">50</option>
+                <option value="10">10 فراخوان</option>
+                <option value="20">20 فراخوان</option>
+                <option value="50">50 فراخوان</option>
               </select>
             </div>
           </div>

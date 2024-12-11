@@ -30,13 +30,13 @@ export function TenderFilters() {
             htmlFor="competition"
             className="block text-sm font-medium text-gray-700 mb-1"
           >
-            گروه بندی
+            دسته بندی فراخوان
           </label>
           <select
             id="competition"
             className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
           >
-            <option value="">گروه را انتخاب کنید</option>
+            <option value="">دسته بندی را انتخاب کنید</option>
             <option value="open">مناقصه</option>
             <option value="limited">مزایده</option>
             <option value="direct">استعلام</option>
@@ -65,7 +65,7 @@ export function TenderFilters() {
             پاک کردن
           </button>
           <button className="flex-1 px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            اعمال فیلتر
+            جستجو
           </button>
         </div>
       </div>

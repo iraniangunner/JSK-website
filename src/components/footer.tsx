@@ -13,11 +13,11 @@ const LINKS = [
     title: "لینک های مفید",
     items: [
       { title: "درباره ما", link: "/about" },
+      { title: "تماس با ما", link: "/contact" },
       { title: "پروژه ها", link: "/projects" },
       { title: "مناقصات", link: "/tenders" },
-      { title: "تماس با ما", link: "/contact" },
-      { title: "گواهینامه ها", link: "/certifications" },
-      { title:"فرصت های شغلی", link: "/hiring/jobs" },
+      // { title: "گواهینامه ها", link: "/certifications" },
+      { title: "فرصت های شغلی", link: "/hiring/jobs" },
     ],
   },
 ];
@@ -67,7 +67,7 @@ export default function Footer() {
                   {items.map((item) => (
                     <li key={item.title}>
                       <Link
-                        href={item.link === "/tenders" ? "" : item.link}
+                        href={item.link}
                         className="py-2 w-full font-normal text-[#fff] flex items-center gap-2 hover:text-[#ffa500] hover:mr-[10px] transition-all duration-[0.4s]"
                       >
                         <MdKeyboardDoubleArrowLeft size={18} />
