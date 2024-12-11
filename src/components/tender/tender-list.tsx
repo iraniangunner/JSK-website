@@ -1,7 +1,13 @@
 "use client";
 
-import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
+import {
+  ChevronDownIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  ChevronUpIcon,
+} from "@heroicons/react/24/solid";
 import { useState } from "react";
+import ReactPaginate from 'react-paginate'
 // import { ChevronDownIcon, ChevronUpIcon } from "@/components/icons";
 
 // Mock data for tenders
@@ -62,18 +68,14 @@ export function TenderList({
   itemsPerPage,
   setCurrentPage,
 }: TenderListProps) {
-  const [openTenderId, setOpenTenderId] = useState<string | null>(null);
+  const [openTenderId, setOpenTenderId] = useState<string | null>(null)
 
-  // Calculate pagination
-  const totalPages = Math.ceil((mockTenders?.length || 0) / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentTenders = mockTenders?.slice(startIndex, endIndex) || [];
+  const pageCount = Math.ceil(mockTenders.length / itemsPerPage)
+  const offset = currentPage * itemsPerPage
+  const currentTenders = mockTenders.slice(offset, offset + itemsPerPage)
 
-  // Generate page numbers for pagination
-  const pageNumbers = [];
-  for (let i = 1; i <= totalPages; i++) {
-    pageNumbers.push(i);
+  const handlePageClick = (selectedItem: { selected: number }) => {
+    setCurrentPage(selectedItem.selected)
   }
 
   const toggleTenderDetails = (tenderId: string) => {
@@ -147,34 +149,25 @@ export function TenderList({
           )) || <p>No tenders available.</p>}
         </div>
       </div>
-      <div className="flex justify-center gap-2 pt-4">
-        <button
-          className="px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
-          onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
-          disabled={currentPage === 1}
-        >
-          قبلی
-        </button>
-        {pageNumbers.map((number) => (
-          <button
-            key={number}
-            className={`px-3 py-1 border rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${
-              currentPage === number
-                ? "bg-indigo-600 text-white"
-                : "border-gray-300 text-gray-700 hover:bg-gray-50"
-            }`}
-            onClick={() => setCurrentPage(number)}
-          >
-            {number}
-          </button>
-        ))}
-        <button
-          className="px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
-          onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
-          disabled={currentPage === totalPages}
-        >
-          بعدی
-        </button>
+       <ReactPaginate
+        previousLabel={<ChevronRightIcon className="h-4 w-4" />}
+        nextLabel={<ChevronLeftIcon className="h-4 w-4" />}
+        breakLabel="..."
+        breakClassName="hidden sm:flex items-center justify-center w-8 h-8 text-sm"
+        pageCount={pageCount}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={3}
+        onPageChange={handlePageClick}
+        containerClassName="flex items-center justify-center space-x-1 sm:space-x-2"
+        pageClassName="hidden sm:flex items-center justify-center w-8 h-8 rounded border text-sm"
+        pageLinkClassName="flex items-center justify-center w-full h-full"
+        activeClassName="bg-indigo-600 text-white"
+        previousClassName="flex items-center justify-center w-8 h-8 rounded border ml-2"
+        nextClassName="flex items-center justify-center w-8 h-8 rounded border"
+        disabledClassName="opacity-50 cursor-not-allowed"
+      />
+      <div className="sm:hidden text-sm text-center mt-2">
+        صفحه {currentPage + 1} از {pageCount}
       </div>
     </div>
   );

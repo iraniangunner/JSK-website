@@ -1,4 +1,3 @@
-import TenderSearch from "@/components/tender/tenderSearch";
 import TenderTable from "@/components/tender/tenderTable";
 import { Metadata } from "next";
 
@@ -14,8 +13,6 @@ export const metadata: Metadata = {
 export default function Tender() {
   return (
     <div className="my-12 mx-8">
-      {/* <TenderSearch />
-      <TenderTable /> */}
       <TenderTable />
     </div>
   );
