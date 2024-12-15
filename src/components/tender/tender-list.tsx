@@ -1,5 +1,4 @@
 "use client";
-
 import {
   ChevronDownIcon,
   ChevronLeftIcon,
@@ -7,7 +6,8 @@ import {
   ChevronUpIcon,
 } from "@heroicons/react/24/solid";
 import { useState } from "react";
-import ReactPaginate from 'react-paginate'
+import ReactPaginate from "react-paginate";
+import Link from "next/link";
 // import { ChevronDownIcon, ChevronUpIcon } from "@/components/icons";
 
 // Mock data for tenders
@@ -68,19 +68,19 @@ export function TenderList({
   itemsPerPage,
   setCurrentPage,
 }: TenderListProps) {
-  const [openTenderId, setOpenTenderId] = useState<string | null>(null)
+  // const [openTenderId, setOpenTenderId] = useState<string | null>(null);
 
-  const pageCount = Math.ceil(mockTenders.length / itemsPerPage)
-  const offset = currentPage * itemsPerPage
-  const currentTenders = mockTenders.slice(offset, offset + itemsPerPage)
+  const pageCount = Math.ceil(mockTenders.length / itemsPerPage);
+  const offset = currentPage * itemsPerPage;
+  const currentTenders = mockTenders.slice(offset, offset + itemsPerPage);
 
   const handlePageClick = (selectedItem: { selected: number }) => {
-    setCurrentPage(selectedItem.selected)
-  }
-
-  const toggleTenderDetails = (tenderId: string) => {
-    setOpenTenderId(openTenderId === tenderId ? null : tenderId);
+    setCurrentPage(selectedItem.selected);
   };
+
+  // const toggleTenderDetails = (tenderId: string) => {
+  //   setOpenTenderId(openTenderId === tenderId ? null : tenderId);
+  // };
 
   return (
     <div className="space-y-4">
@@ -95,23 +95,12 @@ export function TenderList({
                 <div className="grid gap-4">
                   <div className="flex flex-col md:flex-row justify-between gap-4">
                     <h3 className="text-lg font-semibold">{tender.title}</h3>
-                    <button
+                    <Link
+                      href={`/tenders/${tender.id}`}
                       className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                      onClick={() => toggleTenderDetails(tender.id)}
                     >
                       مشاهده جزئیات
-                      {openTenderId === tender.id ? (
-                        <>
-                          {/* <ChevronUpIcon className="ml-2 h-4 w-4 inline" /> */}
-                          <ChevronUpIcon className="mr-2 h-4 w-4 inline" />
-                        </>
-                      ) : (
-                        <>
-                          {/* <ChevronDownIcon className="ml-2 h-4 w-4 inline" /> */}
-                          <ChevronDownIcon className="mr-2 h-4 w-4 inline" />
-                        </>
-                      )}
-                    </button>
+                    </Link>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                     <div className="flex items-center gap-2">
@@ -137,19 +126,13 @@ export function TenderList({
                       <span className="font-medium">{tender.status}</span>
                     </div>
                   </div>
-                  {openTenderId === tender.id && (
-                    <div className="mt-4 p-4 bg-gray-50 rounded-md">
-                      <h4 className="font-semibold mb-2">Tender Details:</h4>
-                      <p>{tender.description}</p>
-                    </div>
-                  )}
                 </div>
               </div>
             </div>
           )) || <p>No tenders available.</p>}
         </div>
       </div>
-       <ReactPaginate
+      <ReactPaginate
         previousLabel={<ChevronRightIcon className="h-4 w-4" />}
         nextLabel={<ChevronLeftIcon className="h-4 w-4" />}
         breakLabel="..."
