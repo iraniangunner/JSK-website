@@ -1,5 +1,6 @@
 import TenderTable from "@/components/tender/tenderTable";
 import { Metadata } from "next";
+import { PageCover } from "@/components/pageCover";
 
 export const metadata: Metadata = {
   title: "مناقصات",
@@ -12,8 +13,11 @@ export const metadata: Metadata = {
 
 export default function Tender() {
   return (
-    <div className="my-12 mx-8">
-      <TenderTable />
-    </div>
+    <>
+      <PageCover title="مناقصات" bgImage="projects-pattern" />
+      <div className="my-12 mx-8">
+        <TenderTable />
+      </div>
+    </>
   );
 }
