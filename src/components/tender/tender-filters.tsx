@@ -28,15 +28,15 @@ export function TenderFilters() {
         <div>
           <label
             htmlFor="competition"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium mb-1"
           >
             دسته بندی فراخوان
           </label>
           <select
             id="competition"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full px-3 py-2 border text-sm text-gray-700 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
           >
-            {/* <option value="">دسته بندی را انتخاب کنید</option> */}
+          
             <option value="open">مناقصه</option>
             <option value="limited">مزایده</option>
             <option value="direct">استعلام</option>
@@ -45,13 +45,13 @@ export function TenderFilters() {
         <div>
           <label
             htmlFor="status"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium mb-1"
           >
             وضعیت فراخوان
           </label>
           <select
             id="status"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full px-3 py-2 border text-sm text-gray-700 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
           >
             <option value="all">فعال</option>
             <option value="active">غیر فعال</option>

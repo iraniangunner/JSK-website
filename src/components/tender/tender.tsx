@@ -1,52 +1,280 @@
 "use client";
 import React from "react";
+import { useState } from "react";
+import { useRef } from "react";
+import { useReactToPrint } from "react-to-print";
 
-interface MyTenderProps {
-  name: string;
-}
+const tenderDetails = {
+  title: "مناقصه ساخت پروژه ساختمانی",
+  type: "مناقصه",
+  T_number: 7253465234,
+  start_date: "1402/06/31",
+  end_date: "1402/08/31",
+  rules: "uysdgvyusdgvsudgvyusdgvgsdvugyusgvgsdgvdsgvsdvgysduv",
+  deliveryLocation: "تهران، خیابان ولیعصر، پلاک 1234",
+  deliveryDeadline: "1402/06/31",
+  isUpload: false,
+  openingDate: "1402/07/05",
+  description:
+    "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
 
-export default function Tender({ name }: MyTenderProps) {
+  document: { name: "فرم شرکت در مناقصه", url: "/documents/form.pdf" },
+
+  status: "فعال",
+  contactNumber: "0765342377",
+  unitName: "بازرگانی",
+  contactEmail: "info@example.com",
+};
+
+export default function Tender() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const contentRef = useRef(null);
+  const handlePrint = useReactToPrint({ contentRef });
+
   return (
-    <div>
-      <h1 className="text-[22px]">{name}</h1>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div>
-          <h1 className="font-bold mt-3 mb-2">قوانین و مقررات :</h1>
-          <p>
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
-            ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز،
-            و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای
-            زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و
-            متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان
-            رایانه ای علی الخصوص طراحان
-          </p>
-          <h1 className="font-bold mt-3 mb-2">توضیحات :</h1>
-          <p>
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
-            ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز،
-            و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای
-            زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و
-            متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان
-            رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد
-            کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه
-            راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل
-            حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود
-            طراحی اساسا مورد استفاده قرار گیرد.
-          </p>
+    <>
+      <div ref={contentRef}>
+        <div className="flex border border-gray-200 overflow-auto">
+          <table className="w-full">
+            <tbody>
+              <tr className="border-b border-gray-200 hover:bg-gray-50">
+                <td className="px-4 py-2 whitespace-nowrap border-l border-gray-200">
+                  <div className="text-sm font-medium text-gray-900">
+                    عنوان فراخوان
+                  </div>
+                </td>
+                <td className="px-4 py-2">
+                  <div className="text-sm text-gray-500">
+                    {tenderDetails.title}
+                  </div>
+                </td>
+              </tr>
+              <tr className="border-b border-gray-200 hover:bg-gray-50">
+                <td className="px-4 py-2 whitespace-nowrap border-l border-gray-200">
+                  <div className="text-sm font-medium text-gray-900">
+                    نوع فراخوان
+                  </div>
+                </td>
+                <td className="px-4 py-2">
+                  <div className="text-sm text-gray-500">
+                    {tenderDetails.type}
+                  </div>
+                </td>
+              </tr>
+              <tr className="border-b border-gray-200 hover:bg-gray-50">
+                <td className="px-4 py-2 whitespace-nowrap border-l border-gray-200">
+                  <div className="text-sm font-medium text-gray-900">وضعیت</div>
+                </td>
+                <td className="px-4 py-2">
+                  <div className="text-sm text-gray-500">
+                    {tenderDetails.status}
+                  </div>
+                </td>
+              </tr>
+              <tr className="border-b border-gray-200 hover:bg-gray-50">
+                <td className="px-4 py-2 whitespace-nowrap border-l border-gray-200">
+                  <div className="text-sm font-medium text-gray-900">
+                    شماره فراخوان
+                  </div>
+                </td>
+                <td className="px-4 py-2">
+                  <div className="text-sm text-gray-500">
+                    {tenderDetails.T_number}
+                  </div>
+                </td>
+              </tr>
+              <tr className="border-b border-gray-200 hover:bg-gray-50">
+                <td className="px-4 py-2 whitespace-nowrap border-l border-gray-200">
+                  <div className="text-sm font-medium text-gray-900">
+                    تاریخ شروع
+                  </div>
+                </td>
+                <td className="px-4 py-2">
+                  <div className="text-sm text-gray-500">
+                    {tenderDetails.start_date}
+                  </div>
+                </td>
+              </tr>
+              <tr className="border-b border-gray-200 hover:bg-gray-50">
+                <td className="px-4 py-2 whitespace-nowrap border-l border-gray-200">
+                  <div className="text-sm font-medium text-gray-900">
+                    تاریخ پایان
+                  </div>
+                </td>
+                <td className="px-4 py-2">
+                  <div className="text-sm text-gray-500">
+                    {tenderDetails.end_date}
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table className="w-full border-r border-gray-200">
+            <tbody>
+              <tr className="border-b border-gray-200 hover:bg-gray-50">
+                <td className="px-4 py-2 whitespace-nowrap border-l border-gray-200">
+                  <div className="text-sm font-medium text-gray-900">
+                    تاریخ بازگشایی اسناد
+                  </div>
+                </td>
+                <td className="px-4 py-2">
+                  <div className="text-sm text-gray-500">
+                    {tenderDetails.openingDate}
+                  </div>
+                </td>
+              </tr>
+              <tr className="border-b border-gray-200 hover:bg-gray-50">
+                <td className="px-4 py-2 whitespace-nowrap border-l border-gray-200">
+                  <div className="text-sm font-medium text-gray-900">
+                    مهلت تحویل اسناد
+                  </div>
+                </td>
+                <td className="px-4 py-2">
+                  <div className="text-sm text-gray-500">
+                    {tenderDetails.deliveryDeadline}
+                  </div>
+                </td>
+              </tr>
+              <tr className="border-b border-gray-200 hover:bg-gray-50">
+                <td className="px-4 py-2 whitespace-nowrap border-l border-gray-200">
+                  <div className="text-sm font-medium text-gray-900">
+                    محل تحویل اسناد
+                  </div>
+                </td>
+                <td className="px-4 py-2">
+                  <div className="text-sm text-gray-500">
+                    {tenderDetails.deliveryLocation}
+                  </div>
+                </td>
+              </tr>
+              <tr className="border-b border-gray-200 hover:bg-gray-50">
+                <td className="px-4 py-2 whitespace-nowrap border-l border-gray-200">
+                  <div className="text-sm font-medium text-gray-900">
+                    نام واحد
+                  </div>
+                </td>
+                <td className="px-4 py-2">
+                  <div className="text-sm text-gray-500">
+                    {tenderDetails.unitName}
+                  </div>
+                </td>
+              </tr>
+              <tr className="border-b border-gray-200 hover:bg-gray-50">
+                <td className="px-4 py-2 whitespace-nowrap border-l border-gray-200">
+                  <div className="text-sm font-medium text-gray-900">تلفن</div>
+                </td>
+                <td className="px-4 py-2">
+                  <div className="text-sm text-gray-500">
+                    {tenderDetails.contactNumber}
+                  </div>
+                </td>
+              </tr>
+              <tr className="border-b border-gray-200 hover:bg-gray-50">
+                <td className="px-4 py-2 whitespace-nowrap border-l border-gray-200">
+                  <div className="text-sm font-medium text-gray-900">ایمیل</div>
+                </td>
+                <td className="px-4 py-2">
+                  <div className="text-sm text-gray-500">
+                    {tenderDetails.contactEmail}
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div>
-          <h1 className="font-bold mt-3 mb-2">تماس با ما:</h1>
-          <p>
-            تهران، میدان ونک، خیابان ملاصدرا، خیابان شاد، کوچه باغسرا، پلاک ۱۳
-          </p>
-          <h1 className="font-bold mt-3 mb-2">تلفن:</h1>
-          <p>021-88660368</p>
-          <h1 className="font-bold mt-3 mb-2">ایمیل:</h1>
-          <p>info@jsk-co.com</p>
+
+        <div className="mt-6">
+          <p>توضیحات:</p>
+          <p className="text-justify text-sm">{tenderDetails.description}</p>
         </div>
       </div>
-    </div>
+
+      <div className="text-center space-x-4 space-y-4 print:hidden mt-4">
+        <a
+          // href={doc.url}
+          download
+          className="bg-blue-500 hover:bg-blue-600 ml-4 cursor-pointer text-white font-bold py-2 px-4 rounded inline-flex items-center transition duration-300 print:hidden"
+        >
+          <svg
+            className="w-4 h-4 ml-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+            />
+          </svg>
+          دانلود اسناد فراخوان
+        </a>
+
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="bg-gradient-to-r from-green-500 ml-4 to-blue-500 text-white font-bold py-3 px-6 rounded-full inline-flex items-center transition duration-300 hover:from-green-600 hover:to-blue-600"
+        >
+          <svg
+            className="w-5 h-5 ml-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          سوال خود را از ما بپرسید
+        </button>
+        <button
+          onClick={() => handlePrint()}
+          className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-full inline-flex items-center transition duration-300"
+        >
+          <svg
+            className="w-5 h-5 ml-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
+            />
+          </svg>
+          چاپ فراخوان
+        </button>
+      </div>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 print:hidden">
+          <div className="bg-white rounded-lg p-8 max-w-md w-full">
+            <h2 className="text-2xl font-bold mb-4 text-gray-800">
+              تماس با ما
+            </h2>
+            <p className="mb-4 text-gray-600">
+              برای طرح سوالات خود، لطفاً با این آدرس ایمیل تماس بگیرید:
+            </p>
+            <p className="font-bold mb-6 text-blue-600">
+              {tenderDetails.contactEmail}
+            </p>
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition duration-300"
+            >
+              بستن
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

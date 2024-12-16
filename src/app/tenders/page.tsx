@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function Tender() {
   return (
     <>
-      <PageCover title="مناقصات" bgImage="projects-pattern" />
+      <PageCover title="فراخوان ها" bgImage="projects-pattern" />
       <div className="my-12 mx-8">
         <TenderTable />
       </div>
