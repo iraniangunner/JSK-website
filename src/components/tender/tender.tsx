@@ -19,7 +19,6 @@ const tenderDetails = {
     "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
 
   document: { name: "فرم شرکت در مناقصه", url: "/documents/form.pdf" },
-
   status: "فعال",
   contactNumber: "0765342377",
   unitName: "بازرگانی",
@@ -33,160 +32,110 @@ export default function Tender() {
 
   return (
     <>
-      <div ref={contentRef}>
-        <div className="flex border border-gray-200 overflow-auto">
-          <table className="w-full">
-            <tbody>
-              <tr className="border-b border-gray-200 hover:bg-gray-50">
-                <td className="px-4 py-2 whitespace-nowrap border-l border-gray-200">
-                  <div className="text-sm font-medium text-gray-900">
-                    عنوان فراخوان
-                  </div>
-                </td>
-                <td className="px-4 py-2">
-                  <div className="text-sm text-gray-500">
-                    {tenderDetails.title}
-                  </div>
-                </td>
-              </tr>
-              <tr className="border-b border-gray-200 hover:bg-gray-50">
-                <td className="px-4 py-2 whitespace-nowrap border-l border-gray-200">
-                  <div className="text-sm font-medium text-gray-900">
-                    نوع فراخوان
-                  </div>
-                </td>
-                <td className="px-4 py-2">
-                  <div className="text-sm text-gray-500">
-                    {tenderDetails.type}
-                  </div>
-                </td>
-              </tr>
-              <tr className="border-b border-gray-200 hover:bg-gray-50">
-                <td className="px-4 py-2 whitespace-nowrap border-l border-gray-200">
-                  <div className="text-sm font-medium text-gray-900">وضعیت</div>
-                </td>
-                <td className="px-4 py-2">
-                  <div className="text-sm text-gray-500">
-                    {tenderDetails.status}
-                  </div>
-                </td>
-              </tr>
-              <tr className="border-b border-gray-200 hover:bg-gray-50">
-                <td className="px-4 py-2 whitespace-nowrap border-l border-gray-200">
-                  <div className="text-sm font-medium text-gray-900">
-                    شماره فراخوان
-                  </div>
-                </td>
-                <td className="px-4 py-2">
-                  <div className="text-sm text-gray-500">
-                    {tenderDetails.T_number}
-                  </div>
-                </td>
-              </tr>
-              <tr className="border-b border-gray-200 hover:bg-gray-50">
-                <td className="px-4 py-2 whitespace-nowrap border-l border-gray-200">
-                  <div className="text-sm font-medium text-gray-900">
-                    تاریخ شروع
-                  </div>
-                </td>
-                <td className="px-4 py-2">
-                  <div className="text-sm text-gray-500">
-                    {tenderDetails.start_date}
-                  </div>
-                </td>
-              </tr>
-              <tr className="border-b border-gray-200 hover:bg-gray-50">
-                <td className="px-4 py-2 whitespace-nowrap border-l border-gray-200">
-                  <div className="text-sm font-medium text-gray-900">
-                    تاریخ پایان
-                  </div>
-                </td>
-                <td className="px-4 py-2">
-                  <div className="text-sm text-gray-500">
-                    {tenderDetails.end_date}
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <table className="w-full border-r border-gray-200">
-            <tbody>
-              <tr className="border-b border-gray-200 hover:bg-gray-50">
-                <td className="px-4 py-2 whitespace-nowrap border-l border-gray-200">
-                  <div className="text-sm font-medium text-gray-900">
-                    تاریخ بازگشایی اسناد
-                  </div>
-                </td>
-                <td className="px-4 py-2">
-                  <div className="text-sm text-gray-500">
-                    {tenderDetails.openingDate}
-                  </div>
-                </td>
-              </tr>
-              <tr className="border-b border-gray-200 hover:bg-gray-50">
-                <td className="px-4 py-2 whitespace-nowrap border-l border-gray-200">
-                  <div className="text-sm font-medium text-gray-900">
-                    مهلت تحویل اسناد
-                  </div>
-                </td>
-                <td className="px-4 py-2">
-                  <div className="text-sm text-gray-500">
-                    {tenderDetails.deliveryDeadline}
-                  </div>
-                </td>
-              </tr>
-              <tr className="border-b border-gray-200 hover:bg-gray-50">
-                <td className="px-4 py-2 whitespace-nowrap border-l border-gray-200">
-                  <div className="text-sm font-medium text-gray-900">
-                    محل تحویل اسناد
-                  </div>
-                </td>
-                <td className="px-4 py-2">
-                  <div className="text-sm text-gray-500">
-                    {tenderDetails.deliveryLocation}
-                  </div>
-                </td>
-              </tr>
-              <tr className="border-b border-gray-200 hover:bg-gray-50">
-                <td className="px-4 py-2 whitespace-nowrap border-l border-gray-200">
-                  <div className="text-sm font-medium text-gray-900">
-                    نام واحد
-                  </div>
-                </td>
-                <td className="px-4 py-2">
-                  <div className="text-sm text-gray-500">
-                    {tenderDetails.unitName}
-                  </div>
-                </td>
-              </tr>
-              <tr className="border-b border-gray-200 hover:bg-gray-50">
-                <td className="px-4 py-2 whitespace-nowrap border-l border-gray-200">
-                  <div className="text-sm font-medium text-gray-900">تلفن</div>
-                </td>
-                <td className="px-4 py-2">
-                  <div className="text-sm text-gray-500">
-                    {tenderDetails.contactNumber}
-                  </div>
-                </td>
-              </tr>
-              <tr className="border-b border-gray-200 hover:bg-gray-50">
-                <td className="px-4 py-2 whitespace-nowrap border-l border-gray-200">
-                  <div className="text-sm font-medium text-gray-900">ایمیل</div>
-                </td>
-                <td className="px-4 py-2">
-                  <div className="text-sm text-gray-500">
-                    {tenderDetails.contactEmail}
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div className="mt-6">
-          <p>توضیحات:</p>
-          <p className="text-justify text-sm">{tenderDetails.description}</p>
-        </div>
+      <h2 className="text-xl font-semibold mb-6">جزئیات فراخوان</h2>
+      <div className="overflow-auto">
+        <table
+          ref={contentRef}
+          className="w-full text-sm border-collapse lg:table-fixed"
+        >
+          <tbody>
+            <tr>
+              <td className="border border-gray-300 py-2 px-4 text-sm font-medium text-gray-900">
+                عنوان فراخوان
+              </td>
+              <td className="border border-gray-300 py-2 px-4 text-gray-500">
+                {tenderDetails.title}
+              </td>
+              <td className="border border-gray-300 py-2 px-4 font-medium text-gray-900">
+                تاریخ بازگشایی اسناد
+              </td>
+              <td className="border border-gray-300 py-2 px-4 text-gray-500">
+                {tenderDetails.openingDate}
+              </td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 py-2 px-4 font-medium text-gray-900">
+                نوع فراخوان
+              </td>
+              <td className="border border-gray-300 py-2 px-4 text-gray-500">
+                {tenderDetails.type}
+              </td>
+              <td className="border border-gray-300 py-2 px-4 font-medium text-gray-900">
+                مهلت تحویل اسناد
+              </td>
+              <td className="border border-gray-300 py-2 px-4 text-gray-500">
+                {tenderDetails.deliveryDeadline}
+              </td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 py-2 px-4 font-medium text-gray-900">
+                وضعیت
+              </td>
+              <td className="border border-gray-300 py-2 px-4 text-gray-500">
+                {tenderDetails.status}
+              </td>
+              <td className="border border-gray-300 py-2 px-4 font-medium text-gray-900">
+                محل تحویل اسناد
+              </td>
+              <td className="border border-gray-300 py-2 px-4 text-gray-500">
+                {tenderDetails.deliveryLocation}
+              </td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 py-2 px-4 font-medium text-gray-900">
+                شماره فراخوان
+              </td>
+              <td className="border border-gray-300 py-2 px-4 text-gray-500">
+                {tenderDetails.T_number}
+              </td>
+              <td className="border border-gray-300 py-2 px-4 font-medium text-gray-900">
+                نام واحد
+              </td>
+              <td className="border border-gray-300 py-2 px-4 text-gray-500">
+                {tenderDetails.unitName}
+              </td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 py-2 px-4 font-medium text-gray-900">
+                تاریخ شروع
+              </td>
+              <td className="border border-gray-300 py-2 px-4 text-gray-500">
+                {tenderDetails.start_date}
+              </td>
+              <td className="border border-gray-300 py-2 px-4 font-medium text-gray-900">
+                تلفن
+              </td>
+              <td className="border border-gray-300 py-2 px-4 text-gray-500">
+                {tenderDetails.contactNumber}
+              </td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 py-2 px-4 font-medium text-gray-900">
+                تاریخ پایان
+              </td>
+              <td className="border border-gray-300 py-2 px-4 text-gray-500">
+                {tenderDetails.end_date}
+              </td>
+              <td className="border border-gray-300 py-2 px-4 font-medium text-gray-900">
+                ایمیل
+              </td>
+              <td className="border border-gray-300 py-2 px-4 text-gray-500">
+                {tenderDetails.contactEmail}
+              </td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 py-2 px-4 font-medium text-gray-900">
+                توضیحات
+              </td>
+              <td
+                colSpan={3}
+                className="border border-gray-300 py-2 px-4 text-justify text-gray-500"
+              >
+                {tenderDetails.description}
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <div className="text-center space-x-4 space-y-4 print:hidden mt-4">
