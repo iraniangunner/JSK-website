@@ -30,9 +30,9 @@ export default function ProjectsTable({
           {categories.map((category:ProjectCategory) => (
             <button
               key={category.order}
-              onClick={() => setSelectedCategory(category.order)}
+              onClick={() => setSelectedCategory(category.id)}
               className={`filter_btn hover:text-white ${
-                selectedCategory === category.order
+                selectedCategory === category.id
                   ? "filter_active hover:before:bg-[#ffa500] hover:before:w-0 hover:before:h-0"
                   : ""
               }`}

@@ -13,6 +13,7 @@ export interface ProjectsData {
 }
 
 export interface ProjectCategory {
+  id:number
   order: number;
   title: string;
 }
