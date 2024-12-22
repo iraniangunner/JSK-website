@@ -13,6 +13,6 @@ export interface ProjectsData {
 }
 
 export interface ProjectCategory {
-  order: string;
+  order: number;
   title: string;
 }

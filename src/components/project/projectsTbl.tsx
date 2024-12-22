@@ -11,13 +11,13 @@ export default function ProjectsTable({
   projectsData: ProjectsData;
   categories: ProjectCategory[];
 }) {
-  const [selectedCategory, setSelectedCategory] = useState<string>("1");
+  const [selectedCategory, setSelectedCategory] = useState(1);
 
   const filteredProjects = useMemo(() => {
     return selectedCategory
       ? projectsData.data.filter((project) =>
           project.categories.some(
-            (category) => category.id.toString() === selectedCategory
+            (category) => category.id === selectedCategory
           )
         )
       : projectsData.data;
@@ -27,7 +27,7 @@ export default function ProjectsTable({
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
         <div className="flex items-center justify-center gap-6 flex-wrap">
-          {categories.map((category) => (
+          {categories.map((category:ProjectCategory) => (
             <button
               key={category.order}
               onClick={() => setSelectedCategory(category.order)}
