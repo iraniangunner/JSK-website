@@ -9,9 +9,9 @@ import "react-toastify/dist/ReactToastify.css";
 
 // Define Zod schema for form validation
 const formSchema = z.object({
-  name: z.string().min(1, "نام الزامی است"), // At least 1 character
+  name: z.string().optional(),
   email: z.string().email("ایمیل معتبر نیست"), // Valid email format
-  website: z.string().url("آدرس وب سایت معتبر نیست").optional(), // Optional URL
+  website: z.string().url("آدرس وب سایت معتبر نیست").optional().or(z.literal('')), // Optional URL
   text: z.string().min(5, "پیام باید حداقل ۵ کاراکتر باشد"), // At least 5 characters
 });
 
@@ -63,9 +63,9 @@ export const ContactForm = () => {
 
       // Step 2: Submit form data to /comments endpoint
       const trimmedData = {
-        name: data.name.trim(),
+        name: data.name ? data.name.trim() : undefined,
         email: data.email.trim(),
-        website: data.website ? data.website.trim() : "",
+        website: data.website ? data.website.trim() : undefined,
         text: data.text.trim(),
       };
 
@@ -112,7 +112,7 @@ export const ContactForm = () => {
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <div>
           <div>
-            {errors.name && (
+            {errors.name?.message && (
               <p className="text-red-500 text-sm mb-1">{errors.name.message}</p>
             )}
             <input
@@ -140,7 +140,7 @@ export const ContactForm = () => {
             />
           </div>
           <div>
-            {errors.website && (
+            {errors.website?.message && (
               <p className="text-red-500 text-sm mb-1">
                 {errors.website.message}
               </p>
@@ -205,3 +205,4 @@ export const ContactForm = () => {
     </>
   );
 };
+
