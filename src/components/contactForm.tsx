@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -11,7 +11,11 @@ import "react-toastify/dist/ReactToastify.css";
 const formSchema = z.object({
   name: z.string().optional(),
   email: z.string().email("ایمیل معتبر نیست"), // Valid email format
-  website: z.string().url("آدرس وب سایت معتبر نیست").optional().or(z.literal('')), // Optional URL
+  website: z
+    .string()
+    .url("آدرس وب سایت معتبر نیست")
+    .optional()
+    .or(z.literal("")), // Optional URL
   text: z.string().min(5, "پیام باید حداقل ۵ کاراکتر باشد"), // At least 5 characters
 });
 
@@ -20,7 +24,31 @@ type FormValues = z.infer<typeof formSchema>;
 export const ContactForm = () => {
   const recaptchaRef = useRef<ReCAPTCHA>(null); // Reference to the reCAPTCHA instance
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
-  // const [popupBlocked, setPopupBlocked] = useState(false);
+  const [popupAllowed, setPopupAllowed] = useState(true);
+
+  useEffect(() => {
+    const checkPopupBlocked = () => {
+      const testPopup = window.open(
+        "",
+        "_blank",
+        "width=1,height=1,left=0,top=0"
+      );
+      if (
+        testPopup === null ||
+        testPopup.closed ||
+        typeof testPopup.closed === "undefined"
+      ) {
+        // toast.error("پنجره‌های بازشو مسدود شده‌اند. لطفاً آنها را فعال کنید");
+        setPopupAllowed(false);
+      } else {
+        testPopup.close();
+        setPopupAllowed(true);
+      }
+    };
+
+    checkPopupBlocked();
+  }, []);
+
 
   const {
     register,
@@ -30,11 +58,10 @@ export const ContactForm = () => {
   } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
   });
- 
-
 
   const onSubmit = async (data: FormValues, event: any) => {
     event.preventDefault();
+
     if (!recaptchaToken) {
       toast.error("لطفاً reCAPTCHA را تکمیل کنید.");
       return;
@@ -136,7 +163,7 @@ export const ContactForm = () => {
               className={`w-full mb-[30px] py-3 border border-solid ${
                 errors.email ? "border-red-500" : "border-[#ddd]"
               } pr-[20px] rounded-[15px]`}
-              placeholder="پست الکترونیکی"
+              placeholder="پست الکترونیکی(ضروری)"
             />
           </div>
           <div>
@@ -165,7 +192,7 @@ export const ContactForm = () => {
             className={`w-full mb-[30px] py-3 border border-solid ${
               errors.text ? "border-red-500" : "border-[#ddd]"
             } pr-[20px] rounded-[15px]`}
-            placeholder="پیام خود را تایپ کنید"
+            placeholder="پیام شما(ضروری)"
           ></textarea>
         </div>
         {/* Add reCAPTCHA Component */}
@@ -182,11 +209,13 @@ export const ContactForm = () => {
         <div>
           <button
             type="submit"
-            disabled={isSubmitting}
+            disabled={isSubmitting || !popupAllowed}
             className={`w-full text-center bg-[#fea925] rounded-[15px] cursor-pointer border 
                   border-solid border-[#fea925] h-[52px] font-[600] text-[#fff] text-[18px]
                    hover:bg-[#2c4050] hover:border-[#2c4050] transition-all duration-[0.5s] ${
-                     isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+                     isSubmitting || !popupAllowed
+                       ? "opacity-50 cursor-not-allowed pointer-events-none"
+                       : ""
                    }`}
           >
             {isSubmitting ? (
@@ -202,7 +231,20 @@ export const ContactForm = () => {
           </button>
         </div>
       </form>
+
+      {!popupAllowed && (
+        <div className="mt-4 p-4 bg-yellow-100 border border-yellow-400 text-yellow-700 rounded">
+          <p>پنجره‌های بازشو مسدود شده‌اند. لطفاً مراحل زیر را دنبال کنید:</p>
+          <ol className="list-decimal list-inside mt-2">
+            <li>
+              تنظیمات مرورگر خود را برای اجازه‌ی پنجره‌های بازشو از این سایت
+              تغییر دهید.
+            </li>
+            <li>صفحه را رفرش کنید.</li>
+            <li>فرم را دوباره پر کرده و ارسال کنید.</li>
+          </ol>
+        </div>
+      )}
     </>
   );
 };
-
