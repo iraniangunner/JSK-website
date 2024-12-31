@@ -8,18 +8,17 @@ import "react-multi-date-picker/styles/layouts/mobile.css";
 import DateObject from "react-date-object";
 
 type FormInputs = {
-  fullName: string;
+  name: string;
   email: string;
-  phone: string;
-  maritalStatus: string;
-  militaryService: string;
-  latestEducationalQualification: string;
+  marital: string;
+  military: string;
+  degree: string;
   university: string;
   major: string;
   gender: string;
-  career: string;
+  experience: string;
   coverLetter: string;
-  birthDate: Date | null;
+  birthday: string;
 };
 
 function convertToPersianDigits(str: string) {
@@ -40,13 +39,13 @@ export default function ResumeForm() {
 
   useEffect(() => {
     if (selectedGender === "زن") {
-      setValue("militaryService", "");
+      setValue("military", "");
     }
   }, [selectedGender]);
 
   const onSubmit: SubmitHandler<FormInputs> = (data) => {
-    // if (data.birthDate) {
-    //   const formattedDate = new DateObject(data.birthDate).format("YYYY/MM/DD");
+    // if (data.birthday) {
+    //   const formattedDate = new DateObject(data.birthday).format("YYYY/MM/DD");
     //   console.log(convertToPersianDigits(formattedDate));
     // }
     console.log(data);
@@ -77,39 +76,39 @@ export default function ResumeForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label
-                  htmlFor="fullName"
+                  htmlFor="name"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
                   نام و نام خانوادگی *
                 </label>
                 <input
-                  {...register("fullName", {
+                  {...register("name", {
                     required: "نام و نام خانوادگی الزامیست",
                   })}
-                  id="fullName"
+                  id="name"
                   type="text"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                {errors.fullName && (
+                {errors.name && (
                   <p className="mt-1 text-xs text-red-600">
-                    {errors.fullName.message}
+                    {errors.name.message}
                   </p>
                 )}
               </div>
 
               <div>
                 <label
-                  htmlFor="birthDate"
+                  htmlFor="birthday"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
                   تاریخ تولد *
                 </label>
                 <Controller
                   control={control}
-                  {...register("birthDate", {
+                  {...register("birthday", {
                     required: "تاریخ تولد الزامیست",
                   })}
-                  name="birthDate"
+                  name="birthday"
                   render={({ field: { onChange, value } }) => (
                     <DatePicker
                       value={value}
@@ -123,9 +122,9 @@ export default function ResumeForm() {
                     />
                   )}
                 />
-                {errors.birthDate && (
+                {errors.birthday && (
                   <p className="mt-1 text-xs text-red-600">
-                    {errors.birthDate.message}
+                    {errors.birthday.message}
                   </p>
                 )}
               </div>
@@ -161,16 +160,16 @@ export default function ResumeForm() {
 
               <div>
                 <label
-                  htmlFor="maritalStatus"
+                  htmlFor="marital"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
                   وضعیت تاهل *
                 </label>
                 <select
-                  {...register("maritalStatus", {
+                  {...register("marital", {
                     required: "وضعیت تاهل الزامیست",
                   })}
-                  id="maritalStatus"
+                  id="marital"
                   defaultValue=""
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
@@ -178,9 +177,9 @@ export default function ResumeForm() {
                   <option value="مجرد">مجرد</option>
                   <option value="متاهل">متاهل</option>
                 </select>
-                {errors.maritalStatus && (
+                {errors.marital && (
                   <p className="mt-1 text-xs text-red-600">
-                    {errors.maritalStatus.message}
+                    {errors.marital.message}
                   </p>
                 )}
               </div>
@@ -189,20 +188,20 @@ export default function ResumeForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label
-                  htmlFor="militaryService"
+                  htmlFor="military"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
                   وضعیت نظام وظیفه *
                 </label>
                 <select
-                  {...register("militaryService", {
+                  {...register("military", {
                     required:
                       selectedGender !== "زن"
                         ? "وضعیت نظام وظیفه الزامیست"
                         : false,
                   })}
                   disabled={selectedGender === "زن"}
-                  id="militaryService"
+                  id="military"
                   defaultValue=""
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:text-gray-500"
                 >
@@ -211,25 +210,25 @@ export default function ResumeForm() {
                   <option value="معاف">معاف</option>
                   <option value="مشمول">مشمول</option>
                 </select>
-                {errors.militaryService && (
+                {errors.military && (
                   <p className="mt-1 text-xs text-red-600">
-                    {errors.militaryService.message}
+                    {errors.military.message}
                   </p>
                 )}
               </div>
 
               <div>
                 <label
-                  htmlFor="latestEducationalQualification"
+                  htmlFor="degree"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
                   آخرین مدرک تحصیلی *
                 </label>
                 <select
-                  {...register("latestEducationalQualification", {
+                  {...register("degree", {
                     required: "آخرین مدرک تحصیلی الزامیست",
                   })}
-                  id="latestEducationalQualification"
+                  id="degree"
                   defaultValue=""
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
@@ -241,9 +240,9 @@ export default function ResumeForm() {
                   <option value="فوق لیسانس">فوق لیسانس</option>
                   <option value="دکترا">دکترا</option>
                 </select>
-                {errors.latestEducationalQualification && (
+                {errors.degree && (
                   <p className="mt-1 text-xs text-red-600">
-                    {errors.latestEducationalQualification.message}
+                    {errors.degree.message}
                   </p>
                 )}
               </div>
@@ -297,16 +296,16 @@ export default function ResumeForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label
-                  htmlFor="career"
+                  htmlFor="experience"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
                   میزان سابقه *
                 </label>
                 <select
-                  {...register("career", {
+                  {...register("experience", {
                     required: "میزان سابقه الزامیست",
                   })}
-                  id="career"
+                  id="experience"
                   defaultValue=""
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:text-gray-500"
                 >
@@ -315,9 +314,9 @@ export default function ResumeForm() {
                   <option value="بین 3 تا 5 سال">بین 3 تا 5 سال</option>
                   <option value="بیش از 5 سال">بیش از 5 سال</option>
                 </select>
-                {errors.career && (
+                {errors.experience && (
                   <p className="mt-1 text-xs text-red-600">
-                    {errors.career.message}
+                    {errors.experience.message}
                   </p>
                 )}
               </div>

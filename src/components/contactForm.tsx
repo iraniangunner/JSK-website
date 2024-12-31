@@ -119,7 +119,7 @@ export const ContactForm = () => {
         setRecaptchaToken(null);
       }
     } catch (error) {
-      console.error("Error submitting form:", error);
+      // console.error("Error submitting form:", error);
       toast.error("خطایی رخ داده است. لطفا دوباره تلاش کنید.");
       recaptchaRef.current?.reset(); // Reset reCAPTCHA after catching an error
       setRecaptchaToken(null);
