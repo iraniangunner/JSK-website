@@ -43,38 +43,42 @@ export default function ResumeForm() {
     handleSubmit,
     formState: { errors },
     control,
+    clearErrors,
+    reset,
     setValue,
   } = useForm<FormInputs>();
-  const [resume_file, setResumeFile] = useState<File | null>(null);
+  const [resume_file, setResumeFile] = useState<File | null>();
   const [selectedGender, setSelectedGender] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   useEffect(() => {
-    if (selectedGender === "زن") {
+    if (selectedGender === "female") {
+      clearErrors("military");
       setValue("military", "");
     }
   }, [selectedGender]);
 
-  const onSubmit: SubmitHandler<FormInputs> = async (data,e) => {
-    e?.preventDefault();
+  const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     setIsSubmitting(true);
     setSubmitError(null);
     setSubmitSuccess(false);
 
     try {
-      // Create FormData instance
       const formData = new FormData();
 
-      // Append all form fields
+      // Handle text field as empty string if it's undefined or empty
+      if (!data.text) {
+        data.text = "null";
+      }
+
       Object.keys(data).forEach((key) => {
         if (key !== "resume_file") {
           formData.append(key, data[key as keyof FormInputs]);
         }
       });
 
-      // Append the file if it exists
       if (resume_file) {
         formData.append("resume_file", resume_file);
       }
@@ -82,7 +86,6 @@ export default function ResumeForm() {
       const response = await fetch("https://jsk-co.com/api/resumes", {
         method: "POST",
         headers: {
-          // Remove Content-Type header to let the browser set it with the boundary
           Accept: "application/json",
         },
         mode: "cors",
@@ -94,17 +97,18 @@ export default function ResumeForm() {
       }
 
       setSubmitSuccess(true);
-      // Optional: Reset form here if needed
+      reset();
+      setResumeFile(null)
     } catch (error) {
       setSubmitError("مشکلی پیش آمده دوباره تلاش کنید");
-      console.error("Submission error:", error);
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
+    if (e.target.files && e.target.files[0]) {
+      clearErrors("resume_file");
       setResumeFile(e.target.files[0]);
     }
   };
@@ -168,7 +172,6 @@ export default function ResumeForm() {
                         onChange(formattedDate);
                       }}
                       calendar={persian}
-                      // placeholder="تاریخ تولد را وارد کنید"
                       locale={persian_fa}
                       calendarPosition="bottom-right"
                       inputClass="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -198,7 +201,10 @@ export default function ResumeForm() {
                   })}
                   id="gender"
                   defaultValue=""
-                  onChange={(e) => setSelectedGender(e.target.value)}
+                  onChange={(e) => {
+                    clearErrors("gender");
+                    setSelectedGender(e.target.value);
+                  }}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="" disabled hidden></option>
@@ -250,11 +256,11 @@ export default function ResumeForm() {
                 <select
                   {...register("military", {
                     required:
-                      selectedGender !== "زن"
+                      selectedGender !== "female"
                         ? "وضعیت نظام وظیفه الزامیست"
                         : false,
                   })}
-                  disabled={selectedGender === "زن"}
+                  disabled={selectedGender === "female"}
                   id="military"
                   defaultValue=""
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:text-gray-500"
@@ -420,9 +426,10 @@ export default function ResumeForm() {
 
             <div className="space-y-4">
               <div className="text-right" lang="fa" dir="rtl">
-                <h3 className="font-semibold text-lg mb-2">آپلود رزومه</h3>
-                <p className="text-sm text-gray-600">
-                  لطفا فایل رزومه خود را آپلود کنید. (حجم حداکثر ۱۰ مگابایت)
+                <h3 className="text-sm font-medium text-gray-700 mb-2">آپلود رزومه *</h3>
+                <p className="text-xs text-gray-600">
+                  لطفا فایل رزومه خود را آپلود کنید. (حجم حداکثر ۵ مگابایت و
+                  فرمت فایل باید pdf باشد)
                 </p>
               </div>
               <div className="flex items-center justify-center w-full">
@@ -447,18 +454,20 @@ export default function ResumeForm() {
                       />
                     </svg>
                     <p className="mb-2 text-sm text-gray-500">
-                      <span className="font-semibold">Click to upload</span> or
-                      drag and drop
+                      <span className="font-semibold">
+                        برای آپلود کلیک کنید
+                      </span>
                     </p>
-                    <p className="text-xs text-gray-500">
-                      PDF, DOC, DOCX (MAX. 10MB)
-                    </p>
+                    <p className="text-xs text-gray-500">PDF(MAX. 5MB)</p>
                   </div>
                   <input
                     id="resume-upload"
+                    {...register("resume_file", {
+                      required: "فایل رزومه الزامیست",
+                    })}
                     type="file"
                     className="hidden"
-                    accept=".pdf,.doc,.docx"
+                    accept=".pdf"
                     onChange={handleFileChange}
                   />
                 </label>
@@ -466,6 +475,11 @@ export default function ResumeForm() {
               {resume_file && (
                 <p className="text-sm text-gray-600">
                   فایل انتخاب شده: {resume_file.name}
+                </p>
+              )}
+              {errors.resume_file && (
+                <p className="mt-1 text-xs text-red-600">
+                  {errors.resume_file.message}
                 </p>
               )}
             </div>
@@ -478,13 +492,15 @@ export default function ResumeForm() {
               <p className="text-green-600 text-sm">فرم با موفقیت ارسال شد</p>
             )}
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full md:w-auto px-6 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-            >
-              {isSubmitting ? "در حال ارسال ..." : "ارسال"}
-            </button>
+            <div className="flex justify-center items-center">
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full md:w-auto px-8 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              >
+                {isSubmitting ? "در حال ارسال ..." : "ارسال"}
+              </button>
+            </div>
           </form>
         </div>
       </div>
