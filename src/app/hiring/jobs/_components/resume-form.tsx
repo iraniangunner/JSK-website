@@ -1,11 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
-import DatePicker from "react-multi-date-picker";
+import DatePicker, { DateObject } from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import "react-multi-date-picker/styles/layouts/mobile.css";
-import DateObject from "react-date-object";
 
 type FormInputs = {
   name: string;
@@ -17,14 +16,26 @@ type FormInputs = {
   major: string;
   gender: string;
   experience: string;
-  coverLetter: string;
+  resume_file: File;
+  text: string;
   birthday: string;
 };
 
-function convertToPersianDigits(str: string) {
-  const persianDigits = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
-  return str.replace(/\d/g, (x) => persianDigits[parseInt(x)]);
-}
+const persianToEnglish = (str: string): string => {
+  const persianNumbers = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+  const englishNumbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+  return str.replace(
+    /[۰-۹]/g,
+    (char) => englishNumbers[persianNumbers.indexOf(char)]
+  );
+};
+
+const formatDateToString = (date: any) => {
+  if (!date) return "";
+  const persianDate = new DateObject(date).format("YYYY-MM-DD");
+  return persianToEnglish(persianDate);
+};
 
 export default function ResumeForm() {
   const {
@@ -34,8 +45,11 @@ export default function ResumeForm() {
     control,
     setValue,
   } = useForm<FormInputs>();
-  const [file, setFile] = useState<File | null>(null);
+  const [resume_file, setResumeFile] = useState<File | null>(null);
   const [selectedGender, setSelectedGender] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   useEffect(() => {
     if (selectedGender === "زن") {
@@ -43,18 +57,55 @@ export default function ResumeForm() {
     }
   }, [selectedGender]);
 
-  const onSubmit: SubmitHandler<FormInputs> = (data) => {
-    // if (data.birthday) {
-    //   const formattedDate = new DateObject(data.birthday).format("YYYY/MM/DD");
-    //   console.log(convertToPersianDigits(formattedDate));
-    // }
-    console.log(data);
-    console.log(file);
+  const onSubmit: SubmitHandler<FormInputs> = async (data,e) => {
+    e?.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError(null);
+    setSubmitSuccess(false);
+
+    try {
+      // Create FormData instance
+      const formData = new FormData();
+
+      // Append all form fields
+      Object.keys(data).forEach((key) => {
+        if (key !== "resume_file") {
+          formData.append(key, data[key as keyof FormInputs]);
+        }
+      });
+
+      // Append the file if it exists
+      if (resume_file) {
+        formData.append("resume_file", resume_file);
+      }
+
+      const response = await fetch("https://jsk-co.com/api/resumes", {
+        method: "POST",
+        headers: {
+          // Remove Content-Type header to let the browser set it with the boundary
+          Accept: "application/json",
+        },
+        mode: "cors",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit the form");
+      }
+
+      setSubmitSuccess(true);
+      // Optional: Reset form here if needed
+    } catch (error) {
+      setSubmitError("مشکلی پیش آمده دوباره تلاش کنید");
+      console.error("Submission error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      setFile(e.target.files[0]);
+      setResumeFile(e.target.files[0]);
     }
   };
 
@@ -112,7 +163,10 @@ export default function ResumeForm() {
                   render={({ field: { onChange, value } }) => (
                     <DatePicker
                       value={value}
-                      onChange={onChange}
+                      onChange={(date) => {
+                        const formattedDate = formatDateToString(date);
+                        onChange(formattedDate);
+                      }}
                       calendar={persian}
                       // placeholder="تاریخ تولد را وارد کنید"
                       locale={persian_fa}
@@ -148,8 +202,8 @@ export default function ResumeForm() {
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="" disabled hidden></option>
-                  <option value="مرد">مرد</option>
-                  <option value="زن">زن</option>
+                  <option value="male">مرد</option>
+                  <option value="female">زن</option>
                 </select>
                 {errors.gender && (
                   <p className="mt-1 text-xs text-red-600">
@@ -174,8 +228,8 @@ export default function ResumeForm() {
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="" disabled hidden></option>
-                  <option value="مجرد">مجرد</option>
-                  <option value="متاهل">متاهل</option>
+                  <option value="single">مجرد</option>
+                  <option value="married">متاهل</option>
                 </select>
                 {errors.marital && (
                   <p className="mt-1 text-xs text-red-600">
@@ -206,9 +260,9 @@ export default function ResumeForm() {
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:text-gray-500"
                 >
                   <option value="" disabled hidden></option>
-                  <option value="کارت پایان خدمت">کارت پایان خدمت</option>
-                  <option value="معاف">معاف</option>
-                  <option value="مشمول">مشمول</option>
+                  <option value="done">پایان خدمت</option>
+                  <option value="exempt">معاف از خدمت</option>
+                  <option value="eligible">مشمول خدمت</option>
                 </select>
                 {errors.military && (
                   <p className="mt-1 text-xs text-red-600">
@@ -233,12 +287,12 @@ export default function ResumeForm() {
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="" disabled hidden></option>
-                  <option value="سیکل">سیکل</option>
-                  <option value="دیپلم">دیپلم</option>
-                  <option value="فوق دیپلم">فوق دیپلم</option>
-                  <option value="لیسانس">لیسانس</option>
-                  <option value="فوق لیسانس">فوق لیسانس</option>
-                  <option value="دکترا">دکترا</option>
+                  <option value="below_diploma">سیکل</option>
+                  <option value="diploma">دیپلم</option>
+                  <option value="associate">فوق دیپلم</option>
+                  <option value="bachelor">لیسانس</option>
+                  <option value="master">فوق لیسانس</option>
+                  <option value="doctorate">دکترا</option>
                 </select>
                 {errors.degree && (
                   <p className="mt-1 text-xs text-red-600">
@@ -310,9 +364,9 @@ export default function ResumeForm() {
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:text-gray-500"
                 >
                   <option value="" disabled hidden></option>
-                  <option value="کمتر از 3 سال">کمتر از 3 سال</option>
-                  <option value="بین 3 تا 5 سال">بین 3 تا 5 سال</option>
-                  <option value="بیش از 5 سال">بیش از 5 سال</option>
+                  <option value="less_than_3">کمتر از 3 سال</option>
+                  <option value="between_3_and_5">بین 3 تا 5 سال</option>
+                  <option value="greater_than_5">بیش از 5 سال</option>
                 </select>
                 {errors.experience && (
                   <p className="mt-1 text-xs text-red-600">
@@ -350,14 +404,14 @@ export default function ResumeForm() {
 
             <div>
               <label
-                htmlFor="coverLetter"
+                htmlFor="text"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
                 توضیحات
               </label>
               <textarea
-                {...register("coverLetter")}
-                id="coverLetter"
+                {...register("text")}
+                id="text"
                 rows={5}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="در صورت تمایل توضیحات تکمیلی را در این بخش وارد کنید"
@@ -409,25 +463,27 @@ export default function ResumeForm() {
                   />
                 </label>
               </div>
-              {file && (
+              {resume_file && (
                 <p className="text-sm text-gray-600">
-                  Selected file: {file.name}
+                  فایل انتخاب شده: {resume_file.name}
                 </p>
               )}
-              <div
-                className="text-right text-sm text-blue-600"
-                lang="fa"
-                dir="rtl"
-              >
-                پر کردن فیلدهای ستاره‌دار ضروری است.
-              </div>
             </div>
+
+            {submitError && (
+              <p className="text-red-600 text-sm">{submitError}</p>
+            )}
+
+            {submitSuccess && (
+              <p className="text-green-600 text-sm">فرم با موفقیت ارسال شد</p>
+            )}
 
             <button
               type="submit"
+              disabled={isSubmitting}
               className="w-full md:w-auto px-6 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             >
-              ارسال
+              {isSubmitting ? "در حال ارسال ..." : "ارسال"}
             </button>
           </form>
         </div>
