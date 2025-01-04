@@ -1,6 +1,7 @@
 import { JobGrid } from "./_components/job-grid";
 import { Metadata } from "next";
 import { PageCover } from "@/components/pageCover";
+import { cache } from "react";
 
 export const metadata: Metadata = {
   title: "فرصت های شغلی",
@@ -15,14 +16,18 @@ export const metadata: Metadata = {
 };
 
 async function getCities() {
-  const response = await fetch("https://jsk-co.com/api/cities");
+  const response = await fetch("https://jsk-co.com/api/cities", {
+    cache: "no-store",
+  });
 
   const cities = await response.json();
   return cities;
 }
 
 async function getJobCategory() {
-  const response = await fetch("https://jsk-co.com/api/job-categories");
+  const response = await fetch("https://jsk-co.com/api/job-categories", {
+    cache: "no-store",
+  });
 
   const categories = await response.json();
   return categories;
@@ -35,7 +40,7 @@ export default async function JobsPage() {
     <div>
       <PageCover title="فرصت های شغلی" bgImage="projects-pattern" />
       <div className="container mx-auto px-4 py-12">
-        <JobGrid cities={cities} categories={categories}/>
+        <JobGrid cities={cities} categories={categories} />
       </div>
     </div>
   );
