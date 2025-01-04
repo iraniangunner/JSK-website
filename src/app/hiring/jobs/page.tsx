@@ -14,12 +14,28 @@ export const metadata: Metadata = {
   },
 };
 
-export default function JobsPage() {
+async function getCities() {
+  const response = await fetch("https://jsk-co.com/api/cities");
+
+  const cities = await response.json();
+  return cities;
+}
+
+async function getJobCategory() {
+  const response = await fetch("https://jsk-co.com/api/job-categories");
+
+  const categories = await response.json();
+  return categories;
+}
+
+export default async function JobsPage() {
+  const cities = await getCities();
+  const categories = await getJobCategory();
   return (
     <div>
       <PageCover title="فرصت های شغلی" bgImage="projects-pattern" />
       <div className="container mx-auto px-4 py-12">
-        <JobGrid />
+        <JobGrid cities={cities} categories={categories}/>
       </div>
     </div>
   );

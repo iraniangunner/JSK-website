@@ -1,147 +1,206 @@
 "use client";
-import { FilterOption, Job } from "@/types/job";
-import { JobFilters } from "./job-filters";
-import { JobCard } from "./job-card";
 import { JobCardSkeleton } from "./job-card-skeleton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ResumeForm from "./resume-form";
+import { CgSearch } from "react-icons/cg";
+import { useDebouncedCallback } from "use-debounce";
+import Link from "next/link";
 
-const MOCK_JOBS: Job[] = [
-  {
-    id: "1",
-    title: "مشاور سرمایه گذاری",
-    location: "اهواز",
-    category: "investment",
-    isUrgent: true,
-  },
-  {
-    id: "2",
-    title: "مشاور سرمایه گذاری(خرم آباد)",
-    location: "خرم آباد",
-    category: "investment",
-    isUrgent: true,
-  },
-  {
-    id: "3",
-    title: "مشاور سرمایه گذاری(قزوین)",
-    location: "قزوین",
-    category: "investment",
-    isUrgent: false,
-  },
-  {
-    id: "4",
-    title: "مشاور سرمایه گذاری(مشهد)",
-    location: "مشهد",
-    category: "investment",
-    isUrgent: true,
-  },
-  {
-    id: "5",
-    title: "مشاور سرمایه گذاری(ماهشهر)",
-    location: "ماهشهر",
-    category: "investment",
-    isUrgent: true,
-  },
-  {
-    id: "6",
-    title: "مشاور سرمایه گذاری(بوشهر)",
-    location: "بوشهر",
-    category: "investment",
-    isUrgent: false,
-  },
-  // Add more mock jobs here to test pagination
-  // ...Array.from({ length: 10 }, (_, i) => ({
-  //   id: `${i + 7}`,
-  //   title: `مشاور سرمایه گذاری(شهر ${i + 7})`,
-  //   location: `شهر ${i + 7}`,
-  //   category: "investment",
-  //   isUrgent: i % 2 === 0,
-  // })),
-];
+export interface JobSearchParams {
+  job_category_id?: number;
+  city_id?: number;
+  title?: string;
+}
 
-const CITIES: FilterOption[] = [
-  { value: "all", label: "همه شهرها" },
-  { value: "اهواز", label: "اهواز" },
-  { value: "خرم آباد", label: "خرم آباد" },
-  { value: "قزوین", label: "قزوین" },
-  { value: "مشهد", label: "مشهد" },
-  { value: "ماهشهر", label: "ماهشهر" },
-  { value: "بوشهر", label: "بوشهر" },
-];
+export interface JobResponse {
+  id: number;
+  title: string;
+  job_category: {
+    title: string;
+  };
+  city: {
+    title: string;
+  };
+}
 
-const CATEGORIES: FilterOption[] = [
-  { value: "all", label: "همه دسته‌ها" },
-  { value: "investment", label: "سرمایه‌گذاری" },
-  { value: "consulting", label: "مشاوره" },
-  { value: "sales", label: "فروش" },
-];
+export const JobGrid = ({
+  categories,
+  cities,
+}: {
+  categories: any;
+  cities: any;
+}) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [jobs, setJobs] = useState<JobResponse[]>([]);
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("");
+  const [city, setCity] = useState("");
 
-// const ITEMS_PER_PAGE = 6;
+  const fetchJobs = async (params: JobSearchParams) => {
+    try {
+      setIsLoading(true);
+      const queryParams = new URLSearchParams();
 
-export const JobGrid: React.FC = () => {
-  const [selectedCity, setSelectedCity] = useState("all");
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [searchTerm, setSearchTerm] = useState("");
-  // const [visibleJobs, setVisibleJobs] = useState(ITEMS_PER_PAGE);
-  // const [isLoading, setIsLoading] = useState(false);
+      if (params.job_category_id) {
+        queryParams.set("job_category_id", params.job_category_id.toString());
+      }
+      if (params.city_id) {
+        queryParams.set("city_id", params.city_id.toString());
+      }
+      if (params.title && params.title.length >= 2) {
+        queryParams.set("title", params.title);
+      }
 
-  const filteredJobs = MOCK_JOBS.filter((job) => {
-    const cityMatch = selectedCity === "all" || job.location === selectedCity;
-    const categoryMatch =
-      selectedCategory === "all" || job.category === selectedCategory;
-    const searchMatch = job.title
-      .toLowerCase()
-      .includes(searchTerm.toLowerCase());
-    return cityMatch && categoryMatch && searchMatch;
-  });
-  // const handleLoadMore = () => {
-  //   setIsLoading(true);
-  //   // Simulate API call
-  //   setTimeout(() => {
-  //     setVisibleJobs((prevVisible: number) => prevVisible + ITEMS_PER_PAGE);
-  //     setIsLoading(false);
-  //   }, 1000);
-  // };
+      const response = await fetch(
+        `https://jsk-co.com/api/job-opportunities?${queryParams.toString()}`
+      );
 
+      if (!response.ok) {
+        throw new Error("Failed to fetch jobs");
+      }
+
+      const data = await response.json();
+      setJobs(data);
+    } catch (error) {
+      console.error("Error fetching jobs:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchJobs({
+      title: undefined,
+      job_category_id: undefined,
+      city_id: undefined,
+    });
+  }, []);
+
+  const debouncedSearch = useDebouncedCallback((value: string) => {
+    if (value.length >= 2 || value.length === 0) {
+      fetchJobs({
+        title: value,
+        job_category_id: category ? Number(category) : undefined,
+        city_id: city ? Number(city) : undefined,
+      });
+    }
+  }, 300);
+
+  const handleCategoryChange = (value: string) => {
+    setCategory(value);
+    fetchJobs({
+      title: search,
+      job_category_id: Number(value),
+      city_id: city ? Number(city) : undefined,
+    });
+  };
+
+  const handleCityChange = (value: string) => {
+    setCity(value);
+    fetchJobs({
+      title: search,
+      job_category_id: category ? Number(category) : undefined,
+      city_id: Number(value),
+    });
+  };
   return (
     <>
-      <JobFilters
-        cities={CITIES}
-        categories={CATEGORIES}
-        onCityChange={setSelectedCity}
-        onCategoryChange={setSelectedCategory}
-        onSearchChange={setSearchTerm}
-      />
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredJobs.map((job) => (
-          <JobCard key={job.id} job={job} />
-        ))}
-        {/* {isLoading &&
-          Array.from({ length: ITEMS_PER_PAGE }).map((_, index) => (
-            <JobCardSkeleton key={`skeleton-${index}`} />
-          ))} */}
-      </div>
-
-      <div className="text-center py-10 lg:py-20">
-        {filteredJobs.length === 0 && (
-          <p className="text-gray-500">
-            هیچ شغلی با فیلترهای انتخاب شده یافت نشد.
-          </p>
-        )}
-      </div>
-
-      {/* {filteredJobs.length > visibleJobs && (
-        <div className="text-center mt-8">
-          <button
-            onClick={handleLoadMore}
-            disabled={isLoading}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {isLoading ? "در حال بارگذاری..." : "نمایش بیشتر"}
-          </button>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+        <div className="relative md:col-span-2">
+          <input
+            type="text"
+            placeholder="جستجوی عنوان شغل"
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              debouncedSearch(e.target.value);
+            }}
+            className="block w-full bg-white border border-gray-300 rounded-md py-2 pr-10 pl-3 shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          />
+          <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+            <CgSearch className="h-5 w-5 text-gray-400" />
+          </div>
         </div>
-      )} */}
+
+        <select
+          onChange={(e) => handleCityChange(e.target.value)}
+          className="block w-full bg-white border border-gray-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+        >
+          {cities.map((city: any) => (
+            <option key={city.value} value={city.value}>
+              {city.title}
+            </option>
+          ))}
+        </select>
+        <select
+          onChange={(e) => handleCategoryChange(e.target.value)}
+          className="block w-full bg-white border border-gray-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+        >
+          {categories.map((category: any) => (
+            <option key={category.value} value={category.value}>
+              {category.title}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        {isLoading &&
+          Array.from({ length: 6 }).map((_, index) => (
+            <JobCardSkeleton key={`skeleton-${index}`} />
+          ))}
+
+        {!isLoading && !jobs.length && (
+          <div className="text-center py-10 lg:py-20">
+            <p className="text-gray-500">
+              هیچ شغلی با فیلترهای انتخاب شده یافت نشد.
+            </p>
+          </div>
+        )}
+
+        {!isLoading && jobs.length ? jobs.map((job) => (
+          <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <div className="p-6">
+              <div className="flex justify-between items-start">
+                <h3 className="text-lg font-semibold text-gray-900 hover:text-gray-700">
+                  {job.title}
+                </h3>
+              </div>
+              <div className="mt-2 flex items-center text-gray-600">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4 ml-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+                <span className="text-sm">{job.city.title}</span>
+              </div>
+              <Link
+                href={`/hiring/jobs/${job.id}`}
+                className="flex justify-center items-center w-[80%] xl:w-[40%] px-2 py-2 mt-8 text-center bg-[#fea925] cursor-pointer border 
+                      border-solid border-[#e6e5e5] font-[600] text-[#fff]
+                       hover:bg-[#2c4050] hover:border-[#2c4050] transition-all duration-[0.5s]"
+              >
+                مشاهده جزئیات
+              </Link>
+            </div>
+          </div>
+        )):""}
+      </div>
 
       <ResumeForm />
     </>

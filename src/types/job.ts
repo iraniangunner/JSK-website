@@ -3,7 +3,6 @@ export interface Job {
   title: string;
   location: string;
   category: string;
-  isUrgent: boolean;
 }
 
 export interface FilterOption {
