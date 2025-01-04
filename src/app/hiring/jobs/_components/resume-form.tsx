@@ -529,7 +529,7 @@ export default function ResumeForm() {
                     </svg>
                   </div>
                 ) : (
-                  "ارسال"
+                  "ارسال درخواست"
                 )}
               </button>
             </div>
