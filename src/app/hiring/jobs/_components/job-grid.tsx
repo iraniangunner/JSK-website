@@ -127,7 +127,7 @@ export const JobGrid = ({
           value={city}
           className="block w-full bg-white border border-gray-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
         >
-          <option value="" >تمامی شهر ها</option>
+          <option value="">همه شهرها</option>
           {cities.map((city: any) => (
             <option key={city.id} value={city.id}>
               {city.title}
@@ -139,7 +139,7 @@ export const JobGrid = ({
           value={category}
           className="block w-full bg-white border border-gray-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
         >
-           <option value="" >تمامی دسته بندی ها</option>
+          <option value="">همه دسته بندی ها</option>
           {categories.map((category: any) => (
             <option key={category.id} value={category.id}>
               {category.title}
