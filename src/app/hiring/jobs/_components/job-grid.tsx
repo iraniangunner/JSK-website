@@ -207,7 +207,6 @@ export const JobGrid = ({
             ))
           : ""}
       </div>
-      <ResumeForm />
     </>
   );
 };

@@ -22,9 +22,9 @@ export default function About() {
         <main className="container mx-auto px-4 py-12">
           <section className="mb-20">
             <h2 className="text-3xl font-semibold mb-6 text-center">
-            تخصص ما
+            پیشگام در صنعت با تخصص، نوآوری و تعهد به کیفیت
             </h2>
-            <p className="text-lg leading-relaxed mb-6 text-right">
+            <p className="text-lg leading-relaxed mb-6 text-justify">
               از بدو تاسیس شرکت ژیوار صنعت کیان، با جذب مدیران با تجربه و آشنا
               به مجموعه هاي تولیدي و بهره برداري در زمینه ي تخصص هاي مختلف گام
               هاي محکمی با پشتوانه ي فنی و تخصصی فوق العاده براي تصدي بهره

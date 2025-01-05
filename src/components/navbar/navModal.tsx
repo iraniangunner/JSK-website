@@ -34,7 +34,19 @@ const strings = [
   { linkTitle: "مناقصات", linkAddress: "/tenders" },
 
   { linkTitle: "درباره ما", linkAddress: "/about" },
-  { linkTitle: "همکاری با ما", linkAddress: "/hiring/jobs" },
+  {
+    linkTitle: "همکاری با ما",
+    subLinks: [
+      {
+        title: "فرصت های شغلی",
+        linkAddress: "/hiring/jobs",
+      },
+      {
+        title: "همکاری پیمانکاران",
+        linkAddress: "/hiring/contractor",
+      },
+    ],
+  },
   { linkTitle: "تماس با ما", linkAddress: "/contact" },
 ];
 
