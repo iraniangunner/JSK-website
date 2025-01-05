@@ -47,7 +47,7 @@ export function ContractorForm() {
         <div className="p-6">
           <div className="text-center mb-10" lang="fa" dir="rtl">
             <h1 className="text-2xl font-bold mb-2">
-              فرم درخواست همکاری پیمانکاران
+              فرم درخواست همکاری شرکت ها
             </h1>
             <p className="text-sm text-gray-600">
               لطفاً فرم زیر را با دقت پر کنید. ما در اسرع وقت با شما تماس خواهیم
