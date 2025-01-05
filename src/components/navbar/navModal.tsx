@@ -42,7 +42,7 @@ const strings = [
         linkAddress: "/hiring/jobs",
       },
       {
-        title: "همکاری پیمانکاران",
+        title: "همکاری شرکت ها",
         linkAddress: "/hiring/contractor",
       },
     ],

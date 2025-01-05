@@ -46,7 +46,9 @@ export function ContractorForm() {
       <div className="max-w-2xl mx-auto bg-white rounded-lg border shadow-md overflow-hidden">
         <div className="p-6">
           <div className="text-center mb-10" lang="fa" dir="rtl">
-            <h1 className="text-2xl font-bold mb-2">فرم درخواست همکاری پیمانکاران</h1>
+            <h1 className="text-2xl font-bold mb-2">
+              فرم درخواست همکاری پیمانکاران
+            </h1>
             <p className="text-sm text-gray-600">
               لطفاً فرم زیر را با دقت پر کنید. ما در اسرع وقت با شما تماس خواهیم
               گرفت.
@@ -92,7 +94,7 @@ export function ContractorForm() {
                   type="text"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                  {errors.companyName && (
+                {errors.companyName && (
                   <p className="mt-1 text-xs text-red-600">
                     {errors.companyName.message}
                   </p>
@@ -106,7 +108,7 @@ export function ContractorForm() {
                   htmlFor="phoneNumber"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
-                  شماره تلفن *
+                  تلفن ثابت *
                 </label>
                 <input
                   {...register("phoneNumber", {
@@ -128,21 +130,14 @@ export function ContractorForm() {
                   htmlFor="mobileNumber"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
-                  شماره موبایل *
+                  تلفن همراه
                 </label>
                 <input
-                  {...register("mobileNumber", {
-                    required: "شماره موبایل الزامی است",
-                  })}
+                  {...register("mobileNumber")}
                   id="mobileNumber"
                   type="tel"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                {errors.mobileNumber && (
-                  <p className="mt-1 text-xs text-red-600">
-                    {errors.mobileNumber.message}
-                  </p>
-                )}
               </div>
             </div>
 
@@ -151,19 +146,26 @@ export function ContractorForm() {
                 htmlFor="address"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                آدرس
+                آدرس *
               </label>
               <textarea
-                {...register("address")}
+                {...register("address", {
+                  required: "آدرس شرکت الزامی است",
+                })}
                 id="address"
                 rows={3}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               ></textarea>
+              {errors.address && (
+                <p className="mt-1 text-xs text-red-600">
+                  {errors.address.message}
+                </p>
+              )}
             </div>
 
             <div className="space-y-4">
               <label className="block text-sm font-medium text-gray-700 mb-3">
-                نوع همکاری*
+                نوع همکاری *
               </label>
               <div className="flex flex-wrap items-center gap-4">
                 {[
@@ -203,11 +205,11 @@ export function ContractorForm() {
             <div className="space-y-4">
               <div className="text-right" lang="fa" dir="rtl">
                 <h3 className="text-sm font-medium text-gray-700 mb-2">
-                آپلود فایل *
+                  آپلود فایل
                 </h3>
                 <p className="text-xs text-gray-600">
-                  لطفا فایل خود را آپلود کنید. (حجم حداکثر ۵ مگابایت و
-                  فرمت فایل باید pdf باشد)
+                  لطفا فایل خود را آپلود کنید. (حجم حداکثر ۵ مگابایت و فرمت فایل
+                  باید pdf باشد)
                 </p>
               </div>
 
@@ -240,9 +242,7 @@ export function ContractorForm() {
                     <p className="text-xs text-gray-500">PDF(MAX. 5MB)</p>
                   </div>
                   <input
-                    {...register("file", {
-                      required: "آپلود فایل الزامی است",
-                    })}
+                    {...register("file")}
                     id="file-upload"
                     name="file-upload"
                     type="file"
