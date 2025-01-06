@@ -53,7 +53,7 @@ export function ContractorForm() {
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-4">
+              <div>
                 <label
                   htmlFor="name"
                   className="block text-sm font-medium text-gray-700 mb-1"
@@ -75,7 +75,7 @@ export function ContractorForm() {
                 )}
               </div>
 
-              <div className="space-y-4">
+              <div>
                 <label
                   htmlFor="companyName"
                   className="block text-sm font-medium text-gray-700 mb-1"
@@ -99,10 +99,10 @@ export function ContractorForm() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-4">
+              <div>
                 <label
                   htmlFor="phoneNumber"
-                  className="block text-sm font-medium text-gray-700 mb-1"
+                  className="block text-sm font-medium text-gray-700 mb-1" 
                 >
                   تلفن ثابت *
                 </label>
@@ -121,7 +121,7 @@ export function ContractorForm() {
                 )}
               </div>
 
-              <div className="space-y-4">
+              <div>
                 <label
                   htmlFor="mobileNumber"
                   className="block text-sm font-medium text-gray-700 mb-1"
@@ -137,7 +137,7 @@ export function ContractorForm() {
               </div>
             </div>
 
-            <div className="space-y-4">
+            <div>
               <label
                 htmlFor="address"
                 className="block text-sm font-medium text-gray-700 mb-1"
@@ -160,7 +160,7 @@ export function ContractorForm() {
             </div>
 
             <div className="space-y-4">
-              <label className="block text-sm font-medium text-gray-700 mb-3">
+              <label className="block text-sm font-medium text-gray-700">
                 نوع همکاری *
               </label>
               <div className="flex flex-wrap items-center gap-4">
@@ -200,7 +200,7 @@ export function ContractorForm() {
 
             <div className="space-y-4">
               <div className="text-right" lang="fa" dir="rtl">
-                <h3 className="text-sm font-medium text-gray-700 mb-2">
+                <h3 className="text-sm font-medium text-gray-700">
                   آپلود فایل
                 </h3>
                 <p className="text-xs text-gray-600">
