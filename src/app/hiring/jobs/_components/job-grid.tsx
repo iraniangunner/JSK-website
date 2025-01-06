@@ -35,10 +35,12 @@ export const JobGrid = ({
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
   const [city, setCity] = useState("");
+  const [error, setError] = useState("");
 
   const fetchJobs = async (params: JobSearchParams) => {
     try {
       setIsLoading(true);
+      setError("");
       const queryParams = new URLSearchParams();
 
       if (params.job_category_id) {
@@ -62,7 +64,7 @@ export const JobGrid = ({
       const data = await response.json();
       setJobs(data);
     } catch (error) {
-      console.error("Error fetching jobs:", error);
+      setError("خطایی رخ داده است");
     } finally {
       setIsLoading(false);
     }
@@ -154,7 +156,9 @@ export const JobGrid = ({
             <JobCardSkeleton key={`skeleton-${index}`} />
           ))}
 
-        {!isLoading && !jobs.length && (
+        {error && <p className="text-red-500">{error}</p>}
+
+        {!isLoading && !jobs.length && !error && (
           <div className="text-center py-10 lg:py-20">
             <p className="text-gray-500">
               هیچ شغلی با فیلترهای انتخاب شده یافت نشد.
@@ -162,7 +166,7 @@ export const JobGrid = ({
           </div>
         )}
 
-        {!isLoading && jobs.length
+        {!isLoading && jobs.length && !error
           ? jobs.map((job) => (
               <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
                 <div className="p-6">
