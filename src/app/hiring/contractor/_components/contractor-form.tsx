@@ -137,7 +137,7 @@ export function ContractorForm() {
               </div>
             </div>
 
-            <div>
+            <div className="space-y-4">
               <label
                 htmlFor="address"
                 className="block text-sm font-medium text-gray-700 mb-1"
@@ -200,7 +200,7 @@ export function ContractorForm() {
 
             <div className="space-y-4">
               <div className="text-right" lang="fa" dir="rtl">
-                <h3 className="text-sm font-medium text-gray-700">
+                <h3 className="text-sm font-medium text-gray-700 mb-2">
                   آپلود فایل
                 </h3>
                 <p className="text-xs text-gray-600">
@@ -260,7 +260,7 @@ export function ContractorForm() {
               )}
             </div>
 
-            <div>
+            <div className="space-y-4">
               <label
                 htmlFor="description"
                 className="block text-sm font-medium text-gray-700 mb-1"
@@ -275,7 +275,6 @@ export function ContractorForm() {
                 placeholder="در صورت تمایل توضیحات تکمیلی را در این بخش وارد کنید"
               ></textarea>
             </div>
-
             <div className="flex justify-center">
               <button
                 type="submit"
