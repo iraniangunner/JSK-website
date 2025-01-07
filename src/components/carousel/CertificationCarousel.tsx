@@ -43,41 +43,48 @@ export function CertificationsCarousel() {
 
   const handleClose = () => setOpen(false);
   return (
-    <>
-      <Swiper
-        loop={true}
-        navigation
-        autoplay={{
-          delay: 4000,
-        }}
-        spaceBetween={20}
-        breakpoints={{
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          768: {
-            slidesPerView: 3,
-            spaceBetween: 40,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 50,
-          },
-        }}
-        modules={[Autoplay, Navigation]}
-        slidesPerView={1}
-      >
-        {items?.map((item: any, idx: number) => (
-          <SwiperSlide
-            key={item.id}
-            className="cursor-pointer"
-            onClick={() => handleOpen(idx)}
-          >
-            <img src={"/images/"+item.src} alt={item.alt} />
-          </SwiperSlide>
-        ))} 
-      </Swiper>
+    <div className="w-full max-w-4xl mx-auto">
+      <h2 className="text-2xl font-bold mb-4">گواهینامه های شرکت</h2>
+      <div className="border border-gray-200 rounded-lg p-4 select-none">
+        <Swiper
+          loop={true}
+          navigation
+          autoplay={{
+            delay: 4000,
+          }}
+          spaceBetween={20}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 40,
+            },
+          }}
+          modules={[Autoplay, Navigation]}
+          slidesPerView={1}
+        >
+          {items?.map((item: any, idx: number) => (
+            <SwiperSlide
+              key={item.id}
+              className="cursor-pointer border"
+              onClick={() => handleOpen(idx)}
+            >
+              <img
+                src={"/images/" + item.src}
+                alt={item.alt}
+                className="w-full h-auto object-cover rounded-lg"
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
       <Modal
         open={open}
         onClose={handleClose}
@@ -93,20 +100,25 @@ export function CertificationsCarousel() {
       >
         <Swiper
           initialSlide={index}
-          spaceBetween={50}
+          // spaceBetween={50}
           navigation
           effect="fade"
           loop={true}
           modules={[Navigation, EffectFade]}
           slidesPerView={1}
+          className="select-none"
         >
           {items.map((item: any) => (
             <SwiperSlide key={item.id}>
-              <img src={"/images/"+item.src} alt={item.alt} />
+              <img
+                src={"/images/" + item.src}
+                alt={item.alt}
+                className="w-full object-cover rounded-lg"
+              />
             </SwiperSlide>
           ))}
         </Swiper>
       </Modal>
-    </>
+    </div>
   );
 }
