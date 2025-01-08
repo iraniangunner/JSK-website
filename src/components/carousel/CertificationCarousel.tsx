@@ -33,15 +33,15 @@ const items = [
 ];
 
 export function CertificationsCarousel() {
-  const [open, setOpen] = useState(false);
-  const [index, setIndex] = useState(0);
+  // const [open, setOpen] = useState(false);
+  // const [index, setIndex] = useState(0);
 
-  const handleOpen = (selectedIndex: number) => {
-    setIndex(selectedIndex);
-    setOpen(true);
-  };
+  // const handleOpen = (selectedIndex: number) => {
+  //   setIndex(selectedIndex);
+  //   setOpen(true);
+  // };
 
-  const handleClose = () => setOpen(false);
+  // const handleClose = () => setOpen(false);
   return (
     <div className="w-full max-w-4xl mx-auto">
       <h2 className="text-2xl font-bold mb-4">گواهینامه های شرکت</h2>
@@ -73,8 +73,8 @@ export function CertificationsCarousel() {
           {items?.map((item: any, idx: number) => (
             <SwiperSlide
               key={item.id}
-              className="cursor-pointer border"
-              onClick={() => handleOpen(idx)}
+              className="border"
+              // onClick={() => handleOpen(idx)}
             >
               <img
                 src={"/images/" + item.src}
@@ -85,7 +85,7 @@ export function CertificationsCarousel() {
           ))}
         </Swiper>
       </div>
-      <Modal
+      {/* <Modal
         open={open}
         onClose={handleClose}
         center
@@ -118,7 +118,7 @@ export function CertificationsCarousel() {
             </SwiperSlide>
           ))}
         </Swiper>
-      </Modal>
+      </Modal> */}
     </div>
   );
 }
