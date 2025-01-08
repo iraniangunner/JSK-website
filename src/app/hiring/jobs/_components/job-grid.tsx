@@ -168,7 +168,7 @@ export const JobGrid = ({
 
         {!isLoading &&
           jobs.length &&
-          !error &&
+          !error ?
           jobs.map((job) => (
             <div
               key={job.id}
@@ -213,7 +213,7 @@ export const JobGrid = ({
                 </Link>
               </div>
             </div>
-          ))}
+          )):""}
       </div>
     </>
   );
