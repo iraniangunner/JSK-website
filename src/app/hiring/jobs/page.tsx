@@ -1,7 +1,7 @@
-import { JobGrid } from "./_components/job-grid";
 import { Metadata } from "next";
 import { PageCover } from "@/components/pageCover";
 import ResumeForm from "./_components/resume-form";
+import JobGridWrapper from "./_components/job-grid-wrapper";
 
 export const metadata: Metadata = {
   title: "فرصت های شغلی",
@@ -41,7 +41,7 @@ export default async function JobsPage() {
       <div>
         <PageCover title="فرصت های شغلی" bgImage="projects-pattern" />
         <div className="container mx-auto px-4 py-12">
-          <JobGrid cities={cities} categories={categories} />
+          <JobGridWrapper cities={cities} categories={categories} />
           <ResumeForm />
         </div>
       </div>
