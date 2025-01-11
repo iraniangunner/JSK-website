@@ -1,4 +1,6 @@
 import Tender from "@/components/tender/tender";
+import TenderListWrapper from "@/components/tender/tender-wrapper";
+import TendersTable from "@/components/tender/tenderTable";
 import Link from "next/link";
 export default async function TenderPage({
   params,
@@ -67,7 +69,7 @@ export default async function TenderPage({
       </div>
       <div className="xl:w-[60%] mx-auto px-12 mt-8">
         <div className="bg-white overflow-hidden mb-8 print:shadow-none">
-          <Tender />
+         <Tender/>
         </div>
       </div>
     </>
