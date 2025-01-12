@@ -1,4 +1,4 @@
-import TenderTable from "@/components/tender/tenderTable";
+import { TendersTable } from "@/components/tender/tenderTable";
 import { Metadata } from "next";
 import { PageCover } from "@/components/pageCover";
 import TenderListWrapper from "@/components/tender/tender-wrapper";
@@ -18,7 +18,7 @@ export default function Tender() {
       <PageCover title="فراخوان ها" bgImage="projects-pattern" />
       <div className="my-12 mx-8">
         <TenderListWrapper>
-          <TenderTable />
+          <TendersTable />
         </TenderListWrapper>
       </div>
     </>

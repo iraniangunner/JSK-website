@@ -1,18 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
-import {
-  ChevronDownIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ChevronUpIcon,
-} from "@heroicons/react/24/solid";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import ReactPaginate from "react-paginate";
 import { TenderFilters } from "@/types/tender";
 import { useTenders } from "@/hooks/useTender";
 import Link from "next/link";
 import LoadingSpinner from "../loadingSpinner";
 
-export default function TendersTable() {
+export function TendersTable() {
   const [page, setPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [filters, setFilters] = useState<TenderFilters>({
@@ -35,7 +30,6 @@ export default function TendersTable() {
   };
 
   const applyFilters = () => {
-    console.log(tempFilters);
     setFilters(tempFilters);
     setPage(1);
     setForcePage(0);
@@ -77,7 +71,7 @@ export default function TendersTable() {
                   value={tempFilters.title}
                   onChange={(e) => handleFilterChange("title", e.target.value)}
                   id="search-title"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                   placeholder="عنوان را وارد کنید..."
                 />
               </div>
@@ -95,7 +89,7 @@ export default function TendersTable() {
                   handleFilterChange("tender_category_id", e.target.value)
                 }
                 id="competition"
-                className="w-full px-3 py-2 border text-sm text-gray-700 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-3 py-2 border text-sm text-gray-700 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
               >
                 <option value="all">همه دسته بندی ها</option>
                 <option value="1">مناقصه</option>
@@ -114,7 +108,7 @@ export default function TendersTable() {
                 id="status"
                 value={tempFilters.status}
                 onChange={(e) => handleFilterChange("status", e.target.value)}
-                className="w-full px-3 py-2 border text-sm text-gray-700 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-3 py-2 border text-sm text-gray-700 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
               >
                 <option value="all">همه وضعیت ها</option>
                 <option value="active">فعال</option>
@@ -129,14 +123,14 @@ export default function TendersTable() {
                 type="button"
                 onClick={clearFilters}
                 disabled={isLoading}
-                className="flex-1 px-4 py-2 border disabled:opacity-50 border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="flex-1 px-4 py-2 border disabled:opacity-50 border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
                 پاک کردن
               </button>
               <button
                 onClick={applyFilters}
                 disabled={isLoading}
-                className="flex-1 px-4 py-2 border disabled:opacity-50 der-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="flex-1 px-4 py-2 border disabled:opacity-50 der-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
                 جستجو
               </button>
@@ -173,7 +167,7 @@ export default function TendersTable() {
                     مشکلی پیش امده دوباره تلاش کنید
                   </p>
                 ) : !data || !data.data.length ? (
-                  "فراخوانی یافت نشد"
+                  <p>فراخوانی یافت نشد</p>
                 ) : (
                   data?.data.map((tender) => (
                     <div
@@ -188,7 +182,7 @@ export default function TendersTable() {
                             </h3>
                             <Link
                               href={`/tenders/${tender.id}`}
-                              className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                              className="bg-blue-600 hover:bg-blue-600 cursor-pointer text-white py-2 px-4 rounded inline-flex items-center transition duration-300"
                             >
                               مشاهده جزئیات
                             </Link>
@@ -243,7 +237,7 @@ export default function TendersTable() {
               containerClassName="flex items-center justify-center space-x-1 sm:space-x-2"
               pageClassName="hidden sm:flex items-center justify-center w-8 h-8 rounded border text-sm"
               pageLinkClassName="flex items-center justify-center w-full h-full"
-              activeClassName="bg-indigo-600 text-white"
+              activeClassName="bg-blue-600 text-white"
               previousClassName="flex items-center justify-center w-8 h-8 rounded border ml-2"
               nextClassName="flex items-center justify-center w-8 h-8 rounded border"
               disabledClassName="opacity-50 cursor-not-allowed"
