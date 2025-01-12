@@ -117,9 +117,9 @@ export function TendersTable() {
               >
                 <option value="all">همه وضعیت ها</option>
                 <option value="active">فعال</option>
-                <option value="deactive">غیر فعال</option>
-                <option value="closed">لغو</option>
-                <option value="expose">تمدید</option>
+                <option value="inactive">غیر فعال</option>
+                <option value="cancelled">لغو</option>
+                <option value="renewal">تمدید</option>
               </select>
             </div>
 
