@@ -6,6 +6,7 @@ import { TenderFilters } from "@/types/tender";
 import { useTenders } from "@/hooks/useTender";
 import Link from "next/link";
 import LoadingSpinner from "../loadingSpinner";
+import { useScroll } from "@/hooks/useScroll";
 
 export function TendersTable() {
   const [page, setPage] = useState(1);
@@ -19,6 +20,8 @@ export function TendersTable() {
   const [forcePage, setForcePage] = useState<number | undefined>(undefined);
 
   const { data, isLoading, isError } = useTenders(page, itemsPerPage, filters);
+
+  const [isScrolling] = useScroll(80);
 
   const handlePageChange = (selectedItem: { selected: number }) => {
     setPage(selectedItem.selected + 1);
@@ -50,8 +53,10 @@ export function TendersTable() {
 
   return (
     <div className="container mx-auto p-4 xl:px-16">
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-        <div className="bg-white p-6 rounded-lg border border-gray-200 self-start">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 relative">
+        <div className={`bg-white p-6 rounded-lg border border-gray-200 self-start  ${
+            isScrolling ? "xl:sticky xl:top-24" : "xl:relative"
+          }`}>
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold">جستجوی پیشرفته</h2>
             <button className="text-gray-500 hover:text-gray-700"></button>
