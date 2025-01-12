@@ -4,9 +4,9 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import ReactPaginate from "react-paginate";
 import { TenderFilters } from "@/types/tender";
 import { useTenders } from "@/hooks/useTender";
-import Link from "next/link";
 import LoadingSpinner from "../loadingSpinner";
 import { useScroll } from "@/hooks/useScroll";
+import { TenderView } from "./tenderView";
 
 export function TendersTable() {
   const [page, setPage] = useState(1);
@@ -18,6 +18,8 @@ export function TendersTable() {
   });
   const [tempFilters, setTempFilters] = useState<TenderFilters>(filters);
   const [forcePage, setForcePage] = useState<number | undefined>(undefined);
+
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const { data, isLoading, isError } = useTenders(page, itemsPerPage, filters);
 
@@ -33,12 +35,18 @@ export function TendersTable() {
   };
 
   const applyFilters = () => {
+    if (tempFilters.title && tempFilters.title.length < 2) {
+      setErrorMessage("عنوان باید حداقل ۲ حرف داشته باشد.");
+      return;
+    }
+    setErrorMessage("");
     setFilters(tempFilters);
     setPage(1);
     setForcePage(0);
   };
 
   const clearFilters = () => {
+    setErrorMessage("");
     setTempFilters({ title: "", tender_category_id: "all", status: "all" });
     setFilters({ title: "", tender_category_id: "all", status: "all" });
     setPage(1);
@@ -54,9 +62,11 @@ export function TendersTable() {
   return (
     <div className="container mx-auto p-4 xl:px-16">
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 relative">
-        <div className={`bg-white p-6 rounded-lg border border-gray-200 self-start  ${
+        <div
+          className={`bg-white p-6 rounded-lg border border-gray-200 self-start  ${
             isScrolling ? "xl:sticky xl:top-24" : "xl:relative"
-          }`}>
+          }`}
+        >
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold">جستجوی پیشرفته</h2>
             <button className="text-gray-500 hover:text-gray-700"></button>
@@ -80,6 +90,7 @@ export function TendersTable() {
                   placeholder="عنوان را وارد کنید..."
                 />
               </div>
+              {errorMessage && <p className="text-red-500 mt-1 text-sm">{errorMessage}</p>}
             </div>
             <div>
               <label
@@ -174,58 +185,7 @@ export function TendersTable() {
                 ) : !data || !data.data.length ? (
                   <p>فراخوانی یافت نشد</p>
                 ) : (
-                  data?.data.map((tender) => (
-                    <div
-                      key={tender.id}
-                      className="bg-white border border-gray-200 shadow rounded-lg overflow-hidden"
-                    >
-                      <div className="p-6">
-                        <div className="grid gap-4">
-                          <div className="flex flex-col md:flex-row justify-between gap-4">
-                            <h3 className="text-lg font-semibold">
-                              {tender.title}
-                            </h3>
-                            <Link
-                              href={`/tenders/${tender.id}`}
-                              className="bg-blue-600 hover:bg-blue-600 cursor-pointer text-white py-2 px-4 rounded inline-flex items-center transition duration-300"
-                            >
-                              مشاهده جزئیات
-                            </Link>
-                          </div>
-                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                            <div className="flex items-center gap-2">
-                              <span className="text-gray-600">دسته بندی:</span>
-                              <div className="flex items-center gap-2">
-                                <span>{tender.tender_category.title}</span>
-                              </div>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <span className="text-gray-600">شماره:</span>
-                              <span>{tender.number}</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <span className="text-gray-600">تاریخ شروع:</span>
-                              <span>{tender.start_date}</span>
-                            </div>
-                            <div className="flex items-center gap-2 text-sm">
-                              <span className="text-gray-600">
-                                تاریخ پایان:
-                              </span>
-                              <span className="font-medium">
-                                {tender.end_date}
-                              </span>
-                            </div>
-                            <div className="flex items-center gap-2 text-sm">
-                              <span className="text-gray-600">وضعیت:</span>
-                              <span className="font-medium">
-                                {tender.status}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))
+                  data?.data.map((tender) => <TenderView tender={tender} />)
                 )}
               </div>
             </div>
