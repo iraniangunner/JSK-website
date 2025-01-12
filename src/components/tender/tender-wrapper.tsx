@@ -1,6 +1,6 @@
 "use client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import TendersTable from "./tenderTable";
+import { ReactNode } from "react";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -13,10 +13,12 @@ const queryClient = new QueryClient({
   },
 });
 
-export default function TenderListWrapper() {
+export default function TenderListWrapper({
+  children,
+}: {
+  children: ReactNode;
+}) {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TendersTable />
-    </QueryClientProvider>
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );
 }

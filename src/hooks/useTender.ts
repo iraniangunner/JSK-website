@@ -10,10 +10,10 @@ export const fetchTenders = async (
     page: page.toString(),
     per_page: itemsPerPage.toString(),
     ...(filters.title && { title: filters.title }),
-    ...(filters.tender_category_id !== "" && {
+    ...(filters.tender_category_id !== "all" && {
       tender_category_id: filters.tender_category_id,
     }),
-    ...(filters.status !== "" && { status: filters.status }),
+    ...(filters.status !== "all" && { status: filters.status }),
   });
 
   const response = await fetch(
@@ -32,10 +32,9 @@ export const useTenders = (
   itemsPerPage: number,
   filters: TenderFilters
 ) => {
-    // const queryClient = useQueryClient();
   return useQuery({
     queryKey: ["tenders", page, itemsPerPage, filters],
     queryFn: () => fetchTenders(page, itemsPerPage, filters),
-    placeholderData: keepPreviousData,
+    // placeholderData: keepPreviousData,
   });
 };

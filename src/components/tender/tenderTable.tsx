@@ -10,14 +10,15 @@ import ReactPaginate from "react-paginate";
 import { TenderFilters } from "@/types/tender";
 import { useTenders } from "@/hooks/useTender";
 import Link from "next/link";
+import LoadingSpinner from "../loadingSpinner";
 
 export default function TendersTable() {
   const [page, setPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [filters, setFilters] = useState<TenderFilters>({
     title: "",
-    tender_category_id: "",
-    status: "",
+    tender_category_id: "all",
+    status: "all",
   });
   const [tempFilters, setTempFilters] = useState<TenderFilters>(filters);
   const [forcePage, setForcePage] = useState<number | undefined>(undefined);
@@ -34,14 +35,15 @@ export default function TendersTable() {
   };
 
   const applyFilters = () => {
+    console.log(tempFilters);
     setFilters(tempFilters);
     setPage(1);
     setForcePage(0);
   };
 
   const clearFilters = () => {
-    setTempFilters({ title: "", tender_category_id: "", status: "" });
-    setFilters({ title: "", tender_category_id: "", status: "" });
+    setTempFilters({ title: "", tender_category_id: "all", status: "all" });
+    setFilters({ title: "", tender_category_id: "all", status: "all" });
     setPage(1);
     setForcePage(0);
   };
@@ -64,7 +66,7 @@ export default function TendersTable() {
           <div className="space-y-4">
             <div>
               <label
-                htmlFor="region"
+                htmlFor="search-title"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
                 عنوان فراخوان
@@ -74,7 +76,7 @@ export default function TendersTable() {
                   type="text"
                   value={tempFilters.title}
                   onChange={(e) => handleFilterChange("title", e.target.value)}
-                  id="region-search"
+                  id="search-title"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                   placeholder="عنوان را وارد کنید..."
                 />
@@ -95,10 +97,10 @@ export default function TendersTable() {
                 id="competition"
                 className="w-full px-3 py-2 border text-sm text-gray-700 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
               >
-                <option value="">همه دسته بندی ها</option>
-                <option value="open">مناقصه</option>
-                <option value="limited">مزایده</option>
-                <option value="direct">استعلام</option>
+                <option value="all">همه دسته بندی ها</option>
+                <option value="1">مناقصه</option>
+                <option value="2">مزایده</option>
+                <option value="3">استعلام</option>
               </select>
             </div>
             <div>
@@ -114,8 +116,9 @@ export default function TendersTable() {
                 onChange={(e) => handleFilterChange("status", e.target.value)}
                 className="w-full px-3 py-2 border text-sm text-gray-700 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
               >
-                <option value="">همه وضعیت ها</option>
-                <option value="active">غیر فعال</option>
+                <option value="all">همه وضعیت ها</option>
+                <option value="active">فعال</option>
+                <option value="deactive">غیر فعال</option>
                 <option value="closed">لغو</option>
                 <option value="expose">تمدید</option>
               </select>
@@ -123,14 +126,17 @@ export default function TendersTable() {
 
             <div className="flex gap-2">
               <button
-                onClick={applyFilters}
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                type="button"
+                onClick={clearFilters}
+                disabled={isLoading}
+                className="flex-1 px-4 py-2 border disabled:opacity-50 border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 پاک کردن
               </button>
               <button
-                onClick={clearFilters}
-                className="flex-1 px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                onClick={applyFilters}
+                disabled={isLoading}
+                className="flex-1 px-4 py-2 border disabled:opacity-50 der-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 جستجو
               </button>
@@ -144,7 +150,11 @@ export default function TendersTable() {
               <select
                 className="border text-sm text-gray-600 rounded px-8 py-1 w-[150px]"
                 value={itemsPerPage}
-                onChange={(e) => setItemsPerPage(Number(e.target.value))}
+                onChange={(e) => {
+                  setItemsPerPage(Number(e.target.value));
+                  setPage(1);
+                  setForcePage(0);
+                }}
               >
                 <option value="10">نمایش 10 فراخوان</option>
                 <option value="20">نمایش 20 فراخوان</option>
@@ -156,56 +166,68 @@ export default function TendersTable() {
           <div className="space-y-4">
             <div className="h-[calc(100vh-200px)] overflow-y-auto rounded-md border border-gray-200">
               <div className="space-y-4 p-4">
-                {isLoading && <p>Loading...</p>}
-                {isError && <p>Error occured</p>}
-                {data?.data.map((tender) => (
-                  <div
-                    key={tender.id}
-                    className="bg-white border border-gray-200 shadow rounded-lg overflow-hidden"
-                  >
-                    <div className="p-6">
-                      <div className="grid gap-4">
-                        <div className="flex flex-col md:flex-row justify-between gap-4">
-                          <h3 className="text-lg font-semibold">
-                            {tender.title}
-                          </h3>
-                          <Link
-                            href={`/tenders/${tender.id}`}
-                            className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                          >
-                            مشاهده جزئیات
-                          </Link>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                          <div className="flex items-center gap-2">
-                            <span className="text-gray-600">دسته بندی:</span>
+                {isLoading ? (
+                  <LoadingSpinner />
+                ) : isError ? (
+                  <p className="text-red-500">
+                    مشکلی پیش امده دوباره تلاش کنید
+                  </p>
+                ) : !data || !data.data.length ? (
+                  "فراخوانی یافت نشد"
+                ) : (
+                  data?.data.map((tender) => (
+                    <div
+                      key={tender.id}
+                      className="bg-white border border-gray-200 shadow rounded-lg overflow-hidden"
+                    >
+                      <div className="p-6">
+                        <div className="grid gap-4">
+                          <div className="flex flex-col md:flex-row justify-between gap-4">
+                            <h3 className="text-lg font-semibold">
+                              {tender.title}
+                            </h3>
+                            <Link
+                              href={`/tenders/${tender.id}`}
+                              className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            >
+                              مشاهده جزئیات
+                            </Link>
+                          </div>
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                             <div className="flex items-center gap-2">
-                              <span>{tender.tender_category.title}</span>
+                              <span className="text-gray-600">دسته بندی:</span>
+                              <div className="flex items-center gap-2">
+                                <span>{tender.tender_category.title}</span>
+                              </div>
                             </div>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <span className="text-gray-600">شماره:</span>
-                            <span>{tender.number}</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <span className="text-gray-600">تاریخ شروع:</span>
-                            <span>{tender.start_date}</span>
-                          </div>
-                          <div className="flex items-center gap-2 text-sm">
-                            <span className="text-gray-600">تاریخ پایان:</span>
-                            <span className="font-medium">
-                              {tender.end_date}
-                            </span>
-                          </div>
-                          <div className="flex items-center gap-2 text-sm">
-                            <span className="text-gray-600">وضعیت:</span>
-                            <span className="font-medium">{tender.status}</span>
+                            <div className="flex items-center gap-2">
+                              <span className="text-gray-600">شماره:</span>
+                              <span>{tender.number}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <span className="text-gray-600">تاریخ شروع:</span>
+                              <span>{tender.start_date}</span>
+                            </div>
+                            <div className="flex items-center gap-2 text-sm">
+                              <span className="text-gray-600">
+                                تاریخ پایان:
+                              </span>
+                              <span className="font-medium">
+                                {tender.end_date}
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-2 text-sm">
+                              <span className="text-gray-600">وضعیت:</span>
+                              <span className="font-medium">
+                                {tender.status}
+                              </span>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))
+                )}
               </div>
             </div>
             <ReactPaginate
@@ -227,7 +249,7 @@ export default function TendersTable() {
               disabledClassName="opacity-50 cursor-not-allowed"
             />
             <div className="sm:hidden text-sm text-center mt-2">
-              صفحه {page + 1} از {data?.last_page || 1}
+              صفحه {page} از {data?.last_page || 1}
             </div>
           </div>
         </div>

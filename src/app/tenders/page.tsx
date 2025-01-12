@@ -17,7 +17,9 @@ export default function Tender() {
     <>
       <PageCover title="فراخوان ها" bgImage="projects-pattern" />
       <div className="my-12 mx-8">
-        <TenderListWrapper />
+        <TenderListWrapper>
+          <TenderTable />
+        </TenderListWrapper>
       </div>
     </>
   );
