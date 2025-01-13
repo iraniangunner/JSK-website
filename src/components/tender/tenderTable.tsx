@@ -90,7 +90,9 @@ export function TendersTable() {
                   placeholder="عنوان را وارد کنید..."
                 />
               </div>
-              {errorMessage && <p className="text-red-500 mt-1 text-sm">{errorMessage}</p>}
+              {errorMessage && (
+                <p className="text-red-500 mt-1 text-sm">{errorMessage}</p>
+              )}
             </div>
             <div>
               <label
@@ -185,7 +187,9 @@ export function TendersTable() {
                 ) : !data || !data.data.length ? (
                   <p>فراخوانی یافت نشد</p>
                 ) : (
-                  data?.data.map((tender) => <TenderView tender={tender} />)
+                  data?.data.map((tender) => (
+                    <TenderView key={tender.id} tender={tender} />
+                  ))
                 )}
               </div>
             </div>
