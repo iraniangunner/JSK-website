@@ -4,9 +4,9 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import ReactPaginate from "react-paginate";
 import { TenderFilters } from "@/types/tender";
 import { useTenders } from "@/hooks/useTender";
-import LoadingSpinner from "../loadingSpinner";
 import { useScroll } from "@/hooks/useScroll";
 import { TenderView } from "./tenderView";
+import { TenderSkeletons } from "./tender-skeleton";
 
 export function TendersTable() {
   const [page, setPage] = useState(1);
@@ -177,15 +177,19 @@ export function TendersTable() {
 
           <div className="space-y-4">
             <div className="h-[calc(100vh-200px)] overflow-y-auto rounded-md border border-gray-200">
-              <div className="space-y-4 p-4">
+              <div className="space-y-4 p-4 h-full">
                 {isLoading ? (
-                  <LoadingSpinner />
+                  <TenderSkeletons />
                 ) : isError ? (
-                  <p className="text-red-500">
-                    مشکلی پیش امده دوباره تلاش کنید
-                  </p>
+                  <div className="flex h-full justify-center items-center">
+                    <p className="text-red-500">
+                      مشکلی پیش امده دوباره تلاش کنید
+                    </p>
+                  </div>
                 ) : !data || !data.data.length ? (
-                  <p>فراخوانی یافت نشد</p>
+                  <div className="flex h-full justify-center items-center">
+                    <p>فراخوانی یافت نشد</p>
+                  </div>
                 ) : (
                   data?.data.map((tender) => (
                     <TenderView key={tender.id} tender={tender} />
