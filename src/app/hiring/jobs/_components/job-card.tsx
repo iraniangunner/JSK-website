@@ -7,7 +7,7 @@ interface JobCardProps {
 
 export const JobCard: React.FC<JobCardProps> = ({ job }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+    <div className="bg-white rounded-lg border shadow-md hover:shadow-lg transition-shadow">
       <div className="p-6">
         <div className="flex justify-between items-start">
           <h3 className="text-lg font-semibold text-gray-900 hover:text-gray-700">
