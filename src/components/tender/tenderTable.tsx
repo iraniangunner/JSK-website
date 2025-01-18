@@ -21,7 +21,7 @@ export function TendersTable() {
 
   const [errorMessage, setErrorMessage] = useState<string>("");
 
-  const { data, isLoading, isError } = useTenders(page, itemsPerPage, filters);
+  const { data, isLoading, isError  } = useTenders(page, itemsPerPage, filters);
 
   const [isScrolling] = useScroll(80);
 
@@ -191,7 +191,7 @@ export function TendersTable() {
                     <p>فراخوانی یافت نشد</p>
                   </div>
                 ) : (
-                  data?.data.map((tender) => (
+                  data?.data.map((tender:any) => (
                     <TenderView key={tender.id} tender={tender} />
                   ))
                 )}
@@ -202,7 +202,7 @@ export function TendersTable() {
               nextLabel={<ChevronLeftIcon className="h-4 w-4" />}
               breakLabel="..."
               breakClassName="hidden sm:flex items-center justify-center w-8 h-8 text-sm"
-              pageCount={data?.last_page || 1}
+              pageCount={ data?.meta.last_page || 1}
               marginPagesDisplayed={2}
               forcePage={forcePage}
               pageRangeDisplayed={3}

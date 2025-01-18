@@ -1,7 +1,7 @@
 import { Tender } from "@/types/tender";
 import Link from "next/link";
 
-export function TenderView ({tender}:{tender:Tender}){
+export function TenderView ({tender}:{tender:any}){
     return (
         <div
         key={tender.id}

@@ -1,28 +1,30 @@
 export interface Tender {
-  id: number;
-  title: string;
-  tender_category_id: number;
-  number: string;
-  start_date: string;
-  end_date: string;
-  department: string;
-  phone: string;
-  email: string;
-  doc_opening_date: string;
-  doc_submission_deadline: string;
-  doc_submission_location: string;
-  status: string;
-  text: string;
-  file: string;
-  created_at: string;
-  updated_at: string;
-  full_path: string;
-  tender_category: {
+  data: {
     id: number;
     title: string;
-    order: number;
+    tender_category_id: number;
+    number: string;
+    start_date: string;
+    end_date: string;
+    department: string;
+    phone: string;
+    email: string;
+    doc_opening_date: string;
+    doc_submission_deadline: string;
+    doc_submission_location: string;
+    status: string;
+    text: string;
+    file: string;
     created_at: string;
     updated_at: string;
+    full_path: string;
+    tender_category: {
+      id: number;
+      title: string;
+      order: number;
+      created_at: string;
+      updated_at: string;
+    };
   };
 }
 
@@ -44,6 +46,9 @@ export interface PaginatedResponse<T> {
     label: string;
     active: boolean;
   }[];
+  meta: {
+    last_page: number;
+  };
   next_page_url: string | null;
   path: string;
   per_page: number;

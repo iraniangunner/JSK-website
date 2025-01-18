@@ -1,5 +1,5 @@
 import { Tender, TenderFilters, PaginatedResponse } from "../types/tender";
-import { useQuery, keepPreviousData } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 export const fetchTenders = async (
   page: number,

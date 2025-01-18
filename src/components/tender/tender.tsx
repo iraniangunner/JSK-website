@@ -31,13 +31,13 @@ export function TenderComponent({ tender }: { tender: Tender }) {
               </span>
             </li>
             <li className="flex items-center text-lg antialiased font-normal leading-normal text-blue-gray-900">
-              <span>{tender.title}</span>
+              <span>{tender.data.title}</span>
             </li>
           </ol>
         </nav>
         <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
           <h1 className="lg:text-2xl font-bold text-center text-gray-900 mb-2">
-            {tender.title}
+            {tender.data.title}
           </h1>
         </div>
       </div>
@@ -55,13 +55,13 @@ export function TenderComponent({ tender }: { tender: Tender }) {
                     عنوان فراخوان
                   </td>
                   <td className="border border-gray-300 py-2 px-4 text-gray-500">
-                    {tender.title}
+                    {tender.data.title}
                   </td>
                   <td className="border border-gray-300 py-2 px-4 font-medium text-gray-900">
                     تاریخ بازگشایی اسناد
                   </td>
                   <td className="border border-gray-300 py-2 px-4 text-gray-500">
-                    {tender.start_date}
+                    {tender.data.start_date}
                   </td>
                 </tr>
                 <tr>
@@ -69,13 +69,13 @@ export function TenderComponent({ tender }: { tender: Tender }) {
                     نوع فراخوان
                   </td>
                   <td className="border border-gray-300 py-2 px-4 text-gray-500">
-                    {tender.tender_category.title}
+                    {tender.data.tender_category.title}
                   </td>
                   <td className="border border-gray-300 py-2 px-4 font-medium text-gray-900">
                     مهلت تحویل اسناد
                   </td>
                   <td className="border border-gray-300 py-2 px-4 text-gray-500">
-                    {tender.doc_submission_deadline}
+                    {tender.data.doc_submission_deadline}
                   </td>
                 </tr>
                 <tr>
@@ -83,13 +83,13 @@ export function TenderComponent({ tender }: { tender: Tender }) {
                     وضعیت
                   </td>
                   <td className="border border-gray-300 py-2 px-4 text-gray-500">
-                    {tender.status}
+                    {tender.data.status}
                   </td>
                   <td className="border border-gray-300 py-2 px-4 font-medium text-gray-900">
                     محل تحویل اسناد
                   </td>
                   <td className="border border-gray-300 py-2 px-4 text-gray-500">
-                    {tender.doc_submission_location}
+                    {tender.data.doc_submission_location}
                   </td>
                 </tr>
                 <tr>
@@ -97,13 +97,13 @@ export function TenderComponent({ tender }: { tender: Tender }) {
                     شماره فراخوان
                   </td>
                   <td className="border border-gray-300 py-2 px-4 text-gray-500">
-                    {tender.number}
+                    {tender.data.number}
                   </td>
                   <td className="border border-gray-300 py-2 px-4 font-medium text-gray-900">
                     نام واحد
                   </td>
                   <td className="border border-gray-300 py-2 px-4 text-gray-500">
-                    {tender.department}
+                    {tender.data.department}
                   </td>
                 </tr>
                 <tr>
@@ -111,13 +111,13 @@ export function TenderComponent({ tender }: { tender: Tender }) {
                     تاریخ شروع
                   </td>
                   <td className="border border-gray-300 py-2 px-4 text-gray-500">
-                    {tender.start_date}
+                    {tender.data.start_date}
                   </td>
                   <td className="border border-gray-300 py-2 px-4 font-medium text-gray-900">
                     تلفن
                   </td>
                   <td className="border border-gray-300 py-2 px-4 text-gray-500">
-                    {tender.phone}
+                    {tender.data.phone}
                   </td>
                 </tr>
                 <tr>
@@ -125,13 +125,13 @@ export function TenderComponent({ tender }: { tender: Tender }) {
                     تاریخ پایان
                   </td>
                   <td className="border border-gray-300 py-2 px-4 text-gray-500">
-                    {tender.end_date}
+                    {tender.data.end_date}
                   </td>
                   <td className="border border-gray-300 py-2 px-4 font-medium text-gray-900">
                     ایمیل
                   </td>
                   <td className="border border-gray-300 py-2 px-4 text-gray-500">
-                    {tender.email}
+                    {tender.data.email}
                   </td>
                 </tr>
                 <tr>
@@ -142,7 +142,7 @@ export function TenderComponent({ tender }: { tender: Tender }) {
                     colSpan={3}
                     className="border border-gray-300 py-2 px-4 text-justify text-gray-500"
                   >
-                    {tender.text}
+                    {tender.data.text}
                   </td>
                 </tr>
               </tbody>
@@ -151,7 +151,7 @@ export function TenderComponent({ tender }: { tender: Tender }) {
 
           <div className="text-center space-x-4 space-y-4 print:hidden mt-4">
             <a
-              href={tender.full_path}
+              href={tender.data.full_path}
               target="_blank"
               download
               className="bg-blue-500 hover:bg-blue-600 ml-4 cursor-pointer text-white py-2 px-4 rounded inline-flex items-center transition duration-300 print:hidden"
