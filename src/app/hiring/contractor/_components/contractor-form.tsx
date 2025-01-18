@@ -186,8 +186,8 @@ export function ContractorForm() {
                   <input
                     {...register("mobile", {
                       pattern: {
-                        value: /^[0-9]{10}$/, // Only 10 digits allowed
-                        message: "باید 10 رقم باشد",
+                        value: /^9[0-9]{9}$/, // Only 10 digits allowed
+                        message: "باید با 9 شروع شده و شامل 10 رقم باشد",
                       },
                     })}
                     id="mobile"
