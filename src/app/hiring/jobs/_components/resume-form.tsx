@@ -47,7 +47,7 @@ export default function ResumeForm() {
     reset,
     setValue,
   } = useForm<FormInputs>();
-  const [resume_file, setResumeFile] = useState<File | null>();
+  const [resumeFile, setResumeFile] = useState<File | null>();
   const [selectedGender, setSelectedGender] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -79,8 +79,8 @@ export default function ResumeForm() {
         }
       });
 
-      if (resume_file) {
-        formData.append("resume_file", resume_file);
+      if (resumeFile) {
+        formData.append("resume_file", resumeFile);
       }
 
       const response = await fetch("https://jsk-co.com/api/resumes", {
@@ -471,9 +471,9 @@ export default function ResumeForm() {
                 />
               </label>
             </div>
-            {resume_file && (
+            {resumeFile && (
               <p className="text-sm text-gray-600">
-                فایل انتخاب شده: {resume_file.name}
+                فایل انتخاب شده: {resumeFile.name}
               </p>
             )}
             {errors.resume_file && (
