@@ -179,12 +179,28 @@ export function ContractorForm() {
                 >
                   تلفن همراه
                 </label>
-                <input
-                  {...register("mobile")}
-                  id="mobile"
-                  type="tel"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
+                <div className=" relative">
+                  <div className="absolute top-0 left-1 h-full border-r-2 border-r-gray-300 flex justify-center items-center pr-1">
+                    98+
+                  </div>
+                  <input
+                    {...register("mobile", {
+                      pattern: {
+                        value: /^[0-9]{10}$/, // Only 10 digits allowed
+                        message: "باید 10 رقم باشد",
+                      },
+                    })}
+                    id="mobile"
+                    type="tel"
+                    className="w-full px-10 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+
+                {errors.mobile && (
+                  <p className="mt-1 text-xs text-red-600">
+                    {errors.mobile.message}
+                  </p>
+                )}
               </div>
             </div>
 
