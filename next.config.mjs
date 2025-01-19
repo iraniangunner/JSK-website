@@ -2,7 +2,13 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    remotePatterns: [{ protocol: "https", hostname: "jsk-co.com" }],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "jsk-co.com",
+        pathname: "/storage/project/**",
+      },
+    ],
   },
 };
 
