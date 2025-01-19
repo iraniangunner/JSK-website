@@ -14,12 +14,13 @@ export async function getProjects() {
 
 export async function getProjectById(id: number) {
   const res = await fetch(`https://jsk-co.com/api/projects/${id}`, {
-    next: { revalidate: 3600 },
+    // next: { revalidate: 3600 },
+    cache: "no-store",
   });
 
   if (!res.ok) {
     if (res.status === 404) {
-      throw new Error("No such project"); // Triggers the `not-found.js` file if it exists
+      throw new Error("No such project");
     }
     throw new Error("Failed to fetch the project data");
   }
