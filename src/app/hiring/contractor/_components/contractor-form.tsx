@@ -36,9 +36,12 @@ export function ContractorForm() {
     try {
       const formData = new FormData();
 
-      // Handle text field as empty string if it's undefined or empty
       if (!data.text) {
         data.text = "null";
+      }
+
+      if (!data.mobile) {
+        data.mobile = "null";
       }
 
       Object.keys(data).forEach((key) => {
@@ -186,7 +189,7 @@ export function ContractorForm() {
                   <input
                     {...register("mobile", {
                       pattern: {
-                        value: /^9[0-9]{9}$/, // Only 10 digits allowed
+                        value: /^9[0-9]{9}$/,
                         message: "باید با 9 شروع شده و شامل 10 رقم باشد",
                       },
                     })}
