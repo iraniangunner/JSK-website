@@ -10,12 +10,13 @@ import { FaArrowRight } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import { Slide } from "@/types/mainSliderTypes";
+import Link from "next/link";
 
 export const MainCarousel = ({ data }: { data: Slide[] }) => {
   const [activeSlideIndex, setActiveStyleIndex] = useState<number>(0);
 
   return (
-    <section className="w-full" dir="ltr">
+    <section className="w-full select-none" dir="ltr">
       <div className="h-screen">
         <ul className="h-full w-full">
           <Swiper
@@ -39,16 +40,18 @@ export const MainCarousel = ({ data }: { data: Slide[] }) => {
                 id,
                 image,
                 text,
+                link,
               }: {
                 id: number;
                 image: string;
                 text: string;
+                link: string;
               }) => (
                 <SwiperSlide key={id}>
                   {({ isActive }) => (
                     <>
                       <div
-                        className="h-full w-full absolute left-0 top-0"
+                        className="h-full w-full absolute left-0 top-0 before:content-[''] before:absolute before:left-0 before:top-0 before:w-full before:h-full before:opacity-[0.3] before:z-[0] before:bg-[#042038]"
                         style={{
                           background: `url(https://jsk-co.com/storage/${image}) center center / cover scroll no-repeat`,
                         }}
@@ -56,37 +59,22 @@ export const MainCarousel = ({ data }: { data: Slide[] }) => {
                       <div className="h-full w-full absolute left-0 top-0 bg-black opacity-20"></div>
                       <div className="relative z-10 h-full w-full">
                         <div className="absolute top-[25%] left-[50%] translate-x-[-50%] lg:max-w-[30%] overflow-hidden">
-                          {/* <motion.div
-                          initial={{ x: 100, opacity: 0 }}
-                          animate={{
-                            x: isActive ? 0 : 100,
-                            opacity: isActive ? 1 : 0,
-                          }}
-                          transition={{ duration: 0.5, delay: 0.5 }}
-                        >
-                          <p className="text-3xl sm:text-6xl lg:text-5xl uppercase font-bold text-white">
-                            {title}
-                          </p>
-                        </motion.div> */}
-                          {text && (
-                            <motion.div
-                              initial={{ y: 50, opacity: 0 }}
-                              animate={{
-                                y: isActive ? 0 : 50,
-                                opacity: isActive ? 1 : 0,
-                              }}
-                              transition={{ duration: 0.5 }}
+                          <motion.div
+                            initial={{ y: 50, opacity: 0 }}
+                            animate={{
+                              y: isActive ? 0 : 50,
+                              opacity: isActive ? 1 : 0,
+                            }}
+                            transition={{ duration: 0.5 }}
+                          >
+                            <p
+                              dir="rtl"
+                              className="text-[20px] lg:text-[30px] font-semibold leading-10 lg:leading-[70px] text-center text-white"
                             >
-                              <p
-                                dir="rtl"
-                                className="text-[20px] lg:text-[30px] font-semibold leading-10 lg:leading-[70px] text-center text-white"
-                              >
-                                {text}
-                              </p>
-                            </motion.div>
-                          )}
+                              {text}
+                            </p>
+                          </motion.div>
 
-                          {/* {buttons.length > 0 ? (
                           <motion.div
                             initial={{ x: 100, opacity: 0 }}
                             animate={{
@@ -94,13 +82,17 @@ export const MainCarousel = ({ data }: { data: Slide[] }) => {
                               opacity: isActive ? 1 : 0,
                             }}
                             transition={{ duration: 0.5, delay: 0.5 }}
-                            className="self-center"
+                            className="flex justify-center items-center mt-8"
                           >
-                            <div className="inline-block px-9 py-4 text-white bg-[#ffa500] mt-10">
-                              <SliderButtons buttons={buttons} />
+                            <div className="text-white bg-[#ffa500]">
+                              <Link
+                                href={link}
+                                className="px-6 py-4 w-full h-full block"
+                              >
+                                مشاهده بیش تر
+                              </Link>
                             </div>
                           </motion.div>
-                        ) : null} */}
                         </div>
                       </div>
                     </>

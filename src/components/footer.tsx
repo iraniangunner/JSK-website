@@ -16,7 +16,6 @@ const LINKS = [
       { title: "تماس با ما", link: "/contact" },
       { title: "پروژه ها", link: "/projects" },
       { title: "مناقصات", link: "/tenders" },
-      // { title: "گواهینامه ها", link: "/certifications" },
       { title: "فرصت های شغلی", link: "/hiring/jobs" },
     ],
   },

@@ -24,31 +24,30 @@ type FormValues = z.infer<typeof formSchema>;
 export const ContactForm = () => {
   const recaptchaRef = useRef<ReCAPTCHA>(null); // Reference to the reCAPTCHA instance
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
-  const [popupAllowed, setPopupAllowed] = useState(true);
+  // const [popupAllowed, setPopupAllowed] = useState(true);
 
-  useEffect(() => {
-    const checkPopupBlocked = () => {
-      const testPopup = window.open(
-        "",
-        "_blank",
-        "width=1,height=1,left=0,top=0"
-      );
-      if (
-        testPopup === null ||
-        testPopup.closed ||
-        typeof testPopup.closed === "undefined"
-      ) {
-        // toast.error("پنجره‌های بازشو مسدود شده‌اند. لطفاً آنها را فعال کنید");
-        setPopupAllowed(false);
-      } else {
-        testPopup.close();
-        setPopupAllowed(true);
-      }
-    };
+  // useEffect(() => {
+  //   const checkPopupBlocked = () => {
+  //     const testPopup = window.open(
+  //       "",
+  //       "_blank",
+  //       "width=1,height=1,left=0,top=0"
+  //     );
+  //     if (
+  //       testPopup === null ||
+  //       testPopup.closed ||
+  //       typeof testPopup.closed === "undefined"
+  //     ) {
+  //       // toast.error("پنجره‌های بازشو مسدود شده‌اند. لطفاً آنها را فعال کنید");
+  //       setPopupAllowed(false);
+  //     } else {
+  //       testPopup.close();
+  //       setPopupAllowed(true);
+  //     }
+  //   };
 
-    checkPopupBlocked();
-  }, []);
-
+  //   checkPopupBlocked();
+  // }, []);
 
   const {
     register,
@@ -102,7 +101,7 @@ export const ContactForm = () => {
         body: JSON.stringify(trimmedData),
       });
 
-      const { id } = await response.json();
+      // const { id } = await response.json();
 
       if (!response.ok) {
         toast.error("خطایی رخ داده است. لطفا دوباره تلاش کنید.");
@@ -110,10 +109,11 @@ export const ContactForm = () => {
         recaptchaRef.current?.reset(); // Reset reCAPTCHA after submission failure
         setRecaptchaToken(null);
       } else {
-        window.open(
-          `http://79.127.63.91:85/sysworkflow/en/neoclassic/8342895506741c0432e73e2039423696/1650390626741c073376e14096097197.php?id=${id}`,
-          "_blank"
-        );
+        // window.open(
+        //   `http://79.127.63.91:85/sysworkflow/en/neoclassic/8342895506741c0432e73e2039423696/1650390626741c073376e14096097197.php?id=${id}`,
+        //   "_blank"
+        // );
+        toast.success("فرم با موفقیت ارسال شد.");
         reset();
         recaptchaRef.current?.reset(); // Reset reCAPTCHA after successful submission
         setRecaptchaToken(null);
@@ -203,17 +203,16 @@ export const ContactForm = () => {
             onChange={handleRecaptchaChange}
             onExpired={() => setRecaptchaToken(null)} // Reset token if expired
             hl="fa" // Set language to Persian (for RTL support)
-            //dir="rtl" // Enable RTL direction
           />
         </div>
         <div>
           <button
             type="submit"
-            disabled={isSubmitting || !popupAllowed}
+            disabled={isSubmitting}
             className={`w-full text-center bg-[#fea925] rounded-[15px] cursor-pointer border 
                   border-solid border-[#fea925] h-[52px] font-[600] text-[#fff] text-[18px]
                    hover:bg-[#2c4050] hover:border-[#2c4050] transition-all duration-[0.5s] ${
-                     isSubmitting || !popupAllowed
+                     isSubmitting
                        ? "opacity-50 cursor-not-allowed pointer-events-none"
                        : ""
                    }`}
@@ -232,7 +231,7 @@ export const ContactForm = () => {
         </div>
       </form>
 
-      {!popupAllowed && (
+      {/* {!popupAllowed && (
         <div className="mt-4 p-4 bg-yellow-100 border border-yellow-400 text-yellow-700 rounded">
           <p>پنجره‌های بازشو مسدود شده‌اند. لطفاً مراحل زیر را دنبال کنید:</p>
           <ol className="list-decimal list-inside mt-2">
@@ -244,7 +243,7 @@ export const ContactForm = () => {
             <li>فرم را دوباره پر کرده و ارسال کنید.</li>
           </ol>
         </div>
-      )}
+      )} */}
     </>
   );
 };
