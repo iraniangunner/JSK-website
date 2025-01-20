@@ -130,7 +130,6 @@ html {
 
 /********Related projects slider buttons************/
 
-
 /***************End-of-ant-design-table-styles************************************************/
 .filter_btn {
   position: relative;
@@ -215,35 +214,3 @@ html {
   background-image: linear-gradient(to top, rgba(3, 15, 39, 0.7), transparent);
 }
 
-/* src/styles/Pagination.css */
-.pagination {
-  display: flex;
-  justify-content: center;
-  list-style-type: none;
-  direction: ltr;
-  padding: 0;
-}
-
-.pagination button {
-  margin: 0 5px;
-  padding: 5px 10px;
-  cursor: pointer;
-  border: 1px solid #ccc;
-  background-color: white;
-}
-
-.pagination button.active {
-  font-weight: bold;
-  background-color: #007bff;
-  color: white;
-}
-
-.pagination button:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-
-.pagination .ellipsis {
-  margin: 0 5px;
-  padding: 5px 10px;
-}
