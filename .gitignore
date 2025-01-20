@@ -10,7 +10,7 @@
 /coverage
 
 # local fonts
-#/public/fonts
+/public/fonts
 
 # next.js
 /.next/
