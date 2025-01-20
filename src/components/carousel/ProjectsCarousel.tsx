@@ -66,12 +66,16 @@ export const ProjectsCarousel = ({ projects }: { projects: ProjectsData }) => {
           spaceBetween: 40,
         },
         1024: {
-          slidesPerView: 2,
+          slidesPerView: 1,
           spaceBetween: 50,
         },
         1280: {
-          slidesPerView: 2,
+          slidesPerView: 1,
           spaceBetween: 30,
+        },
+        1536: {
+          slidesPerView: 2,
+          spaceBetween: 20,
         },
       }}
       loop={true}
@@ -83,7 +87,7 @@ export const ProjectsCarousel = ({ projects }: { projects: ProjectsData }) => {
         <SwiperSlide key={p.id}>
           <Slide delay={delays[index] || 0}>
             <div
-              className="relative h-full text-gray-700 group project_slider_container bg-white select-none"
+              className="relative h-full text-gray-700 border-[3px] border-gray-400  group project_slider_container bg-white select-none"
               style={{ fontFamily: "var(--font-yekanbakh)" }}
             >
               <div className="relative h-full">
@@ -103,10 +107,16 @@ export const ProjectsCarousel = ({ projects }: { projects: ProjectsData }) => {
                   </h3>
                   <div className="mb-4 h-[1px] bg-[rgb(225_230_238)] opacity-[0.4]"></div>
                   <div className="mb-6 opacity-0 group-hover:opacity-[1] grop transition-all duration-[0.3] delay-[0.1]">
-                    <div className="text-white">
-                      <p className="h-5"></p>
-                      {/*ToDo */}
-                      {/* {p.categories.map((item) => <span>{item}</span>)}*/}
+                    <div className="text-gray-300">
+                      <div className="h-5 flex flex-wrap">
+                        {p.categories.map((item) =>
+                          item.title === "همه" ? (
+                            ""
+                          ) : (
+                            <p key={item.id} className="ml-2 text-xs">#{item.title}</p>
+                          )
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>

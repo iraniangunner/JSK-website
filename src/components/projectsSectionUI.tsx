@@ -6,7 +6,7 @@ import { ProjectsData } from "@/types/projectTypes";
 
 export const ProjectsSectionUI = ({ projects }: { projects: ProjectsData }) => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 w-[90%] mx-auto gap-10 py-20 ">
+    <div className="grid grid-cols-1 lg:grid-cols-2 w-[90%] xl:w-[80%] mx-auto gap-10 py-20 ">
       <div className="order-2 lg:order-1">
         <ProjectsCarousel projects={projects} />
       </div>
