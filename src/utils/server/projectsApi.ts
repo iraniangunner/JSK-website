@@ -2,7 +2,8 @@ import "server-only";
 
 export async function getProjects() {
   const res = await fetch("https://jsk-co.com/api/projects", {
-    next: { revalidate: 3600 },
+    // next: { revalidate: 3600 },
+    cache: "no-store",
   });
 
   if (!res.ok) {
@@ -14,7 +15,8 @@ export async function getProjects() {
 
 export async function getProjectById(id: number) {
   const res = await fetch(`https://jsk-co.com/api/projects/${id}`, {
-    next: { revalidate: 3600 },
+    // next: { revalidate: 3600 },
+    cache: "no-store",
   });
 
   if (!res.ok) {
