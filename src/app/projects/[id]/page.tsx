@@ -1,17 +1,28 @@
 import NotFound from "@/app/not-found";
 import { CustomError } from "@/components/customError";
 import { SingleProject } from "@/components/project/singleProject";
+import { Project } from "@/types/projectTypes";
 import { getProjectById } from "@/utils/server/projectsApi";
 import { Metadata } from "next";
-type Props = {
-  params: { id: number };
-};
+
+export async function generateStaticParams() {
+  const projects = await fetch("https://jsk-co.com/api/projects").then((res) =>
+    res.json()
+  );
+
+  return projects.data.map((p: Project) => ({
+    id: p.id.toString(),
+  }));
+}
 
 export const generateMetadata = async ({
   params,
-}: Props): Promise<Metadata | undefined> => {
+}: {
+  params: { id: string };
+}): Promise<Metadata | undefined> => {
   try {
-    const project = await getProjectById(params.id);
+    const id = parseInt(params.id, 10);
+    const project = await getProjectById(id);
     return {
       title: {
         absolute: `پروژه ها | پروژه ${project.title}`,
@@ -46,9 +57,14 @@ export const generateMetadata = async ({
   }
 };
 
-export default async function ProjectPage({ params }: Props) {
+export default async function ProjectPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
   try {
-    const project = await getProjectById(params.id);
+    const project = await getProjectById(parseInt(id, 10));
     return <SingleProject project={project} />;
   } catch (error) {
     if (error instanceof Error && error.message === "No such project") {
