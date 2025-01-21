@@ -14,11 +14,7 @@ export const metadata: Metadata = {
   },
 };
 
-async function delay(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms))
-}
-
-export default async function Certifications() {
+export default function Certifications() {
   return (
     <>
       <PageCover title="گواهینامه ها و جوایز" bgImage="projects-pattern" />
