@@ -85,23 +85,23 @@ export const JobGrid = ({
         </select>
       </div>
 
+      {!isLoading && jobs && jobs.length === 0 && !error && (
+        <div className="text-center py-10 lg:py-20">
+          <p className="text-gray-500">هیچ موقعیت شغلی یافت نشد.</p>
+        </div>
+      )}
+
+      {error && (
+        <div className="text-center py-10 lg:py-20">
+          <p className="text-red-500">مشکلی پیش آمده دوباره تلاش کنید.</p>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         {isLoading &&
           Array.from({ length: 6 }).map((_, index) => (
             <JobCardSkeleton key={`skeleton-${index}`} />
           ))}
-
-        {error && (
-          <p className="text-red-500">مشکلی پیش آمده دوباره تلاش کنید</p>
-        )}
-
-        {!isLoading && jobs && jobs.length === 0 && !error && (
-          <div className="text-center py-10 lg:py-20">
-            <p className="text-gray-500">
-              هیچ شغلی با فیلترهای انتخاب شده یافت نشد.
-            </p>
-          </div>
-        )}
 
         {!isLoading &&
           jobs &&
