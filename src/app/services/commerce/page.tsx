@@ -114,15 +114,18 @@ export default function CommercialDepartment() {
 
       <section id="services" className="py-20">
         <div className="container mx-auto px-4">
-          <h1 className="text-2xl font-bold mb-4">معاونت بازرگانی</h1>
-          <p className="text-lg mb-16 text-justify text-gray-600">
-            شرکت ژیوار صنعت کیان به عنوان یک مجموعه بین‌المللی در زمینه تأمین و
-            خدمات مرتبط با پروژه‌های صنعتی و معدنی، با هدف ارائه راهکارهای جامع
-            و مؤثر به صنایع مختلف فعالیت می‌کند. ما با بهره‌گیری از دانش فنی،
-            تیم متخصص و شبکه‌ای گسترده از تأمین‌کنندگان و شرکای تجاری در سراسر
-            جهان، نیازهای مشتریان خود را با بالاترین کیفیت و در کوتاه‌ترین زمان
-            ممکن برآورده می‌کنیم.
-          </p>
+          {/* <h1 className="text-2xl font-bold mb-4">معاونت بازرگانی</h1> */}
+          <div className="flex justify-center items-center mb-16">
+            <p className="text-lg xl:text-xl text-justify text-gray-600 lg:w-[60%]">
+              شرکت ژیوار صنعت کیان به عنوان یک مجموعه بین‌المللی در زمینه تأمین
+              و خدمات مرتبط با پروژه‌های صنعتی و معدنی، با هدف ارائه راهکارهای
+              جامع و مؤثر به صنایع مختلف فعالیت می‌کند. ما با بهره‌گیری از دانش
+              فنی، تیم متخصص و شبکه‌ای گسترده از تأمین‌کنندگان و شرکای تجاری در
+              سراسر جهان، نیازهای مشتریان خود را با بالاترین کیفیت و در
+              کوتاه‌ترین زمان ممکن برآورده می‌کنیم.
+            </p>
+          </div>
+
           {sections.map((section, index) => (
             <div key={index} className="mb-16 lg:mb-24 xl:mb-32 last:mb-0">
               {/* <h2 className="text-3xl font-bold mb-8 text-center">
