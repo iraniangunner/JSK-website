@@ -117,7 +117,7 @@ export default function CommercialDepartment() {
           {/* <h1 className="text-2xl font-bold mb-4">معاونت بازرگانی</h1> */}
           <div className="flex justify-center items-center mb-16">
             <p className="text-lg xl:text-xl text-justify text-gray-600 lg:w-[60%]">
-              شرکت ژیوار صنعت کیان به عنوان یک مجموعه بین‌المللی در زمینه تأمین
+              شرکت <span className="font-bold italic"> ژیوار صنعت کیان</span> به عنوان یک مجموعه بین‌المللی در زمینه تأمین
               و خدمات مرتبط با پروژه‌های صنعتی و معدنی، با هدف ارائه راهکارهای
               جامع و مؤثر به صنایع مختلف فعالیت می‌کند. ما با بهره‌گیری از دانش
               فنی، تیم متخصص و شبکه‌ای گسترده از تأمین‌کنندگان و شرکای تجاری در
