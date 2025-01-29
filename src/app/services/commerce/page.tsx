@@ -23,7 +23,13 @@ export const metadata: Metadata = {
 const sections = [
   {
     title: "تأمین و خرید",
-    image: "service-1.jpeg",
+    images: [
+      { src: "service-1.jpeg", alt: "service-1" },
+      { src: "service-2.jpeg", alt: "service-2" },
+      { src: "service-3.jpeg", alt: "service-3" },
+      { src: "service-4.jpeg", alt: "service-4" },
+      { src: "service-5.jpeg", alt: "service-5" },
+    ],
     services: [
       {
         id: 0,
@@ -35,57 +41,67 @@ const sections = [
         title: "تأمین اقلام یدکی و مصرفی کارخانجات",
         desc: "با توجه به اهمیت تأمین به‌موقع قطعات یدکی و مصرفی در کاهش توقفات خطوط تولید، شرکت ما این اقلام را با تضمین کیفیت و از بهترین تأمین‌کنندگان بین‌المللی فراهم می‌کند.",
       },
-    ],
-  },
-  {
-    title: "مهندسی و تولید",
-    image: "service-1.jpeg",
-    services: [
+
       {
-        id: 0,
+        id: 2,
         title: "تأمین و سفارش‌گذاری اقلام اساسی کارخانه‌ها",
         desc: "ما در تأمین تجهیزات و اقلام حیاتی و استراتژیک کارخانه‌ها، از جمله ماشین‌آلات، تجهیزات تخصصی و مواد اولیه، خدمات کامل ارائه می‌دهیم. تیم ما با شناسایی نیازهای کارخانه‌ها، روند سفارش‌گذاری را تسهیل و مدیریت می‌کند.",
       },
       {
-        id: 1,
+        id: 3,
         title: "مهندسی خرید و سفارش قطعات ساختنی",
         desc: "با بهره‌گیری از تجربه و دانش مهندسی، ما در سفارش و تولید قطعات ساختنی بر اساس مشخصات فنی مورد نیاز، خدمات تخصصی ارائه می‌دهیم. این خدمات شامل طراحی، انتخاب مواد اولیه، نظارت بر فرآیند تولید و تضمین کیفیت قطعات است.",
       },
-    ],
-  },
-  {
-    title: "مواد اولیه و لجستیک",
-    image: "service-1.jpeg",
-    services: [
       {
-        id: 0,
+        id: 4,
         title: "خرید و فروش مواد اولیه صنایع معدنی و پتروشیمی",
         desc: "ما به عنوان یکی از تأمین‌کنندگان معتبر مواد اولیه صنایع معدنی و پتروشیمی، در زمینه خرید و فروش این محصولات فعالیت می‌کنیم. شبکه گسترده ما در بازارهای جهانی، امکان ارائه مواد با کیفیت و قیمت رقابتی را فراهم کرده است.",
       },
       {
-        id: 1,
+        id: 5,
         title: "خدمات لجستیک و حمل بین‌المللی",
         desc: "ما خدمات لجستیکی و حمل‌ونقل بین‌المللی را به صورت جامع ارائه می‌دهیم. این خدمات شامل برنامه‌ریزی حمل، مدیریت اسناد، هماهنگی‌های گمرکی و ارائه راهکارهای بهینه برای کاهش هزینه‌های حمل است.",
       },
-    ],
-  },
-  {
-    title: "مدیریت و برنامه‌ریزی",
-    image: "service-1.jpeg",
-    services: [
       {
-        id: 0,
+        id: 6,
         title:
           "برنامه‌ریزی و آماده‌سازی جدول ساختار شکست سفارشات و زیرساخت‌های تأمین",
         desc: "ما با استفاده از تکنیک‌های مدرن مدیریتی، جدول ساختار شکست سفارشات و زیرساخت‌های تأمین را برای پروژه‌های مختلف تدوین و پیاده‌سازی می‌کنیم. این فرآیند به شفاف‌سازی مسیر تأمین و افزایش بهره‌وری کمک می‌کند.",
       },
       {
-        id: 1,
+        id: 7,
         title: "فراهم‌کردن و پیاده‌سازی فرآیند تأمین ERP",
         desc: "در راستای مدرن‌سازی فرآیندهای تأمین، ما سیستم‌های ERP را برای مدیریت زنجیره تأمین طراحی و اجرا می‌کنیم. این خدمات شامل شناسایی نیازها، انتخاب نرم‌افزار مناسب و نظارت بر مراحل پیاده‌سازی است.",
       },
     ],
   },
+  // {
+  //   title: "مواد اولیه و لجستیک",
+  //   image: "service-2.jpeg",
+  //   services: [
+  //     {
+  //       id: 0,
+  //       title: "خرید و فروش مواد اولیه صنایع معدنی و پتروشیمی",
+  //       desc: "ما به عنوان یکی از تأمین‌کنندگان معتبر مواد اولیه صنایع معدنی و پتروشیمی، در زمینه خرید و فروش این محصولات فعالیت می‌کنیم. شبکه گسترده ما در بازارهای جهانی، امکان ارائه مواد با کیفیت و قیمت رقابتی را فراهم کرده است.",
+  //     },
+  //     {
+  //       id: 1,
+  //       title: "خدمات لجستیک و حمل بین‌المللی",
+  //       desc: "ما خدمات لجستیکی و حمل‌ونقل بین‌المللی را به صورت جامع ارائه می‌دهیم. این خدمات شامل برنامه‌ریزی حمل، مدیریت اسناد، هماهنگی‌های گمرکی و ارائه راهکارهای بهینه برای کاهش هزینه‌های حمل است.",
+  //     },
+  //     {
+  //       id: 2,
+  //       title:
+  //         "برنامه‌ریزی و آماده‌سازی جدول ساختار شکست سفارشات و زیرساخت‌های تأمین",
+  //       desc: "ما با استفاده از تکنیک‌های مدرن مدیریتی، جدول ساختار شکست سفارشات و زیرساخت‌های تأمین را برای پروژه‌های مختلف تدوین و پیاده‌سازی می‌کنیم. این فرآیند به شفاف‌سازی مسیر تأمین و افزایش بهره‌وری کمک می‌کند.",
+  //     },
+  //     {
+  //       id: 3,
+  //       title: "فراهم‌کردن و پیاده‌سازی فرآیند تأمین ERP",
+  //       desc: "در راستای مدرن‌سازی فرآیندهای تأمین، ما سیستم‌های ERP را برای مدیریت زنجیره تأمین طراحی و اجرا می‌کنیم. این خدمات شامل شناسایی نیازها، انتخاب نرم‌افزار مناسب و نظارت بر مراحل پیاده‌سازی است.",
+  //     },
+  //   ],
+  // },
 ];
 
 export default function CommercialDepartment() {
@@ -108,26 +124,42 @@ export default function CommercialDepartment() {
             ممکن برآورده می‌کنیم.
           </p>
           {sections.map((section, index) => (
-            <div key={index} className="mb-16 last:mb-0">
-              <h2 className="text-3xl font-bold mb-8 text-center">
+            <div key={index} className="mb-16 lg:mb-24 xl:mb-32 last:mb-0">
+              {/* <h2 className="text-3xl font-bold mb-8 text-center">
                 {section.title}
-              </h2>
+              </h2> */}
               <div
-                className={`flex flex-col lg:flex-row items-start gap-8 ${
+                className={`flex flex-col lg:flex-row items-start gap-8 lg:gap-16 ${
                   index % 2 === 0 ? "lg:flex-row-reverse" : ""
                 }`}
               >
-                <div className="w-full lg:w-1/2">
-                  <AccordionItem data={section.services} />
+                <div className="lg:w-1/2">
+                  <div className="grid grid-cols-2 gap-4">
+                    {section.images.map((image, index) => (
+                      <div
+                        key={index}
+                        className={`relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 ${
+                          index === 4 ? "col-span-2" : ""
+                        }`}
+                      >
+                        <Image
+                          src={"/images/" + image.src}
+                          alt={image.alt}
+                          width={600}
+                          height={400}
+                          className="w-full h-full object-cover"
+                        />
+                        {/* <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                          <h2 className="text-white text-xl font-bold text-center">
+                            {image.title}
+                          </h2>
+                        </div> */}
+                      </div>
+                    ))}
+                  </div>
                 </div>
                 <div className="w-full lg:w-1/2">
-                  <Image
-                    src={"/images/" + section.image}
-                    alt={section.title}
-                    className="w-full h-auto object-cover rounded-lg"
-                    width={500}
-                    height={300}
-                  />
+                  <AccordionItem data={section.services} />
                 </div>
               </div>
             </div>

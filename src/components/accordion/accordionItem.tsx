@@ -41,7 +41,7 @@ export function AccordionItem({ data }: { data: AccordionType[] }) {
   const handleOpen = (value: any) => setOpen(open === value ? 0 : value);
 
   return (
-    <>
+    <div>
       {data.map((item, index) => (
         <motion.div
           initial="hidden"
@@ -93,6 +93,6 @@ export function AccordionItem({ data }: { data: AccordionType[] }) {
           </Accordion>
         </motion.div>
       ))}
-    </>
+    </div>
   );
 }
