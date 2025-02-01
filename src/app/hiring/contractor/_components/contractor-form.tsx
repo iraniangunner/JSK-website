@@ -64,6 +64,8 @@ export function ContractorForm() {
           method: "POST",
           headers: {
             Accept: "application/json",
+            Authorization:
+              "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
           },
           mode: "cors",
           body: formData,

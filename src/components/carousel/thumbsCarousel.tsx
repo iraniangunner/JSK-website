@@ -37,14 +37,7 @@ export default function ProjectCarousel({ project }: { project: Project }) {
           {project.images.slice(1).map((image, index) => (
             <SwiperSlide key={index}>
               <div className="flex h-full w-full items-center justify-center">
-                {/* <Image
-                  src={image.full_path}
-                  alt="project-image"
-                  width={1280}
-                  height={675}
-                  className="w-full"
-                /> */}
-                <img
+                <Image
                   src={image.full_path}
                   alt="project-image"
                   width={1280}
@@ -77,14 +70,7 @@ export default function ProjectCarousel({ project }: { project: Project }) {
           {project.images.slice(1).map((image, index) => (
             <SwiperSlide key={index}>
               <button className="flex h-full w-full items-center justify-center">
-                {/* <Image
-                  src={image.full_path}
-                  width={300}
-                  height={100}
-                  alt="thumbnail-image"
-                  className="w-full"
-                /> */}
-                <img
+                <Image
                   src={image.full_path}
                   width={300}
                   height={100}

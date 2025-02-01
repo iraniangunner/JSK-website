@@ -17,7 +17,14 @@ export const fetchTenders = async (
   });
 
   const response = await fetch(
-    `https://jsk-co.com/api/tenders?${searchParams.toString()}`
+    `https://jsk-co.com/api/tenders?${searchParams.toString()}`,
+    {
+      next: { revalidate: 3600 },
+      headers: {
+        Authorization:
+          "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
+      },
+    }
   );
 
   if (!response.ok) {

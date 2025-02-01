@@ -14,7 +14,14 @@ const fetchJobs = async (params: JobSearchParams): Promise<JobResponse[]> => {
   }
 
   const response = await fetch(
-    `https://jsk-co.com/api/job-opportunities?${queryParams.toString()}`
+    `https://jsk-co.com/api/job-opportunities?${queryParams.toString()}`,
+    {
+      next: { revalidate: 3600 },
+      headers: {
+        Authorization:
+          "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
+      },
+    }
   );
 
   if (!response.ok) {

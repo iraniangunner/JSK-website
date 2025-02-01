@@ -2,13 +2,11 @@ import NotFound from "@/app/not-found";
 import { CustomError } from "@/components/customError";
 import { SingleProject } from "@/components/project/singleProject";
 import { Project } from "@/types/projectTypes";
-import { getProjectById } from "@/utils/server/projectsApi";
+import { getProjectById, getProjects } from "@/utils/server/projectsApi";
 import { Metadata } from "next";
 
 export async function generateStaticParams() {
-  const projects = await fetch("https://jsk-co.com/api/projects").then((res) =>
-    res.json()
-  );
+  const projects = await getProjects();
 
   return projects.data.map((p: Project) => ({
     id: p.id.toString(),

@@ -24,30 +24,6 @@ type FormValues = z.infer<typeof formSchema>;
 export const ContactForm = () => {
   const recaptchaRef = useRef<ReCAPTCHA>(null); // Reference to the reCAPTCHA instance
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
-  // const [popupAllowed, setPopupAllowed] = useState(true);
-
-  // useEffect(() => {
-  //   const checkPopupBlocked = () => {
-  //     const testPopup = window.open(
-  //       "",
-  //       "_blank",
-  //       "width=1,height=1,left=0,top=0"
-  //     );
-  //     if (
-  //       testPopup === null ||
-  //       testPopup.closed ||
-  //       typeof testPopup.closed === "undefined"
-  //     ) {
-  //       // toast.error("پنجره‌های بازشو مسدود شده‌اند. لطفاً آنها را فعال کنید");
-  //       setPopupAllowed(false);
-  //     } else {
-  //       testPopup.close();
-  //       setPopupAllowed(true);
-  //     }
-  //   };
-
-  //   checkPopupBlocked();
-  // }, []);
 
   const {
     register,
@@ -97,11 +73,15 @@ export const ContactForm = () => {
 
       const response = await fetch("https://jsk-co.com/api/comments", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        next: { revalidate: 3600 },
+
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
+        },
         body: JSON.stringify(trimmedData),
       });
-
-      // const { id } = await response.json();
 
       if (!response.ok) {
         toast.error("خطایی رخ داده است. لطفا دوباره تلاش کنید.");
@@ -109,17 +89,12 @@ export const ContactForm = () => {
         recaptchaRef.current?.reset(); // Reset reCAPTCHA after submission failure
         setRecaptchaToken(null);
       } else {
-        // window.open(
-        //   `http://79.127.63.91:85/sysworkflow/en/neoclassic/8342895506741c0432e73e2039423696/1650390626741c073376e14096097197.php?id=${id}`,
-        //   "_blank"
-        // );
         toast.success("فرم با موفقیت ارسال شد.");
         reset();
         recaptchaRef.current?.reset(); // Reset reCAPTCHA after successful submission
         setRecaptchaToken(null);
       }
     } catch (error) {
-      // console.error("Error submitting form:", error);
       toast.error("خطایی رخ داده است. لطفا دوباره تلاش کنید.");
       recaptchaRef.current?.reset(); // Reset reCAPTCHA after catching an error
       setRecaptchaToken(null);
