@@ -5,6 +5,7 @@
 
 html {
   font-family: var(--font-yekanbakh);
+  scroll-behavior: smooth !important;
   ::placeholder {
     @apply text-xs;
   }
@@ -213,4 +214,3 @@ html {
 .project_slider_content {
   background-image: linear-gradient(to top, rgba(3, 15, 39, 0.7), transparent);
 }
-
