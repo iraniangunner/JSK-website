@@ -98,6 +98,28 @@ export default function ResumeForm() {
         throw new Error("Failed to submit the form");
       }
 
+      // Send email notification
+      const emailResponse = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          to: data.email,
+          subject: "تایید دریافت رزومه",
+          html: `<p><strong>${data.name}</strong> عزیز،
+
+با تشکر از ارسال رزومه شما. ما درخواست شما را دریافت کردیم و به زودی آن را بررسی خواهیم کرد.
+
+با احترام،
+تیم استخدام</p>`,
+        }),
+      });
+
+      if (!emailResponse.ok) {
+        throw new Error("Failed to send email notification");
+      }
+
       setSubmitSuccess(true);
       reset();
       setResumeFile(null);

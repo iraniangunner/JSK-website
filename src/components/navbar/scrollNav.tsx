@@ -95,7 +95,7 @@ export function ScrollNav() {
           >
             <Image
               src={jsk}
-              alt="JSK logo"
+              alt="JSK-logo"
               width={120}
               height={24}
               className="w-full h-full"

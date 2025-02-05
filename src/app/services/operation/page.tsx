@@ -6,15 +6,15 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "خدمات | بازرگانی و تامین اقلام پروژه",
+    absolute: "خدمات | بهره برداری پروژه های صنعتی و معدنی",
   },
   description:
     "شرکت ژیوار صنعت کیان به عنوان یک مجموعه بین‌المللی در زمینه تأمین و خدمات مرتبط با پروژه‌های صنعتی و معدنی، با هدف ارائه راهکارهای جامع و مؤثر به صنایع مختلف فعالیت می‌کند. ما با بهره‌گیری از دانش فنی، تیم متخصص و شبکه‌ای گسترده از تأمین‌کنندگان و شرکای تجاری در سراسر جهان، نیازهای مشتریان خود را با بالاترین کیفیت و در کوتاه‌ترین زمان ممکن برآورده می‌کنیم.",
   alternates: {
-    canonical: "/services/commerce",
+    canonical: "/services/operation",
   },
   openGraph: {
-    title: "خدمات | بازرگانی و تامین اقلام پروژه",
+    title: "خدمات | بهره برداری پروژه های صنعتی و معدنی",
     description:
       "شرکت ژیوار صنعت کیان به عنوان یک مجموعه بین‌المللی در زمینه تأمین و خدمات مرتبط با پروژه‌های صنعتی و معدنی، با هدف ارائه راهکارهای جامع و مؤثر به صنایع مختلف فعالیت می‌کند. ما با بهره‌گیری از دانش فنی، تیم متخصص و شبکه‌ای گسترده از تأمین‌کنندگان و شرکای تجاری در سراسر جهان، نیازهای مشتریان خود را با بالاترین کیفیت و در کوتاه‌ترین زمان ممکن برآورده می‌کنیم.",
   },
@@ -22,7 +22,6 @@ export const metadata: Metadata = {
 
 const sections = [
   {
-    title: "تأمین و خرید",
     images: [
       { src: "service-1.jpeg", alt: "service-1" },
       { src: "service-2.jpeg", alt: "service-2" },
@@ -77,11 +76,11 @@ const sections = [
   },
 ];
 
-export default function CommercialDepartment() {
+export default function OperationDepartment() {
   return (
     <div className="mx-auto text-right">
       <PageCover
-        title="بازرگانی و تامین اقلام پروژه"
+        title="بهره برداری پروژه های صنعتی و معدنی"
         bgImage="projects-pattern"
       />
 

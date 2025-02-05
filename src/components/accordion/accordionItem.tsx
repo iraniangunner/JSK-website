@@ -76,7 +76,7 @@ export function AccordionItem({ data }: { data: AccordionType[] }) {
               className="text-base font-normal"
               style={{ fontFamily: "var(--font-yekanbakh)" }}
             >
-              <p>{item.desc}</p>
+              <p className="text-justify leading-10">{item.desc}</p>
               {item.link ? (
                 <Link
                   href={item.link}

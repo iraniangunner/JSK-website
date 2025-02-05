@@ -22,7 +22,6 @@ export const metadata: Metadata = {
 
 const sections = [
   {
-    title: "تأمین و خرید",
     images: [
       { src: "service-1.jpeg", alt: "service-1" },
       { src: "service-2.jpeg", alt: "service-2" },
