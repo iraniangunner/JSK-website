@@ -66,7 +66,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
     },
     {
-      url: `${baseUrl}/services/cmmerce`,
+      url: `${baseUrl}/services/commerce`,
       lastModified: new Date(),
     },
     {
