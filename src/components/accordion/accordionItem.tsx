@@ -73,10 +73,21 @@ export function AccordionItem({ data }: { data: AccordionType[] }) {
               {item.title}
             </AccordionHeader>
             <AccordionBody
-              className="text-base font-normal"
+              className="font-normal text-[16px]"
               style={{ fontFamily: "var(--font-yekanbakh)" }}
             >
-              <p className="text-justify leading-10">{item.desc}</p>
+              {Array.isArray(item.desc) ? (
+                <ol className="list-disc pr-5">
+                  {item.desc.map((item, index) => (
+                    <li key={index} className="mt-2 text-justify leading-8">
+                      {item}
+                    </li>
+                  ))}
+                </ol>
+              ) : (
+                <p className="text-justify leading-10">{item.desc}</p>
+              )}
+
               {item.link ? (
                 <Link
                   href={item.link}

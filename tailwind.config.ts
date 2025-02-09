@@ -23,7 +23,7 @@ const config: Config = withMT({
       keyframes: {
         slideInWithDamping: {
           "0%": { transform: "translateY(-50px)", opacity: "0" },
-          "60%": { transform: "translateY(5px)", opacity: "1" }, // Slight overshoot for spring effect
+          "60%": { transform: "translateY(5px)", opacity: "1" },
           "100%": { transform: "translateY(0)", opacity: "1" },
         },
         slideOutWithDamping: {
