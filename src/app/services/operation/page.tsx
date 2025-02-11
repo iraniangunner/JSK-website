@@ -23,11 +23,11 @@ export const metadata: Metadata = {
 const sections = [
   {
     images: [
-      { src: "service-1.jpeg", alt: "service-1" },
-      { src: "service-2.jpeg", alt: "service-2" },
-      { src: "service-3.jpeg", alt: "service-3" },
-      { src: "service-4.jpeg", alt: "service-4" },
-      { src: "service-5.jpeg", alt: "service-5" },
+      { src: "operation-1.jpg", alt: "operation-1" },
+      { src: "operation-2.jpg", alt: "operation-2" },
+      { src: "operation-3.jpg", alt: "operation-3" },
+      { src: "operation-5.jpg", alt: "operation-5" },
+      { src: "operation-4.jpg", alt: "operation-4" },
     ],
     services: [
       {
@@ -111,17 +111,25 @@ export default function OperationDepartment() {
 
       <section id="services" className="py-20">
         <div className="container mx-auto px-4">
-          <div className="flex justify-center items-center mb-16">
-            <p className="text-lg xl:text-xl text-justify text-gray-600 lg:w-[60%]">
-              این دوره شامل تولید کالا و یا ارائه خدماتی است که طرح به منظور
-              تامین آنها، اجرا شده است و شامل مراحل زیر است: 1- مرحله{" "}
-              <span className="font-bold italic">بهره برداری آزمایشی</span> که
-              در برگیرنده شروع بهره‌برداری با تولید محدود (کمتر از ظرفیت طرح)
-              بوده و آزمایش‌های عملکردی دستگاه‌ها و تجهیزات در این مرحله صورت
-              می‌پذیرد 2- مرحله{" "}
-              <span className="font-bold italic">بهره برداری تجاری</span> که
-              همان شروع تولید با ظرفیت کامل می‌باشد.
-            </p>
+          <div className="mb-16 flex justify-center items-center">
+            <div className="lg:w-[60%]">
+              <p className="text-lg xl:text-xl text-justify text-gray-600">
+                این دوره شامل تولید کالا و یا ارائه خدماتی است که طرح به منظور
+                تامین آنها، اجرا شده است و شامل مراحل زیر است:
+              </p>
+              <ul className="text-gray-600">
+                <li className="mt-2 leading-10">
+                  -مرحله <span className="font-bold">بهره‌برداری آزمایشی</span>{" "}
+                  که در برگیرنده شروع بهره‌برداری با تولید محدود (کمتر از ظرفیت
+                  طرح) بوده و آزمایش‌های عملکردی دستگاه‌ها و تجهیزات در این
+                  مرحله صورت می‌پذیرد.
+                </li>
+                <li className="mt-2">
+                  -مرحله <span className="font-bold">بهره‌برداری تجاری</span> که
+                  همان شروع تولید با ظرفیت کامل می‌باشد.
+                </li>
+              </ul>
+            </div>
           </div>
 
           {sections.map((section, index) => (
@@ -147,11 +155,6 @@ export default function OperationDepartment() {
                           height={400}
                           className="w-full h-full object-cover"
                         />
-                        {/* <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                          <h2 className="text-white text-xl font-bold text-center">
-                            {image.title}
-                          </h2>
-                        </div> */}
                       </div>
                     ))}
                   </div>

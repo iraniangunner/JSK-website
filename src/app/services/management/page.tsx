@@ -95,11 +95,6 @@ export default function ManagementDepartment() {
                           height={400}
                           className="w-full h-full object-cover"
                         />
-                        {/* <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                          <h2 className="text-white text-xl font-bold text-center">
-                            {image.title}
-                          </h2>
-                        </div> */}
                       </div>
                     ))}
                   </div>

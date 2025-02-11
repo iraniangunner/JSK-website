@@ -176,7 +176,7 @@ export function TendersTable() {
           </div>
 
           <div className="space-y-4">
-            <div className="h-[calc(100vh-200px)] overflow-y-auto rounded-md border border-gray-200">
+            <div className="h-[calc(100vh-200px)] overflow-y-auto rounded-md border border-gray-400">
               <div className="space-y-4 p-4 h-full">
                 {isLoading ? (
                   <TenderSkeletons />

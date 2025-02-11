@@ -1,4 +1,3 @@
-
 import { Metadata } from "next";
 import { ProjectsGrid } from "@/components/project/projectsGrid";
 import { Suspense } from "react";
