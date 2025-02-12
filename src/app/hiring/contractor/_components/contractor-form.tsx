@@ -3,7 +3,6 @@ import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 type FormInputs = {
-  full_name: string;
   company_name: string;
   phone: string;
   mobile: string;
@@ -111,28 +110,6 @@ export function ContractorForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label
-                  htmlFor="full_name"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  نام و نام خانوادگی *
-                </label>
-                <input
-                  {...register("full_name", {
-                    required: "نام و نام خانوادگی الزامی است",
-                  })}
-                  id="full_name"
-                  type="text"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-                {errors.full_name && (
-                  <p className="mt-1 text-xs text-red-600">
-                    {errors.full_name.message}
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <label
                   htmlFor="company_name"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
@@ -152,9 +129,6 @@ export function ContractorForm() {
                   </p>
                 )}
               </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label
                   htmlFor="phone"
@@ -176,7 +150,9 @@ export function ContractorForm() {
                   </p>
                 )}
               </div>
+            </div>
 
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label
                   htmlFor="mobile"

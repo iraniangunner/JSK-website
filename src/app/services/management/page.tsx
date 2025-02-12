@@ -23,11 +23,11 @@ export const metadata: Metadata = {
 const sections = [
   {
     images: [
-      { src: "service-1.jpeg", alt: "service-1" },
-      { src: "service-2.jpeg", alt: "service-2" },
-      { src: "service-3.jpeg", alt: "service-3" },
-      { src: "service-4.jpeg", alt: "service-4" },
-      { src: "service-5.jpeg", alt: "service-5" },
+      { src: "management-1.jpg", alt: "management-1" },
+      { src: "management-2.jpg", alt: "management-2" },
+      { src: "management-3.jpg", alt: "management-3" },
+      { src: "management-4.jpg", alt: "management-4" },
+      { src: "management-5.jpg", alt: "management-5" },
     ],
     services: [
       {
