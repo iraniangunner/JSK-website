@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import type React from "react";
+
+import { type SubmitHandler, useForm } from "react-hook-form";
 
 type FormInputs = {
   company_name: string;
@@ -25,6 +27,7 @@ export function ContractorForm() {
     formState: { errors },
     clearErrors,
     watch,
+    setError,
   } = useForm<FormInputs>();
 
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
@@ -87,8 +90,17 @@ export function ContractorForm() {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      clearErrors("cooperation_file");
-      setFileUploaded(e.target.files[0]);
+      const file = e.target.files[0];
+      if (file.size > 8 * 1024 * 1024) {
+        // 8MB in bytes
+        setError("cooperation_file", {
+          type: "manual",
+          message: "حجم فایل باید کمتر از 8 مگابایت باشد",
+        });
+      } else {
+        clearErrors("cooperation_file");
+        setFileUploaded(file);
+      }
     }
   };
 
@@ -255,7 +267,7 @@ export function ContractorForm() {
                   آپلود فایل
                 </h3>
                 <p className="text-xs text-gray-600">
-                  لطفا فایل خود را آپلود کنید. (حجم حداکثر ۵ مگابایت و فرمت فایل
+                  لطفا فایل خود را آپلود کنید. (حجم حداکثر ۸ مگابایت و فرمت فایل
                   باید pdf باشد)
                 </p>
               </div>
@@ -286,10 +298,17 @@ export function ContractorForm() {
                         برای آپلود کلیک کنید
                       </span>
                     </p>
-                    <p className="text-xs text-gray-500">PDF(MAX. 5MB)</p>
+                    <p className="text-xs text-gray-500">PDF(MAX. 8MB)</p>
                   </div>
                   <input
-                    {...register("cooperation_file")}
+                    {...register("cooperation_file", {
+                      validate: (value: any) => {
+                        if (value[0] && value[0].size > 8 * 1024 * 1024) {
+                          return "حجم فایل باید کمتر از 8 مگابایت باشد";
+                        }
+                        return true;
+                      },
+                    })}
                     id="file-upload"
                     name="file-upload"
                     type="file"
@@ -306,7 +325,7 @@ export function ContractorForm() {
               )}
               {errors.cooperation_file && (
                 <p className="mt-1 text-xs text-red-600">
-                  {errors.cooperation_file.message}
+                  {errors.cooperation_file.message || "خطا در آپلود فایل"}
                 </p>
               )}
             </div>

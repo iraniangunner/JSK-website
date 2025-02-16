@@ -1,6 +1,7 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import type React from "react";
+import { useState, useEffect } from "react";
+import { useForm, type SubmitHandler, Controller } from "react-hook-form";
 import DatePicker, { DateObject } from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
@@ -37,6 +38,14 @@ const formatDateToString = (date: any) => {
   return persianToEnglish(persianDate);
 };
 
+const validateFileSize = (file: File) => {
+  const maxSize = 8 * 1024 * 1024; // 8MB in bytes
+  if (file.size > maxSize) {
+    return "حجم فایل نباید بیشتر از 8 مگابایت باشد";
+  }
+  return true;
+};
+
 export default function ResumeForm() {
   const {
     register,
@@ -46,6 +55,7 @@ export default function ResumeForm() {
     clearErrors,
     reset,
     setValue,
+    setError,
   } = useForm<FormInputs>();
   const [resumeFile, setResumeFile] = useState<File | null>();
   const [selectedGender, setSelectedGender] = useState("");
@@ -132,8 +142,15 @@ export default function ResumeForm() {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      clearErrors("resume_file");
-      setResumeFile(e.target.files[0]);
+      const file = e.target.files[0];
+      const validationResult = validateFileSize(file);
+      if (validationResult === true) {
+        clearErrors("resume_file");
+        setResumeFile(file);
+      } else {
+        setError("resume_file", { type: "manual", message: validationResult });
+        setResumeFile(null);
+      }
     }
   };
 
@@ -453,7 +470,7 @@ export default function ResumeForm() {
                 آپلود رزومه *
               </h3>
               <p className="text-xs text-gray-600">
-                لطفا فایل رزومه خود را آپلود کنید. (حجم حداکثر ۵ مگابایت و فرمت
+                لطفا فایل رزومه خود را آپلود کنید. (حجم حداکثر ۸ مگابایت و فرمت
                 فایل باید pdf باشد)
               </p>
             </div>
@@ -481,12 +498,18 @@ export default function ResumeForm() {
                   <p className="mb-2 text-sm text-gray-500">
                     <span className="font-semibold">برای آپلود کلیک کنید</span>
                   </p>
-                  <p className="text-xs text-gray-500">PDF(MAX. 5MB)</p>
+                  <p className="text-xs text-gray-500">PDF(MAX. 8MB)</p>
                 </div>
                 <input
                   id="resume-upload"
                   {...register("resume_file", {
                     required: "فایل رزومه الزامیست",
+                    validate: (value: any) => {
+                      if (value[0]) {
+                        return validateFileSize(value[0]);
+                      }
+                      return true;
+                    },
                   })}
                   type="file"
                   className="hidden"
