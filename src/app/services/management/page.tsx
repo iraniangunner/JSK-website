@@ -61,7 +61,7 @@ export default function ManagementDepartment() {
       <section id="services" className="py-20">
         <div className="container mx-auto px-4">
           <div className="flex justify-center items-center mb-16">
-            <p className="text-lg xl:text-xl text-justify text-gray-600 lg:w-[60%]">
+            <p className="text-lg xl:text-xl text-justify text-gray-600 lg:w-[70%]">
               تخصص شرکت{" "}
               <span className="font-bold italic">ژیوار صنعت کیان </span>، ارائه
               خدمات جامع مدیریت پروژه است که به کارفرما کمک می‌کند تا پروژه‌های

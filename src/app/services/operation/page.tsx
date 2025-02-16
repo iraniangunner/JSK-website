@@ -112,12 +112,14 @@ export default function OperationDepartment() {
       <section id="services" className="py-20">
         <div className="container mx-auto px-4">
           <div className="mb-16 flex justify-center items-center">
-            <div className="lg:w-[60%]">
+            <div className="lg:w-[70%]">
               <p className="text-lg xl:text-xl text-justify text-gray-600">
-                این دوره شامل تولید کالا و یا ارائه خدماتی است که طرح به منظور
-                تامین آنها، اجرا شده است و شامل مراحل زیر است:
+                خدمات شرکت{" "}
+                <span className="font-bold italic">ژیوار صنعت کیان</span> در
+                حوزه بهره برداری پروژه های صنعتی شامل دو مرحله بهره برداری
+                آزمایشی و تجاری بوده و دربرگیرنده حوزه های ذیل خواهد بود:
               </p>
-              <ul className="text-gray-600">
+              {/* <ul className="text-gray-600">
                 <li className="mt-2 leading-10">
                   -مرحله <span className="font-bold">بهره‌برداری آزمایشی</span>{" "}
                   که در برگیرنده شروع بهره‌برداری با تولید محدود (کمتر از ظرفیت
@@ -128,7 +130,7 @@ export default function OperationDepartment() {
                   -مرحله <span className="font-bold">بهره‌برداری تجاری</span> که
                   همان شروع تولید با ظرفیت کامل می‌باشد.
                 </li>
-              </ul>
+              </ul> */}
             </div>
           </div>
 

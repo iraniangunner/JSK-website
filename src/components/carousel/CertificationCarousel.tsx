@@ -36,7 +36,7 @@ export function CertificationsCarousel() {
 
   return (
     <div className="w-full max-w-4xl mx-auto">
-      <h2 className="text-2xl font-bold mb-4">گواهینامه های شرکت</h2>
+      {/* <h2 className="text-2xl font-bold mb-4">گواهینامه های شرکت</h2> */}
       <div className="border border-gray-400 rounded-lg p-4 select-none">
         {loading ? (
           // Skeleton loader

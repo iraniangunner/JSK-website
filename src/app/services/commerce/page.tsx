@@ -87,7 +87,7 @@ export default function CommercialDepartment() {
       <section id="services" className="py-20">
         <div className="container mx-auto px-4">
           <div className="flex justify-center items-center mb-16">
-            <p className="text-lg xl:text-xl text-justify text-gray-600 lg:w-[60%]">
+            <p className="text-lg xl:text-xl text-justify text-gray-600 lg:w-[70%]">
               شرکت <span className="font-bold italic"> ژیوار صنعت کیان</span> به
               عنوان یک مجموعه بین‌المللی در زمینه تأمین و خدمات مرتبط با
               پروژه‌های صنعتی و معدنی، با هدف ارائه راهکارهای جامع و مؤثر به
