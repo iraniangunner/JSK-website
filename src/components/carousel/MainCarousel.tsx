@@ -10,7 +10,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import { Slide } from "@/types/mainSliderTypes";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 
 export const MainCarousel = ({ data }: { data: Slide[] }) => {
   const [activeSlideIndex, setActiveStyleIndex] = useState<number>(0);

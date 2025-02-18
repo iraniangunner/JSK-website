@@ -1,6 +1,6 @@
 import Backdrop from "./backdrop";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import {
   Accordion,
   AccordionHeader,
@@ -43,7 +43,7 @@ const strings = [
       },
       {
         title: "همکاری شرکت ها",
-        linkAddress: "/hiring/contractor",
+        linkAddress: "/hiring/cooperation",
       },
     ],
   },

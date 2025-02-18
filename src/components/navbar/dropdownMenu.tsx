@@ -6,7 +6,7 @@ import {
   MenuList,
   MenuItem,
 } from "@material-tailwind/react";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import { DropdownItemType } from "@/types/dropdownItemTypes";
 

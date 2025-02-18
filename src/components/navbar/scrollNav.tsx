@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import {Link} from '@/i18n/routing';
 import { Navbar, MenuItem, IconButton } from "@material-tailwind/react";
 import MenuModal from "./navModal";
 import { AnimatePresence } from "framer-motion";
@@ -43,7 +43,7 @@ const strings = [
       },
       {
         title: "همکاری شرکت ها",
-        linkAddress: "/hiring/contractor",
+        linkAddress: "/hiring/cooperation",
       },
     ],
   },

@@ -7,7 +7,7 @@ import {
   AccordionBody,
 } from "@material-tailwind/react";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 
 function Icon({ id, open }: { id: number; open: number }) {
   return (

@@ -1,6 +1,4 @@
 "use client";
-import Image from "next/image";
-import pic3 from "../../public/images/pic3.jpg";
 import { motion } from "framer-motion";
 
 export function AboutUsImage() {

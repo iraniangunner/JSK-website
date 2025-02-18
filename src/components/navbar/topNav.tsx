@@ -1,24 +1,41 @@
 "use client";
 import Image from "next/image";
 import { FaPhoneFlip } from "react-icons/fa6";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { MdEmail } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 import jsk from "../../../public/images/jsk.png";
+import LocalSwitcher from "../local-switcher";
+import { useLocale } from "next-intl";
 
 export default function TopNav() {
-
+  const locale = useLocale();
   return (
     <div className="hidden sticky top-0 lg:flex items-center justify-center gap-4 lg:gap-8 bg-white pt-[10px]">
       <div className="flex justify-center items-center">
         <Link
           href="/"
-          className="block relative cursor-pointer font-medium h-auto lg:h-[68px]
-          before:content-[''] before:absolute before:right-[100%] 
-          before:bottom-0 before:border-l-[50px] before:border-l-transparent 
+          className={`block relative cursor-pointer font-medium h-auto lg:h-[68px]
+          before:content-[''] before:absolute ${
+            locale === "fa" ? "before:right-[100%]" : "before:left-[100%]"
+          } 
+          before:bottom-0 ${
+            locale === "fa"
+              ? "before:border-l-[50px]"
+              : "before:border-r-[50px]"
+          }
+            ${
+              locale === "fa"
+                ? "before:border-l-transparent"
+                : "before:border-r-transparent"
+            } 
           before:border-b-[68px] before:border-b-[#ffa500]
-          after:content-[''] after:absolute after:left-[100%] 
-          after:bottom-0 after:min-w-[100vw] after:h-[100%] after:bg-[#ffa500] xl:mr-auto"
+          after:content-[''] after:absolute ${
+            locale === "fa" ? "after:left-[100%]" : "after:right-[100%]"
+          } 
+          after:bottom-0 after:min-w-[100vw] after:h-[100%] after:bg-[#ffa500] ${
+            locale === "fa" ? "xl:mr-auto" : "xl:ml-auto"
+          }`}
         >
           <Image
             src={jsk}
@@ -74,11 +91,9 @@ export default function TopNav() {
           </div>
         </div>
       </div>
-      {/* <div className="flex justify-center items-center gap-1 lg:mr-10">
-       
-        <ConvertLanguageBtn />
-      
-      </div> */}
+      <div className="flex justify-center items-center gap-1 lg:mr-10">
+        <LocalSwitcher />
+      </div>
     </div>
   );
 }

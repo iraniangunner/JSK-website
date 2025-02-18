@@ -1,0 +1,57 @@
+{
+  "LocaleLayout": {
+    "title": "Zhivar Sanat Kian",
+    "default": "Zhivar Sanat Kian | Main page",
+    "description": "Zhivar Sanat Kian - Implementation and Operation of Industrial and Mining Projects"
+  },
+  "About": {
+    "title": "About Us",
+    "default": "Zhivar Sanat Kian | About Us",
+    "description": "About Zhivar Sanat Kian"
+  },
+  "Contact": {
+    "title": "Contact Us",
+    "default": "Zhivar Sanat Kian | Contact Us",
+    "description": "Zhivar Sanat Kian Contact Information"
+  },
+  "Certifications": {
+    "title": "Certifications",
+    "default": "Zhivar Sanat Kian | Certifications",
+    "description": "Zhivar Sanat Kian Certifications and Awards"
+  },
+  "Projects": {
+    "title": "Projects",
+    "default": "Zhivar Sanat Kian | Projects",
+    "description": "Zhivar Sanat Kian Projects"
+  },
+  "Tenders": {
+    "title": "Tenders",
+    "default": "Zhivar Sanat Kian | Tenders",
+    "description": "Zhivar Sanat Kian Tenders"
+  },
+  "Commerce": {
+    "title": "Services | Trade and Project Supply Items",
+    "default": "Services | Trade and Project Supply Items",
+    "description": "Zhivar Sanat Kian, as an international organization, operates in the field of supply and services related to industrial and mining projects, with the aim of providing comprehensive and effective solutions to various industries. By leveraging technical knowledge, a specialized team, and an extensive network of suppliers and business partners worldwide, we meet the needs of our customers with the highest quality and in the shortest possible time."
+  },
+  "Management": {
+    "title": "Services | Industrial and Mining Projects Management",
+    "default": "Services | Industrial and Mining Projects Management",
+    "description": "The expertise of Zhivar Sanat Kian lies in providing comprehensive project management services that help the client complete their projects on time, within the defined scope and budget, and with the desired quality. Our team is committed to delivering high-quality services tailored to the unique needs of the client, especially in EPC (Engineering, Procurement, and Construction) projects."
+  },
+  "Operation": {
+    "title": "Services | Industrial and Mining Projects Operation",
+    "default": "Services | Industrial and Mining Projects Operation",
+    "description": "Zhivar Sanat Kian's services in the field of operation of industrial projects include two phases: trial operation and commercial operation."
+  },
+  "CompanyCooperation": {
+    "title": "Company Cooperation",
+    "default": "Zhivar Sanat Kian | Company Cooperation",
+    "description": "Company Collaboration Request Form"
+  },
+  "Hiring": {
+    "title": "Job Opportunities",
+    "default": "Zhivar Sanat Kian | Job Opportunities",
+    "description": "Zhivar Sanat Kian Job Opportunities"
+  }
+}
