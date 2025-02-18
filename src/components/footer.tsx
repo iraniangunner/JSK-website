@@ -6,7 +6,7 @@ import { MdEmail } from "react-icons/md";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import jsk from "../../public/images/Logo_White.png";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 
 const LINKS = [
   {
