@@ -4,6 +4,52 @@
     "default": "Zhivar Sanat Kian | Main page",
     "description": "Zhivar Sanat Kian - Implementation and Operation of Industrial and Mining Projects"
   },
+  "Header": {
+    "Address": {
+      "title": "Address",
+      "description": "Tehran, Vanak Square, Molla Sadra Street, Shad Street, Baghsara Alley, No. 13"
+    },
+    "Phone": {
+      "title": "Phone"
+    },
+    "Email": {
+      "title": "Email"
+    }
+  },
+  "Menu": {
+    "home": "Home",
+    "services": "Services",
+    "commerce": "Commerce & Project Supply",
+    "operation": "Industrial & Mining Operations",
+    "management": "Industrial & Mining Management",
+    "certifications": "Certifications",
+    "projects": "Projects",
+    "tenders": "Tenders",
+    "about": "About Us",
+    "cooperation": "Join Us",
+    "jobs": "Job Opportunities",
+    "companyCooperation": "Company Cooperation",
+    "contact": "Contact Us"
+  },
+  "Footer": {
+    "Links": {
+      "about": "About Us",
+      "contact": "Contact Us",
+      "projects": "Projects",
+      "tenders": "Tenders",
+      "jobs": "Job Opportunities"
+    },
+    "text": "Zhivar Sanat Kian's services cover a wide range of activities related to engineering services, equipment supply, installation and commissioning, and operation (maintenance, manpower supply and management, etc.) of industrial and mining projects.",
+    "description": "© All rights reserved and owned by Zhivar Sanat Kian Company."
+  },
+  "ServicesSection": {
+    "title": "Zhivar Sanat Kian Services",
+    "description": "Zhivar Sanat Kian, comprised of a young, experienced, and technically skilled team, was established in 2021 with the goal of playing a greater role in the country's development. The company has made remarkable strides in asset preservation, safety, environmental friendliness, responsibility, business ethics, innovation, and excellence. Leveraging its valuable experience in executing industrial projects, it has sought synergy to attract and undertake national projects. Equipped for the execution of large-scale industrial and mining projects, pump stations, water transmission pipelines, and water, oil, and gas treatment facilities, the company aspires to contribute more effectively to the prosperity and development of its homeland."
+  },
+  "ProjectsSection": {
+    "title": "Recent Projects",
+    "description": "Given the nature of large-scale projects, the execution complexities are increasing, with complex data, control systems, and safety measures becoming crucial. Moreover, higher expectations in productivity, reliability, safety, and the dynamic environments in which projects are executed further challenge design and execution teams. Based on this, Zhivar Sanat Kian Company has relied on its knowledge and experience, focusing on performance planning and optimization with a 'systemic approach' to achieve its goals and ensure optimal project execution, a summary of which is presented here."
+  },
   "About": {
     "title": "About Us",
     "default": "Zhivar Sanat Kian | About Us",

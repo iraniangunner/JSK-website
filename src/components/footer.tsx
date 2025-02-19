@@ -2,26 +2,18 @@
 import { Typography } from "@material-tailwind/react";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { FaPhone } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
+import { MdEmail, MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import jsk from "../../public/images/Logo_White.png";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
-
-const LINKS = [
-  {
-    title: "لینک های مفید",
-    items: [
-      { title: "درباره ما", link: "/about" },
-      { title: "تماس با ما", link: "/contact" },
-      { title: "پروژه ها", link: "/projects" },
-      { title: "مناقصات", link: "/tenders" },
-      { title: "فرصت های شغلی", link: "/hiring/jobs" },
-    ],
-  },
-];
+import { useLocale, useTranslations } from "next-intl";
+import { getUsefulLinks } from "@/utils/client/useful-links";
 
 export default function Footer() {
+  const locale = useLocale();
+  const t = useTranslations();
+  const links = getUsefulLinks(t);
   return (
     <footer
       className="relative w-full bg-footer-pattern bg-cover mt-6 overflow-hidden bg-no-repeat bg-center before:content-[''] 
@@ -29,77 +21,98 @@ export default function Footer() {
     >
       <div className="mx-auto w-full max-w-7xl px-8 z-[2] relative py-4 md:py-8 lg:py-12 xl:py-19">
         <div className="grid grid-cols-1 justify-between gap-4 lg:gap-8 xl:gap-12 md:grid-cols-2 lg:grid-cols-3">
-          <div className="ml-6 text-white">
+          <div className={`${locale === "fa" ? "ml-6" : "mr-6"} text-white`}>
             <Image
               src={jsk}
               alt="JSK logo"
               width={300}
               height={30}
-              className="select-none mr-[-20px]"
+              className={`select-none ${
+                locale === "fa" ? "mr-[-20px]" : "ml-[-20px]"
+              }`}
             />
 
             <p className="text-justify leading-7 select-none text-[16px]">
-              خدمات شرکت ژیوار صنعت کیان شامل طیف گسترده ای از فعالیت های مربوط
-              به خدمات مهندسی، تأمین تجهیزات، نصب و راه اندازی و بهره برداری
-              (تعمیر و نگهداری، تأمین و مدیریت نیروی انسانی و ...) پروژه های
-              صنعتی و معدنی می باشد.
+              {t("Footer.text")}
             </p>
           </div>
           <div>
-            {LINKS.map(({ title, items }) => (
-              <div key={title}>
-                <Typography
-                  variant="h5"
-                  color="white"
-                  style={{ fontFamily: "var(--font-yekanbakh)" }}
-                  className="mb-5 text-[18px] font-bold relative 
+            <Typography
+              variant="h5"
+              color="white"
+              style={{
+                fontFamily: `${
+                  locale === "fa"
+                    ? "var(--font-yekanbakh)"
+                    : "var(--font-inter)"
+                }`,
+              }}
+              className="mb-5 text-[18px] font-bold relative 
                   
                   before:content-[''] before:absolute before:left-0 before:bottom-[-8px] before:h-[2px] before:w-full before:bg-[#ffa502]"
-                >
-                  {title}
-                </Typography>
-                <ul
-                  key={title}
-                  className="flex flex-col justify-between items-start gap-1"
-                  style={{ fontFamily: "var(--font-yekanbakh)" }}
-                >
-                  {items.map((item) => (
-                    <li key={item.title}>
-                      <Link
-                        href={item.link}
-                        className="py-2 w-full font-normal text-[#fff] flex items-center gap-2 hover:text-[#ffa500] hover:mr-[10px] transition-all duration-[0.4s]"
-                      >
+            >
+              {locale === "fa" ? "لینک های مفید" : "Useful Links"}
+            </Typography>
+            {links.map(({ items }, index) => (
+              <ul
+                key={index}
+                className="flex flex-col justify-between items-start gap-1"
+                style={{
+                  fontFamily: `${
+                    locale === "fa"
+                      ? "var(--font-yekanbakh)"
+                      : "var(--font-inter)"
+                  }`,
+                }}
+              >
+                {items.map((item) => (
+                  <li key={item.title}>
+                    <Link
+                      href={item.link}
+                      className={`py-2 w-full font-normal text-[#fff] flex items-center gap-2 hover:text-[#ffa500] ${
+                        locale === "fa" ? "hover:mr-[10px]" : "hover:ml-[10px]"
+                      } transition-all duration-[0.4s]`}
+                    >
+                      {locale === "fa" ? (
                         <MdKeyboardDoubleArrowLeft size={18} />
-                        {item.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                      ) : (
+                        <MdKeyboardDoubleArrowRight size={18} />
+                      )}
+
+                      {item.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             ))}
           </div>
           <div className="text-white flex flex-col gap-4">
             <Typography
               variant="h5"
               color="white"
-              style={{ fontFamily: "var(--font-yekanbakh)" }}
+              style={{
+                fontFamily: `${
+                  locale === "fa"
+                    ? "var(--font-yekanbakh)"
+                    : "var(--font-inter)"
+                }`,
+              }}
               className="mb-3 text-[18px] font-bold relative 
               before:content-[''] before:absolute before:left-0 before:bottom-[-10px] before:h-[2px] before:w-full before:bg-[#ffa502]"
             >
-              ارتباط با ما
+              {locale === "fa" ? "ارتباط با ما" : "Contact Us"}
             </Typography>
             <div>
-              <h1 className="text-md mb-2">آدرس:</h1>
+              <h1 className="text-md mb-2">{t.raw("Header.Address.title")}:</h1>
               <p className="flex gap-4">
                 <FaMapLocationDot color="#fff" size={20} />{" "}
                 <span className="text-[15px]">
-                  تهران، میدان ونک، خیابان ملاصدرا، خیابان شاد، کوچه باغسرا،
-                  پلاک ۱۳
+                  {t.raw("Header.Address.description")}
                 </span>
               </p>
             </div>
             <div>
-              <h1 className="text-md mb-2">تلفن:</h1>
+              <h1 className="text-md mb-2">{t.raw("Header.Phone.title")}:</h1>
               <p className="flex gap-4">
                 <FaPhone size={14} />
                 <span className="text-[15px]">021-88660368</span>
@@ -110,7 +123,7 @@ export default function Footer() {
               </p>
             </div>
             <div>
-              <h1 className="text-md mb-2">پست الکترونیکی:</h1>
+              <h1 className="text-md mb-2">{t.raw("Header.Email.title")}:</h1>
               <p className="flex gap-4">
                 <MdEmail color="#fff" size={20} />
                 <span>info@jsk-co.com</span>
@@ -122,10 +135,13 @@ export default function Footer() {
       <div className="footer_bar mt-12 px-6 w-full flex flex-col justify-center md:flex-row md:justify-around items-center border-t border-blue-gray-50 py-4 lg:py-6 relative">
         <Typography
           className="my-4 text-[17px] text-[#fff] md:mt-0 md:mb-0"
-          style={{ fontFamily: "var(--font-yekanbakh)" }}
+          style={{
+            fontFamily: `${
+              locale === "fa" ? "var(--font-yekanbakh)" : "var(--font-inter)"
+            }`,
+          }}
         >
-          © کلیه حقوق این وبسایت محفوظ و متعلق به{" "}
-          <strong>شرکت ژیوار صنعت کیان</strong> می باشد.
+         {t("Footer.description")}
         </Typography>
         <div className="flex gap-4 text-[#fff]">
           <Typography

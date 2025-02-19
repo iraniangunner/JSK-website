@@ -3,8 +3,11 @@ import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
 import { ProjectsCarousel } from "./carousel/ProjectsCarousel";
 import { ProjectsData } from "@/types/projectTypes";
+import { useLocale, useTranslations } from "next-intl";
 
 export const ProjectsSectionUI = ({ projects }: { projects: ProjectsData }) => {
+  const t = useTranslations("ProjectsSection");
+  const locale = useLocale();
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 w-[90%] xl:w-[80%] mx-auto gap-10 py-20 ">
       <div className="order-2 lg:order-1">
@@ -22,7 +25,7 @@ export const ProjectsSectionUI = ({ projects }: { projects: ProjectsData }) => {
             hidden: { opacity: 0, y: 100 },
           }}
         >
-          پروژه های اخیر
+          {t("title")}
         </motion.h1>
         <motion.p
           initial="hidden"
@@ -35,15 +38,7 @@ export const ProjectsSectionUI = ({ projects }: { projects: ProjectsData }) => {
             hidden: { opacity: 0, y: 100 },
           }}
         >
-          با توجه به طبیعت حاکم بر تمامی پروژه‌های بزرگ ، پیچیدگی‌های اجرایی در
-          حال افزایش است، به طوری که داده‌های پیچیده، کنترل و سیستم ایمنی از
-          اهمیت ویژه‌ای برخوردار می‌باشند. علاوه بر این، انتظارات بالاتر در
-          حوزه‌های بهره‌وری، قابلیت اطمینان و ایمنی و همچنین محیط‌های پرتکاپویی
-          که پروژه‌ها در آن‌ها اجرا می‌گردند، تیم‌های طراحی و اجرایی را بیش از
-          پیش به چالش می‌کشند. شرکت ژیوار صنعت کیان نیز بر همین اساس با تکیه بر
-          دانش و تجربیات خود و برنامه‌ریزی و بهینه‌سازی عملکرد با «رویکرد
-          سیستمی» جهت دستیابی به اهداف خود و اجرای بهینه کارها تلاش نموده است که
-          خلاصه‌ای از آن به نمایش گذاشته شده است.
+          {t("description")}
         </motion.p>
         <motion.div
           initial="hidden"
@@ -62,7 +57,7 @@ export const ProjectsSectionUI = ({ projects }: { projects: ProjectsData }) => {
                 mt-8 border border-[#ffa500] hover:bg-white hover:text-[#ffa500] 
                 transition-all"
           >
-            مشاهده همه
+            {locale === "fa" ? "مشاهده همه" : "View All"}
           </Link>
         </motion.div>
       </div>

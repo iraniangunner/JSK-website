@@ -7,7 +7,14 @@ import { getMessages } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
+import { Inter } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-inter",
+});
 
 const yekanbakh = localFont({
   src: [
@@ -76,15 +83,13 @@ export default async function RootLayout({
     notFound();
   }
 
-  // Providing all messages to the client
-  // side is the easiest way to get started
   const messages = await getMessages();
 
   return (
     <html
       lang={locale}
       dir={locale === "fa" ? "rtl" : "ltr"}
-      className={`${yekanbakh.variable}`}
+      className={`${locale === "fa" ? yekanbakh.variable : inter.variable}`}
     >
       <body>
         <NextIntlClientProvider messages={messages}>

@@ -1,3 +1,4 @@
+"use client";
 import Backdrop from "./backdrop";
 import { motion } from "framer-motion";
 import { Link } from "@/i18n/routing";
@@ -8,47 +9,8 @@ import {
 } from "@material-tailwind/react";
 import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
-
-const strings = [
-  { linkTitle: "صفحه اصلی", linkAddress: "/" },
-  {
-    linkTitle: "خدمات",
-    subLinks: [
-      {
-        title: "بازرگانی و تامین اقلام پروژه",
-        linkAddress: "/services/commerce",
-      },
-      {
-        title: "بهره برداری پروژه های صنعتی و معدنی",
-        linkAddress: "/services/operation",
-      },
-      {
-        title: "مدیریت پروژه های صنعتی و معدنی",
-        linkAddress: "/services/management",
-      },
-    ],
-  },
-
-  { linkTitle: "گواهینامه ها و جوایز", linkAddress: "/certifications" },
-  { linkTitle: "پروژه ها", linkAddress: "/projects" },
-  { linkTitle: "مناقصات", linkAddress: "/tenders" },
-
-  { linkTitle: "درباره ما", linkAddress: "/about" },
-  {
-    linkTitle: "همکاری با ما",
-    subLinks: [
-      {
-        title: "فرصت های شغلی",
-        linkAddress: "/hiring/jobs",
-      },
-      {
-        title: "همکاری شرکت ها",
-        linkAddress: "/hiring/cooperation",
-      },
-    ],
-  },
-  { linkTitle: "تماس با ما", linkAddress: "/contact" },
-];
+import { getMenuItems } from "@/utils/client/menu-items";
+import { useLocale, useTranslations } from "next-intl";
 
 const MenuModal = ({
   modalOpen,
@@ -58,6 +20,10 @@ const MenuModal = ({
   handleClose: () => void;
 }) => {
   const [open, setOpen] = useState(0);
+
+  const t = useTranslations();
+  const menuItems = getMenuItems(t);
+  const locale = useLocale();
 
   const handleOpen = (value: any) => {
     setOpen(open === value ? 0 : value);
@@ -82,7 +48,7 @@ const MenuModal = ({
 
   const dropIn = {
     hidden: {
-      x: 500,
+      x: locale === "fa" ? 500 : -500,
       opacity: 0,
     },
     visible: {
@@ -94,7 +60,7 @@ const MenuModal = ({
       },
     },
     exit: {
-      x: 500,
+      x: locale === "fa" ? 500 : -500,
       opacity: 0,
       transition: {
         duration: 0.3,
@@ -107,7 +73,9 @@ const MenuModal = ({
     <Backdrop onClick={handleClose}>
       <motion.div
         onClick={(e) => e.stopPropagation()}
-        className="bg-[#ffffff] text-lg w-[70%] sm:w-[50%] md:w-[35%] shadow-2xl absolute top-[20px] right-[20px] bottom-[20px] rounded-lg overflow-auto"
+        className={`bg-[#ffffff] text-lg w-[70%] sm:w-[50%] md:w-[35%] shadow-2xl absolute top-[20px] ${
+          locale === "fa" ? "right-[20px]" : "left-[20px]"
+        } bottom-[20px] rounded-lg overflow-auto`}
         variants={dropIn}
         initial="hidden"
         animate="visible"
@@ -123,7 +91,7 @@ const MenuModal = ({
           </button>
         </div>
         <ul className="pb-3 pt-1 px-8">
-          {strings.map((link, index) =>
+          {menuItems.map((link, index) =>
             link.subLinks ? (
               <li key={link.linkTitle} className="my-2">
                 <Accordion
@@ -132,7 +100,7 @@ const MenuModal = ({
                 >
                   <AccordionHeader
                     onClick={() => handleOpen(index)}
-                    className="text-[#04244c] text-[18px] font-inherit hover:text-black transition-colors ease-linear duration-200 "
+                    className="text-[#04244c] text-[18px] font-inherit hover:text-black transition-colors ease-linear duration-200"
                   >
                     {link.linkTitle}
                   </AccordionHeader>
@@ -148,7 +116,11 @@ const MenuModal = ({
                             className="flex items-center p-2"
                             onClick={handleClose}
                           >
-                            <span className="ml-4">{subLink.title}</span>
+                            <span
+                              className={`${locale === "fa" ? "ml-4" : "mr-4"}`}
+                            >
+                              {subLink.title}
+                            </span>
                           </Link>
                         </li>
                       ))}
@@ -166,7 +138,9 @@ const MenuModal = ({
                   className="flex items-center py-2"
                   onClick={handleClose}
                 >
-                  <span className="ml-4">{link.linkTitle}</span>
+                  <span className={`${locale === "fa" ? "ml-4" : "mr-4"}`}>
+                    {link.linkTitle}
+                  </span>
                 </Link>
               </li>
             )

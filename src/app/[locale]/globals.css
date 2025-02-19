@@ -4,12 +4,16 @@
 @import "tailwindcss/utilities";
 
 html {
-  font-family: var(--font-yekanbakh);
+  font-family: var(--font-inter);
   scroll-behavior: smooth !important;
   ::placeholder {
     @apply text-xs;
   }
   overflow-x: hidden;
+}
+
+html[lang="fa"] {
+  font-family: var(--font-yekanbakh);
 }
 
 @layer utilities {

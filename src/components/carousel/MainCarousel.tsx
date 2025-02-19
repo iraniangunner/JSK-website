@@ -11,9 +11,11 @@ import { FaArrowLeft } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import { Slide } from "@/types/mainSliderTypes";
 import { Link } from "@/i18n/routing";
+import { useLocale } from "next-intl";
 
 export const MainCarousel = ({ data }: { data: Slide[] }) => {
   const [activeSlideIndex, setActiveStyleIndex] = useState<number>(0);
+  const locale = useLocale();
 
   return (
     <section className="w-full select-none" dir="ltr">
@@ -89,7 +91,9 @@ export const MainCarousel = ({ data }: { data: Slide[] }) => {
                                 href={link}
                                 className="px-6 py-4 w-full h-full block"
                               >
-                                مشاهده بیش تر
+                                {locale === "fa"
+                                  ? "مشاهده بیش تر"
+                                  : " View More"}
                               </Link>
                             </div>
                           </motion.div>

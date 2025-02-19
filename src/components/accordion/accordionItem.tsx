@@ -8,6 +8,7 @@ import {
 } from "@material-tailwind/react";
 import { motion } from "framer-motion";
 import { Link } from "@/i18n/routing";
+import { useLocale } from "next-intl";
 
 function Icon({ id, open }: { id: number; open: number }) {
   return (
@@ -39,6 +40,7 @@ function Icon({ id, open }: { id: number; open: number }) {
 export function AccordionItem({ data }: { data: AccordionType[] }) {
   const [open, setOpen] = useState(0);
   const handleOpen = (value: any) => setOpen(open === value ? 0 : value);
+  const locale = useLocale();
 
   return (
     <div>
@@ -67,14 +69,26 @@ export function AccordionItem({ data }: { data: AccordionType[] }) {
           >
             <AccordionHeader
               className="text-right"
-              style={{ fontFamily: "var(--font-yekanbakh)" }}
+              style={{
+                fontFamily: `${
+                  locale === "fa"
+                    ? "var(--font-yekanbakh)"
+                    : "var(--font-inter)"
+                }`,
+              }}
               onClick={() => handleOpen(index + 1)}
             >
               {item.title}
             </AccordionHeader>
             <AccordionBody
               className="font-normal text-[16px]"
-              style={{ fontFamily: "var(--font-yekanbakh)" }}
+              style={{
+                fontFamily: `${
+                  locale === "fa"
+                    ? "var(--font-yekanbakh)"
+                    : "var(--font-inter)"
+                }`,
+              }}
             >
               {Array.isArray(item.desc) ? (
                 <ol className="list-disc pr-5">

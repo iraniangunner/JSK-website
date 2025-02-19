@@ -5,6 +5,7 @@ import pic3 from "../../public/images/pic3.jpg";
 import { motion } from "framer-motion";
 import { AccordionItem } from "./accordion/accordionItem";
 import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
 
 const data = [
   {
@@ -28,10 +29,13 @@ const data = [
 ];
 
 export default function ServicesSection() {
+  const locale = useLocale();
+  const t = useTranslations("ServicesSection");
+
   return (
     <section>
       <div className="grid grid-cols-1 lg:grid-cols-2 w-[90%] xl:w-[80%] mx-auto gap-10 pb-10 pt-20 overflow-hidden lg:overflow-visible">
-        <div className="order-2 lg:order-1 max-w-full flex flex-col  justify-center">
+        <div className="order-2 lg:order-1 max-w-full flex flex-col justify-center">
           <motion.h1
             initial="hidden"
             whileInView="visible"
@@ -43,7 +47,7 @@ export default function ServicesSection() {
               hidden: { opacity: 0, x: 100 },
             }}
           >
-            خدمات ژیوار صنعت کیان
+            {t("title")}
           </motion.h1>
           <motion.p
             initial="hidden"
@@ -56,16 +60,7 @@ export default function ServicesSection() {
               hidden: { opacity: 0, x: 100 },
             }}
           >
-            شرکت ژیوار صنعت کیان متشکل از تیمی جوان، با تجربه و با دانش فنی در
-            سال 1400 با هدف ایفاي نقش مهمتري در توسعه کشور تاسیس گردیده است. این
-            شرکت توانسته است در جهت حفظ دارایی هاي مشتریان، ایمنی و دوستی با
-            محیط زیست، مسئولیت پذیري، اخلاق تجاري، نوآوري و تعالی، گام هاي خیره
-            کننده اي بردارد و با اتکاء به تجارب ارزشمند خویش در اجراي پروژه هاي
-            صنعتی و به منظور جذب و انجام پروژه هاي ملی اقدام به هم افزایی نموده
-            و خود را براي اجراي پروژه هاي بزرگ صنعتی و معدنی، ایستگاه هاي پمپاژ
-            و خطوط لوله انتقال آب،تاسیسات تصفیه خانه هاي آب، نفت و گاز تجهیز
-            نموده و امیدوار است در آبادانی و توسعه میهن عزیز خویش نقش بیشتر و
-            موثرتري داشته باشند.
+            {t("description")}
           </motion.p>
           <AccordionItem data={data} />
         </div>
@@ -81,7 +76,9 @@ export default function ServicesSection() {
                 visible: { opacity: 1, y: 0 },
                 hidden: { opacity: 0, y: 100 },
               }}
-              className="w-[75%] mr-[80px]"
+              className={`w-[75%] ${
+                locale === "fa" ? "mr-[80px]" : "ml-[80px]"
+              }`}
             >
               <motion.div
                 animate={{
@@ -96,7 +93,7 @@ export default function ServicesSection() {
               >
                 <Image
                   src={pic1}
-                  alt=""
+                  alt="pic1"
                   width={370}
                   height={500}
                   className="block h-full border-[5px] border-solid border-[#fff] max-w-full"
@@ -112,7 +109,9 @@ export default function ServicesSection() {
                 visible: { opacity: 1, y: 0 },
                 hidden: { opacity: 0, y: 100 },
               }}
-              className="w-[75%] absolute right-0 top-[25%]"
+              className={`w-[75%] absolute ${
+                locale === "fa" ? "right-0" : "left-0"
+              } top-[25%]`}
             >
               <motion.div
                 animate={{
@@ -127,7 +126,7 @@ export default function ServicesSection() {
               >
                 <Image
                   src={pic2}
-                  alt=""
+                  alt="pic2"
                   className="block h-full border-[5px] border-solid border-[#fff] max-w-full"
                 />
               </motion.div>
@@ -141,7 +140,9 @@ export default function ServicesSection() {
                 visible: { opacity: 1, y: 0 },
                 hidden: { opacity: 0, y: 100 },
               }}
-              className="relative z-[1] mt-[-15%] ml-[-20%] pr-[80px]"
+              className={`relative z-[1] mt-[-15%] ${
+                locale === "fa" ? "ml-[-20%] pr-[80px]" : "mr-[-20%] pl-[80px]"
+              }`}
             >
               <motion.div
                 animate={{
@@ -156,7 +157,7 @@ export default function ServicesSection() {
               >
                 <Image
                   src={pic3}
-                  alt=""
+                  alt="pic3"
                   className="block h-full border-[5px] border-solid border-[#fff] max-w-full"
                 />
               </motion.div>

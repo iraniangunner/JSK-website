@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import {Link} from '@/i18n/routing';
+import { Link } from "@/i18n/routing";
 import { Navbar, MenuItem, IconButton } from "@material-tailwind/react";
 import MenuModal from "./navModal";
 import { AnimatePresence } from "framer-motion";
@@ -10,45 +10,8 @@ import jsk from "../../../public/images/jsk.png";
 import { useBrowserWidth } from "@/hooks/useBrowserWidth";
 import { useScroll } from "@/hooks/useScroll";
 import { DropdownMenu } from "./dropdownMenu";
-
-const strings = [
-  { linkTitle: "صفحه اصلی", linkAddress: "/" },
-  {
-    linkTitle: "خدمات",
-    subLinks: [
-      {
-        title: "بازرگانی و تامین اقلام پروژه",
-        linkAddress: "/services/commerce",
-      },
-      {
-        title: "بهره برداری پروژه های صنعتی و معدنی",
-        linkAddress: "/services/operation",
-      },
-      {
-        title: "مدیریت پروژه های صنعتی و معدنی",
-        linkAddress: "/services/management",
-      },
-    ],
-  },
-  { linkTitle: "گواهینامه ها و جوایز", linkAddress: "/certifications" },
-  { linkTitle: "پروژه ها", linkAddress: "/projects" },
-  { linkTitle: "مناقصات", linkAddress: "/tenders" },
-  { linkTitle: "درباره ما", linkAddress: "/about" },
-  {
-    linkTitle: "همکاری با ما",
-    subLinks: [
-      {
-        title: "فرصت های شغلی",
-        linkAddress: "/hiring/jobs",
-      },
-      {
-        title: "همکاری شرکت ها",
-        linkAddress: "/hiring/cooperation",
-      },
-    ],
-  },
-  { linkTitle: "تماس با ما", linkAddress: "/contact" },
-];
+import { getMenuItems } from "@/utils/client/menu-items";
+import { useTranslations, useLocale } from "next-intl";
 
 export function ScrollNav() {
   const [isScrolling] = useScroll(70);
@@ -57,6 +20,10 @@ export function ScrollNav() {
 
   const closeNav = () => setIsNavOpen(false);
   const openNav = () => setIsNavOpen(true);
+
+  const t = useTranslations();
+  const menuItems = getMenuItems(t);
+  const locale = useLocale();
 
   useEffect(() => {
     if (isNavOpen) {
@@ -91,7 +58,9 @@ export function ScrollNav() {
         <div className="relative mx-auto flex items-center justify-center xl:gap-10 text-blue-gray-900">
           <Link
             href="/"
-            className="block lg:hidden cursor-pointer py-1.5 font-medium ml-auto"
+            className={`block lg:hidden cursor-pointer py-1.5 font-medium ${
+              locale === "fa" ? "ml-auto" : "mr-auto"
+            }`}
           >
             <Image
               src={jsk}
@@ -122,7 +91,7 @@ export function ScrollNav() {
           after:bottom-[-3px] after:h-[3px] after:bg-[#ffa502]"
           >
             <ul className="mt-2 mb-4 py-2 flex flex-col gap-2 2xl:gap-6 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
-              {strings.map((item) =>
+              {menuItems.map((item) =>
                 item.subLinks ? (
                   <div key={item.linkTitle}>
                     <DropdownMenu isScroll={isScrolling} dropdownItem={item} />
