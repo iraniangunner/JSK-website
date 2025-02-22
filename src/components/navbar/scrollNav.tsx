@@ -51,7 +51,7 @@ export function ScrollNav() {
       className={`z-10 w-full ${
         isScrolling
           ? "fixed flex justify-between animate-slideIn main_nav"
-          : "sticky top-[72px] flex justify-between bg-[#737373]"
+          : "top-[72px] flex justify-between bg-[#737373]"
       }`}
     >
       <Navbar className="mx-auto max-w-screen-3xl shadow-none rounded-none px-2 lg:px-8 py-0 lg:pl-6">

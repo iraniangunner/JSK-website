@@ -1,7 +1,7 @@
 import { TendersTable } from "@/components/tender/tenderTable";
 import { PageCover } from "@/components/pageCover";
 import TenderListWrapper from "@/components/tender/tender-wrapper";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 type Props = {
   params: { locale: string };
@@ -23,10 +23,14 @@ export async function generateMetadata({ params: { locale } }: Props) {
   };
 }
 
-export default function Tender() {
+export default async function Tender() {
+  const locale = await getLocale();
   return (
     <>
-      <PageCover title="فراخوان ها" bgImage="projects-pattern" />
+      <PageCover
+        title={`${locale === "fa" ? "مناقصات" : "Tenders"}`}
+        bgImage="projects-pattern"
+      />
       <div className="my-12 mx-8">
         <TenderListWrapper>
           <TendersTable />

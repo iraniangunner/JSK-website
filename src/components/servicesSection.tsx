@@ -6,31 +6,13 @@ import { motion } from "framer-motion";
 import { AccordionItem } from "./accordion/accordionItem";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
-
-const data = [
-  {
-    id: 0,
-    title: "بازرگانی و تامین اقلام پروژه",
-    desc: "در دنیای پیچیده تجارت، تامین کالا یکی از تخصصی‌ترین حوزه‌های تجارت بین‌المللی محسوب می‌شود. ژيوار صنعت کیان با­تجربه و سوابق درخشان در امور بازرگانی نزد تمامی فعالان اقتصادی به عنوان چهره‌ای مطرح در زمینه تامین کالا و خدمات، واردات و صادرات شناخته­ شده است. مهم‌ترین اصول و نیازها در واردات و صادرات، تامین خدمات ارزی بازرگانی و نیما، فرآیند خرید و تامین داخلی و خارجی، آشنایی با اصول و فنون بازاریابی داخلی و بین‌المللی و حمل ­و نقل  است که تمامی موارد مربوطه به این فرآیندها توسط شرکت ژیوار صنعت کیان انجام می‌شود.",
-    link: "/services/commerce",
-  },
-  {
-    id: 1,
-    title: "بهره برداری پروژه های صنعتی و معدنی",
-    desc: "مدیریت و اجرای خدمات راه‌اندازی، تعمیر و نگهداری، تأسیسات و تجهیزات و دوره‌های آموزشی در صنایع صنعتی و معدنی و سایر فرآیندهای مرتبط با بهره‌برداری پروژه‌ها توسط شرکت ژیوار صنعت کیان انجام می‌شود.",
-    link: "/services/operation",
-  },
-  {
-    id: 2,
-    title: "مدیریت پروژه های صنعتی و معدنی",
-    desc: "ماهیت متغیر صنایع و همچنین افزونی پیچیدگی‌های پروژه‌های جدید، شرکت‌های ایرانی را بر آن داشته‌است تا توانمندی‌های خود را بهبود بخشیده و رویکردهای جدید و منظمی را به منظور اطمینان از اجرای موفق پروژه‌ها بکار گیرند و از سویی بکارگیری رویکردهای نوین در مدیریت، ساخت، پیش راه‌اندازی و راه‌اندازی در پروژه‌های صنعتی را الزام‌آور می‌سازد.",
-    link: "/services/management",
-  },
-];
+import { getServicesData } from "@/utils/client/services-data";
 
 export default function ServicesSection() {
   const locale = useLocale();
-  const t = useTranslations("ServicesSection");
+  const t1 = useTranslations("ServicesSection");
+  const t = useTranslations();
+  const services = getServicesData(t);
 
   return (
     <section>
@@ -47,7 +29,7 @@ export default function ServicesSection() {
               hidden: { opacity: 0, x: 100 },
             }}
           >
-            {t("title")}
+            {t1("title")}
           </motion.h1>
           <motion.p
             initial="hidden"
@@ -60,9 +42,9 @@ export default function ServicesSection() {
               hidden: { opacity: 0, x: 100 },
             }}
           >
-            {t("description")}
+            {t1("description")}
           </motion.p>
-          <AccordionItem data={data} />
+          <AccordionItem data={services} />
         </div>
 
         <div className="flex items-start order-1 lg:order-2">

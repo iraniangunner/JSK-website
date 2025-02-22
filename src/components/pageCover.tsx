@@ -1,11 +1,14 @@
-import Link from "next/link";
-export function PageCover({
+import { getLocale } from "next-intl/server";
+import { Link } from "@/i18n/routing";
+export async function PageCover({
   bgImage,
   title,
 }: {
   bgImage: string;
   title: string;
 }) {
+
+  const locale = await getLocale();
   return (
     <div
       className={`relative bg-${bgImage} pt-[80px] lg:pt-[260px] 
@@ -20,7 +23,7 @@ export function PageCover({
         <ol className="flex flex-wrap items-center absolute bottom-[20px] rounded-md bg-opacity-60 px-[1rem]">
           <li className="flex items-center text-lg antialiased font-normal leading-normal transition-colors duration-300 cursor-pointer text-blue-gray-900 hover:text-[#ffa500]">
             <Link href="/" className="opacity-60">
-              خانه
+             {locale === "fa" ? "خانه":"Home"}
             </Link>
             <span className="mx-2 text-lg antialiased font-normal leading-normal pointer-events-none select-none text-blue-gray-500">
               /

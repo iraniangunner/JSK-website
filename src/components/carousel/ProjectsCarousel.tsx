@@ -11,8 +11,9 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { IoIosArrowRoundBack } from "react-icons/io";
+import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
 import { ProjectsData } from "@/types/projectTypes";
+import { useLocale } from "next-intl";
 
 interface SlideProps {
   delay: number;
@@ -37,6 +38,8 @@ const Slide: React.FC<SlideProps> = ({ delay, children }) => (
 
 export const ProjectsCarousel = ({ projects }: { projects: ProjectsData }) => {
   const [delays, setDelays] = useState<number[]>([]);
+
+  const locale = useLocale();
 
   const handleSwiperInit = (swiper: any) => {
     const newDelays = [];
@@ -113,7 +116,9 @@ export const ProjectsCarousel = ({ projects }: { projects: ProjectsData }) => {
                           item.title === "همه" ? (
                             ""
                           ) : (
-                            <p key={item.id} className="ml-2 text-xs">#{item.title}</p>
+                            <p key={item.id} className="ml-2 text-xs">
+                              #{item.title}
+                            </p>
                           )
                         )}
                       </div>
@@ -125,8 +130,14 @@ export const ProjectsCarousel = ({ projects }: { projects: ProjectsData }) => {
                     href={`/projects/${p.id}`}
                     className="flex items-center gap-1 h-full"
                   >
-                    <span>مشاهده بیش تر</span>
-                    <IoIosArrowRoundBack size={30} />
+                    <span>
+                      {locale === "fa" ? "مشاهده بیش تر" : "View More"}
+                    </span>
+                    {locale === "fa" ? (
+                      <IoIosArrowRoundBack size={30} />
+                    ) : (
+                      <IoIosArrowRoundForward size={30} />
+                    )}
                   </Link>
                 </div>
               </div>

@@ -6,6 +6,7 @@ import DatePicker, { DateObject } from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import "react-multi-date-picker/styles/layouts/mobile.css";
+import { useLocale, useTranslations } from "next-intl";
 
 type FormInputs = {
   name: string;
@@ -40,13 +41,12 @@ const formatDateToString = (date: any) => {
 
 const validateFileSize = (file: File) => {
   const maxSize = 8 * 1024 * 1024; // 8MB in bytes
-  if (file.size > maxSize) {
-    return "حجم فایل نباید بیشتر از 8 مگابایت باشد";
-  }
-  return true;
+  return file.size <= maxSize;
 };
-
 export default function ResumeForm() {
+  const t = useTranslations("ResumeForm");
+  const t1 = useTranslations("email");
+  const locale = useLocale();
   const {
     register,
     handleSubmit,
@@ -116,13 +116,14 @@ export default function ResumeForm() {
         },
         body: JSON.stringify({
           to: data.email,
-          subject: "تایید دریافت رزومه",
-          html: `<p><strong>${data.name}</strong> عزیز،
-
-با تشکر از ارسال رزومه شما. ما درخواست شما را دریافت کردیم و به زودی آن را بررسی خواهیم کرد.
-
-با احترام،
-تیم استخدام</p>`,
+          subject: t1("subject"),
+          html: `<p><strong>${data.name}</strong> ${t1("greeting")},
+          
+          ${t1("body")}
+    
+          <br />
+          ${t1("signature")}
+          </p>`,
         }),
       });
 
@@ -134,7 +135,7 @@ export default function ResumeForm() {
       reset();
       setResumeFile(null);
     } catch (error) {
-      setSubmitError("مشکلی پیش آمده دوباره تلاش کنید");
+      setSubmitError(t("submit.error"));
     } finally {
       setIsSubmitting(false);
     }
@@ -143,12 +144,14 @@ export default function ResumeForm() {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
-      const validationResult = validateFileSize(file);
-      if (validationResult === true) {
+      if (validateFileSize(file)) {
         clearErrors("resume_file");
         setResumeFile(file);
       } else {
-        setError("resume_file", { type: "manual", message: validationResult });
+        setError("resume_file", {
+          type: "manual",
+          message: t("fields.resume.size_error"),
+        });
         setResumeFile(null);
       }
     }
@@ -157,14 +160,9 @@ export default function ResumeForm() {
   return (
     <div className="max-w-2xl lg:mt-36 mx-auto bg-white rounded-lg border shadow-md overflow-hidden">
       <div className="p-6">
-        <div className="text-center mb-10" lang="fa" dir="rtl">
-          <h1 className="text-2xl font-bold mb-2">
-            فرصت شغلی مورد نظر خود را پیدا نکردید؟
-          </h1>
-          <p className="text-sm text-gray-600">
-            رزومه خود را ارسال کنید. زمانی که فرصت شغلی مورد نظر فعال شد، آن را
-            بررسی می‌کنیم.
-          </p>
+        <div className="text-center mb-10">
+          <h1 className="text-2xl font-bold mb-2">{t("title")}</h1>
+          <p className="text-sm text-gray-600">{t("subtitle")}</p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -174,11 +172,11 @@ export default function ResumeForm() {
                 htmlFor="name"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                نام و نام خانوادگی *
+                {t("fields.name.label")} *
               </label>
               <input
                 {...register("name", {
-                  required: "نام و نام خانوادگی الزامیست",
+                  required: t("fields.name.required"),
                 })}
                 id="name"
                 type="text"
@@ -196,23 +194,24 @@ export default function ResumeForm() {
                 htmlFor="birthday"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                تاریخ تولد *
+                {t("fields.birthday.label")} *
               </label>
               <Controller
                 control={control}
                 {...register("birthday", {
-                  required: "تاریخ تولد الزامیست",
+                  required: t("fields.birthday.required"),
                 })}
                 name="birthday"
                 render={({ field: { onChange, value } }) => (
                   <DatePicker
                     value={value}
                     onChange={(date) => {
-                      const formattedDate = formatDateToString(date);
+                      const formattedDate =
+                        locale === "fa" ? formatDateToString(date) : date;
                       onChange(formattedDate);
                     }}
-                    calendar={persian}
-                    locale={persian_fa}
+                    calendar={locale === "fa" ? persian : undefined}
+                    locale={locale === "fa" ? persian_fa : undefined}
                     calendarPosition="bottom-right"
                     inputClass="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     containerClassName="w-full"
@@ -233,11 +232,11 @@ export default function ResumeForm() {
                 htmlFor="gender"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                جنسیت *
+                {t("fields.gender.label")} *
               </label>
               <select
                 {...register("gender", {
-                  required: "جنسیت الزامیست",
+                  required: t("fields.gender.required"),
                 })}
                 id="gender"
                 defaultValue=""
@@ -248,8 +247,10 @@ export default function ResumeForm() {
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="" disabled hidden></option>
-                <option value="male">مرد</option>
-                <option value="female">زن</option>
+                <option value="male">{t("fields.gender.options.male")}</option>
+                <option value="female">
+                  {t("fields.gender.options.female")}
+                </option>
               </select>
               {errors.gender && (
                 <p className="mt-1 text-xs text-red-600">
@@ -263,19 +264,23 @@ export default function ResumeForm() {
                 htmlFor="marital"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                وضعیت تاهل *
+                {t("fields.marital.label")} *
               </label>
               <select
                 {...register("marital", {
-                  required: "وضعیت تاهل الزامیست",
+                  required: t("fields.marital.required"),
                 })}
                 id="marital"
                 defaultValue=""
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="" disabled hidden></option>
-                <option value="single">مجرد</option>
-                <option value="married">متاهل</option>
+                <option value="single">
+                  {t("fields.marital.options.single")}
+                </option>
+                <option value="married">
+                  {t("fields.marital.options.married")}
+                </option>
               </select>
               {errors.marital && (
                 <p className="mt-1 text-xs text-red-600">
@@ -291,13 +296,13 @@ export default function ResumeForm() {
                 htmlFor="military"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                وضعیت نظام وظیفه *
+                {t("fields.military.label")} *
               </label>
               <select
                 {...register("military", {
                   required:
                     selectedGender !== "female"
-                      ? "وضعیت نظام وظیفه الزامیست"
+                      ? t("fields.military.required")
                       : false,
                 })}
                 disabled={selectedGender === "female"}
@@ -306,9 +311,15 @@ export default function ResumeForm() {
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:text-gray-500"
               >
                 <option value="" disabled hidden></option>
-                <option value="done">پایان خدمت</option>
-                <option value="exempt">معاف از خدمت</option>
-                <option value="eligible">مشمول خدمت</option>
+                <option value="done">
+                  {t("fields.military.options.done")}
+                </option>
+                <option value="exempt">
+                  {t("fields.military.options.exempt")}
+                </option>
+                <option value="eligible">
+                  {t("fields.military.options.eligible")}
+                </option>
               </select>
               {errors.military && (
                 <p className="mt-1 text-xs text-red-600">
@@ -322,23 +333,35 @@ export default function ResumeForm() {
                 htmlFor="degree"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                آخرین مدرک تحصیلی *
+                {t("fields.degree.label")} *
               </label>
               <select
                 {...register("degree", {
-                  required: "آخرین مدرک تحصیلی الزامیست",
+                  required: t("fields.degree.required"),
                 })}
                 id="degree"
                 defaultValue=""
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="" disabled hidden></option>
-                <option value="below_diploma">سیکل</option>
-                <option value="diploma">دیپلم</option>
-                <option value="associate">فوق دیپلم</option>
-                <option value="bachelor">لیسانس</option>
-                <option value="master">فوق لیسانس</option>
-                <option value="doctorate">دکترا</option>
+                <option value="below_diploma">
+                  {t("fields.degree.options.below_diploma")}
+                </option>
+                <option value="diploma">
+                  {t("fields.degree.options.diploma")}
+                </option>
+                <option value="associate">
+                  {t("fields.degree.options.associate")}
+                </option>
+                <option value="bachelor">
+                  {t("fields.degree.options.bachelor")}
+                </option>
+                <option value="master">
+                  {t("fields.degree.options.master")}
+                </option>
+                <option value="doctorate">
+                  {t("fields.degree.options.doctorate")}
+                </option>
               </select>
               {errors.degree && (
                 <p className="mt-1 text-xs text-red-600">
@@ -354,11 +377,11 @@ export default function ResumeForm() {
                 htmlFor="university"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                دانشگاه محل تحصیل *
+                {t("fields.university.label")} *
               </label>
               <input
                 {...register("university", {
-                  required: "دانشگاه محل تحصیل الزامیست",
+                  required: t("fields.university.required"),
                 })}
                 id="university"
                 type="text"
@@ -375,11 +398,11 @@ export default function ResumeForm() {
                 htmlFor="major"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                رشته تحصیلی *
+                {t("fields.major.label")} *
               </label>
               <input
                 {...register("major", {
-                  required: "رشته تحصیلی الزامیست",
+                  required: t("fields.major.required"),
                 })}
                 id="major"
                 type="text"
@@ -399,20 +422,26 @@ export default function ResumeForm() {
                 htmlFor="experience"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                میزان سابقه *
+                {t("fields.experience.label")} *
               </label>
               <select
                 {...register("experience", {
-                  required: "میزان سابقه الزامیست",
+                  required: t("fields.experience.required"),
                 })}
                 id="experience"
                 defaultValue=""
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:text-gray-500"
               >
                 <option value="" disabled hidden></option>
-                <option value="less_than_3">کمتر از 3 سال</option>
-                <option value="between_3_and_5">بین 3 تا 5 سال</option>
-                <option value="greater_than_5">بیش از 5 سال</option>
+                <option value="less_than_3">
+                  {t("fields.experience.options.less_than_3")}
+                </option>
+                <option value="between_3_and_5">
+                  {t("fields.experience.options.between_3_and_5")}
+                </option>
+                <option value="greater_than_5">
+                  {t("fields.experience.options.greater_than_5")}
+                </option>
               </select>
               {errors.experience && (
                 <p className="mt-1 text-xs text-red-600">
@@ -426,14 +455,14 @@ export default function ResumeForm() {
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                ایمیل *
+                {t("fields.email.label")} *
               </label>
               <input
                 {...register("email", {
-                  required: "ایمیل الزامیست",
+                  required: t("fields.email.required"),
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: "آدرس ایمیل معتبر نیست",
+                    message: t("fields.email.invalid"),
                   },
                 })}
                 id="email"
@@ -453,25 +482,24 @@ export default function ResumeForm() {
               htmlFor="text"
               className="block text-sm font-medium text-gray-700 mb-1"
             >
-              توضیحات
+              {t("fields.text.label")}
             </label>
             <textarea
               {...register("text")}
               id="text"
               rows={5}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="در صورت تمایل توضیحات تکمیلی را در این بخش وارد کنید"
+              placeholder={t("fields.text.placeholder")}
             ></textarea>
           </div>
 
           <div className="space-y-4">
-            <div className="text-right" lang="fa" dir="rtl">
+            <div>
               <h3 className="text-sm font-medium text-gray-700 mb-2">
-                آپلود رزومه *
+                {t("fields.resume.label")} *
               </h3>
               <p className="text-xs text-gray-600">
-                لطفا فایل رزومه خود را آپلود کنید. (حجم حداکثر ۸ مگابایت و فرمت
-                فایل باید pdf باشد)
+                {t("fields.resume.description")}
               </p>
             </div>
             <div className="flex items-center justify-center w-full">
@@ -496,14 +524,18 @@ export default function ResumeForm() {
                     />
                   </svg>
                   <p className="mb-2 text-sm text-gray-500">
-                    <span className="font-semibold">برای آپلود کلیک کنید</span>
+                    <span className="font-semibold">
+                      {t("fields.resume.upload.click")}
+                    </span>
                   </p>
-                  <p className="text-xs text-gray-500">PDF(MAX. 8MB)</p>
+                  <p className="text-xs text-gray-500">
+                    {t("fields.resume.upload.format")}
+                  </p>
                 </div>
                 <input
                   id="resume-upload"
                   {...register("resume_file", {
-                    required: "فایل رزومه الزامیست",
+                    required: t("fields.resume.required"),
                     validate: (value: any) => {
                       if (value[0]) {
                         return validateFileSize(value[0]);
@@ -520,7 +552,7 @@ export default function ResumeForm() {
             </div>
             {resumeFile && (
               <p className="text-sm text-gray-600">
-                فایل انتخاب شده: {resumeFile.name}
+                {t("fields.resume.selected", { filename: resumeFile.name })}
               </p>
             )}
             {errors.resume_file && (
@@ -533,7 +565,7 @@ export default function ResumeForm() {
           {submitError && <p className="text-red-600 text-sm">{submitError}</p>}
 
           {submitSuccess && (
-            <p className="text-green-600 text-sm">فرم با موفقیت ارسال شد</p>
+            <p className="text-green-600 text-sm">{t("submit.success")}</p>
           )}
 
           <div className="flex justify-center items-center">
@@ -544,7 +576,7 @@ export default function ResumeForm() {
             >
               {isSubmitting ? (
                 <div className="flex justify-between items-center gap-2">
-                  <p>در حال ارسال</p>
+                  <p>{t("submit.loading")}</p>
                   <svg
                     className="w-4 h-4 animate-spin text-gray-900/50"
                     viewBox="0 0 64 64"
@@ -571,7 +603,7 @@ export default function ResumeForm() {
                   </svg>
                 </div>
               ) : (
-                "ارسال درخواست"
+                t("submit.button")
               )}
             </button>
           </div>

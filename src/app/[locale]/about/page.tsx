@@ -1,5 +1,5 @@
 import { PageCover } from "@/components/pageCover";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 type Props = {
   params: { locale: string };
@@ -21,10 +21,18 @@ export async function generateMetadata({ params: { locale } }: Props) {
   };
 }
 
-export default function About() {
+export default async function About() {
+  const locale = await getLocale();
   return (
     <>
-      <PageCover title="درباره ما" bgImage="projects-pattern" />
+      <PageCover
+        title={`${
+          locale === "fa"
+            ? "درباره ما"
+            : "About Us"
+        }`}
+        bgImage="projects-pattern"
+      />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <main className="container mx-auto px-4 py-12 max-w-[850px]">
           <section className="mb-20">

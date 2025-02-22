@@ -1,6 +1,6 @@
 import { PageCover } from "@/components/pageCover";
 import { ContractorForm } from "./_components/cooperation-form";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 type Props = {
   params: { locale: string };
@@ -22,10 +22,18 @@ export async function generateMetadata({ params: { locale } }: Props) {
   };
 }
 
-export default function ContractorPage() {
+export default async function ContractorPage() {
+  const locale = await getLocale();
   return (
     <div>
-      <PageCover title="همکاری شرکت ها" bgImage="projects-pattern" />
+      <PageCover
+        title={`${
+          locale === "fa"
+            ? "همکاری شرکت ها"
+            : "Company Cooperation"
+        }`}
+        bgImage="projects-pattern"
+      />
       <ContractorForm />
     </div>
   );

@@ -3,6 +3,7 @@ import { PageCover } from "@/components/pageCover";
 import { AccordionItem } from "@/components/accordion/accordionItem";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import { getLocale } from "next-intl/server";
 
 type Props = {
   params: { locale: string };
@@ -56,11 +57,16 @@ const sections = [
   },
 ];
 
-export default function ManagementDepartment() {
+export default async function ManagementDepartment() {
+  const locale = await getLocale();
   return (
     <div className="mx-auto text-right">
       <PageCover
-        title="مدیریت پروژه های صنعتی و معدنی"
+        title={`${
+          locale === "fa"
+            ? "مدیریت پروژه های صنعتی و معدنی"
+            : "Industrial & Mining Management"
+        }`}
         bgImage="projects-pattern"
       />
 

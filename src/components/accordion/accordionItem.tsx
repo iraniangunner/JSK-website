@@ -109,7 +109,7 @@ export function AccordionItem({ data }: { data: AccordionType[] }) {
                 mt-4 border border-[#ffa500] hover:bg-white hover:text-[#ffa500] 
                 transition-all"
                 >
-                  مشاهده بیش تر
+                 {locale === "fa" ? "مشاهده بیش تر":"View More"}
                 </Link>
               ) : (
                 ""

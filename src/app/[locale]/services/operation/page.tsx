@@ -3,22 +3,7 @@ import { PageCover } from "@/components/pageCover";
 import { AccordionItem } from "@/components/accordion/accordionItem";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-
-// export const metadata: Metadata = {
-//   title: {
-//     absolute: "خدمات | بهره برداری پروژه های صنعتی و معدنی",
-//   },
-//   description:
-//     "شرکت ژیوار صنعت کیان به عنوان یک مجموعه بین‌المللی در زمینه تأمین و خدمات مرتبط با پروژه‌های صنعتی و معدنی، با هدف ارائه راهکارهای جامع و مؤثر به صنایع مختلف فعالیت می‌کند. ما با بهره‌گیری از دانش فنی، تیم متخصص و شبکه‌ای گسترده از تأمین‌کنندگان و شرکای تجاری در سراسر جهان، نیازهای مشتریان خود را با بالاترین کیفیت و در کوتاه‌ترین زمان ممکن برآورده می‌کنیم.",
-//   alternates: {
-//     canonical: "/services/operation",
-//   },
-//   openGraph: {
-//     title: "خدمات | بهره برداری پروژه های صنعتی و معدنی",
-//     description:
-//       "شرکت ژیوار صنعت کیان به عنوان یک مجموعه بین‌المللی در زمینه تأمین و خدمات مرتبط با پروژه‌های صنعتی و معدنی، با هدف ارائه راهکارهای جامع و مؤثر به صنایع مختلف فعالیت می‌کند. ما با بهره‌گیری از دانش فنی، تیم متخصص و شبکه‌ای گسترده از تأمین‌کنندگان و شرکای تجاری در سراسر جهان، نیازهای مشتریان خود را با بالاترین کیفیت و در کوتاه‌ترین زمان ممکن برآورده می‌کنیم.",
-//   },
-// };
+import { getLocale } from "next-intl/server";
 
 type Props = {
   params: { locale: string };
@@ -123,11 +108,16 @@ const sections = [
   },
 ];
 
-export default function OperationDepartment() {
+export default async function OperationDepartment() {
+  const locale = await getLocale();
   return (
     <div className="mx-auto text-right">
       <PageCover
-        title="بهره برداری پروژه های صنعتی و معدنی"
+        title={`${
+          locale === "fa"
+            ? "بهره برداری پروژه های صنعتی و معدنی"
+            : "Industrial & Mining Operations"
+        }`}
         bgImage="projects-pattern"
       />
 

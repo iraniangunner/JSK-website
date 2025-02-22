@@ -1,6 +1,6 @@
 import { PageCover } from "@/components/pageCover";
 import { CertificationsCarousel } from "@/components/carousel/CertificationCarousel";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 type Props = {
   params: { locale: string };
@@ -22,10 +22,18 @@ export async function generateMetadata({ params: { locale } }: Props) {
   };
 }
 
-export default function Certifications() {
+export default async function Certifications() {
+  const locale = await getLocale();
   return (
     <>
-      <PageCover title="گواهینامه ها و جوایز" bgImage="projects-pattern" />
+     <PageCover
+             title={`${
+               locale === "fa"
+                 ? "گواهینامه ها و جوایز"
+                 : "Certifications"
+             }`}
+             bgImage="projects-pattern"
+           />
       <div className="flex justify-center my-16">
         <div className="w-[80%] pt-[30px]">
           <CertificationsCarousel />

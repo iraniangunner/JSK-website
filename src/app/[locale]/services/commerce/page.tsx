@@ -2,7 +2,7 @@ import React from "react";
 import { PageCover } from "@/components/pageCover";
 import { AccordionItem } from "@/components/accordion/accordionItem";
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 type Props = {
   params: { locale: string };
@@ -82,11 +82,16 @@ const sections = [
   },
 ];
 
-export default function CommercialDepartment() {
+export default async function CommercialDepartment() {
+  const locale = await getLocale();
   return (
     <div className="mx-auto text-right">
       <PageCover
-        title="بازرگانی و تامین اقلام پروژه"
+        title={`${
+          locale === "fa"
+            ? "بازرگانی و تامین اقلام پروژه"
+            : "Commerce & Project Supply"
+        }`}
         bgImage="projects-pattern"
       />
 

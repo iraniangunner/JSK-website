@@ -12,7 +12,7 @@ export default async function TopNav() {
   const t = await getTranslations();
 
   return (
-    <div className="hidden sticky top-0 lg:flex items-center justify-center gap-4 lg:gap-8 bg-white pt-[10px]">
+    <div className="hidden top-0 lg:flex items-center justify-center gap-4 lg:gap-8 bg-white pt-[10px]">
       <div className="flex justify-center items-center">
         <Link
           href="/"

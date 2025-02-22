@@ -50,6 +50,21 @@
     "title": "Recent Projects",
     "description": "Given the nature of large-scale projects, the execution complexities are increasing, with complex data, control systems, and safety measures becoming crucial. Moreover, higher expectations in productivity, reliability, safety, and the dynamic environments in which projects are executed further challenge design and execution teams. Based on this, Zhivar Sanat Kian Company has relied on its knowledge and experience, focusing on performance planning and optimization with a 'systemic approach' to achieve its goals and ensure optimal project execution, a summary of which is presented here."
   },
+  "ServicesAccordion": {
+    "commerce": {
+      "title": "Commerce & Project Supply",
+      "desc": "In the complex world of trade, procurement is considered one of the most specialized areas of international trade. Zhiwar Sanat Kian, with experience and a brilliant track record in commercial affairs, is recognized by all economic actors as a prominent figure in the field of supply of goods and services, import, and export. The most important principles and needs in import and export include the provision of commercial and NIMA foreign exchange services, the process of domestic and foreign procurement, familiarity with the principles and techniques of domestic and international marketing, and transportation. All these processes are handled by Zhiwar Sanat Kian."
+    },
+    "operation": {
+      "title": "Industrial & Mining Operations",
+      "desc": "The management and execution of commissioning, maintenance, facilities, and equipment, as well as training programs in industrial and mining sectors and other related processes, are carried out by Zhiwar Sanat Kian."
+    },
+    "management": {
+      "title": "Industrial & Mining Management",
+      "desc": "The changing nature of industries and the increasing complexity of new projects have driven Iranian companies to improve their capabilities and adopt new, systematic approaches to ensure successful project execution. Moreover, the adoption of modern approaches in management, construction, pre-commissioning, and commissioning in industrial projects is imperative."
+    }
+  },
+
   "About": {
     "title": "About Us",
     "default": "Zhivar Sanat Kian | About Us",
@@ -99,5 +114,106 @@
     "title": "Job Opportunities",
     "default": "Zhivar Sanat Kian | Job Opportunities",
     "description": "Zhivar Sanat Kian Job Opportunities"
+  },
+  "ResumeForm": {
+    "title": "Couldn't find the job opportunity you were looking for?",
+    "subtitle": "Submit your resume. We'll review it when the desired job opportunity becomes available.",
+    "fields": {
+      "name": {
+        "label": "Full Name",
+        "required": "Full name is required"
+      },
+      "birthday": {
+        "label": "Date of Birth",
+        "required": "Date of birth is required"
+      },
+      "gender": {
+        "label": "Gender",
+        "required": "Gender is required",
+        "options": {
+          "male": "Male",
+          "female": "Female"
+        }
+      },
+      "marital": {
+        "label": "Marital Status",
+        "required": "Marital status is required",
+        "options": {
+          "single": "Single",
+          "married": "Married"
+        }
+      },
+      "military": {
+        "label": "Military Service Status",
+        "required": "Military service status is required",
+        "options": {
+          "done": "Completed",
+          "exempt": "Exempt",
+          "eligible": "Eligible"
+        }
+      },
+      "degree": {
+        "label": "Latest Degree",
+        "required": "Latest degree is required",
+        "options": {
+          "below_diploma": "Below Diploma",
+          "diploma": "Diploma",
+          "associate": "Associate",
+          "bachelor": "Bachelor",
+          "master": "Master",
+          "doctorate": "Doctorate"
+        }
+      },
+      "university": {
+        "label": "University",
+        "required": "University is required"
+      },
+      "major": {
+        "label": "Field of Study",
+        "required": "Field of study is required"
+      },
+      "experience": {
+        "label": "Years of Experience",
+        "required": "Years of experience is required",
+        "options": {
+          "less_than_3": "Less than 3 years",
+          "between_3_and_5": "3 to 5 years",
+          "greater_than_5": "More than 5 years"
+        }
+      },
+      "email": {
+        "label": "Email",
+        "required": "Email is required",
+        "invalid": "Invalid email address"
+      },
+      "text": {
+        "label": "Additional Information",
+        "placeholder": "Enter any additional information here if desired"
+      },
+      "resume": {
+        "label": "Upload Resume",
+        "description": "Please upload your resume file. (Maximum size 8MB, PDF format only)",
+        "upload": {
+          "click": "Click to upload",
+          "format": "PDF(MAX. 8MB)"
+        },
+        "required": "Resume file is required",
+        "size_error": "File size should not exceed 8MB",
+        "selected": "Selected file: {filename}"
+      }
+    },
+    "submit": {
+      "button": "Submit Application",
+      "loading": "Submitting",
+      "success": "Form submitted successfully",
+      "error": "An error occurred. Please try again"
+    }
+  },
+
+  "email": {
+    "subject": "Resume Received Confirmation",
+    "greeting": "Dear,",
+    "body": "Thank you for submitting your resume. We have received your application and will review it soon.",
+    "signature": "Best regards, Hiring Team"
   }
 }
