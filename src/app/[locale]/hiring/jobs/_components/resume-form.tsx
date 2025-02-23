@@ -45,7 +45,7 @@ const validateFileSize = (file: File) => {
 };
 export default function ResumeForm() {
   const t = useTranslations("ResumeForm");
-  const t1 = useTranslations("email");
+  const t1 = useTranslations("Email");
   const locale = useLocale();
   const {
     register,
@@ -117,7 +117,11 @@ export default function ResumeForm() {
         body: JSON.stringify({
           to: data.email,
           subject: t1("subject"),
-          html: `<p><strong>${data.name}</strong> ${t1("greeting")},
+          html: `${
+            locale === "fa"
+              ? `<p><strong>${data.name} </strong> ${t1("greeting")}`
+              : `<p>${t1("greeting")} <strong>${data.name}</strong>`
+          },
           
           ${t1("body")}
     

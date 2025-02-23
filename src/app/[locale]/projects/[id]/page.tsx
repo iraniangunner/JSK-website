@@ -1,9 +1,17 @@
 import NotFound from "@/app/[locale]/not-found";
 import { CustomError } from "@/components/customError";
 import { SingleProject } from "@/components/project/singleProject";
-import { Project } from "@/types/projectTypes";
+import type { Project } from "@/types/projectTypes";
 import { getProjectById, getProjects } from "@/utils/server/projectsApi";
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+
+type Props = {
+  params: {
+    id: string;
+    locale: string;
+  };
+};
 
 export async function generateStaticParams() {
   const projects = await getProjects();
@@ -15,22 +23,26 @@ export async function generateStaticParams() {
 
 export const generateMetadata = async ({
   params,
-}: {
-  params: { id: string };
-}): Promise<Metadata | undefined> => {
+}: Props): Promise<Metadata | undefined> => {
+  const t = await getTranslations({
+    locale: params.locale,
+    namespace: "Projects.project",
+  });
+
   try {
-    const id = parseInt(params.id, 10);
+    const id = Number.parseInt(params.id, 10);
     const project = await getProjectById(id);
+
     return {
       title: {
-        absolute: `پروژه ها | پروژه ${project.title}`,
+        absolute: t("title", { title: project.title }),
       },
       description: project.text,
       alternates: {
         canonical: `/projects/${params.id}`,
       },
       openGraph: {
-        title: `پروژه ها | پروژه ${project.title}`,
+        title: t("title", { title: project.title }),
         description: project.text,
         images: [
           {
@@ -42,14 +54,12 @@ export const generateMetadata = async ({
   } catch (error) {
     return {
       title: {
-        absolute: "ژیوار صنعت کیان",
+        absolute: t("fallbackTitle"),
       },
-      description:
-        "ژیوار صنعت کیان - اجرا و بهره برداری پروژه های صنعتی و معدنی",
+      description: t("fallbackDescription"),
       openGraph: {
-        title: "ژیوار صنعت کیان",
-        description:
-          "ژیوار صنعت کیان - اجرا و بهره برداری پروژه های صنعتی و معدنی",
+        title: t("fallbackTitle"),
+        description: t("fallbackDescription"),
       },
     };
   }
@@ -58,11 +68,12 @@ export const generateMetadata = async ({
 export default async function ProjectPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: string; locale: string }>;
 }) {
   const { id } = await params;
+
   try {
-    const project = await getProjectById(parseInt(id, 10));
+    const project = await getProjectById(Number.parseInt(id, 10));
     return <SingleProject project={project} />;
   } catch (error) {
     if (error instanceof Error && error.message === "No such project") {

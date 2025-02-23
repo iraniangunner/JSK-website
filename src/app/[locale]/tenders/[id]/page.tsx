@@ -1,50 +1,58 @@
 import { TenderComponent } from "@/components/tender/tender";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { getTenderById } from "@/utils/server/tendersApi";
 import NotFound from "@/app/[locale]/not-found";
 import { CustomError } from "@/components/customError";
+import { getTranslations } from "next-intl/server";
 
 type Props = {
-  params: { id: number };
+  params: {
+    id: number;
+    locale: string;
+  };
 };
 
 export const generateMetadata = async ({
   params,
 }: Props): Promise<Metadata | undefined> => {
+  const t = await getTranslations({
+    locale: params.locale,
+    namespace: "Tenders.tender",
+  });
+
   try {
     const tender = await getTenderById(params.id);
     return {
       title: {
-        absolute: `فراخوان ها | فراخوان ${tender.title}`,
+        absolute: t("title", { title: tender.data.title }),
       },
       description: tender.text,
       alternates: {
         canonical: `/tenders/${params.id}`,
       },
       openGraph: {
-        title: `فراخوان ها | فراخوان ${tender.title}`,
-        description: tender.text,
+        title: t("title", { title: tender.data.title }),
+        description: tender.data.text,
       },
     };
   } catch (error) {
     return {
       title: {
-        absolute: "ژیوار صنعت کیان",
+        absolute: t("fallbackTitle"),
       },
-      description:
-        "ژیوار صنعت کیان - اجرا و بهره برداری پروژه های صنعتی و معدنی",
+      description: t("fallbackDescription"),
       openGraph: {
-        title: "ژیوار صنعت کیان",
-        description:
-          "ژیوار صنعت کیان - اجرا و بهره برداری پروژه های صنعتی و معدنی",
+        title: t("fallbackTitle"),
+        description: t("fallbackDescription"),
       },
     };
   }
 };
+
 export default async function TenderPage({ params }: Props) {
   try {
     const tender = await getTenderById(params.id);
-    return <TenderComponent tender={tender} />;
+    return <TenderComponent tender={tender.data} />;
   } catch (error) {
     if (error instanceof Error && error.message === "No such project") {
       return <NotFound />;

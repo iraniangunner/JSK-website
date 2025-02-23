@@ -1,6 +1,12 @@
-import Link from "next/link";
+"use client";
 
-export function TenderView({ tender }: { tender: any }) {
+import { Link } from "@/i18n/routing";
+import { Tender } from "@/types/tender";
+import { useTranslations } from "next-intl";
+
+export function TenderView({ tender }: { tender: Tender }) {
+  const t = useTranslations("Tenders.tenderView");
+
   return (
     <div
       key={tender.id}
@@ -12,32 +18,32 @@ export function TenderView({ tender }: { tender: any }) {
             <h3 className="text-lg font-semibold">{tender.title}</h3>
             <Link
               href={`/tenders/${tender.id}`}
-              className="bg-blue-600 hover:bg-blue-600 cursor-pointer text-white py-2 px-4 rounded inline-flex items-center transition duration-300"
+              className="bg-blue-600 hover:bg-blue-600 cursor-pointer text-white py-2 px-4 rounded inline-flex items-center transition duration-300 justify-center"
             >
-              مشاهده جزئیات
+              {t("viewDetails")}
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
             <div className="flex items-center gap-2">
-              <span className="text-gray-600">دسته بندی:</span>
+              <span className="text-gray-600">{t("labels.category")}:</span>
               <div className="flex items-center gap-2">
                 <span>{tender.tender_category.title}</span>
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-gray-600">شماره:</span>
+              <span className="text-gray-600">{t("labels.number")}:</span>
               <span>{tender.number}</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-gray-600">تاریخ شروع:</span>
+              <span className="text-gray-600">{t("labels.startDate")}:</span>
               <span>{tender.start_date}</span>
             </div>
             <div className="flex items-center gap-2 text-sm">
-              <span className="text-gray-600">تاریخ پایان:</span>
+              <span className="text-gray-600">{t("labels.endDate")}:</span>
               <span className="font-medium">{tender.end_date}</span>
             </div>
             <div className="flex items-center gap-2 text-sm">
-              <span className="text-gray-600">وضعیت:</span>
+              <span className="text-gray-600">{t("labels.status")}:</span>
               <span className="font-medium">{tender.status}</span>
             </div>
           </div>

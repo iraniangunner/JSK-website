@@ -4,6 +4,15 @@
     "default": "Zhivar Sanat Kian | Main page",
     "description": "Zhivar Sanat Kian - Implementation and Operation of Industrial and Mining Projects"
   },
+  "NotFound": {
+    "metadata": {
+      "title": "Zhivar Sanat Kian",
+      "description": "Zhivar Sanat Kian - Implementation and operation of industrial and mining projects"
+    },
+    "error": "404",
+    "message": "Page not found. Return to homepage to see other sections of the website.",
+    "button": "Return to Homepage"
+  },
   "Header": {
     "Address": {
       "title": "Address",
@@ -68,7 +77,56 @@
   "About": {
     "title": "About Us",
     "default": "Zhivar Sanat Kian | About Us",
-    "description": "About Zhivar Sanat Kian"
+    "description": "About Zhivar Sanat Kian",
+    "companyName": "Zhivar Sanat Kian",
+    "sections": {
+      "about": {
+        "title": "About the Company",
+        "content": "Zhivar Sanat Kian Company, consisting of a young, experienced team with technical knowledge, was established in 2021 with the aim of playing a more important role in the country's development. The company has been able to take impressive steps towards preserving customer assets, safety and environmental friendliness, responsibility, business ethics, innovation and excellence, and relying on its valuable experiences in implementing industrial projects and in order to attract and implement national projects, it has taken synergistic action and equipped itself for the implementation of large industrial and mining projects, pumping stations and water transmission pipelines, water treatment plant facilities, oil and gas, and hopes to play a greater and more effective role in the development of their dear homeland."
+      },
+      "ceoMessage": {
+        "title": "CEO's Message",
+        "content": "Since the establishment of Zhivar Sanat Kian Company, by recruiting experienced managers familiar with production and operation complexes in various specialties, it has taken firm steps with extraordinary technical and specialized support to take over production line operations. Relying on the ability and expertise of executive, staff, commercial and support and welfare forces, it has been able to integrate warehouses and orders, commercial affairs, human resources, maintenance, part manufacturing, technical offices and with proper and timely supply and purchase of parts and equipment needed for production lines, to collect a complete information bank of suppliers, manufacturers and sellers of these parts. Zhivar Sanat Kian Company, based on the overlap of these talents and existing facilities, is able to provide all or a large part of the services expected by customers and manages large projects with the lowest cost and highest quality in every respect.",
+        "signature": "Masoud Deliri"
+      },
+      "objectives": {
+        "title": "Company Objectives",
+        "content": "Zhivar Sanat Kian Company operates with the aim of meeting the needs of customers and other stakeholders and increasing their satisfaction level within the framework of its defined policies. This company, as its main goal, focusing on quality, innovation and customer satisfaction, strives to have a superior position in the contracting industry and especially equipment supply. Our goals include providing superior and diverse services, accurate project execution and using international standards and maintaining customer satisfaction and trust. Another of our goals is to create a work environment appropriate to the capabilities and motivation of employees. We value professional development and creating growth opportunities for the company team. Also, by raising their level of expertise and technical knowledge, we try to reach a leadership position in this industry. Another importance that we pay attention to is the continuous improvement of operational processes and optimization of resource use in order to increase efficiency and effectiveness, and by focusing on these goals, we are looking to create a leading company in the contracting industry."
+      },
+      "policy": {
+        "title": "Company Policy",
+        "content": "Zhivar Sanat Kian Company, believing in moving in the direction of sustainable development, organizational transformation, moving towards continuous improvement, while paying attention to the requirements of quality management systems, safety, health, environment, accepting economic and social responsibilities, has implemented planned monitoring and controls in its processes and activities and by managing them, has expressed its commitment to continuous improvement in relation to the requirements of the integrated management system including ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 and in order to achieve its goals, has organized the main orientations of the company in the following axes:",
+        "points": [
+          "Implementation of standards and legal requirements and efforts to meet customer demands",
+          "Identification, evaluation and effective control of environmental aspects, occupational safety and health hazards and compliance with related legal requirements",
+          "Training, maintaining and developing human capital, gaining employee satisfaction and creating effective participation opportunities in improvement activities",
+          "Management, development and updating of organizational processes and activities",
+          "Increasing equipment and machinery resources, developing work space and optimal planning and optimal use of resources",
+          "Effort to achieve quantitative and qualitative production assignment programs"
+        ],
+        "footer": "The policy of this company and its determined goals have been communicated to all members of the company and are reviewed at specific time intervals. The management representative in management systems regularly reports the performance and effectiveness of the integrated management system to the CEO. All managers, officials and employees of the company consider themselves committed to active participation in performing duties and complying with the requirements of this system."
+      },
+      "services": {
+        "title": "Company Services",
+        "intro": "Zhivar Sanat Kian Company provides a wide range of services at the request of its customers as follows:",
+        "list": [
+          "Operation services for production lines of industrial and mining factories",
+          "Providing all foreign and domestic commercial services, logistics and customs formalities",
+          "Production, maintenance, repair, improvement and safety services for factory lines",
+          "Supply of consumable parts, production support and implementation of 5S system",
+          "Services for supplying and managing required and related human resources for operation",
+          "Detailed design, engineering and project management",
+          "Engineering, supply and commissioning services for industrial and mining projects",
+          "Services for construction of oil, gas and petrochemical product transmission pipelines",
+          "Refinery projects and petrochemical facilities and power plant projects",
+          "Civil and construction operations",
+          "Water transmission pipeline operations",
+          "Services for construction of water and gas transmission pipelines and mechanical pipeline operations",
+          "Providing technical inspection services and expediting construction",
+          "Design of management information systems"
+        ]
+      }
+    }
   },
   "Contact": {
     "title": "Contact Us",
@@ -83,12 +141,105 @@
   "Projects": {
     "title": "Projects",
     "default": "Zhivar Sanat Kian | Projects",
-    "description": "Zhivar Sanat Kian Projects"
+    "description": "Zhivar Sanat Kian Projects",
+    "project": {
+      "title": "Projects | {title}",
+      "fallbackTitle": "Zhivar Sanat Kian",
+      "description": "Zhivar Sanat Kian - Implementation and operation of industrial and mining projects",
+      "fallbackDescription": "Zhivar Sanat Kian - Implementation and operation of industrial and mining projects",
+      "projectTitle": "Project Title",
+      "employer": "Employer",
+      "startDate": "Start Date",
+      "projectLocation": "Project Location",
+      "projectDescription": "Project Description"
+    }
   },
   "Tenders": {
     "title": "Tenders",
     "default": "Zhivar Sanat Kian | Tenders",
-    "description": "Zhivar Sanat Kian Tenders"
+    "description": "Zhivar Sanat Kian Tenders",
+    "filters": {
+      "title": "Advanced Search",
+      "fields": {
+        "tenderTitle": {
+          "label": "Tender Title",
+          "placeholder": "Enter title...",
+          "error": "Title must be at least 2 characters"
+        },
+        "category": {
+          "label": "Tender Category",
+          "options": {
+            "all": "All Categories",
+            "tender": "Tender",
+            "auction": "Auction",
+            "inquiry": "Inquiry"
+          }
+        },
+        "status": {
+          "label": "Tender Status",
+          "options": {
+            "all": "All Statuses",
+            "active": "Active",
+            "inactive": "Inactive",
+            "cancelled": "Cancelled",
+            "renewal": "Renewal"
+          }
+        }
+      },
+      "buttons": {
+        "clear": "Clear",
+        "search": "Search"
+      }
+    },
+    "list": {
+      "title": "Tenders List",
+      "display": {
+        "show": "Show",
+        "tenders": "tenders"
+      },
+      "empty": "No tenders found",
+      "error": "Something went wrong. Please try again.",
+      "pagination": {
+        "page": "Page",
+        "of": "of"
+      }
+    },
+    "tenderView": {
+      "viewDetails": "View Details",
+      "labels": {
+        "category": "Category",
+        "number": "Number",
+        "startDate": "Start Date",
+        "endDate": "End Date",
+        "status": "Status"
+      }
+    },
+    "tender": {
+      "title": "Tenders | {title}",
+      "fallbackTitle": "Zhivar Sanat Kian",
+      "description": "Zhivar Sanat Kian - Implementation and operation of industrial and mining projects",
+      "fallbackDescription": "Zhivar Sanat Kian - Implementation and operation of industrial and mining projects",
+      "pageTitle": "Tender Details",
+      "table": {
+        "tenderTitle": "Tender Title",
+        "openingDate": "Documents Opening Date",
+        "tenderType": "Tender Type",
+        "submissionDeadline": "Documents Submission Deadline",
+        "status": "Status",
+        "submissionLocation": "Documents Submission Location",
+        "tenderNumber": "Tender Number",
+        "department": "Department Name",
+        "startDate": "Start Date",
+        "phone": "Phone",
+        "endDate": "End Date",
+        "email": "Email",
+        "description": "Description"
+      },
+      "buttons": {
+        "download": "Download Tender Documents",
+        "print": "Print Tender"
+      }
+    }
   },
   "Commerce": {
     "title": "Services | Trade and Project Supply Items",
@@ -210,10 +361,108 @@
     }
   },
 
-  "email": {
+  "Email": {
     "subject": "Resume Received Confirmation",
-    "greeting": "Dear,",
+    "greeting": "Dear",
     "body": "Thank you for submitting your resume. We have received your application and will review it soon.",
     "signature": "Best regards, Hiring Team"
+  },
+  "JobGrid": {
+    "searchPlaceholder": "Search job title",
+    "allCities": "All cities",
+    "allCategories": "All categories",
+    "noJobsFound": "No jobs found.",
+    "errorMessage": "Something went wrong. Please try again.",
+    "filters": {
+      "cities": "Cities",
+      "categories": "Categories"
+    }
+  },
+  "CooperationForm": {
+    "title": "Company Cooperation Request Form",
+    "subtitle": "Please fill out the form carefully. We will contact you as soon as possible.",
+    "fields": {
+      "companyName": {
+        "label": "Company Name *",
+        "error": "Company name is required"
+      },
+      "phone": {
+        "label": "Phone Number *",
+        "error": "Phone number is required"
+      },
+      "mobile": {
+        "label": "Mobile Number",
+        "error": "Must start with 9 and contain 10 digits"
+      },
+      "address": {
+        "label": "Address *",
+        "error": "Address is required"
+      },
+      "cooperationType": {
+        "label": "Cooperation Type *",
+        "error": "Selecting cooperation type is required",
+        "options": {
+          "contracting": "Contracting",
+          "supplier": "Supplier",
+          "engineering_design_services": "Engineering Design Services",
+          "investment": "Investment",
+          "consulting": "Consulting",
+          "other": "Other"
+        }
+      },
+      "file": {
+        "label": "Upload File",
+        "subtitle": "Please upload your file. (Maximum size 8MB and file format must be PDF)",
+        "clickToUpload": "Click to upload",
+        "selectedFile": "Selected file:",
+        "error": {
+          "size": "File size must be less than 8MB",
+          "generic": "Error uploading file"
+        }
+      },
+      "description": {
+        "label": "Description",
+        "placeholder": "Enter additional details here if desired"
+      }
+    },
+    "submit": {
+      "button": "Submit Form",
+      "loading": "Submitting...",
+      "success": "Form submitted successfully",
+      "error": "Something went wrong. Please try again."
+    }
+  },
+  "ContactForm": {
+    "title": "Stay in touch with us",
+    "subtitle": "Send us your comments and suggestions",
+    "fields": {
+      "name": {
+        "placeholder": "Your Name"
+      },
+      "email": {
+        "placeholder": "Email Address (Required)",
+        "error": "Invalid email address"
+      },
+      "website": {
+        "placeholder": "Website URL",
+        "error": "Invalid website URL"
+      },
+      "message": {
+        "placeholder": "Your Message (Required)",
+        "error": "Message must be at least 5 characters"
+      }
+    },
+    "submit": {
+      "button": "Send Message",
+      "loading": "Sending..."
+    },
+    "recaptcha": {
+      "error": "Please complete the reCAPTCHA"
+    },
+    "notifications": {
+      "recaptchaFailed": "reCAPTCHA verification failed. Please try again.",
+      "error": "An error occurred. Please try again.",
+      "success": "Form submitted successfully."
+    }
   }
 }

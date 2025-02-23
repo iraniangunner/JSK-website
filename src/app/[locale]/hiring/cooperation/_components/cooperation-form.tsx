@@ -1,7 +1,9 @@
 "use client";
+
 import { useState } from "react";
 import type React from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
+import { useTranslations } from "next-intl";
 
 type FormInputs = {
   company_name: string;
@@ -13,19 +15,28 @@ type FormInputs = {
   text: string;
 };
 
-export function ContractorForm() {
+const COOPERATION_TYPES = [
+  { value: "contracting" },
+  { value: "supplier" },
+  { value: "engineering_design_services" },
+  { value: "investment" },
+  { value: "consulting" },
+  { value: "other" },
+] as const;
+
+export function CooperationForm() {
+  const t = useTranslations("CooperationForm");
   const [fileUploaded, setFileUploaded] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+
   const {
     register,
-    control,
     handleSubmit,
     reset,
     formState: { errors },
     clearErrors,
-    watch,
     setError,
   } = useForm<FormInputs>();
 
@@ -81,7 +92,7 @@ export function ContractorForm() {
       reset();
       setFileUploaded(null);
     } catch (error) {
-      setSubmitError("مشکلی پیش آمده دوباره تلاش کنید");
+      setSubmitError(t("submit.error"));
     } finally {
       setIsSubmitting(false);
     }
@@ -91,10 +102,9 @@ export function ContractorForm() {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
       if (file.size > 8 * 1024 * 1024) {
-        // 8MB in bytes
         setError("cooperation_file", {
           type: "manual",
-          message: "حجم فایل باید کمتر از 8 مگابایت باشد",
+          message: t("fields.file.error.size"),
         });
       } else {
         clearErrors("cooperation_file");
@@ -107,14 +117,9 @@ export function ContractorForm() {
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto bg-white rounded-lg border shadow-md overflow-hidden">
         <div className="p-6">
-          <div className="text-center mb-10" lang="fa" dir="rtl">
-            <h1 className="text-2xl font-bold mb-2">
-              فرم درخواست همکاری شرکت ها
-            </h1>
-            <p className="text-sm text-gray-600">
-              لطفاً فرم زیر را با دقت پر کنید. ما در اسرع وقت با شما تماس خواهیم
-              گرفت.
-            </p>
+          <div className="text-center mb-10">
+            <h1 className="text-2xl font-bold mb-2">{t("title")}</h1>
+            <p className="text-sm text-gray-600">{t("subtitle")}</p>
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -124,11 +129,11 @@ export function ContractorForm() {
                   htmlFor="company_name"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
-                  نام شرکت *
+                  {t("fields.companyName.label")}
                 </label>
                 <input
                   {...register("company_name", {
-                    required: "نام شرکت الزامی است",
+                    required: t("fields.companyName.error"),
                   })}
                   id="company_name"
                   type="text"
@@ -145,11 +150,11 @@ export function ContractorForm() {
                   htmlFor="phone"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
-                  تلفن ثابت *
+                  {t("fields.phone.label")}
                 </label>
                 <input
                   {...register("phone", {
-                    required: "شماره تلفن الزامی است",
+                    required: t("fields.phone.error"),
                   })}
                   id="phone"
                   type="tel"
@@ -169,25 +174,24 @@ export function ContractorForm() {
                   htmlFor="mobile"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
-                  تلفن همراه
+                  {t("fields.mobile.label")}
                 </label>
-                <div className=" relative">
-                  <div className="absolute top-0 left-1 h-full border-r-2 border-r-gray-300 flex justify-center items-center pr-1">
+                <div className="relative">
+                  <div className="absolute top-0 left-1 h-full border-r-2 border-r-gray-300 flex justify-center items-center pr-1 rtl:left-auto rtl:right-1 rtl:border-r-0 rtl:border-l-2 rtl:pr-0 rtl:pl-1">
                     98+
                   </div>
                   <input
                     {...register("mobile", {
                       pattern: {
                         value: /^9[0-9]{9}$/,
-                        message: "باید با 9 شروع شده و شامل 10 رقم باشد",
+                        message: t("fields.mobile.error"),
                       },
                     })}
                     id="mobile"
                     type="tel"
-                    className="w-full px-10 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-10 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 rtl:pr-10 rtl:pl-3"
                   />
                 </div>
-
                 {errors.mobile && (
                   <p className="mt-1 text-xs text-red-600">
                     {errors.mobile.message}
@@ -201,11 +205,11 @@ export function ContractorForm() {
                 htmlFor="address"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                آدرس *
+                {t("fields.address.label")}
               </label>
               <textarea
                 {...register("address", {
-                  required: "آدرس شرکت الزامی است",
+                  required: t("fields.address.error"),
                 })}
                 id="address"
                 rows={3}
@@ -220,24 +224,14 @@ export function ContractorForm() {
 
             <div className="space-y-4">
               <label className="block text-sm font-medium text-gray-700">
-                نوع همکاری *
+                {t("fields.cooperationType.label")}
               </label>
               <div className="flex flex-wrap items-center gap-4">
-                {[
-                  { title: "پیمانکاری", value: "contracting" },
-                  { title: "تامین کننده", value: "supplier" },
-                  {
-                    title: "خدمات طراحی مهندسی",
-                    value: "engineering_design_services",
-                  },
-                  { title: "سرمایه گذاری", value: "investment" },
-                  { title: "مشاوره", value: "consulting" },
-                  { title: "سایر", value: "other" },
-                ].map((type) => (
-                  <div key={type.title} className="flex items-center">
+                {COOPERATION_TYPES.map((type) => (
+                  <div key={type.value} className="flex items-center">
                     <input
                       {...register("type_cooperation", {
-                        required: "انتخاب نوع همکاری الزامی است",
+                        required: t("fields.cooperationType.error"),
                       })}
                       id={`contractType-${type.value}`}
                       type="checkbox"
@@ -246,9 +240,9 @@ export function ContractorForm() {
                     />
                     <label
                       htmlFor={`contractType-${type.value}`}
-                      className="mr-2 block text-sm text-gray-900"
+                      className="rtl:mr-2 ml-2 block text-sm text-gray-900"
                     >
-                      {type.title}
+                      {t(`fields.cooperationType.options.${type.value}`)}
                     </label>
                   </div>
                 ))}
@@ -261,13 +255,12 @@ export function ContractorForm() {
             </div>
 
             <div className="space-y-4">
-              <div className="text-right" lang="fa" dir="rtl">
+              <div>
                 <h3 className="text-sm font-medium text-gray-700 mb-2">
-                  آپلود فایل
+                  {t("fields.file.label")}
                 </h3>
                 <p className="text-xs text-gray-600">
-                  لطفا فایل خود را آپلود کنید. (حجم حداکثر ۸ مگابایت و فرمت فایل
-                  باید pdf باشد)
+                  {t("fields.file.subtitle")}
                 </p>
               </div>
 
@@ -294,7 +287,7 @@ export function ContractorForm() {
                     </svg>
                     <p className="mb-2 text-sm text-gray-500">
                       <span className="font-semibold">
-                        برای آپلود کلیک کنید
+                        {t("fields.file.clickToUpload")}
                       </span>
                     </p>
                     <p className="text-xs text-gray-500">PDF(MAX. 8MB)</p>
@@ -303,13 +296,12 @@ export function ContractorForm() {
                     {...register("cooperation_file", {
                       validate: (value: any) => {
                         if (value[0] && value[0].size > 8 * 1024 * 1024) {
-                          return "حجم فایل باید کمتر از 8 مگابایت باشد";
+                          return t("fields.file.error.size");
                         }
                         return true;
                       },
                     })}
                     id="file-upload"
-                    name="file-upload"
                     type="file"
                     accept=".pdf"
                     className="sr-only"
@@ -319,12 +311,13 @@ export function ContractorForm() {
               </div>
               {fileUploaded && (
                 <p className="mt-2 text-sm text-gray-600">
-                  فایل انتخاب شده: {fileUploaded.name}
+                  {t("fields.file.selectedFile")} {fileUploaded.name}
                 </p>
               )}
               {errors.cooperation_file && (
                 <p className="mt-1 text-xs text-red-600">
-                  {errors.cooperation_file.message || "خطا در آپلود فایل"}
+                  {errors.cooperation_file.message ||
+                    t("fields.file.error.generic")}
                 </p>
               )}
             </div>
@@ -334,14 +327,14 @@ export function ContractorForm() {
                 htmlFor="text"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                توضیحات
+                {t("fields.description.label")}
               </label>
               <textarea
                 {...register("text")}
                 id="text"
                 rows={4}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="در صورت تمایل توضیحات تکمیلی را در این بخش وارد کنید"
+                placeholder={t("fields.description.placeholder")}
               ></textarea>
             </div>
 
@@ -350,8 +343,9 @@ export function ContractorForm() {
             )}
 
             {submitSuccess && (
-              <p className="text-green-600 text-sm">فرم با موفقیت ارسال شد</p>
+              <p className="text-green-600 text-sm">{t("submit.success")}</p>
             )}
+
             <div className="flex justify-center">
               <button
                 type="submit"
@@ -361,7 +355,7 @@ export function ContractorForm() {
                 {isSubmitting ? (
                   <>
                     <svg
-                      className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                      className="animate-spin -ml-1 mr-3 h-5 w-5 text-white rtl:ml-3 rtl:mr-0"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -380,10 +374,10 @@ export function ContractorForm() {
                         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                       ></path>
                     </svg>
-                    در حال ارسال...
+                    {t("submit.loading")}
                   </>
                 ) : (
-                  "ارسال فرم"
+                  t("submit.button")
                 )}
               </button>
             </div>

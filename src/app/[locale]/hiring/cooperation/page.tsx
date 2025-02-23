@@ -1,5 +1,5 @@
 import { PageCover } from "@/components/pageCover";
-import { ContractorForm } from "./_components/cooperation-form";
+import { CooperationForm } from "./_components/cooperation-form";
 import { getLocale, getTranslations } from "next-intl/server";
 
 type Props = {
@@ -27,14 +27,10 @@ export default async function ContractorPage() {
   return (
     <div>
       <PageCover
-        title={`${
-          locale === "fa"
-            ? "همکاری شرکت ها"
-            : "Company Cooperation"
-        }`}
+        title={`${locale === "fa" ? "همکاری شرکت ها" : "Company Cooperation"}`}
         bgImage="projects-pattern"
       />
-      <ContractorForm />
+      <CooperationForm />
     </div>
   );
 }

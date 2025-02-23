@@ -6,6 +6,7 @@ import { JobCard } from "./job-card";
 import { JobCardSkeleton } from "./job-card-skeleton";
 import { useJobs } from "@/hooks/useJobs";
 import { JobSearchParams, JobResponse } from "@/types/job";
+import { useTranslations } from "next-intl";
 
 export const JobGrid = ({
   categories,
@@ -14,6 +15,7 @@ export const JobGrid = ({
   categories: any;
   cities: any;
 }) => {
+  const t = useTranslations("JobGrid");
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
   const [city, setCity] = useState("");
@@ -50,7 +52,7 @@ export const JobGrid = ({
         <div className="relative md:col-span-2">
           <input
             type="text"
-            placeholder="جستجوی عنوان شغل"
+            placeholder={t("searchPlaceholder")}
             onChange={(e) => debouncedSearch(e.target.value)}
             className="block w-full bg-white border border-gray-300 rounded-md py-2 pr-10 pl-3 shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           />
@@ -63,8 +65,9 @@ export const JobGrid = ({
           onChange={(e) => handleCityChange(e.target.value)}
           value={city}
           className="block w-full bg-white border border-gray-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          aria-label={t("filters.cities")}
         >
-          <option value="">همه شهرها</option>
+          <option value="">{t("allCities")}</option>
           {cities.map((city: any) => (
             <option key={city.id} value={city.id}>
               {city.title}
@@ -75,8 +78,9 @@ export const JobGrid = ({
           onChange={(e) => handleCategoryChange(e.target.value)}
           value={category}
           className="block w-full bg-white border border-gray-300 rounded-md py-2 px-3 shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          aria-label={t("filters.categories")}
         >
-          <option value="">همه دسته بندی ها</option>
+          <option value="">{t("allCategories")}</option>
           {categories.map((category: any) => (
             <option key={category.id} value={category.id}>
               {category.title}
@@ -87,13 +91,13 @@ export const JobGrid = ({
 
       {!isLoading && jobs && jobs.length === 0 && !error && (
         <div className="text-center py-10 lg:py-20">
-          <p className="text-gray-500">هیچ موقعیت شغلی یافت نشد.</p>
+          <p className="text-gray-500">{t("noJobsFound")}</p>
         </div>
       )}
 
       {error && (
         <div className="text-center py-10 lg:py-20">
-          <p className="text-red-500">مشکلی پیش آمده دوباره تلاش کنید.</p>
+          <p className="text-red-500">{t("errorMessage")}</p>
         </div>
       )}
 
