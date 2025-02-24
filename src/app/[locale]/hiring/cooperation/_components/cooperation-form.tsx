@@ -177,7 +177,7 @@ export function CooperationForm() {
                   {t("fields.mobile.label")}
                 </label>
                 <div className="relative">
-                  <div className="absolute top-0 left-1 h-full border-r-2 border-r-gray-300 flex justify-center items-center pr-1 rtl:left-auto rtl:right-1 rtl:border-r-0 rtl:border-l-2 rtl:pr-0 rtl:pl-1">
+                  <div className="absolute text-sm top-0 left-1 h-full border-r-2 border-r-gray-300 flex justify-center items-center pr-1">
                     98+
                   </div>
                   <input
@@ -189,7 +189,7 @@ export function CooperationForm() {
                     })}
                     id="mobile"
                     type="tel"
-                    className="w-full px-10 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 rtl:pr-10 rtl:pl-3"
+                    className="w-full px-10 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10"
                   />
                 </div>
                 {errors.mobile && (
