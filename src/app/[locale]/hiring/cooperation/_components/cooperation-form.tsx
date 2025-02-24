@@ -221,7 +221,6 @@ export function CooperationForm() {
                 </p>
               )}
             </div>
-
             <div className="space-y-4">
               <label className="block text-sm font-medium text-gray-700">
                 {t("fields.cooperationType.label")}
