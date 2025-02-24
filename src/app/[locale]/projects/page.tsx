@@ -1,7 +1,7 @@
-import { ProjectsGrid } from "@/components/project/projectsGrid";
-import { Suspense } from "react";
-import Skeleton from "@/components/loadingSkeleton";
 import { PageCover } from "@/components/pageCover";
+import { CustomError } from "@/components/customError";
+import ProjectsTable from "@/components/project/projectsTbl";
+import { getProjects, getCategories } from "@/utils/server/projectsApi";
 import { getLocale, getTranslations } from "next-intl/server";
 
 type Props = {
@@ -26,19 +26,42 @@ export async function generateMetadata({ params: { locale } }: Props) {
 
 export default async function Projects() {
   const locale = await getLocale();
-  return (
-    <div>
-      <PageCover
-        title={`${locale === "fa" ? "پروژه ها" : "Projects"}`}
-        bgImage="projects-pattern"
-      />
-      <div className="my-6 mx-8 mt-12">
-        <div className="max-w-[960px] mx-auto">
-          <Suspense fallback={<Skeleton />}>
-            <ProjectsGrid />
-          </Suspense>
+
+  try {
+    const [projectsData, categoriesData] = await Promise.all([
+      getProjects(),
+      getCategories(),
+    ]);
+
+    return (
+      <div>
+        <PageCover
+          title={locale === "fa" ? "پروژه ها" : "Projects"}
+          bgImage="projects-pattern"
+        />
+        <div className="my-6 mx-8 mt-12">
+          <div className="max-w-[960px] mx-auto">
+            <ProjectsTable
+              projectsData={projectsData}
+              categories={categoriesData}
+            />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } catch (error) {
+    return (
+      <div>
+        <PageCover
+          title={locale === "fa" ? "پروژه ها" : "Projects"}
+          bgImage="projects-pattern"
+        />
+        <div className="my-6 mx-8 mt-12">
+          <div className="max-w-[960px] mx-auto">
+            <CustomError />
+          </div>
+        </div>
+      </div>
+    );
+  }
 }

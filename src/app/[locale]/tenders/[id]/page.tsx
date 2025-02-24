@@ -54,7 +54,7 @@ export default async function TenderPage({ params }: Props) {
     const tender = await getTenderById(params.id);
     return <TenderComponent tender={tender.data} />;
   } catch (error) {
-    if (error instanceof Error && error.message === "No such project") {
+    if (error instanceof Error && error.message === "No such tender") {
       return <NotFound />;
     }
     return <CustomError />;

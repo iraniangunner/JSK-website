@@ -1,6 +1,9 @@
+"use client";
+import { useLocale } from "next-intl";
 import { CgDanger } from "react-icons/cg";
 
 export function CustomError() {
+  const locale = useLocale();
   return (
     <section className="bg-white">
       <div className="mx-auto max-w-screen-xl px-4 py-8 lg:px-6 lg:py-16">
@@ -9,7 +12,9 @@ export function CustomError() {
             <CgDanger color="red" />
           </div>
           <p className="mb-4 text-lg font-light text-gray-500">
-            مشکلی پیش آمده دوباره تلاش کنید
+            {locale === "fa"
+              ? "مشکلی پیش آمده دوباره تلاش کنید"
+              : "Something Went Wrong Try Again"}
           </p>
         </div>
       </div>

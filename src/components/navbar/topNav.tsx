@@ -4,7 +4,7 @@ import { Link } from "@/i18n/routing";
 import { MdEmail } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 import jsk from "../../../public/images/jsk.png";
-import LocalSwitcher from "../local-switcher";
+import LocalSwitcher from "../language-switcher";
 import { getLocale, getTranslations } from "next-intl/server";
 
 export default async function TopNav() {

@@ -104,7 +104,7 @@ export default function LanguageSwitcher() {
                   key={lang.code}
                   onClick={() => onSelectChange(lang.code)}
                   className={`
-                    w-full px-4 py-2 text-sm
+                    w-full px-2 py-2 text-sm
                     flex items-center justify-between
                     ${
                       lang.dir === "rtl"
@@ -124,7 +124,7 @@ export default function LanguageSwitcher() {
                   role="option"
                   aria-selected={activeLocale === lang.code}
                 >
-                  <span className="font-medium">{lang.nativeName}</span>
+                  <span className="">{lang.nativeName}</span>
                   {activeLocale === lang.code && (
                     <svg
                       className="h-4 w-4"

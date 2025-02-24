@@ -1,22 +1,39 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
+import { locales } from "@/config";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://jsk-co.com";
 
+  // Static routes that need to be localized
+  const staticRoutes = [
+    "",
+    "/certifications",
+    "/projects",
+    "/about",
+    "/contact",
+    "/services/commerce",
+    "/services/management",
+    "/services/operation",
+    "/tenders",
+  ];
+
   let projectEntries: MetadataRoute.Sitemap = [];
   let tenderEntries: MetadataRoute.Sitemap = [];
 
+  // Fetch projects
   try {
     const projectResponse = await fetch("https://jsk-co.com/api/projects", {
       cache: "no-store",
     });
     if (projectResponse.ok) {
       const { data } = await projectResponse.json();
-      projectEntries = data.map(
-        ({ id, updated_at }: { id: number; updated_at: string }) => ({
-          url: `${baseUrl}/projects/${id}`,
-          lastModified: new Date(updated_at),
-        })
+      // Create entries for each locale
+      projectEntries = data.flatMap(
+        ({ id, updated_at }: { id: number; updated_at: string }) =>
+          locales.map((locale) => ({
+            url: `${baseUrl}/${locale}/projects/${id}`,
+            lastModified: new Date(updated_at),
+          }))
       );
     } else {
       console.error("Failed to fetch projects:", projectResponse.statusText);
@@ -25,17 +42,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error("Error fetching projects:", error);
   }
 
+  // Fetch tenders
   try {
     const tenderResponse = await fetch("https://jsk-co.com/api/tenders", {
       cache: "no-store",
     });
     if (tenderResponse.ok) {
-      const { tenderData } = await tenderResponse.json();
-      tenderEntries = tenderData.map(
-        ({ id, updated_at }: { id: number; updated_at: string }) => ({
-          url: `${baseUrl}/tenders/${id}`,
-          lastModified: new Date(updated_at),
-        })
+      const { data } = await tenderResponse.json();
+      // Create entries for each locale
+      tenderEntries = data.flatMap(
+        ({ id, updated_at }: { id: number; updated_at: string }) =>
+          locales.map((locale) => ({
+            url: `${baseUrl}/${locale}/tenders/${id}`,
+            lastModified: new Date(updated_at),
+          }))
       );
     } else {
       console.error("Failed to fetch tenders:", tenderResponse.statusText);
@@ -44,44 +64,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error("Error fetching tenders:", error);
   }
 
-  return [
-    {
-      url: baseUrl,
+  // Generate localized entries for static routes
+  const localizedStaticEntries = staticRoutes.flatMap((route) =>
+    locales.map((locale) => ({
+      url: `${baseUrl}/${locale}${route}`,
       lastModified: new Date(),
-    },
-    {
-      url: `${baseUrl}/certifications`,
-      lastModified: new Date(),
-    },
-    {
-      url: `${baseUrl}/projects`,
-      lastModified: new Date(),
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-    },
-    {
-      url: `${baseUrl}/services/commerce`,
-      lastModified: new Date(),
-    },
-    {
-      url: `${baseUrl}/services/management`,
-      lastModified: new Date(),
-    },
-    {
-      url: `${baseUrl}/services/operation`,
-      lastModified: new Date(),
-    },
-    {
-      url: `${baseUrl}/tenders`,
-      lastModified: new Date(),
-    },
-    ...projectEntries,
-    ...tenderEntries,
-  ];
+    }))
+  );
+
+  return [...localizedStaticEntries, ...projectEntries, ...tenderEntries];
 }

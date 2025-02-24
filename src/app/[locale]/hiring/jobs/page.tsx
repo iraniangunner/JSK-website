@@ -1,8 +1,9 @@
 import { PageCover } from "@/components/pageCover";
 import ResumeForm from "./_components/resume-form";
 import JobGridWrapper from "./_components/job-grid-wrapper";
-import { getCities, getJobCategory } from "@/utils/server/jobsApi";
+import { getJobCities, getJobCategory } from "@/utils/server/jobsApi";
 import { getLocale, getTranslations } from "next-intl/server";
+import { CustomError } from "@/components/customError";
 
 type Props = {
   params: { locale: string };
@@ -24,19 +25,17 @@ export async function generateMetadata({ params: { locale } }: Props) {
   };
 }
 
-export default async function JobsPage() {
+export default async function JobsOpportunityPage() {
+  const locale = await getLocale();
   try {
-    const cities = await getCities();
-    const categories = await getJobCategory();
-    const locale = await getLocale();
+    const [cities, categories] = await Promise.all([
+      getJobCities(),
+      getJobCategory(),
+    ]);
     return (
       <div>
         <PageCover
-          title={`${
-            locale === "fa"
-              ? "فرصت های شغلی"
-              : "Job Opportunities"
-          }`}
+          title={`${locale === "fa" ? "فرصت های شغلی" : "Job Opportunities"}`}
           bgImage="projects-pattern"
         />
         <div className="container mx-auto px-4 py-12">
@@ -48,10 +47,11 @@ export default async function JobsPage() {
   } catch {
     return (
       <div>
-        <PageCover title="فرصت های شغلی" bgImage="projects-pattern" />
-        <div className="min-h-[300px] flex justify-center items-center">
-          <p className="text-red-500">خطایی رخ داده است</p>
-        </div>
+        <PageCover
+          title={`${locale === "fa" ? "فرصت های شغلی" : "Job Opportunities"}`}
+          bgImage="projects-pattern"
+        />
+        <CustomError />
         <ResumeForm />
       </div>
     );

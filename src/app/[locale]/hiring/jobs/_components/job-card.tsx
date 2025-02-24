@@ -1,11 +1,13 @@
-import { Link } from '@/i18n/routing';
-import { JobResponse } from '@/types/job';
+import { Link } from "@/i18n/routing";
+import { JobResponse } from "@/types/job";
+import { useLocale } from "next-intl";
 
 interface JobCardProps {
   job: JobResponse;
 }
 
 export const JobCard: React.FC<JobCardProps> = ({ job }) => {
+  const locale = useLocale();
   return (
     <div className="bg-white rounded-lg border shadow-md hover:shadow-lg transition-shadow">
       <div className="p-6">
@@ -43,12 +45,9 @@ export const JobCard: React.FC<JobCardProps> = ({ job }) => {
               border-solid border-[#e6e5e5] font-[600] text-[#fff]
                hover:bg-[#2c4050] hover:border-[#2c4050] transition-all duration-[0.5s]"
         >
-          مشاهده جزئیات
+          {locale === "fa" ? "مشاهده جزئیات" : "View Details"}
         </Link>
       </div>
     </div>
   );
 };
-
-
-

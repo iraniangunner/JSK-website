@@ -90,7 +90,7 @@ export function SingleProject({ project }: { project: Project }) {
             <li className="flex items-center py-[15px] border-b border-solid border-[#001c472e]">
               <div>
                 <h4 className="text-[20px] mb-[3px] text-[#001c47] font-[600]">
-                  {t("title")}
+                  {t("projectTitle")}
                 </h4>
                 <p className="text-[16px] text-[#53545A]">{project.title}</p>
               </div>

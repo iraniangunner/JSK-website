@@ -11,10 +11,9 @@ export async function getTenderById(id: number) {
 
   if (!res.ok) {
     if (res.status === 404) {
-      throw new Error("No such project"); // Triggers the `not-found.js` file if it exists
+      throw new Error("No such tender"); // Triggers the `not-found.js` file if it exists
     }
-    throw new Error("Failed to fetch the project data");
+    throw new Error("Failed to fetch the tender data");
   }
-
   return res.json();
 }

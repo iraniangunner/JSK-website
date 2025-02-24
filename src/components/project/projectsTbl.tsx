@@ -3,6 +3,7 @@ import { useState, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ProjectView } from "./projectView";
 import { ProjectCategory, ProjectsData } from "@/types/projectTypes";
+import { useLocale } from "next-intl";
 
 export default function ProjectsTable({
   projectsData,
@@ -12,6 +13,7 @@ export default function ProjectsTable({
   categories: ProjectCategory[];
 }) {
   const [selectedCategory, setSelectedCategory] = useState(1);
+  const locale = useLocale();
 
   const filteredProjects = useMemo(() => {
     return selectedCategory
@@ -27,7 +29,7 @@ export default function ProjectsTable({
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
         <div className="flex items-center justify-center gap-6 flex-wrap">
-          {categories.map((category:ProjectCategory) => (
+          {categories.map((category: ProjectCategory) => (
             <button
               key={category.order}
               onClick={() => setSelectedCategory(category.id)}
@@ -44,7 +46,9 @@ export default function ProjectsTable({
       </div>
       {!filteredProjects ||
         (!filteredProjects.length && (
-          <div className="text-center py-8 text-gray-500">پروژه ای یافت نشد.</div>
+          <div className="text-center py-8 text-gray-500">
+            {locale === "fa" ? "پروژه ای یافت نشد" : "No projects found"}
+          </div>
         ))}
       <motion.div
         layout

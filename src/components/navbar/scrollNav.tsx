@@ -12,6 +12,7 @@ import { useScroll } from "@/hooks/useScroll";
 import { DropdownMenu } from "./dropdownMenu";
 import { getMenuItems } from "@/utils/client/menu-items";
 import { useTranslations, useLocale } from "next-intl";
+import LanguageSwitcher from "../language-switcher";
 
 export function ScrollNav() {
   const [isScrolling] = useScroll(70);
@@ -124,6 +125,9 @@ export function ScrollNav() {
                 )
               )}
             </ul>
+          </div>
+          <div className={`${locale === "fa" ? "ml-2" : "mr-2"} lg:hidden`}>
+            <LanguageSwitcher />
           </div>
           <IconButton
             size="sm"

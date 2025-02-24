@@ -5,7 +5,6 @@ export interface Job {
   category: string;
 }
 
-
 export interface JobSearchParams {
   job_category_id?: number;
   city_id?: number;
@@ -21,6 +20,7 @@ export interface JobResponse {
   city: {
     title: string;
   };
+  text: string;
 }
 
 export interface FilterOption {
