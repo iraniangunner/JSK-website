@@ -2,7 +2,7 @@
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import { useTransition, useState } from "react";
-import { Globe } from "lucide-react";
+import Image from "next/image";
 
 const languages = [
   {
@@ -10,12 +10,14 @@ const languages = [
     name: "English",
     nativeName: "English",
     dir: "ltr",
+    flagCode: "gb",
   },
   {
     code: "fa",
     name: "Persian",
     nativeName: "فارسی",
     dir: "rtl",
+    flagCode: "ir",
   },
 ] as const;
 
@@ -43,6 +45,8 @@ export default function LanguageSwitcher() {
     setIsOpen(false);
   };
 
+  const activeLanguage = languages.find((l) => l.code === activeLocale);
+
   return (
     <div className="relative">
       <button
@@ -60,10 +64,15 @@ export default function LanguageSwitcher() {
         aria-haspopup="listbox"
         aria-label="Select language"
       >
-        <Globe className="h-4 w-4" />
-        <span className="hidden sm:inline-block capitalize">
-          {languages.find((l) => l.code === activeLocale)?.nativeName}
-        </span>
+        <Image
+          src={`https://flagcdn.com/w20/${activeLanguage?.flagCode}.png`}
+          width={20}
+          height={15}
+          alt=""
+          className="rounded-sm object-cover"
+          aria-hidden="true"
+        />
+        <span className="hidden sm:inline-block">{activeLanguage?.code}</span>
         <svg
           className={`h-4 w-4 transition-transform duration-200 ${
             isOpen ? "rotate-180" : ""
@@ -91,7 +100,7 @@ export default function LanguageSwitcher() {
 
           <div
             className={`
-              absolute z-50 mt-2 w-full
+              absolute z-50 mt-2 w-full 
               rounded-lg border border-gray-200 bg-white
               shadow-lg animate-in fade-in-0 zoom-in-95
               dark:bg-gray-800 dark:border-gray-700
@@ -105,7 +114,7 @@ export default function LanguageSwitcher() {
                   onClick={() => onSelectChange(lang.code)}
                   className={`
                     w-full px-2 py-2 text-sm
-                    flex items-center justify-between
+                    flex items-center gap-2
                     ${
                       lang.dir === "rtl"
                         ? "flex-row-reverse text-right"
@@ -124,10 +133,18 @@ export default function LanguageSwitcher() {
                   role="option"
                   aria-selected={activeLocale === lang.code}
                 >
-                  <span className="">{lang.nativeName}</span>
+                  <Image
+                    src={`https://flagcdn.com/w20/${lang.flagCode}.png`}
+                    width={20}
+                    height={15}
+                    alt=""
+                    className="rounded-sm object-cover"
+                    aria-hidden="true"
+                  />
+                  <span>{lang.code}</span>
                   {activeLocale === lang.code && (
                     <svg
-                      className="h-4 w-4"
+                      className="h-4 w-4 ml-auto"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"

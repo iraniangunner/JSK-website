@@ -369,7 +369,6 @@
       "error": "An error occurred. Please try again"
     }
   },
-
   "Email": {
     "subject": "Resume Received Confirmation",
     "greeting": "Dear",

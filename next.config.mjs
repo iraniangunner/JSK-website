@@ -12,6 +12,11 @@ const nextConfig = {
         hostname: "jsk-co.com",
         pathname: "/storage/project/**",
       },
+      {
+        protocol: "https",
+        hostname: "flagcdn.com",
+        pathname: "**",
+      },
     ],
   },
 };
