@@ -1,7 +1,7 @@
 "use client";
-import pic1 from "../../public/images/pic1.jpg";
-import pic2 from "../../public/images/pic2.jpg";
-import pic3 from "../../public/images/pic3.jpg";
+// import pic1 from "../../public/images/pic1.jpg";
+// import pic2 from "../../public/images/pic2.jpg";
+// import pic3 from "../../public/images/pic3.jpg";
 import { motion } from "framer-motion";
 import { AccordionItem } from "./accordion/accordionItem";
 import Image from "next/image";
@@ -13,6 +13,11 @@ export default function ServicesSection() {
   const t1 = useTranslations("ServicesSection");
   const t = useTranslations();
   const services = getServicesData(t);
+
+   // ✅ Lazy load images only when the component is rendered
+   const pic1 = require("../../public/images/pic1.jpg").default;
+   const pic2 = require("../../public/images/pic2.jpg").default;
+   const pic3 = require("../../public/images/pic3.jpg").default;
 
   return (
     <section>

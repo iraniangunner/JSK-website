@@ -1,9 +1,14 @@
+import dynamic from "next/dynamic";
 import { PageCover } from "@/components/pageCover";
 import ResumeForm from "./_components/resume-form";
 import JobGridWrapper from "./_components/job-grid-wrapper";
 import { getJobCities, getJobCategory } from "@/utils/server/jobsApi";
 import { getLocale, getTranslations } from "next-intl/server";
 import { CustomError } from "@/components/customError";
+
+
+// const JobGridWrapper = dynamic(() => import("./_components/job-grid-wrapper"), { ssr: false });
+// const ResumeForm = dynamic(() => import("./_components/resume-form"), { ssr: false });
 
 type Props = {
   params: { locale: string };

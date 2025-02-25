@@ -4,6 +4,8 @@ import { Suspense } from "react";
 import LoadingSpinner from "@/components/loadingSpinner";
 import { MainCarouselSection } from "@/components/MainCarouselSection";
 
+
+
 export default async function Home() {
   return (
     <>
