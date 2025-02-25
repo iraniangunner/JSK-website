@@ -1,8 +1,6 @@
 import Image from "next/image";
-import { FaPhoneFlip } from "react-icons/fa6";
 import { Link } from "@/i18n/routing";
-import { MdEmail } from "react-icons/md";
-import { FaLocationDot } from "react-icons/fa6";
+import { Phone, Mail, MapPin } from "lucide-react";
 import jsk from "../../../public/images/jsk.png";
 import LocalSwitcher from "../language-switcher";
 import { getLocale, getTranslations } from "next-intl/server";
@@ -12,7 +10,7 @@ export default async function TopNav() {
   const t = await getTranslations();
 
   return (
-    <div className="hidden top-0 lg:flex items-center justify-center gap-4 lg:gap-8 bg-white pt-[10px]">
+    <div className="hidden top-0 lg:flex items-center justify-center gap-6 bg-white pt-[10px]">
       <div className="flex justify-center items-center">
         <Link
           href="/"
@@ -50,7 +48,7 @@ export default async function TopNav() {
 
       <div
         className={`flex justify-center items-center gap-3 ${
-          locale === "fa" ? "lg:mr-10" : "lg:ml-10"
+          locale === "fa" ? "lg:mr-6" : "lg:ml-6"
         }`}
       >
         <div
@@ -66,7 +64,7 @@ export default async function TopNav() {
               locale === "fa" ? "ml-3" : "mr-3"
             }`}
           >
-            <FaLocationDot size={20} />
+            <MapPin size={20} />
           </a>
           <div className="text-black">
             <p className="mb-2 font-bold text-black">
@@ -86,7 +84,7 @@ export default async function TopNav() {
               locale === "fa" ? "ml-3" : "mr-3"
             }`}
           >
-            <FaPhoneFlip size={20} />
+            <Phone size={20} />
           </a>
           <div>
             <p className="mb-2 font-bold text-black">
@@ -103,7 +101,7 @@ export default async function TopNav() {
             locale === "fa" ? "ml-3" : "mr-3"
           }`}
           >
-            <MdEmail size={20} />
+            <Mail size={20} />
           </a>
           <div>
             <p className="mb-2 font-bold text-black">
@@ -113,10 +111,17 @@ export default async function TopNav() {
           </div>
         </div>
       </div>
-      <div
-        className={`flex justify-center items-center gap-1 ${
-          locale === "fa" ? "lg:mr-10" : "lg:ml-10"
+      {/* <div
+        className={`flex justify-center items-center gap-1 mr-2 ${
+          locale === "fa" ? "lg:mr-6" : "lg:ml-6"
         }`}
+      > */}
+      <div
+        className={`flex items-center ${
+          locale === "fa"
+            ? "border-r pr-4 lg:pr-6 xl:pr-8"
+            : "border-l pl-4 lg:pl-6 xl:pl-8"
+        } border-gray-200 mr-2`}
       >
         <LocalSwitcher />
       </div>

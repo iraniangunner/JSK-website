@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -28,6 +28,17 @@ export const ContactForm = () => {
 
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const [isCompact, setIsCompact] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsCompact(window.innerWidth < 768);
+    };
+
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
 
   const {
     register,
@@ -179,6 +190,7 @@ export const ContactForm = () => {
           <ReCAPTCHA
             ref={recaptchaRef}
             sitekey="6LdmdIoqAAAAAPEu4G4i9ba4eQbxDsZ5Ux2FBJ8B"
+            size={isCompact ? "compact" : "normal"}
             onChange={handleRecaptchaChange}
             onExpired={() => setRecaptchaToken(null)}
             hl={`${locale === "fa" ? "fa" : "en"}`}

@@ -68,7 +68,7 @@ export function AccordionItem({ data }: { data: AccordionType[] }) {
             icon={<Icon id={index + 1} open={open} />}
           >
             <AccordionHeader
-              className="text-right"
+              className={`${locale === "fa" ? "text-right" : "text-left"}`}
               style={{
                 fontFamily: `${
                   locale === "fa"
@@ -93,13 +93,13 @@ export function AccordionItem({ data }: { data: AccordionType[] }) {
               {Array.isArray(item.desc) ? (
                 <ol className="list-disc pr-5">
                   {item.desc.map((item, index) => (
-                    <li key={index} className="mt-2 text-justify leading-8">
+                    <li key={index} className="mt-2 sm:text-justify sm:leading-8">
                       {item}
                     </li>
                   ))}
                 </ol>
               ) : (
-                <p className="text-justify leading-10">{item.desc}</p>
+                <p className="sm:text-justify sm:leading-10">{item.desc}</p>
               )}
 
               {item.link ? (
@@ -109,7 +109,7 @@ export function AccordionItem({ data }: { data: AccordionType[] }) {
                 mt-4 border border-[#ffa500] hover:bg-white hover:text-[#ffa500] 
                 transition-all"
                 >
-                 {locale === "fa" ? "مشاهده بیش تر":"View More"}
+                  {locale === "fa" ? "مشاهده بیش تر" : "View More"}
                 </Link>
               ) : (
                 ""

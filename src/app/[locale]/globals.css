@@ -4,12 +4,15 @@
 @import "tailwindcss/utilities";
 
 html {
-  font-family: var(--font-inter);
   scroll-behavior: smooth !important;
   ::placeholder {
     @apply text-xs;
   }
-  overflow-x: hidden;
+  overflow-x: hidden !important;
+}
+
+html[lang="en"] {
+  font-family: var(--font-inter);
 }
 
 html[lang="fa"] {

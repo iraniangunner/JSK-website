@@ -32,7 +32,7 @@ export default function Footer() {
               }`}
             />
 
-            <p className="lg:text-justify leading-7 select-none text-[16px]">
+            <p className="sm:text-justify sm:leading-7 select-none text-[16px]">
               {t("Footer.text")}
             </p>
           </div>

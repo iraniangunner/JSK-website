@@ -17,7 +17,7 @@ export default function ServicesSection() {
   return (
     <section>
       <div className="grid grid-cols-1 lg:grid-cols-2 w-[90%] xl:w-[80%] mx-auto gap-10 pb-10 pt-20 overflow-hidden lg:overflow-visible">
-        <div className="order-2 lg:order-1 max-w-full flex flex-col justify-center">
+        <div className="order-1 lg:order-2 max-w-full flex flex-col justify-center">
           <motion.h1
             initial="hidden"
             whileInView="visible"
@@ -34,7 +34,7 @@ export default function ServicesSection() {
           <motion.p
             initial="hidden"
             whileInView="visible"
-            className="mt-6 mb-8 text-justify overflow-hidden leading-8 text-black"
+            className="mt-6 mb-8 sm:text-justify overflow-hidden sm:leading-8 text-black"
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeIn" }}
             variants={{
