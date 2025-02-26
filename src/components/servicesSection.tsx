@@ -3,10 +3,19 @@
 // import pic2 from "../../public/images/pic2.jpg";
 // import pic3 from "../../public/images/pic3.jpg";
 import { motion } from "framer-motion";
-import { AccordionItem } from "./accordion/accordionItem";
+import dynamic from "next/dynamic";
+// import { AccordionItem } from "./accordion/accordionItem";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { getServicesData } from "@/utils/client/services-data";
+
+const AccordionItem = dynamic(
+  () => import("./accordion/accordionItem").then((mod) => mod.AccordionItem),
+  {
+    loading: () => <p>Loading...</p>,
+    //ssr: false, // Ensure it's only loaded on the client side
+  }
+);
 
 export default function ServicesSection() {
   const locale = useLocale();
@@ -14,10 +23,10 @@ export default function ServicesSection() {
   const t = useTranslations();
   const services = getServicesData(t);
 
-   // ✅ Lazy load images only when the component is rendered
-   const pic1 = require("../../public/images/pic1.jpg").default;
-   const pic2 = require("../../public/images/pic2.jpg").default;
-   const pic3 = require("../../public/images/pic3.jpg").default;
+  // ✅ Lazy load images only when the component is rendered
+  const pic1 = require("../../public/images/pic1.jpg").default;
+  const pic2 = require("../../public/images/pic2.jpg").default;
+  const pic3 = require("../../public/images/pic3.jpg").default;
 
   return (
     <section>

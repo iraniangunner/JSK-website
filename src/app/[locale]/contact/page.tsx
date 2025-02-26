@@ -10,8 +10,8 @@ import { getLocale, getTranslations } from "next-intl/server";
 const ContactForm = dynamic(
   () => import("@/components/contactForm").then((mod) => mod.ContactForm),
   {
-    loading: () => <p>Loading form...</p>,
-    ssr: false, // Ensure it's only loaded on the client side
+    loading: () => <p>Loading...</p>,
+    //ssr: false, // Ensure it's only loaded on the client side
   }
 );
 type Props = {

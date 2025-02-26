@@ -1,6 +1,15 @@
 import { getProjects } from "@/utils/server/projectsApi";
 import { CustomError } from "./customError";
-import { ProjectsSectionUI } from "./projectsSectionUI";
+import dynamic from "next/dynamic";
+// import { ProjectsSectionUI } from "./projectsSectionUI";
+
+const ProjectsSectionUI = dynamic(
+  () => import("./projectsSectionUI").then((mod) => mod.ProjectsSectionUI),
+  {
+    loading: () => <p>Loading...</p>,
+    //ssr: false, // Ensure it's only loaded on the client side
+  }
+);
 
 export async function ProjectSection() {
   try {

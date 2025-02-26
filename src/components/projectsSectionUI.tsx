@@ -1,9 +1,19 @@
 "use client";
 import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import { ProjectsCarousel } from "./carousel/ProjectsCarousel";
 import { ProjectsData } from "@/types/projectTypes";
 import { useLocale, useTranslations } from "next-intl";
+
+
+// const ProjectsCarousel = dynamic(
+//   () => import("./carousel/ProjectsCarousel").then((mod) => mod.ProjectsCarousel),
+//   {
+//     loading: () => <p>Loading ...</p>,
+//     //ssr: false, // Ensure it's only loaded on the client side
+//   }
+// );
 
 export const ProjectsSectionUI = ({ projects }: { projects: ProjectsData }) => {
   const t = useTranslations("ProjectsSection");
