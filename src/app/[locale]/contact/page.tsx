@@ -4,16 +4,16 @@ import { FaLocationDot } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { Map } from "@/components/googlemap";
 import { PageCover } from "@/components/pageCover";
-import { ContactForm } from "@/components/contactForm";
+// import { ContactForm } from "@/components/contactForm";
 import { getLocale, getTranslations } from "next-intl/server";
 
-// const ContactForm = dynamic(
-//   () => import("@/components/contactForm").then((mod) => mod.ContactForm),
-//   {
-//     loading: () => <p>Loading form...</p>,
-//     ssr: false, // Ensure it's only loaded on the client side
-//   }
-// );
+const ContactForm = dynamic(
+  () => import("@/components/contactForm").then((mod) => mod.ContactForm),
+  {
+    loading: () => <p>Loading form...</p>,
+    ssr: false, // Ensure it's only loaded on the client side
+  }
+);
 type Props = {
   params: { locale: string };
 };

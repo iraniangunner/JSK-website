@@ -1,11 +1,20 @@
 "use client";
 import { FaRegUser } from "react-icons/fa";
+import dynamic from "next/dynamic";
 import { FaRegCalendar } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
-import ProjectCarousel from "../carousel/thumbsCarousel";
+// import ProjectCarousel from "../carousel/thumbsCarousel";
 import { Project } from "@/types/projectTypes";
 import { useScroll } from "@/hooks/useScroll";
 import { useLocale, useTranslations } from "next-intl";
+
+const ProjectCarousel = dynamic(
+  () => import("../carousel/thumbsCarousel"),
+  {
+    loading: () => <p>Loading ...</p>,
+   // ssr: false, // Ensure it's only loaded on the client side
+  }
+);
 
 export function SingleProject({ project }: { project: Project }) {
   const [isScrolling] = useScroll(80);

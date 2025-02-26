@@ -1,6 +1,6 @@
 import { TendersTable } from "@/components/tender/tenderTable";
 import { PageCover } from "@/components/pageCover";
-import TenderListWrapper from "@/components/tender/tender-wrapper";
+import QueryProvider from "@/providers/query-provider";
 import { getLocale, getTranslations } from "next-intl/server";
 
 type Props = {
@@ -32,9 +32,9 @@ export default async function Tender() {
         bgImage="projects-pattern"
       />
       <div className="my-12 mx-8">
-        <TenderListWrapper>
+        <QueryProvider>
           <TendersTable />
-        </TenderListWrapper>
+        </QueryProvider>
       </div>
     </>
   );

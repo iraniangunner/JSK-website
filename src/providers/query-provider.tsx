@@ -13,11 +13,7 @@ const queryClient = new QueryClient({
   },
 });
 
-export default function TenderListWrapper({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function QueryProvider({ children }: { children: ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );
