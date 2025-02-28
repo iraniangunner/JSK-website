@@ -1,11 +1,11 @@
 import dynamic from "next/dynamic";
 import { PageCover } from "@/components/pageCover";
 import ResumeForm from "./_components/resume-form";
-import JobGridWrapper from "./_components/job-grid-wrapper";
 import { getJobCities, getJobCategory } from "@/utils/server/jobsApi";
 import { getLocale, getTranslations } from "next-intl/server";
 import { CustomError } from "@/components/customError";
-
+import QueryProvider from "@/providers/query-provider";
+import { JobGrid } from "./_components/job-grid";
 
 // const JobGridWrapper = dynamic(() => import("./_components/job-grid-wrapper"), { ssr: false });
 // const ResumeForm = dynamic(() => import("./_components/resume-form"), { ssr: false });
@@ -44,7 +44,9 @@ export default async function JobsOpportunityPage() {
           bgImage="projects-pattern"
         />
         <div className="container mx-auto px-4 py-12">
-          <JobGridWrapper cities={cities} categories={categories} />
+          <QueryProvider>
+            <JobGrid cities={cities} categories={categories} />
+          </QueryProvider>
           <ResumeForm />
         </div>
       </div>
