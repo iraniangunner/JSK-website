@@ -37,7 +37,6 @@ export default async function Projects() {
       <div>
         <PageCover
           title={locale === "fa" ? "پروژه ها" : "Projects"}
-          bgImage="projects-pattern"
         />
         <div className="my-6 mx-8 mt-12">
           <div className="max-w-[960px] mx-auto">
@@ -54,7 +53,6 @@ export default async function Projects() {
       <div>
         <PageCover
           title={locale === "fa" ? "پروژه ها" : "Projects"}
-          bgImage="projects-pattern"
         />
         <div className="my-6 mx-8 mt-12">
           <div className="max-w-[960px] mx-auto">

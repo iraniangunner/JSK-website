@@ -118,7 +118,6 @@ export default async function OperationDepartment() {
             ? "بهره برداری پروژه های صنعتی و معدنی"
             : "Industrial & Mining Operations"
         }`}
-        bgImage="projects-pattern"
       />
 
       <section id="services" className="py-20">

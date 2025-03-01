@@ -28,7 +28,6 @@ export default async function About() {
     <>
       <PageCover
         title={`${locale === "fa" ? "درباره ما" : "About Us"}`}
-        bgImage="projects-pattern"
       />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <main className="container mx-auto px-4 py-12 max-w-[850px]">

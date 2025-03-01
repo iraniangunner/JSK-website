@@ -28,7 +28,6 @@ export default async function ContractorPage() {
     <div>
       <PageCover
         title={`${locale === "fa" ? "همکاری شرکت ها" : "Company Cooperation"}`}
-        bgImage="projects-pattern"
       />
       <CooperationForm />
     </div>

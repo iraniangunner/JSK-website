@@ -26,14 +26,9 @@ export default async function Certifications() {
   const locale = await getLocale();
   return (
     <>
-     <PageCover
-             title={`${
-               locale === "fa"
-                 ? "گواهینامه ها و جوایز"
-                 : "Certifications"
-             }`}
-             bgImage="projects-pattern"
-           />
+      <PageCover
+        title={`${locale === "fa" ? "گواهینامه ها و جوایز" : "Certifications"}`}
+      />
       <div className="flex justify-center my-16">
         <div className="w-[80%] pt-[30px]">
           <CertificationsCarousel />

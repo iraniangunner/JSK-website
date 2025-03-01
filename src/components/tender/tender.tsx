@@ -2,26 +2,24 @@
 
 import { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import type { Tender } from "@/types/tender";
+import { DetailCover } from "../detailCover";
 
 export function TenderComponent({ tender }: { tender: Tender }) {
   const t = useTranslations("Tenders.tender");
+  const locale = useLocale();
   const contentRef = useRef(null);
   const handlePrint = useReactToPrint({ contentRef });
 
   return (
     <>
-      <div
-        className="relative bg-projects-pattern pt-[80px] lg:pt-[260px]
-        lg:pb-[10px] bg-[top_right] bg-no-repeat bg-fixed
-        before:absolute before:content-[''] before:left-0 before:top-0
-        before:w-full before:h-full before:opacity-[0.9] before:z-[0] before:bg-[#042038]"
-      >
-        <h1 className="lg:text-[35px] font-bold text-center text-[#fff] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-          {tender.title}
-        </h1>
-      </div>
+      <DetailCover
+        title={tender.title}
+        link="/tenders"
+        linkTitle={locale === "fa" ? "مناقصات" : "Tenders"}
+        location={tender.doc_submission_location}
+      />
       <div className="xl:w-[60%] mx-auto px-12 mt-8">
         <div className="bg-white overflow-hidden mb-8 print:shadow-none">
           <h2 className="text-xl font-semibold mb-6">{t("pageTitle")}</h2>

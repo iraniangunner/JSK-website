@@ -92,7 +92,6 @@ export default async function CommercialDepartment() {
             ? "بازرگانی و تامین اقلام پروژه"
             : "Commerce & Project Supply"
         }`}
-        bgImage="projects-pattern"
       />
 
       <section id="services" className="py-20">

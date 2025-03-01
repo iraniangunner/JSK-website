@@ -10,8 +10,9 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "jsk-co.com",
-        pathname: "/storage/project/**",
+        pathname: "/storage/**",
       },
+
       {
         protocol: "https",
         hostname: "flagcdn.com",

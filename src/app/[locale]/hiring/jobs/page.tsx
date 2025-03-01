@@ -41,7 +41,6 @@ export default async function JobsOpportunityPage() {
       <div>
         <PageCover
           title={`${locale === "fa" ? "فرصت های شغلی" : "Job Opportunities"}`}
-          bgImage="projects-pattern"
         />
         <div className="container mx-auto px-4 py-12">
           <QueryProvider>
@@ -56,7 +55,6 @@ export default async function JobsOpportunityPage() {
       <div>
         <PageCover
           title={`${locale === "fa" ? "فرصت های شغلی" : "Job Opportunities"}`}
-          bgImage="projects-pattern"
         />
         <CustomError />
         <ResumeForm />

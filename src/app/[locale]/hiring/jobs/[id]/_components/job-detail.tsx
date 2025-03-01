@@ -1,64 +1,17 @@
-import { Link } from "@/i18n/routing";
 import { JobResponse } from "@/types/job";
 import { getLocale, getTranslations } from "next-intl/server";
+import { DetailCover } from "@/components/detailCover";
 export async function JobDetail({ job }: { job: JobResponse }) {
   const t = await getTranslations("Hiring.job");
   const locale = await getLocale();
   return (
     <>
-      <div
-        className="relative bg-projects-pattern pt-[80px] lg:pt-[260px] 
-            lg:pb-[10px] bg-[top_right] bg-no-repeat bg-fixed
-            before:absolute before:content-[''] before:left-0 before:top-0
-            before:w-full before:h-full before:opacity-0 before:z-[-1]"
-      >
-        <nav
-          aria-label="breadcrumb"
-          className="px-[15px] mx-auto md:max-w-[720px] lg:max-w-[920px] relative hidden md:block"
-        >
-          <ol className="flex flex-wrap items-center absolute bottom-[20px] rounded-md bg-opacity-60 px-[1rem]">
-            <li className="flex items-center text-lg antialiased font-normal leading-normal transition-colors duration-300 cursor-pointer text-blue-gray-900 hover:text-[#ffa500]">
-              <Link href="/hiring/jobs" className="opacity-60">
-                {locale === "fa" ? "فرصت های شغلی" : "Job Opportunities"}
-              </Link>
-              <span className="mx-2 text-lg antialiased font-normal leading-normal pointer-events-none select-none text-blue-gray-500">
-                /
-              </span>
-            </li>
-            <li className="flex items-center text-lg antialiased font-normal leading-normal text-blue-gray-900">
-              <span>{job.title}</span>
-            </li>
-          </ol>
-        </nav>
-        <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-          <h1 className="lg:text-2xl font-bold text-center text-gray-900 mb-2">
-            {job.title}
-          </h1>
-          <div className="flex items-center justify-center text-gray-600">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4 ml-1"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-              />
-            </svg>
-            <span className="mr-2">{job.city.title}</span>
-          </div>
-        </div>
-      </div>
+      <DetailCover
+        title={job.title}
+        link="/hiring/jobs"
+        linkTitle={locale === "fa" ? "فرصت های شغلی" : "Job Opportunities"}
+        location={job.city.title}
+      />
       <main className="container mx-auto lg:px-24 px-8 py-8">
         <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
           <div className="space-y-6">

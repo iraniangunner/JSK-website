@@ -1,16 +1,25 @@
 import { TenderComponent } from "@/components/tender/tender";
 import type { Metadata } from "next";
-import { getTenderById } from "@/utils/server/tendersApi";
+import { getTenderById, getTenders } from "@/utils/server/tendersApi";
 import NotFound from "@/app/[locale]/not-found";
 import { CustomError } from "@/components/customError";
 import { getTranslations } from "next-intl/server";
+import { Tender } from "@/types/tender";
 
 type Props = {
   params: {
-    id: number;
+    id: string;
     locale: string;
   };
 };
+
+export async function generateStaticParams() {
+  const tenders = await getTenders();
+
+  return tenders.data.map((p: Tender) => ({
+    id: p.id.toString(),
+  }));
+}
 
 export const generateMetadata = async ({
   params,
@@ -21,7 +30,8 @@ export const generateMetadata = async ({
   });
 
   try {
-    const tender = await getTenderById(params.id);
+    const id = Number.parseInt(params.id, 10);
+    const tender = await getTenderById(id);
     return {
       title: {
         absolute: t("title", { title: tender.data.title }),
@@ -51,7 +61,7 @@ export const generateMetadata = async ({
 
 export default async function TenderPage({ params }: Props) {
   try {
-    const tender = await getTenderById(params.id);
+    const tender = await getTenderById(Number.parseInt(params.id, 10));
     return <TenderComponent tender={tender.data} />;
   } catch (error) {
     if (error instanceof Error && error.message === "No such tender") {

@@ -1,20 +1,33 @@
-import { getLocale } from "next-intl/server";
+"use client";
 import { Link } from "@/i18n/routing";
-export async function PageCover({
-  bgImage,
-  title,
-}: {
-  bgImage: string;
-  title: string;
-}) {
-  const locale = await getLocale();
+import Image from "next/image";
+import { useLocale } from "next-intl";
+import bgImage from "../../public/images/contact-banner2.jpg";
+
+export async function PageCover({ title }: { title: string }) {
+  const locale = useLocale();
+
   return (
-    <div
-      className={`relative bg-${bgImage} pt-[80px] lg:pt-[260px] 
-        lg:pb-[10px] bg-[top_right] bg-no-repeat bg-fixed
-        before:absolute before:content-[''] before:left-0 before:top-0
-        before:w-full before:h-full before:opacity-0 before:z-[-1]`}
-    >
+    <div className="relative pt-[80px] lg:pt-[260px] lg:pb-[10px] overflow-hidden min-h-[200px]">
+      {/* Optimized background image */}
+      <div className="absolute inset-0 z-[-2]">
+        <Image
+          src={bgImage || "/placeholder.svg"}
+          alt={`${title} background`}
+          fill
+          priority
+          quality={85}
+          sizes="100vw"
+          style={{
+            objectFit: "cover",
+            objectPosition: "top right",
+          }}
+        />
+      </div>
+
+      {/* Overlay element (previously :before) */}
+      <div className="absolute inset-0 opacity-0 z-[-1]"></div>
+
       <nav
         aria-label="breadcrumb"
         className="px-[15px] mx-auto md:max-w-[720px] lg:max-w-[920px] relative hidden md:block"

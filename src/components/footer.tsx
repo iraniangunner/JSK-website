@@ -9,16 +9,31 @@ import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { useLocale, useTranslations } from "next-intl";
 import { getUsefulLinks } from "@/utils/client/useful-links";
+import bgImage from "../../public/images/footer1.jpg";
 
 export default function Footer() {
   const locale = useLocale();
   const t = useTranslations();
   const links = getUsefulLinks(t);
   return (
-    <footer
-      className="relative w-full bg-footer-pattern bg-cover mt-6 overflow-hidden bg-no-repeat bg-center before:content-[''] 
-    before:absolute before:left-0 before:top-0 before:w-full before:h-full before:opacity-[0.9] before:z-[0] before:bg-[#042038]"
-    >
+    <footer className="relative w-full mt-6 overflow-hidden">
+      <div className="absolute inset-0 z-[-2]">
+        <Image
+          src={bgImage}
+          alt="Footer background"
+          fill
+          sizes="100vw"
+          style={{
+            objectFit: "cover",
+            objectPosition: "center",
+          }}
+        />
+      </div>
+      {/* Dark overlay */}
+      <div
+        className="absolute inset-0 z-[-1] bg-[#042038] opacity-90"
+        aria-hidden="true"
+      ></div>
       <div className="mx-auto w-full max-w-7xl px-8 z-[2] relative py-4 md:py-8 lg:py-12 xl:py-19">
         <div className="grid grid-cols-1 justify-between gap-4 lg:gap-8 xl:gap-12 md:grid-cols-2 lg:grid-cols-3">
           <div className={`${locale === "fa" ? "ml-6" : "mr-6"} text-white`}>
@@ -141,7 +156,7 @@ export default function Footer() {
             }`,
           }}
         >
-         {t("Footer.description")}
+          {t("Footer.description")}
         </Typography>
         <div className="flex gap-4 text-[#fff]">
           <Typography

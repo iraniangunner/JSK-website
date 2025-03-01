@@ -29,7 +29,6 @@ export default async function Tender() {
     <>
       <PageCover
         title={`${locale === "fa" ? "مناقصات" : "Tenders"}`}
-        bgImage="projects-pattern"
       />
       <div className="my-12 mx-8">
         <QueryProvider>

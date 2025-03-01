@@ -67,7 +67,6 @@ export default async function ManagementDepartment() {
             ? "مدیریت پروژه های صنعتی و معدنی"
             : "Industrial & Mining Management"
         }`}
-        bgImage="projects-pattern"
       />
 
       <section id="services" className="py-20">
