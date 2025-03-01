@@ -47,7 +47,7 @@ export function MainCarousel({
           modules={[Autoplay, Navigation, EffectFade]}
           className="h-full"
         >
-          {data.map(({ id, image, text, link ,text_en }) => (
+          {data.map(({ id, image, text, link, text_en }) => (
             <SwiperSlide key={id}>
               {({ isActive }) => (
                 <div className="relative h-full">
@@ -57,7 +57,7 @@ export function MainCarousel({
                       src={getImageUrl(image) || "/placeholder.svg"}
                       alt={text}
                       fill
-                      priority={id === 7} // Priority load first slide
+                      priority={id === 11} // Priority load first slide
                       quality={85}
                       sizes="100vw"
                       style={{
@@ -81,8 +81,9 @@ export function MainCarousel({
                         transition={{ duration: 0.5 }}
                       >
                         <p
-                          dir="rtl"
-                          className="text-[20px] lg:text-[30px] font-semibold leading-10 lg:leading-[50px] text-center text-white"
+                          className={`text-sm sm:text-[30px] font-semibold leading-8 sm:leading-10 lg:leading-[50px] ${
+                            locale === "fa" ? "text-center" : "text-left"
+                          } text-white`}
                         >
                           {locale === "fa" ? text : text_en}
                         </p>
@@ -100,7 +101,7 @@ export function MainCarousel({
                         <div className="text-white bg-[#ffa500]">
                           <Link
                             href={link}
-                            className="px-6 py-4 w-full h-full block hover:bg-[#ffa600]/90 transition-colors"
+                            className="px-4 py-2 sm:px-6 sm:py-4 w-full h-full block hover:bg-[#ffa600]/90 transition-colors"
                           >
                             {locale === "fa" ? "مشاهده بیش تر" : "View More"}
                           </Link>
