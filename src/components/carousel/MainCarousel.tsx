@@ -47,7 +47,7 @@ export function MainCarousel({
           modules={[Autoplay, Navigation, EffectFade]}
           className="h-full"
         >
-          {data.map(({ id, image, text, link }) => (
+          {data.map(({ id, image, text, link ,text_en }) => (
             <SwiperSlide key={id}>
               {({ isActive }) => (
                 <div className="relative h-full">
@@ -82,9 +82,9 @@ export function MainCarousel({
                       >
                         <p
                           dir="rtl"
-                          className="text-[20px] lg:text-[30px] font-semibold leading-10 lg:leading-[70px] text-center text-white"
+                          className="text-[20px] lg:text-[30px] font-semibold leading-10 lg:leading-[50px] text-center text-white"
                         >
-                          {text}
+                          {locale === "fa" ? text : text_en}
                         </p>
                       </motion.div>
 

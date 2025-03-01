@@ -3,5 +3,6 @@ export interface Slide {
   image: string;
   text: string;
   link: string;
+  text_en: string;
   full_path: string;
 }
