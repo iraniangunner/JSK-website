@@ -101,7 +101,7 @@ export function MainCarousel({
                         <div className="text-white bg-[#ffa500]">
                           <Link
                             href={link}
-                            className="px-4 py-2 sm:px-6 sm:py-4 w-full h-full block hover:bg-[#ffa600]/90 transition-colors"
+                            className="px-4 py-2 sm:px-6 sm:py-4 w-full h-full block hover:bg-[#ffa600]/90 transition-colors text-sm sm:text-[18px]"
                           >
                             {locale === "fa" ? "مشاهده بیش تر" : "View More"}
                           </Link>
