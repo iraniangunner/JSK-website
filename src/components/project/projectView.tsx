@@ -3,8 +3,10 @@ import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Project } from "@/types/projectTypes";
+import { useLocale } from "next-intl";
 
 export function ProjectView({ projectDetails }: { projectDetails: Project }) {
+  const locale = useLocale();
   return (
     <motion.div
       layout
@@ -27,7 +29,9 @@ export function ProjectView({ projectDetails }: { projectDetails: Project }) {
           href={`/projects/${projectDetails.id}`}
           className="relative block p-4"
         >
-          <h5 className="mb-2 text-gray-900">{projectDetails.title}</h5>
+          <h5 className="mb-2 text-gray-900">
+            {locale === "fa" ? projectDetails.title : projectDetails.title_en}
+          </h5>
         </Link>
       </div>
       <div className="absolute hidden lg:block bottom-0 left-0 right-0 top-0 z-0 w-full h-full bg-black opacity-[0.8] translate-x-[500px] group-hover:translate-x-0 transition-all duration-[0.6s]"></div>
@@ -37,7 +41,7 @@ export function ProjectView({ projectDetails }: { projectDetails: Project }) {
         className="absolute top-3 bottom-3 left-3 right-3 border hidden lg:flex justify-center items-center translate-x-[500px] group-hover:translate-x-0 transition-all duration-[0.6s] z-[2]"
       >
         <h5 className="p-2 lg:p-4 text-lg text-center text-white">
-          {projectDetails.title}
+          {locale === "fa" ? projectDetails.title : projectDetails.title_en}
         </h5>
       </Link>
     </motion.div>

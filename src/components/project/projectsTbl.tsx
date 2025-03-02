@@ -39,7 +39,7 @@ export default function ProjectsTable({
                   : ""
               }`}
             >
-              {category.title}
+              {locale === "fa" ? category.title : category.title_en}
             </button>
           ))}
         </div>

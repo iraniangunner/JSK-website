@@ -22,8 +22,8 @@ export function SingleProject({ project }: { project: Project }) {
   return (
     <>
       <DetailCover
-        title={project.title}
-        location={project.location}
+        title={locale === "fa" ? project.title : project.title_en}
+        location={locale === "fa" ? project.location : project.location_en}
         link="/projects"
         linkTitle={locale === "fa" ? "پروژه ها" : "Projects"}
       />
@@ -39,7 +39,9 @@ export function SingleProject({ project }: { project: Project }) {
                 <h4 className="text-[20px] mb-[3px] text-[#001c47] font-[600]">
                   {t("projectTitle")}
                 </h4>
-                <p className="text-[16px] text-[#53545A]">{project.title}</p>
+                <p className="text-[16px] text-[#53545A]">
+                  {locale === "fa" ? project.title : project.title_en}
+                </p>
               </div>
             </li>
             <li className="flex items-center py-[15px] border-b border-solid border-[#001c472e]">
@@ -53,7 +55,9 @@ export function SingleProject({ project }: { project: Project }) {
                 <h4 className="text-[20px] mb-[3px] text-[#001c47] font-[600]">
                   {t("employer")}
                 </h4>
-                <p className="text-[16px] text-[#53545A]">{project.employer}</p>
+                <p className="text-[16px] text-[#53545A]">
+                  {locale === "fa" ? project.employer : project.employer_en}
+                </p>
               </div>
             </li>
             <li className="flex items-center py-[15px] border-b border-solid border-[#001c472e]">
@@ -83,7 +87,9 @@ export function SingleProject({ project }: { project: Project }) {
                 <h4 className="text-[20px] mb-[3px] text-[#001c47] font-[600]">
                   {t("projectLocation")}
                 </h4>
-                <p className="text-[16px] text-[#53545A]">{project.location}</p>
+                <p className="text-[16px] text-[#53545A]">
+                  {locale === "fa" ? project.location : project.location_en}
+                </p>
               </div>
             </li>
           </ul>
@@ -95,7 +101,9 @@ export function SingleProject({ project }: { project: Project }) {
                 <h4 className="text-[20px] mb-[3px] text-[#001c47] font-[600]">
                   {t("projectTitle")}
                 </h4>
-                <p className="text-[16px] text-[#53545A]">{project.title}</p>
+                <p className="text-[16px] text-[#53545A]">
+                  {locale === "fa" ? project.title : project.title_en}
+                </p>
               </div>
             </li>
             <li className="flex items-center py-[15px] border-b border-solid border-[#001c472e]">
@@ -109,7 +117,9 @@ export function SingleProject({ project }: { project: Project }) {
                 <h4 className="text-[20px] mb-[3px] text-[#001c47] font-[600]">
                   {t("employer")}
                 </h4>
-                <p className="text-[16px] text-[#53545A]">{project.employer}</p>
+                <p className="text-[16px] text-[#53545A]">
+                  {locale === "fa" ? project.employer : project.employer_en}
+                </p>
               </div>
             </li>
             <li className="flex items-center py-[15px] border-b border-solid border-[#001c472e]">
@@ -139,7 +149,9 @@ export function SingleProject({ project }: { project: Project }) {
                 <h4 className="text-[20px] mb-[3px] text-[#001c47] font-[600]">
                   {t("projectLocation")}
                 </h4>
-                <p className="text-[16px] text-[#53545A]">{project.location}</p>
+                <p className="text-[16px] text-[#53545A]">
+                  {locale === "fa" ? project.location : project.location_en}
+                </p>
               </div>
             </li>
           </ul>
@@ -149,8 +161,8 @@ export function SingleProject({ project }: { project: Project }) {
           <h1 className="font-bold text-lg text-black">
             {t("projectDescription")}
           </h1>
-          <p className="text-justify w-[100%] leading-7 text-black">
-            {project.text}
+          <p className="lg:text-justify w-[100%] leading-7 text-black">
+            {locale === "fa" ? project.text : project.text_en}
           </p>
         </div>
       </div>

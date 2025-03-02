@@ -78,13 +78,15 @@ export function DetailCover({
       </nav>
 
       {/* Title and Location */}
-      <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full max-w-[90%]">
-        <h1 className="lg:text-2xl font-bold text-center text-white mb-2">
+      <div className="absolute top-[40%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full max-w-[90%]">
+        <h1 className="lg:text-2xl font-bold text-center text-white mb-6">
           {title}
         </h1>
-        <div className="flex items-center justify-center text-white/80 mt-4">
+        <div className="flex items-center justify-center text-white/80">
           <MapPin className="h-4 w-4 ml-1" />
-          <span className="mr-2">{location}</span>
+          <span className={`${locale === "fa" ? "mr-2" : "ml-2"}`}>
+            {location}
+          </span>
         </div>
       </div>
     </div>

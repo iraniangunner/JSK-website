@@ -91,7 +91,13 @@ export const ProjectsCarousel = ({ projects }: { projects: ProjectsData }) => {
           <Slide delay={delays[index] || 0}>
             <div
               className="relative h-full text-gray-700 border-[3px] border-gray-400  group project_slider_container bg-white select-none"
-              style={{ fontFamily: "var(--font-yekanbakh)" }}
+              style={{
+                fontFamily: `${
+                  locale === "fa"
+                    ? "var(--font-yekanbakh)"
+                    : "var(--font-inter)"
+                }`,
+              }}
             >
               <div className="relative h-full">
                 <Image

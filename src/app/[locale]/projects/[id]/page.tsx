@@ -35,15 +35,19 @@ export const generateMetadata = async ({
 
     return {
       title: {
-        absolute: t("title", { title: project.title }),
+        absolute: t("title", {
+          title: params.locale === "fa" ? project.title : project.title_en,
+        }),
       },
-      description: project.text,
+      description: params.locale === "fa" ? project.text : project.text_en,
       alternates: {
         canonical: `/projects/${params.id}`,
       },
       openGraph: {
-        title: t("title", { title: project.title }),
-        description: project.text,
+        title: t("title", {
+          title: params.locale === "fa" ? project.title : project.title_en,
+        }),
+        description: params.locale === "fa" ? project.text : project.text_en,
         images: [
           {
             url: project.images[0].full_path,
