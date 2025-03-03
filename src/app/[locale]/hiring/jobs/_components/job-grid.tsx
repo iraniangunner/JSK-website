@@ -6,7 +6,7 @@ import { JobCard } from "./job-card";
 import { JobCardSkeleton } from "./job-card-skeleton";
 import { useJobs } from "@/hooks/useJobs";
 import { JobSearchParams, JobResponse } from "@/types/job";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 export const JobGrid = ({
   categories,
@@ -19,6 +19,8 @@ export const JobGrid = ({
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
   const [city, setCity] = useState("");
+
+  const locale = useLocale();
 
   const searchParams: JobSearchParams = {
     title: search.length >= 2 ? search : undefined,
@@ -70,7 +72,7 @@ export const JobGrid = ({
           <option value="">{t("allCities")}</option>
           {cities.map((city: any) => (
             <option key={city.id} value={city.id}>
-              {city.title}
+              {locale === "fa" ? city.title : city.title_en}
             </option>
           ))}
         </select>
@@ -83,7 +85,7 @@ export const JobGrid = ({
           <option value="">{t("allCategories")}</option>
           {categories.map((category: any) => (
             <option key={category.id} value={category.id}>
-              {category.title}
+              {locale === "fa" ? category.title : category.title_en}
             </option>
           ))}
         </select>

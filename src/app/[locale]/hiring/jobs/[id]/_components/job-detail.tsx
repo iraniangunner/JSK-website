@@ -7,10 +7,10 @@ export async function JobDetail({ job }: { job: JobResponse }) {
   return (
     <>
       <DetailCover
-        title={job.title}
+        title={locale === "fa" ? job.title : job.title_en}
         link="/hiring/jobs"
         linkTitle={locale === "fa" ? "فرصت های شغلی" : "Job Opportunities"}
-        location={job.city.title}
+        location={locale === "fa" ? job.city.title : job.city.title_en}
       />
       <main className="container mx-auto lg:px-24 px-8 py-8">
         <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
@@ -19,7 +19,9 @@ export async function JobDetail({ job }: { job: JobResponse }) {
               <h2 className="text-lg font-semibold text-gray-900 mb-4">
                 {t("jobDescription")}
               </h2>
-              <p className="text-gray-600 leading-relaxed">{job.text}</p>
+              <p className="text-gray-600 leading-relaxed">
+                {locale === "fa" ? job.text : job.text_en}
+              </p>
             </section>
 
             <section>

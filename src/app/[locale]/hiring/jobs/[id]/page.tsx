@@ -34,15 +34,17 @@ export const generateMetadata = async ({
     const job = await getJobById(id);
     return {
       title: {
-        absolute: t("title", { title: job.title }),
+        absolute: t("title", {
+          title: params.locale === "fa" ? job.title : job.title_en,
+        }),
       },
-      description: job.text,
+      description: params.locale === "fa" ? job.text : job.text_en,
       alternates: {
         canonical: `/job-opportunities/${params.id}`,
       },
       openGraph: {
-        title: t("title", { title: job.title }),
-        description: job.text,
+        title: params.locale === "fa" ? job.title : job.title_en,
+        description: params.locale === "fa" ? job.text : job.text_en,
       },
     };
   } catch (error) {

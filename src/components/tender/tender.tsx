@@ -1,5 +1,4 @@
 "use client";
-
 import { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 import { useLocale, useTranslations } from "next-intl";
@@ -15,10 +14,14 @@ export function TenderComponent({ tender }: { tender: Tender }) {
   return (
     <>
       <DetailCover
-        title={tender.title}
+        title={locale === "fa" ? tender.title : tender.title_en}
         link="/tenders"
         linkTitle={locale === "fa" ? "مناقصات" : "Tenders"}
-        location={tender.doc_submission_location}
+        location={
+          locale === "fa"
+            ? tender.doc_submission_location
+            : tender.doc_submission_location_en
+        }
       />
       <div className="xl:w-[60%] mx-auto px-12 mt-8">
         <div className="bg-white overflow-hidden mb-8 print:shadow-none">
@@ -34,7 +37,7 @@ export function TenderComponent({ tender }: { tender: Tender }) {
                     {t("table.tenderTitle")}
                   </td>
                   <td className="border border-gray-300 py-2 px-4 text-gray-500">
-                    {tender.title}
+                    {locale === "fa" ? tender.title : tender.title_en}
                   </td>
                   <td className="border border-gray-300 py-2 px-4 font-medium text-gray-900">
                     {t("table.openingDate")}
@@ -48,7 +51,9 @@ export function TenderComponent({ tender }: { tender: Tender }) {
                     {t("table.tenderType")}
                   </td>
                   <td className="border border-gray-300 py-2 px-4 text-gray-500">
-                    {tender.tender_category.title}
+                    {locale === "fa"
+                      ? tender.tender_category.title
+                      : tender.tender_category.title_en}
                   </td>
                   <td className="border border-gray-300 py-2 px-4 font-medium text-gray-900">
                     {t("table.submissionDeadline")}
@@ -62,13 +67,15 @@ export function TenderComponent({ tender }: { tender: Tender }) {
                     {t("table.status")}
                   </td>
                   <td className="border border-gray-300 py-2 px-4 text-gray-500">
-                    {tender.status}
+                    {locale === "fa" ? tender.status : tender.status_en}
                   </td>
                   <td className="border border-gray-300 py-2 px-4 font-medium text-gray-900">
                     {t("table.submissionLocation")}
                   </td>
                   <td className="border border-gray-300 py-2 px-4 text-gray-500">
-                    {tender.doc_submission_location}
+                    {locale === "fa"
+                      ? tender.doc_submission_location
+                      : tender.doc_submission_location_en}
                   </td>
                 </tr>
                 <tr>
@@ -82,7 +89,7 @@ export function TenderComponent({ tender }: { tender: Tender }) {
                     {t("table.department")}
                   </td>
                   <td className="border border-gray-300 py-2 px-4 text-gray-500">
-                    {tender.department}
+                    {locale === "fa" ? tender.department : tender.department_en}
                   </td>
                 </tr>
                 <tr>
@@ -121,7 +128,7 @@ export function TenderComponent({ tender }: { tender: Tender }) {
                     colSpan={3}
                     className="border border-gray-300 py-2 px-4 text-justify text-gray-500"
                   >
-                    {tender.text}
+                    {locale === "fa" ? tender.text : tender.text_en}
                   </td>
                 </tr>
               </tbody>

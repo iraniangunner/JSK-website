@@ -34,15 +34,23 @@ export const generateMetadata = async ({
     const tender = await getTenderById(id);
     return {
       title: {
-        absolute: t("title", { title: tender.data.title }),
+        absolute: t("title", {
+          title:
+            params.locale === "fa" ? tender.data.title : tender.data.title_en,
+        }),
       },
-      description: tender.text,
+      description:
+        params.locale === "fa" ? tender.data.text : tender.data.text_en,
       alternates: {
         canonical: `/tenders/${params.id}`,
       },
       openGraph: {
-        title: t("title", { title: tender.data.title }),
-        description: tender.data.text,
+        title: t("title", {
+          title:
+            params.locale === "fa" ? tender.data.text : tender.data.text_en,
+        }),
+        description:
+          params.locale === "fa" ? tender.data.text : tender.data.text_en,
       },
     };
   } catch (error) {

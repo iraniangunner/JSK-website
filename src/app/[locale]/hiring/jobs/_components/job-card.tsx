@@ -13,13 +13,13 @@ export const JobCard: React.FC<JobCardProps> = ({ job }) => {
       <div className="p-6">
         <div className="flex justify-between items-start">
           <h3 className="text-lg font-semibold text-gray-900 hover:text-gray-700">
-            {job.title}
+            {locale === "fa" ? job.title : job.title_en}
           </h3>
         </div>
         <div className="mt-2 flex items-center text-gray-600">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4 ml-1"
+            className={`h-4 w-4 ${locale === "fa" ? "ml-1" : "mr-1"}`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -37,7 +37,9 @@ export const JobCard: React.FC<JobCardProps> = ({ job }) => {
               d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
             />
           </svg>
-          <span className="text-sm">{job.city.title}</span>
+          <span className="text-sm">
+            {locale === "fa" ? job.city.title : job.city.title_en}
+          </span>
         </div>
         <Link
           href={`/hiring/jobs/${job.id}`}

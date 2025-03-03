@@ -25,6 +25,9 @@ export async function generateMetadata({ params: { locale } }: Props) {
 
 export default async function Tender() {
   const locale = await getLocale();
+
+  //we can get tender categories here and pass them to tenders table via props
+  
   return (
     <>
       <PageCover

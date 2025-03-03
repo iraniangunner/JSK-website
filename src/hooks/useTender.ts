@@ -1,23 +1,31 @@
-import { Tender, TenderFilters, PaginatedResponse } from "../types/tender";
+import { Tender, PaginatedResponse, TenderSearchParams } from "../types/tender";
 import { useQuery } from "@tanstack/react-query";
 
 export const fetchTenders = async (
-  page: number,
-  itemsPerPage: number,
-  filters: TenderFilters
+  params: TenderSearchParams
 ): Promise<PaginatedResponse<Tender>> => {
-  const searchParams = new URLSearchParams({
-    page: page.toString(),
-    per_page: itemsPerPage.toString(),
-    ...(filters.title && { title: filters.title }),
-    ...(filters.tender_category_id !== "all" && {
-      tender_category_id: filters.tender_category_id,
-    }),
-    ...(filters.status !== "all" && { status: filters.status }),
-  });
+  const queryParams = new URLSearchParams();
+  if (params.page) {
+    queryParams.set("page", params.page.toString());
+  }
+  if (params.per_page) {
+    queryParams.set("per_page", params.per_page.toString());
+  }
+
+  if (params.title && params.title.length >= 2) {
+    queryParams.set("title", params.title);
+  }
+
+  if (params.tender_category_id) {
+    queryParams.set("tender_category_id", params.tender_category_id.toString());
+  }
+
+  if (params.status) {
+    queryParams.set("status", params.status.toString());
+  }
 
   const response = await fetch(
-    `https://jsk-co.com/api/tenders?${searchParams.toString()}`,
+    `https://jsk-co.com/api/tenders?${queryParams.toString()}`,
     {
       next: { revalidate: 3600 },
       headers: {
@@ -34,14 +42,10 @@ export const fetchTenders = async (
   return response.json();
 };
 
-export const useTenders = (
-  page: number,
-  itemsPerPage: number,
-  filters: TenderFilters
-) => {
+export const useTenders = (params: TenderSearchParams) => {
   return useQuery({
-    queryKey: ["tenders", page, itemsPerPage, filters],
-    queryFn: () => fetchTenders(page, itemsPerPage, filters),
-    // placeholderData: keepPreviousData,
+    queryKey: ["tenders", params],
+    queryFn: () => fetchTenders(params),
+    enabled: !params?.title || (params.title?.length ?? 0) >= 2,
   });
 };

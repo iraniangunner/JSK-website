@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import ReactPaginate from "react-paginate";
 import { useLocale, useTranslations } from "next-intl";
-import type { Tender, TenderFilters } from "@/types/tender";
+import type { Tender, TenderSearchParams } from "@/types/tender";
 import { useTenders } from "@/hooks/useTender";
 import { useScroll } from "@/hooks/useScroll";
 import { TenderView } from "./tenderView";
@@ -14,42 +14,80 @@ export function TendersTable() {
   const locale = useLocale();
   const [page, setPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
-  const [filters, setFilters] = useState<TenderFilters>({
-    title: "",
-    tender_category_id: "all",
-    status: "all",
-  });
-  const [tempFilters, setTempFilters] = useState<TenderFilters>(filters);
   const [forcePage, setForcePage] = useState<number | undefined>(undefined);
   const [errorMessage, setErrorMessage] = useState<string>("");
-
-  const { data, isLoading, isError } = useTenders(page, itemsPerPage, filters);
   const [isScrolling] = useScroll(80);
+  // UI state (what user is typing/selecting)
+  const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("all");
+  const [status, setStatus] = useState("all");
+
+  // Applied filters (what's actually used for the API call)
+  const [appliedTitle, setAppliedTitle] = useState("");
+  const [appliedCategory, setAppliedCategory] = useState("all");
+  const [appliedStatus, setAppliedStatus] = useState("all");
+
+  const searchParams: TenderSearchParams = {
+    page: page ? page : undefined,
+    per_page: itemsPerPage ? itemsPerPage : undefined,
+    title: appliedTitle.length >= 2 ? appliedTitle : undefined,
+    tender_category_id:
+      appliedCategory && appliedCategory !== "all"
+        ? Number(appliedCategory)
+        : undefined,
+    status:
+      appliedStatus && appliedStatus !== "all" ? appliedStatus : undefined,
+  };
+
+  const { data, isLoading, isError } = useTenders(searchParams);
 
   const handlePageChange = (selectedItem: { selected: number }) => {
     setPage(selectedItem.selected + 1);
     setForcePage(undefined);
   };
 
-  const handleFilterChange = (name: string, value: string) => {
-    setTempFilters((prev) => ({ ...prev, [name]: value }));
+  const handleTitleChange = (value: string) => {
+    setTitle(value);
+  };
+
+  const handleStatusChange = (value: string) => {
+    setStatus(value);
+  };
+
+  const handleCategoryChange = (value: string) => {
+    setCategory(value);
   };
 
   const applyFilters = () => {
-    if (tempFilters.title && tempFilters.title.length < 2) {
+    if (title && title.length < 2) {
       setErrorMessage(t("filters.fields.tenderTitle.error"));
       return;
     }
     setErrorMessage("");
-    setFilters(tempFilters);
+
+    // Apply the current UI filter values
+    setAppliedTitle(title);
+    setAppliedCategory(category);
+    setAppliedStatus(status);
+
+    // Reset to first page when applying filters
     setPage(1);
     setForcePage(0);
   };
 
   const clearFilters = () => {
     setErrorMessage("");
-    setTempFilters({ title: "", tender_category_id: "all", status: "all" });
-    setFilters({ title: "", tender_category_id: "all", status: "all" });
+
+    // Reset UI filter values
+    setTitle("");
+    setCategory("all");
+    setStatus("all");
+
+    // Reset applied filter values
+    setAppliedTitle("");
+    setAppliedCategory("all");
+    setAppliedStatus("all");
+
     setPage(1);
     setForcePage(0);
   };
@@ -83,8 +121,8 @@ export function TendersTable() {
               <div className="relative">
                 <input
                   type="text"
-                  value={tempFilters.title}
-                  onChange={(e) => handleFilterChange("title", e.target.value)}
+                  value={title}
+                  onChange={(e) => handleTitleChange(e.target.value)}
                   id="search-title"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 rtl:text-right"
                   placeholder={t("filters.fields.tenderTitle.placeholder")}
@@ -103,10 +141,8 @@ export function TendersTable() {
                 {t("filters.fields.category.label")}
               </label>
               <select
-                value={tempFilters.tender_category_id}
-                onChange={(e) =>
-                  handleFilterChange("tender_category_id", e.target.value)
-                }
+                value={category}
+                onChange={(e) => handleCategoryChange(e.target.value)}
                 id="competition"
                 className="w-full px-3 py-2 border text-sm text-gray-700 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 rtl:text-right"
               >
@@ -134,8 +170,8 @@ export function TendersTable() {
               </label>
               <select
                 id="status"
-                value={tempFilters.status}
-                onChange={(e) => handleFilterChange("status", e.target.value)}
+                value={status}
+                onChange={(e) => handleStatusChange(e.target.value)}
                 className="w-full px-3 py-2 border text-sm text-gray-700 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 rtl:text-right"
               >
                 <option value="all">
