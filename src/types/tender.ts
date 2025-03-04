@@ -40,6 +40,12 @@ export interface TenderSearchParams {
   status?: string;
 }
 
+export interface TenderCategory {
+  id: number;
+  title: string;
+  title_en: string;
+}
+
 export interface PaginatedResponse<T> {
   current_page: number;
   data: T[];

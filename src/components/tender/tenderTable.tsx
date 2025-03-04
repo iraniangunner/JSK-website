@@ -3,13 +3,17 @@ import { useState, useEffect } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import ReactPaginate from "react-paginate";
 import { useLocale, useTranslations } from "next-intl";
-import type { Tender, TenderSearchParams } from "@/types/tender";
+import type {
+  Tender,
+  TenderCategory,
+  TenderSearchParams,
+} from "@/types/tender";
 import { useTenders } from "@/hooks/useTender";
 import { useScroll } from "@/hooks/useScroll";
 import { TenderView } from "./tenderView";
 import { TenderSkeletons } from "./tender-skeleton";
 
-export function TendersTable() {
+export function TendersTable({ categories }: { categories: TenderCategory[] }) {
   const t = useTranslations("Tenders");
   const locale = useLocale();
   const [page, setPage] = useState(1);
@@ -149,15 +153,11 @@ export function TendersTable() {
                 <option value="all">
                   {t("filters.fields.category.options.all")}
                 </option>
-                <option value="1">
-                  {t("filters.fields.category.options.tender")}
-                </option>
-                <option value="2">
-                  {t("filters.fields.category.options.auction")}
-                </option>
-                <option value="3">
-                  {t("filters.fields.category.options.inquiry")}
-                </option>
+                {categories.map((category: any) => (
+                  <option key={category.id} value={category.id}>
+                    {locale === "fa" ? category.title : category.title_en}
+                  </option>
+                ))}
               </select>
             </div>
 

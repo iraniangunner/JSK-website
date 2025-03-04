@@ -169,10 +169,7 @@
         "category": {
           "label": "Tender Category",
           "options": {
-            "all": "All Categories",
-            "tender": "Tender",
-            "auction": "Auction",
-            "inquiry": "Inquiry"
+            "all": "All Categories"
           }
         },
         "status": {
