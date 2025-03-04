@@ -109,6 +109,94 @@
     }
   },
 
+  "OperationAccordion": {
+    "first": {
+      "title": "Human Resources",
+      "desc": [
+        "Providing experienced and trained human resources related to the type of activity and in sufficient numbers, in all job categories required for timely execution and completion of work",
+        "Commitment to applying management, control and supervision over the correct performance of work, by qualified individuals",
+        "Employing appropriate executive methods and observing the sequence of work",
+        "Responding to complaints and implementing verdicts related to labor dispute resolution boards and other labor law obligations"
+      ]
+    },
+    "second": {
+      "title": "Planning and Coordination",
+      "desc": [
+        "Preparation and presentation of organization, implementation method, production and maintenance program",
+        "Preparation and presentation of program, charts and tables of production work progress",
+        "Performing necessary coordination with other contractors or executive groups related to the operation subject",
+        "Completion and continuous presentation of production control and process documents (log sheets and production identification-tracking cards, etc.)"
+      ]
+    },
+    "third": {
+      "title": "Procurement of Materials, Tools, Facilities, Equipment and Machinery Outside Production Lines",
+      "desc": [
+        "Procurement of materials, tools, machinery, equipment, work tools, transportation, fuel (gasoline, diesel, gas, etc.) and generally everything needed for the implementation of the operation subject",
+        "Providing transportation facilities, creating necessary facilities to provide suitable housing and food for employees, providing basic medical facilities, providing safety equipment and personal protection appropriate to the type of work",
+        "Providing machinery with relevant approvals and control and supervision according to supervision and evaluation checklists",
+        "Periodic service, maintenance and repair of machinery"
+      ]
+    },
+    "fourth": {
+      "title": "Maintenance and Repair of Production Lines",
+      "desc": [
+        "Performing maintenance and repair operations for all production units and systems",
+        "Performing periodic and basic repairs based on the approved program and issued instructions",
+        "Performing emergency repairs based on issued instructions",
+        "Preparation of spare parts and consumables needed for operation"
+      ]
+    },
+    "fifth": {
+      "title": "Inspection and Quality Control of Work",
+      "desc": [
+        "Preparation, compilation and completion of equipment inspection forms",
+        "Preparation, compilation and completion of equipment identification cards",
+        "Preparation, compilation and completion of equipment maintenance and repair standards"
+      ]
+    },
+    "sixth": {
+      "title": "Protection and Care of Work",
+      "desc": [
+        "Preservation and maintenance of materials, equipment, production line machinery, lands, roads and facilities"
+      ]
+    },
+    "seventh": {
+      "title": "Work Insurance and Responsibilities",
+      "desc": [
+        "Preparation of necessary insurance policies to cover contractual obligations",
+        "Full coverage of civil liability insurance including relevant clauses to cover any damage including accidents resulting in injury to employees and others who are somehow related to the work, suffer an accident or incident, as well as third party insurance, to cover bodily injury or death or damage to property, etc. as a result of contract execution.",
+        "Insurance of machinery, equipment, vehicles and other facilities needed to perform the work"
+      ]
+    }
+  },
+
+  "ManagementAccordion": {
+    "first": {
+      "title": "Design and Engineering Services",
+      "desc": [
+        "The engineering department of Zhivar Sanat Kian Company is established to provide the necessary engineering and technology services for clients in all mining, industrial, and other sectors, from the preliminary stages to the final phases of operation.",
+        "The company's engineering team consists of engineers, technical specialists, a research group, and executive support members, enabling clients to access key professionals who are committed to performing tasks efficiently and effectively.",
+        "The company's design and engineering unit, relying on the knowledge and experience of its technical team and utilizing cutting-edge technologies, continuously strives to provide innovative and efficient solutions to meet its clients' needs across various industrial sectors. It plays a significant role in the development and advancement of the country's industry. With a creative and knowledge-driven approach, this unit is constantly seeking to improve and enhance its services, leaving no effort spared in achieving these goals.",
+        "The company provides a full range of services, including economic evaluation, project development, project management, preliminary and detailed engineering, procurement services, contract management, construction supervision, commissioning, operational support, and training for its clients."
+      ]
+    },
+    "second": {
+      "title": "Equipment Procurement Services",
+      "desc": [
+        "Zhivar Sanat Kian Company's equipment procurement services include procurement management, sourcing industrial equipment and raw materials from reputable international suppliers, and overseeing equipment quality assurance.",
+        "The company's equipment procurement unit, leveraging its expertise in equipment supply, procurement engineering, and full knowledge of international trade regulations and domestic laws, is responsible for sourcing high-quality industrial equipment and machinery required for projects from reputable domestic and international suppliers.",
+        "In this regard, equipment for the domestic sections of projects is sourced from reputable local suppliers and manufacturers, while foreign equipment is procured from globally recognized and technologically advanced manufacturers in accordance with each project's specific requirements. It is worth mentioning that the entire procurement process—from contract signing to project site delivery, including supplier identification, negotiations, inspections, transportation, insurance, and customs clearance—is managed and supervised by this unit."
+      ]
+    },
+    "third": {
+      "title": "Construction and Execution Services",
+      "desc": [
+        "Zhivar Sanat Kian Company's construction and execution management includes overseeing execution projects, supervising industrial project implementation, cost and schedule control, and executing projects in compliance with international standards.",
+        "The execution of projects, from land handover to operation, is carried out or managed by experienced execution teams consisting of skilled specialists and experts. These stages include site preparation, procurement of machinery, tools, and equipment, leveling, construction of access roads and temporary facilities, execution of civil works and permanent structures, installation of mechanical, electrical, control, and instrumentation equipment, as well as cold and hot commissioning, along with training of the client’s personnel."
+      ]
+    }
+  },
+
   "About": {
     "title": "About Us",
     "default": "Zhivar Sanat Kian | About Us",
@@ -277,17 +365,19 @@
     "title": "Services | Trade and Project Supply Items",
     "default": "Services | Trade and Project Supply Items",
     "description": "Zhivar Sanat Kian, as an international organization, operates in the field of supply and services related to industrial and mining projects, with the aim of providing comprehensive and effective solutions to various industries. By leveraging technical knowledge, a specialized team, and an extensive network of suppliers and business partners worldwide, we meet the needs of our customers with the highest quality and in the shortest possible time.",
-    "text":"Zhivar Sanat Kian Company, as an international entity in the field of procurement and services related to industrial and mining projects, operates with the goal of providing comprehensive and effective solutions to various industries. By leveraging technical expertise, a specialized team, and an extensive network of suppliers and business partners worldwide, we meet our clients' needs with the highest quality and in the shortest possible time."
+    "text": "Zhivar Sanat Kian Company, as an international entity in the field of procurement and services related to industrial and mining projects, operates with the goal of providing comprehensive and effective solutions to various industries. By leveraging technical expertise, a specialized team, and an extensive network of suppliers and business partners worldwide, we meet our clients' needs with the highest quality and in the shortest possible time."
   },
   "Management": {
     "title": "Services | Industrial and Mining Projects Management",
     "default": "Services | Industrial and Mining Projects Management",
-    "description": "The expertise of Zhivar Sanat Kian lies in providing comprehensive project management services that help the client complete their projects on time, within the defined scope and budget, and with the desired quality. Our team is committed to delivering high-quality services tailored to the unique needs of the client, especially in EPC (Engineering, Procurement, and Construction) projects."
+    "description": "The expertise of Zhivar Sanat Kian lies in providing comprehensive project management services that help the client complete their projects on time, within the defined scope and budget, and with the desired quality. Our team is committed to delivering high-quality services tailored to the unique needs of the client, especially in EPC (Engineering, Procurement, and Construction) projects.",
+    "text": "Zhivar Sanat Kian Company specializes in providing comprehensive project management services, helping clients complete their projects on time, within the defined scope and budget, and at the desired quality. Our team is committed to delivering high-quality services tailored to the unique needs of each client, particularly in EPC (Engineering, Procurement, and Construction) projects."
   },
   "Operation": {
     "title": "Services | Industrial and Mining Projects Operation",
     "default": "Services | Industrial and Mining Projects Operation",
-    "description": "Zhivar Sanat Kian's services in the field of operation of industrial projects include two phases: trial operation and commercial operation."
+    "description": "Zhivar Sanat Kian's services in the field of operation of industrial projects include two phases: trial operation and commercial operation.",
+    "text": "Zhivar Sanat Kian Company's services in the operation of industrial projects include two phases: trial operation and commercial operation, covering the following areas:"
   },
   "CompanyCooperation": {
     "title": "Company Cooperation",

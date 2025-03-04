@@ -93,7 +93,9 @@ export function AccordionItem({ data }: { data: AccordionType[] }) {
               }}
             >
               {Array.isArray(item.desc) ? (
-                <ol className="list-disc pr-5">
+                <ol
+                  className={`list-disc ${locale === "fa" ? "pr-5" : "pl-5"}`}
+                >
                   {item.desc.map((item, index) => (
                     <li
                       key={index}

@@ -4,7 +4,6 @@ import { AccordionItem } from "@/components/accordion/accordionItem";
 import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 import { getCommerceData } from "@/utils/client/services-data";
-import { useTranslations } from "next-intl";
 
 type Props = {
   params: { locale: string };
@@ -43,7 +42,7 @@ export default async function CommercialDepartment() {
   const services = getCommerceData(t);
 
   return (
-    <div className="mx-auto text-right">
+    <div className="mx-auto">
       <PageCover
         title={`${
           locale === "fa"
