@@ -81,7 +81,9 @@ export function AccordionItem({ data }: { data: AccordionType[] }) {
               {item.title}
             </AccordionHeader>
             <AccordionBody
-              className="font-normal text-[16px]"
+              className={`font-normal text-[16px] ${
+                locale === "fa" ? "text-right" : "text-left"
+              }`}
               style={{
                 fontFamily: `${
                   locale === "fa"
@@ -93,7 +95,10 @@ export function AccordionItem({ data }: { data: AccordionType[] }) {
               {Array.isArray(item.desc) ? (
                 <ol className="list-disc pr-5">
                   {item.desc.map((item, index) => (
-                    <li key={index} className="mt-2 sm:text-justify sm:leading-8">
+                    <li
+                      key={index}
+                      className="mt-2 sm:text-justify sm:leading-8"
+                    >
                       {item}
                     </li>
                   ))}

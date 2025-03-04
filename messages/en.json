@@ -74,6 +74,41 @@
     }
   },
 
+  "CommerceAccordion": {
+    "first": {
+      "title": "Project Procurement",
+      "desc": "We specialize in the procurement of various equipment and supplies for industrial and mining projects. Our services include identifying project requirements, selecting reliable suppliers, and providing the best solutions to reduce costs and optimize the supply chain."
+    },
+    "second": {
+      "title": "Procurement of Spare Parts and Consumables for Factories",
+      "desc": "Given the importance of timely procurement of spare parts and consumables in reducing production line downtime, our company supplies these items with guaranteed quality from the best international suppliers."
+    },
+    "third": {
+      "title": "Procurement and Ordering of Essential Factory Supplies",
+      "desc": "We provide comprehensive services in the procurement of critical and strategic factory supplies, including machinery, specialized equipment, and raw materials. Our team identifies factory needs and facilitates and manages the ordering process."
+    },
+    "fourth": {
+      "title": "Procurement Engineering and Ordering of Custom-Made Parts",
+      "desc": "Leveraging our expertise and engineering knowledge, we provide specialized services in ordering and manufacturing custom-made parts based on required technical specifications. These services include design, material selection, production process supervision, and quality assurance of the parts."
+    },
+    "fifth": {
+      "title": "Trading and Procurement of Raw Materials for Mining and Petrochemical Industries",
+      "desc": "As a trusted supplier of raw materials for the mining and petrochemical industries, we specialize in the procurement and trading of these products. Our extensive network in global markets enables us to provide high-quality materials at competitive prices."
+    },
+    "sixth": {
+      "title": "Logistics Services and International Transportation",
+      "desc": "We provide comprehensive logistics and international transportation services. These services include shipment planning, document management, customs coordination, and optimized solutions to reduce transportation costs."
+    },
+    "seventh": {
+      "title": "Planning and Preparation of the Work Breakdown Structure (WBS) for Orders and Supply Infrastructure",
+      "desc": "Using modern management techniques, we develop and implement the Work Breakdown Structure (WBS) for orders and supply infrastructure in various projects. This process helps clarify the supply chain and enhance efficiency."
+    },
+    "eighth": {
+      "title": "Provision and Implementation of the EPR Procurement Process",
+      "desc": "In line with modernizing procurement processes, we design and implement ERP systems for supply chain management. These services include identifying requirements, selecting the right software, and overseeing the implementation stages"
+    }
+  },
+
   "About": {
     "title": "About Us",
     "default": "Zhivar Sanat Kian | About Us",
@@ -241,7 +276,8 @@
   "Commerce": {
     "title": "Services | Trade and Project Supply Items",
     "default": "Services | Trade and Project Supply Items",
-    "description": "Zhivar Sanat Kian, as an international organization, operates in the field of supply and services related to industrial and mining projects, with the aim of providing comprehensive and effective solutions to various industries. By leveraging technical knowledge, a specialized team, and an extensive network of suppliers and business partners worldwide, we meet the needs of our customers with the highest quality and in the shortest possible time."
+    "description": "Zhivar Sanat Kian, as an international organization, operates in the field of supply and services related to industrial and mining projects, with the aim of providing comprehensive and effective solutions to various industries. By leveraging technical knowledge, a specialized team, and an extensive network of suppliers and business partners worldwide, we meet the needs of our customers with the highest quality and in the shortest possible time.",
+    "text":"Zhivar Sanat Kian Company, as an international entity in the field of procurement and services related to industrial and mining projects, operates with the goal of providing comprehensive and effective solutions to various industries. By leveraging technical expertise, a specialized team, and an extensive network of suppliers and business partners worldwide, we meet our clients' needs with the highest quality and in the shortest possible time."
   },
   "Management": {
     "title": "Services | Industrial and Mining Projects Management",
