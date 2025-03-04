@@ -1,10 +1,6 @@
 "use client";
-// import pic1 from "../../public/images/pic1.jpg";
-// import pic2 from "../../public/images/pic2.jpg";
-// import pic3 from "../../public/images/pic3.jpg";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
-// import { AccordionItem } from "./accordion/accordionItem";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { getServicesData } from "@/utils/client/services-data";

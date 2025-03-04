@@ -1,17 +1,25 @@
 import React from "react";
 import { PageCover } from "@/components/pageCover";
-import { AccordionItem } from "@/components/accordion/accordionItem";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { getLocale } from "next-intl/server";
-import {
-  getManagementData,
-  getOperationData,
-} from "@/utils/client/services-data";
+import { getManagementData } from "@/utils/client/services-data";
 
 type Props = {
   params: { locale: string };
 };
+
+const AccordionItem = dynamic(
+  () =>
+    import("@/components/accordion/accordionItem").then(
+      (mod) => mod.AccordionItem
+    ),
+  {
+    //loading: () => <p>Loading...</p>,
+    // ssr: false, // Ensure it's only loaded on the client side
+  }
+);
 
 export async function generateMetadata({ params: { locale } }: Props) {
   const t = await getTranslations({ locale, namespace: "Management" });
