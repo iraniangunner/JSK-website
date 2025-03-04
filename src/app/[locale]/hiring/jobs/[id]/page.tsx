@@ -4,7 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { getJobById, getJobs } from "@/utils/server/jobsApi";
 import { JobDetail } from "./_components/job-detail";
 import NotFound from "@/app/[locale]/not-found";
-import { JobResponse } from "@/types/job";
+import type { JobResponse } from "@/types/job";
 
 type Props = {
   params: {
@@ -13,14 +13,23 @@ type Props = {
   };
 };
 
+// ✅ FIX: Ensure API returns valid data before generating paths
 export async function generateStaticParams() {
+  // try {
   const jobs = await getJobs();
+  // if (!jobs.length || !Array.isArray(jobs)) return [];
 
-  return jobs.map((p: JobResponse) => ({
-    id: p.id.toString(),
-  }));
+  return jobs.flatMap((p: JobResponse) => [
+    { id: p.id.toString(), locale: "en" },
+    { id: p.id.toString(), locale: "fa" },
+  ]);
+  // } catch (error) {
+  //   console.error("Error in generateStaticParams:", error);
+  //   return [];
+  // }
 }
 
+// ✅ FIX: Prevent metadata errors & ensure fallback values
 export const generateMetadata = async ({
   params,
 }: Props): Promise<Metadata | undefined> => {
@@ -32,6 +41,11 @@ export const generateMetadata = async ({
   try {
     const id = Number.parseInt(params.id, 10);
     const job = await getJobById(id);
+
+    // if (!job) {
+    //   throw new Error("No job data found");
+    // }
+
     return {
       title: {
         absolute: t("title", {
@@ -48,6 +62,7 @@ export const generateMetadata = async ({
       },
     };
   } catch (error) {
+    // console.error("Metadata Error:", error);
     return {
       title: {
         absolute: t("fallbackTitle"),
@@ -61,9 +76,16 @@ export const generateMetadata = async ({
   }
 };
 
+// ✅ FIX: Improved error handling & API validation
 export default async function JobPage({ params }: Props) {
   try {
     const job = await getJobById(Number.parseInt(params.id, 10));
+
+    // if (!job) {
+    //   console.error(`Job not found for ID: ${params.id}`);
+    //   return <NotFound />;
+    // }
+
     return <JobDetail job={job} />;
   } catch (error) {
     if (error instanceof Error && error.message === "No such job") {

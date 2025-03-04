@@ -13,12 +13,14 @@ type Props = {
   };
 };
 
+// ✅ FIX: Ensure both `id` and `locale` are included
 export async function generateStaticParams() {
   const projects = await getProjects();
 
-  return projects.data.map((p: Project) => ({
-    id: p.id.toString(),
-  }));
+  return projects.data.flatMap((p: Project) => [
+    { id: p.id.toString(), locale: "en" },
+    { id: p.id.toString(), locale: "fa" },
+  ]);
 }
 
 export const generateMetadata = async ({
@@ -50,7 +52,7 @@ export const generateMetadata = async ({
         description: params.locale === "fa" ? project.text : project.text_en,
         images: [
           {
-            url: project.images[0].full_path,
+            url: project.images[0]?.full_path || "/default-image.jpg",
           },
         ],
       },
@@ -69,15 +71,10 @@ export const generateMetadata = async ({
   }
 };
 
-export default async function ProjectPage({
-  params,
-}: {
-  params: Promise<{ id: string; locale: string }>;
-}) {
-  const { id } = await params;
-
+// ✅ FIX: Correct `params` typing & remove `await params`
+export default async function ProjectPage({ params }: Props) {
   try {
-    const project = await getProjectById(Number.parseInt(id, 10));
+    const project = await getProjectById(Number.parseInt(params.id, 10));
     return <SingleProject project={project} />;
   } catch (error) {
     if (error instanceof Error && error.message === "No such project") {

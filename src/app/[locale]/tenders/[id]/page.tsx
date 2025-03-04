@@ -4,7 +4,7 @@ import { getTenderById, getTenders } from "@/utils/server/tendersApi";
 import NotFound from "@/app/[locale]/not-found";
 import { CustomError } from "@/components/customError";
 import { getTranslations } from "next-intl/server";
-import { Tender } from "@/types/tender";
+import type { Tender } from "@/types/tender";
 
 type Props = {
   params: {
@@ -13,12 +13,14 @@ type Props = {
   };
 };
 
+// ✅ FIX: Ensure both `id` and `locale` are included
 export async function generateStaticParams() {
   const tenders = await getTenders();
 
-  return tenders.data.map((p: Tender) => ({
-    id: p.id.toString(),
-  }));
+  return tenders.data.flatMap((p: Tender) => [
+    { id: p.id.toString(), locale: "en" },
+    { id: p.id.toString(), locale: "fa" },
+  ]);
 }
 
 export const generateMetadata = async ({
@@ -36,21 +38,21 @@ export const generateMetadata = async ({
       title: {
         absolute: t("title", {
           title:
-            params.locale === "fa" ? tender.data.title : tender.data.title_en,
+            params.locale === "fa" ? tender.data?.title : tender.data?.title_en,
         }),
       },
       description:
-        params.locale === "fa" ? tender.data.text : tender.data.text_en,
+        params.locale === "fa" ? tender.data?.text : tender.data?.text_en,
       alternates: {
         canonical: `/tenders/${params.id}`,
       },
       openGraph: {
         title: t("title", {
           title:
-            params.locale === "fa" ? tender.data.text : tender.data.text_en,
+            params.locale === "fa" ? tender.data?.title : tender.data?.title_en,
         }),
         description:
-          params.locale === "fa" ? tender.data.text : tender.data.text_en,
+          params.locale === "fa" ? tender.data?.text : tender.data?.text_en,
       },
     };
   } catch (error) {
@@ -67,6 +69,7 @@ export const generateMetadata = async ({
   }
 };
 
+// ✅ FIX: Correct `params` typing & improve error handling
 export default async function TenderPage({ params }: Props) {
   try {
     const tender = await getTenderById(Number.parseInt(params.id, 10));

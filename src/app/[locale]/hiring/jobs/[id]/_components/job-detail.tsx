@@ -1,9 +1,10 @@
+"use client";
 import { JobResponse } from "@/types/job";
-import { getLocale, getTranslations } from "next-intl/server";
 import { DetailCover } from "@/components/detailCover";
-export async function JobDetail({ job }: { job: JobResponse }) {
-  const t = await getTranslations("Hiring.job");
-  const locale = await getLocale();
+import { useLocale, useTranslations } from "next-intl";
+export function JobDetail({ job }: { job: JobResponse }) {
+  const t =  useTranslations("Hiring.job");
+  const locale =  useLocale();
   return (
     <>
       <DetailCover
