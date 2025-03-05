@@ -1,8 +1,7 @@
 import NotFound from "@/app/[locale]/not-found";
 import { CustomError } from "@/components/customError";
 import { SingleProject } from "@/components/project/singleProject";
-import type { Project } from "@/types/projectTypes";
-import { getProjectById, getProjects } from "@/utils/server/projectsApi";
+import { getProjectById } from "@/utils/server/projectsApi";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
@@ -12,16 +11,6 @@ type Props = {
     locale: string;
   };
 };
-
-// ✅ FIX: Ensure both `id` and `locale` are included
-export async function generateStaticParams() {
-  const projects = await getProjects();
-
-  return projects.data.flatMap((p: Project) => [
-    { id: p.id.toString(), locale: "en" },
-    { id: p.id.toString(), locale: "fa" },
-  ]);
-}
 
 export const generateMetadata = async ({
   params,

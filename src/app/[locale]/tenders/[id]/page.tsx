@@ -1,10 +1,9 @@
 import { TenderComponent } from "@/components/tender/tender";
 import type { Metadata } from "next";
-import { getTenderById, getTenders } from "@/utils/server/tendersApi";
+import { getTenderById } from "@/utils/server/tendersApi";
 import NotFound from "@/app/[locale]/not-found";
 import { CustomError } from "@/components/customError";
 import { getTranslations } from "next-intl/server";
-import type { Tender } from "@/types/tender";
 
 type Props = {
   params: {
@@ -12,16 +11,6 @@ type Props = {
     locale: string;
   };
 };
-
-// ✅ FIX: Ensure both `id` and `locale` are included
-export async function generateStaticParams() {
-  const tenders = await getTenders();
-
-  return tenders.data.flatMap((p: Tender) => [
-    { id: p.id.toString(), locale: "en" },
-    { id: p.id.toString(), locale: "fa" },
-  ]);
-}
 
 export const generateMetadata = async ({
   params,

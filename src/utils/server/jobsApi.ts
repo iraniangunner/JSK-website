@@ -15,6 +15,7 @@ export async function getJobs() {
 
   return res.json();
 }
+
 export async function getJobCities() {
   const res = await fetch("https://jsk-co.com/api/cities", {
     next: { revalidate: 3600 },

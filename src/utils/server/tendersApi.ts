@@ -32,7 +32,6 @@ export async function getTenderCategory() {
   return res.json();
 }
 
-
 export async function getTenderById(id: number) {
   const res = await fetch(`https://jsk-co.com/api/tenders/${id}`, {
     next: { revalidate: 3600 },
@@ -40,6 +39,7 @@ export async function getTenderById(id: number) {
       Authorization:
         "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
     },
+    // cache: "no-store",
   });
 
   if (!res.ok) {
