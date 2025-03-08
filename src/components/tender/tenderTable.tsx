@@ -34,7 +34,9 @@ export function TendersTable({ categories }: { categories: TenderCategory[] }) {
   const searchParams: TenderSearchParams = {
     page: page ? page : undefined,
     per_page: itemsPerPage ? itemsPerPage : undefined,
-    title: appliedTitle.length >= 2 ? appliedTitle : undefined,
+    ...(locale === "fa"
+      ? { title: appliedTitle.length >= 2 ? appliedTitle : undefined }
+      : { title_en: appliedTitle.length >= 2 ? appliedTitle : undefined }),
     tender_category_id:
       appliedCategory && appliedCategory !== "all"
         ? Number(appliedCategory)

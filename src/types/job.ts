@@ -2,6 +2,7 @@ export interface JobSearchParams {
   job_category_id?: number;
   city_id?: number;
   title?: string;
+  title_en?: string;
 }
 
 export interface JobResponse {

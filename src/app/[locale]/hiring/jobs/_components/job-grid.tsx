@@ -16,14 +16,15 @@ export const JobGrid = ({
   cities: any;
 }) => {
   const t = useTranslations("JobGrid");
+  const locale = useLocale();
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
   const [city, setCity] = useState("");
 
-  const locale = useLocale();
-
   const searchParams: JobSearchParams = {
-    title: search.length >= 2 ? search : undefined,
+    ...(locale === "fa"
+      ? { title: search.length >= 2 ? search : undefined }
+      : { title_en: search.length >= 2 ? search : undefined }),
     job_category_id: category ? Number(category) : undefined,
     city_id: city ? Number(city) : undefined,
   };

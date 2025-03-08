@@ -13,6 +13,10 @@ const fetchJobs = async (params: JobSearchParams): Promise<JobResponse[]> => {
     queryParams.set("title", params.title);
   }
 
+  if (params.title_en && params.title_en.length >= 2) {
+    queryParams.set("title_en", params.title_en);
+  }
+
   const response = await fetch(
     `https://jsk-co.com/api/job-opportunities?${queryParams.toString()}`,
     {
@@ -35,6 +39,10 @@ export const useJobs = (params: JobSearchParams) => {
   return useQuery({
     queryKey: ["jobs", params],
     queryFn: () => fetchJobs(params),
-    enabled: !params?.title || (params.title?.length ?? 0) >= 2,
+    enabled:
+      !params?.title ||
+      (params.title?.length ?? 0) >= 2 ||
+      !params?.title_en ||
+      (params.title_en?.length ?? 0) >= 2,
   });
 };

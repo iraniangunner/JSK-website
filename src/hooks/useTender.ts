@@ -16,6 +16,10 @@ export const fetchTenders = async (
     queryParams.set("title", params.title);
   }
 
+  if (params.title_en && params.title_en.length >= 2) {
+    queryParams.set("title_en", params.title_en);
+  }
+
   if (params.tender_category_id) {
     queryParams.set("tender_category_id", params.tender_category_id.toString());
   }
@@ -46,6 +50,10 @@ export const useTenders = (params: TenderSearchParams) => {
   return useQuery({
     queryKey: ["tenders", params],
     queryFn: () => fetchTenders(params),
-    enabled: !params?.title || (params.title?.length ?? 0) >= 2,
+    enabled:
+      !params?.title ||
+      (params.title?.length ?? 0) >= 2 ||
+      !params?.title_en ||
+      (params.title_en?.length ?? 0) >= 2,
   });
 };

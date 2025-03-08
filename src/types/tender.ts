@@ -36,6 +36,7 @@ export interface TenderSearchParams {
   page?: number;
   per_page?: number;
   title?: string;
+  title_en?: string;
   tender_category_id?: number;
   status?: string;
 }
