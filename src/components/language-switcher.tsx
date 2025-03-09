@@ -7,14 +7,14 @@ import Image from "next/image";
 const languages = [
   {
     code: "en",
-    name: "English",
+    name: "EN",
     nativeName: "English",
     dir: "ltr",
     flagCode: "gb",
   },
   {
     code: "fa",
-    name: "Persian",
+    name: "FA",
     nativeName: "فارسی",
     dir: "rtl",
     flagCode: "ir",
@@ -72,7 +72,7 @@ export default function LanguageSwitcher() {
           className="rounded-sm object-cover"
           aria-hidden="true"
         />
-        <span className="hidden sm:inline-block">{activeLanguage?.code}</span>
+        <span className="hidden sm:inline-block">{activeLanguage?.name}</span>
         <svg
           className={`h-4 w-4 transition-transform duration-200 ${
             isOpen ? "rotate-180" : ""
@@ -141,7 +141,7 @@ export default function LanguageSwitcher() {
                     className="rounded-sm object-cover"
                     aria-hidden="true"
                   />
-                  <span>{lang.code}</span>
+                  <span>{lang.name}</span>
                   {activeLocale === lang.code && (
                     <svg
                       className="h-4 w-4 ml-auto"
