@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
-import ReactPaginate from "react-paginate";
 import { useLocale, useTranslations } from "next-intl";
 import type {
   Tender,
@@ -12,6 +11,7 @@ import { useTenders } from "@/hooks/useTender";
 import { useScroll } from "@/hooks/useScroll";
 import { TenderView } from "./tenderView";
 import { TenderSkeletons } from "./tender-skeleton";
+import ReactPaginate from "react-paginate";
 
 export function TendersTable({ categories }: { categories: TenderCategory[] }) {
   const t = useTranslations("Tenders");

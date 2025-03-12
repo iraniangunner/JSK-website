@@ -486,7 +486,7 @@
       }
     },
     "submit": {
-      "button": "Submit Application",
+      "button": "Submit",
       "loading": "Submitting",
       "success": "Form submitted successfully",
       "error": "An error occurred. Please try again"
@@ -557,7 +557,7 @@
       }
     },
     "submit": {
-      "button": "Submit Form",
+      "button": "Submit",
       "loading": "Submitting...",
       "success": "Form submitted successfully",
       "error": "Something went wrong. Please try again."
