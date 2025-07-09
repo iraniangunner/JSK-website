@@ -59,7 +59,6 @@ export const generateMetadata = async ({
 export default async function JobPage({ params }: Props) {
   try {
     const job = await getJobById(Number.parseInt(params.id, 10));
-
     return <JobDetail job={job} />;
   } catch (error) {
     if (error instanceof Error && error.message === "No such job") {

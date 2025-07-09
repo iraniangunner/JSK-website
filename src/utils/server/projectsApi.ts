@@ -7,7 +7,7 @@ export async function getProjects() {
       Authorization:
         "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
     },
-    // cache: "no-store",
+    cache: "no-store",
   });
 
   if (!res.ok) {
@@ -24,7 +24,7 @@ export async function getCategories() {
       Authorization:
         "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
     },
-    // cache: "no-store",
+    cache: "no-store",
   });
 
   if (!res.ok) {
@@ -41,7 +41,7 @@ export async function getProjectById(id: number) {
       Authorization:
         "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
     },
-    // cache: "no-store",
+    cache: "no-store",
   });
 
   if (!res.ok) {

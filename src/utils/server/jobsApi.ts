@@ -7,7 +7,7 @@ export async function getJobs() {
       Authorization:
         "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
     },
-    // cache: "no-store",
+    cache: "no-store",
   });
   if (!res.ok) {
     throw new Error("Failed to fetch job opportunities");
@@ -23,7 +23,7 @@ export async function getJobCities() {
       Authorization:
         "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
     },
-    // cache: "no-store",
+    cache: "no-store",
   });
   if (!res.ok) {
     throw new Error("Failed to fetch the job city");
@@ -39,7 +39,7 @@ export async function getJobCategory() {
       Authorization:
         "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
     },
-    // cache: "no-store",
+    cache: "no-store",
   });
   if (!res.ok) {
     throw new Error("Failed to fetch the job category");
@@ -55,7 +55,7 @@ export async function getJobById(id: number) {
       Authorization:
         "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
     },
-    // cache: "no-store",
+    cache: "no-store",
   });
 
   if (!res.ok) {
