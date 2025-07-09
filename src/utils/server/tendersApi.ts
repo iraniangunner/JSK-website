@@ -7,7 +7,7 @@ export async function getTenders() {
       Authorization:
         "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
     },
-    cache: "no-store",
+    // cache: "no-store",
   });
   if (!res.ok) {
     throw new Error("Failed to fetch the Tenders");
@@ -23,7 +23,7 @@ export async function getTenderCategory() {
       Authorization:
         "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
     },
-    cache: "no-store",
+    // cache: "no-store",
   });
   if (!res.ok) {
     throw new Error("Failed to fetch the Tenders");
@@ -39,7 +39,7 @@ export async function getTenderById(id: number) {
       Authorization:
         "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
     },
-    cache: "no-store",
+    // cache: "no-store",
   });
 
   if (!res.ok) {
