@@ -87,15 +87,29 @@ export default function ResumeForm() {
         formData.append("resume_file", resumeFile);
       }
 
-      const response = await fetch("https://jsk-co.com/api/resumes", {
+      // const response = await fetch("https://jsk-co.com/api/resumes", {
+      //   method: "POST",
+      //   headers: {
+      //     Accept: "application/json",
+      //     Authorization:
+      //       "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
+      //   },
+      //   mode: "cors",
+      //   body: formData,
+      // });
+
+      const response = await fetch("/api/create-case", {
         method: "POST",
-        headers: {
-          Accept: "application/json",
-          Authorization:
-            "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
-        },
-        mode: "cors",
-        body: formData,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          processId: "50015258768722d0be10d64028292746",
+          taskId: "50115966768722d4050a944041930443",
+          triggerId:"4898071286890ab50228dc7061300394",
+          variables: [{
+            name: "Ali",
+            email: "ali@example.com",
+          }],
+        }),
       });
 
       if (!response.ok) {
@@ -103,31 +117,31 @@ export default function ResumeForm() {
       }
 
       // Send email notification
-      const emailResponse = await fetch("/api/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          to: data.email,
-          subject: t1("subject"),
-          html: `${
-            locale === "fa"
-              ? `<p><strong>${data.name} </strong> ${t1("greeting")}`
-              : `<p>${t1("greeting")} <strong>${data.name}</strong>`
-          },
-          
-          ${t1("body")}
-    
-          <br />
-          ${t1("signature")}
-          </p>`,
-        }),
-      });
+      // const emailResponse = await fetch("/api/send-email", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({
+      //     to: data.email,
+      //     subject: t1("subject"),
+      //     html: `${
+      //       locale === "fa"
+      //         ? `<p><strong>${data.name} </strong> ${t1("greeting")}`
+      //         : `<p>${t1("greeting")} <strong>${data.name}</strong>`
+      //     },
 
-      if (!emailResponse.ok) {
-        throw new Error("Failed to send email notification");
-      }
+      //     ${t1("body")}
+
+      //     <br />
+      //     ${t1("signature")}
+      //     </p>`,
+      //   }),
+      // });
+
+      // if (!emailResponse.ok) {
+      //   throw new Error("Failed to send email notification");
+      // }
 
       toast.success(
         t("submit.success") || "Your resume has been submitted successfully."
