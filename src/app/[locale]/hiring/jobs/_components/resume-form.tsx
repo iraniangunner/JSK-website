@@ -43,7 +43,6 @@ const formatDateToString = (date: any) => {
 
 export default function ResumeForm() {
   const t = useTranslations("ResumeForm");
-  const t1 = useTranslations("Email");
   const locale = useLocale();
   const {
     register,
@@ -98,18 +97,59 @@ export default function ResumeForm() {
       //   body: formData,
       // });
 
+      const variables = [
+        {
+          name: data.name,
+          birthday: data.birthday,
+          gender: data.gender === "female" ? "زن" : "مرد",
+          marital: data.marital === "single" ? "مجرد" : "متاهل",
+          degree:
+            data.degree === "below_diploma"
+              ? "سیکل"
+              : data.degree === "diploma"
+              ? "دیپلم"
+              : data.degree === "associate"
+              ? "فوق دیپلم"
+              : data.degree === "bachelor"
+              ? "لیسانس"
+              : data.degree === "master"
+              ? "فوق لیسانس"
+              : "دکترا",
+          military:
+            data.military === "done"
+              ? "پایان خدمت"
+              : data.military === "exempt"
+              ? "معاف از خدمت"
+              : "مشمول خدمت",
+          university: data.university,
+          major: data.major,
+          experience:
+            data.experience === "less_than_3"
+              ? "کمتراز ۳ سال"
+              : data.experience === "between_3_and_5"
+              ? "بین ۳ تا ۵ سال"
+              : "بیشتراز ۵ سال",
+          text: data.text,
+          email: data.email,
+        },
+      ];
+
+      //console.log(data.resume_file)
+      //console.log(resumeFile)
+      const PMformData = new FormData();
+      if (resumeFile) {
+        PMformData.append("resume_file", resumeFile);
+      }
+      PMformData.append("variables", JSON.stringify(variables));
+      PMformData.append("processId", "50015258768722d0be10d64028292746");
+      PMformData.append("taskId", "50115966768722d4050a944041930443");
+      PMformData.append("triggerId", "4898071286890ab50228dc7061300394");
+     // PMformData.append("triggerId1", "627532958689210d47463e8097165589");
+
+      // فرستادن درخواست
       const response = await fetch("/api/create-case", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          processId: "50015258768722d0be10d64028292746",
-          taskId: "50115966768722d4050a944041930443",
-          triggerId:"4898071286890ab50228dc7061300394",
-          variables: [{
-            name: "Ali",
-            email: "ali@example.com",
-          }],
-        }),
+        body: PMformData,
       });
 
       if (!response.ok) {
