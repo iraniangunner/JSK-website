@@ -5,8 +5,8 @@ export async function POST(req) {
   const taskId = formData.get("taskId");
   const processId = formData.get("processId");
   const triggerId = formData.get("triggerId");
-  //const triggerId1 = formData.get("triggerId1");
-
+  const docId = formData.get("docId");
+  const docComment = formData.get("docComment");
 
   // 2. گرفتن access token (همون کد توی توکن)
   const form = new URLSearchParams({
@@ -70,10 +70,10 @@ export async function POST(req) {
   //4. آپلود فایل به صورت FormData
   if (file) {
     const uploadForm = new FormData();
-    uploadForm.append("tas_uid", taskId); // تسکی که فایل باید بهش اضافه بشه
-    uploadForm.append("inp_doc_uid", process.env.PM_INPUT_DOC_UID); // مقدار ثابت یا داینامیک از env
+    uploadForm.append("tas_uid", taskId); 
+    uploadForm.append("inp_doc_uid", docId); 
     uploadForm.append("form", file);
-    uploadForm.append("app_doc_comment", "رزومه کاربر");
+    uploadForm.append("app_doc_comment", docComment);
 
     const uploadRes = await fetch(
       `${process.env.PM_BASE_URL}/api/1.0/${process.env.PM_WORKSPACE}/cases/${app_uid}/input-document`,
@@ -96,29 +96,6 @@ export async function POST(req) {
       );
     }
   }
-
-  // if (triggerId1) {
-  //   const triggerRes = await fetch(
-  //     `${process.env.PM_BASE_URL}/api/1.0/${process.env.PM_WORKSPACE}/cases/${app_uid}/execute-trigger/${triggerId1}`,
-  //     {
-  //       method: "PUT",
-  //       headers: {
-  //         Authorization: `Bearer ${access_token}`,
-  //         "Content-Type": "application/json",
-  //       },
-  //     }
-  //   );
-  
-  //   if (!triggerRes.ok) {
-  //     const errText = await triggerRes.text();
-  //     return new Response(
-  //       JSON.stringify({ error: "اجرای تریگر شکست خورد", details: errText }),
-  //       {
-  //         status: triggerRes.status,
-  //       }
-  //     );
-  //   }
-  // }
 
   // 5. اجرای تریگر (در صورت وجود)
   if (triggerId) {

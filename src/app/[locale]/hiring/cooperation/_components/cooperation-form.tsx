@@ -26,6 +26,15 @@ const COOPERATION_TYPES = [
   { value: "other" },
 ] as const;
 
+const translations = {
+  contracting: "پیمانکاری",
+  supplier: "تامین کننده",
+  engineering_design_services: "خدمات طراحی مهندسی",
+  investment: "سرمایه گذاری",
+  consulting: "مشاوره ",
+  other: "سایر",
+};
+
 export function CooperationForm() {
   const t = useTranslations("CooperationForm");
   const [fileUploaded, setFileUploaded] = useState<File | null>(null);
@@ -85,7 +94,42 @@ export function CooperationForm() {
         throw new Error("Failed to submit the form");
       }
 
-      // setSubmitSuccess(true);
+      const variables = [
+        {
+          name: data.company_name,
+          phone: data.phone,
+          mobile: data.mobile,
+          address: data.address,
+          type_cooperation: data.type_cooperation
+            .map(
+              (item) => translations[item as keyof typeof translations] || item
+            )
+            .join(" - "),
+          text: data.text,
+        },
+      ];
+
+      const PMformData = new FormData();
+      if (fileUploaded) {
+        PMformData.append("resume_file", fileUploaded);
+      }
+      PMformData.append("variables", JSON.stringify(variables));
+      PMformData.append("processId", "1475524906897041bf39250045954698");
+      PMformData.append("taskId", "1534423826897234ad00e14005332120");
+      PMformData.append("triggerId", "5845031736897263936d207091758781");
+      PMformData.append("docId", "2369689946897253194a634043574157");
+      PMformData.append("docComment", "رزومه شرکت");
+
+      // Send data to PM server
+      const PMresponse = await fetch("/api/create-case", {
+        method: "POST",
+        body: PMformData,
+      });
+
+      if (!PMresponse.ok) {
+        throw new Error("Failed to send data to PM  server");
+      }
+
       toast.success(
         t("submit.success") || "Your resume has been submitted successfully."
       );

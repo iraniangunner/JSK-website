@@ -43,6 +43,7 @@ const formatDateToString = (date: any) => {
 
 export default function ResumeForm() {
   const t = useTranslations("ResumeForm");
+  const t1 = useTranslations("Email");
   const locale = useLocale();
   const {
     register,
@@ -85,17 +86,20 @@ export default function ResumeForm() {
       if (resumeFile) {
         formData.append("resume_file", resumeFile);
       }
-
-      // const response = await fetch("https://jsk-co.com/api/resumes", {
-      //   method: "POST",
-      //   headers: {
-      //     Accept: "application/json",
-      //     Authorization:
-      //       "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
-      //   },
-      //   mode: "cors",
-      //   body: formData,
-      // });
+      // send data to JSK server
+      const serverResponse = await fetch("https://jsk-co.com/api/resumes", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          Authorization:
+            "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
+        },
+        mode: "cors",
+        body: formData,
+      });
+      if (!serverResponse.ok) {
+        throw new Error("Failed to send data to server");
+      }
 
       const variables = [
         {
@@ -134,8 +138,6 @@ export default function ResumeForm() {
         },
       ];
 
-      //console.log(data.resume_file)
-      //console.log(resumeFile)
       const PMformData = new FormData();
       if (resumeFile) {
         PMformData.append("resume_file", resumeFile);
@@ -144,44 +146,45 @@ export default function ResumeForm() {
       PMformData.append("processId", "50015258768722d0be10d64028292746");
       PMformData.append("taskId", "50115966768722d4050a944041930443");
       PMformData.append("triggerId", "4898071286890ab50228dc7061300394");
-     // PMformData.append("triggerId1", "627532958689210d47463e8097165589");
+      PMformData.append("docId", "3506164556891af3945c785093654050");
+      PMformData.append("docComment", "رزومه کاربر");
 
-      // فرستادن درخواست
-      const response = await fetch("/api/create-case", {
+      // Send data to PM server
+      const PMresponse = await fetch("/api/create-case", {
         method: "POST",
         body: PMformData,
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to submit the form");
+      if (!PMresponse.ok) {
+        throw new Error("Failed to send data to PM  server");
       }
 
       // Send email notification
-      // const emailResponse = await fetch("/api/send-email", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({
-      //     to: data.email,
-      //     subject: t1("subject"),
-      //     html: `${
-      //       locale === "fa"
-      //         ? `<p><strong>${data.name} </strong> ${t1("greeting")}`
-      //         : `<p>${t1("greeting")} <strong>${data.name}</strong>`
-      //     },
+      const emailResponse = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          to: data.email,
+          subject: t1("subject"),
+          html: `${
+            locale === "fa"
+              ? `<p><strong>${data.name} </strong> ${t1("greeting")}`
+              : `<p>${t1("greeting")} <strong>${data.name}</strong>`
+          },
 
-      //     ${t1("body")}
+          ${t1("body")}
 
-      //     <br />
-      //     ${t1("signature")}
-      //     </p>`,
-      //   }),
-      // });
+          <br />
+          ${t1("signature")}
+          </p>`,
+        }),
+      });
 
-      // if (!emailResponse.ok) {
-      //   throw new Error("Failed to send email notification");
-      // }
+      if (!emailResponse.ok) {
+        throw new Error("Failed to send email notification");
+      }
 
       toast.success(
         t("submit.success") || "Your resume has been submitted successfully."
