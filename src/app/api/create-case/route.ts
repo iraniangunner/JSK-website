@@ -1,21 +1,69 @@
-export async function POST(req) {
+export async function POST(req: Request) {
   try {
     const formData = await req.formData();
     const file = formData.get("resume_file");
-    const variables = JSON.parse(formData.get("variables"));
+    if (file !== null && !(file instanceof File)) {
+      return new Response(
+        JSON.stringify({ error: "resume_file باید فایل یا null باشد" }),
+        { status: 400 }
+      );
+    }
+
+    const variablesStr = formData.get("variables");
+    if (typeof variablesStr !== "string") {
+      return new Response(
+        JSON.stringify({ error: "variables باید رشته JSON باشد" }),
+        { status: 400 }
+      );
+    }
+    const variables = JSON.parse(variablesStr);
+
     const taskId = formData.get("taskId");
+    if (typeof taskId !== "string") {
+      return new Response(JSON.stringify({ error: "taskId باید رشته باشد" }), {
+        status: 400,
+      });
+    }
+
     const processId = formData.get("processId");
+    if (typeof processId !== "string") {
+      return new Response(
+        JSON.stringify({ error: "processId باید رشته باشد" }),
+        { status: 400 }
+      );
+    }
+
     const triggerId = formData.get("triggerId");
+    // triggerId ممکنه null باشه، چون شرط if داره
+    if (triggerId !== null && typeof triggerId !== "string") {
+      return new Response(
+        JSON.stringify({ error: "triggerId باید رشته یا null باشد" }),
+        { status: 400 }
+      );
+    }
+
     const docId = formData.get("docId");
+    if (typeof docId !== "string") {
+      return new Response(JSON.stringify({ error: "docId باید رشته باشد" }), {
+        status: 400,
+      });
+    }
+
     const docComment = formData.get("docComment");
+    if (typeof docComment !== "string") {
+      return new Response(
+        JSON.stringify({ error: "docComment باید رشته باشد" }),
+        { status: 400 }
+      );
+    }
 
     // گرفتن access token
     const form = new URLSearchParams({
       grant_type: "password",
-      client_id: process.env.PM_CLIENT_ID,
-      client_secret: process.env.PM_CLIENT_SECRET,
-      username: process.env.PM_USERNAME,
-      password: process.env.PM_PASSWORD,
+      client_id: process.env.PM_CLIENT_ID || "",
+      client_secret: process.env.PM_CLIENT_SECRET || "",
+      username: process.env.PM_USERNAME || "",
+      password: process.env.PM_PASSWORD || "",
       scope: "*",
     });
 
@@ -140,7 +188,7 @@ export async function POST(req) {
         headers: { "Content-Type": "application/json" },
       }
     );
-  } catch (err) {
+  } catch (err: any) {
     console.error("Unhandled error in create-case:", err);
     return new Response(
       JSON.stringify({ error: err.message, stack: err.stack }),
