@@ -3,7 +3,7 @@ import { PageCover } from "@/components/pageCover";
 import QueryProvider from "@/providers/query-provider";
 import { getLocale, getTranslations } from "next-intl/server";
 import { getTenderCategory } from "@/utils/server/tendersApi";
-import { CustomError } from "@/components/customError";
+
 
 type Props = {
   params: { locale: string };
