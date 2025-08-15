@@ -2,7 +2,9 @@ export async function POST(req: Request) {
   try {
     const formData = await req.formData();
     const file = formData.get("resume_file");
-    if (file !== null && !(file instanceof File)) {
+
+    // در Node.js ممکنه File وجود نداشته باشه، پس از Blob استفاده می‌کنیم
+    if (file !== null && !(file instanceof Blob)) {
       return new Response(
         JSON.stringify({ error: "resume_file باید فایل یا null باشد" }),
         { status: 400 }
@@ -34,7 +36,6 @@ export async function POST(req: Request) {
     }
 
     const triggerId = formData.get("triggerId");
-    // triggerId ممکنه null باشه، چون شرط if داره
     if (triggerId !== null && typeof triggerId !== "string") {
       return new Response(
         JSON.stringify({ error: "triggerId باید رشته یا null باشد" }),
