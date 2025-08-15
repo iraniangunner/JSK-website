@@ -39,12 +39,14 @@ export default async function Tender() {
         </div>
       </div>
     );
-  } catch {
-    return (
-      <div>
+} catch {
+     return (
+     <div>
         <PageCover title={`${locale === "fa" ? "مناقصات" : "Tenders"}`} />
-        <CustomError />
+           <QueryProvider>
+            <TendersTable categories={[]} />
+          </QueryProvider>
       </div>
     );
-  }
+   }
 }
