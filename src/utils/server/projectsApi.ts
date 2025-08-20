@@ -3,10 +3,6 @@ import "server-only";
 export async function getProjects() {
   const res = await fetch("https://jsk-co.com/api/projects", {
     next: { revalidate: 3600 },
-    headers: {
-      Authorization:
-        "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
-    },
     // cache: "no-store",
   });
 
@@ -20,10 +16,6 @@ export async function getProjects() {
 export async function getCategories() {
   const res = await fetch("https://jsk-co.com/api/categories", {
     next: { revalidate: 3600 },
-    headers: {
-      Authorization:
-        "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
-    },
     cache: "no-store",
   });
 
@@ -37,10 +29,6 @@ export async function getCategories() {
 export async function getProjectById(id: number) {
   const res = await fetch(`https://jsk-co.com/api/projects/${id}`, {
     next: { revalidate: 3600 },
-    headers: {
-      Authorization:
-        "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
-    },
     cache: "no-store",
   });
 

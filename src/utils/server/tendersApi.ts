@@ -3,10 +3,6 @@ import "server-only";
 export async function getTenders() {
   const res = await fetch("https://jsk-co.com/api/tenders", {
     next: { revalidate: 3600 },
-    headers: {
-      Authorization:
-        "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
-    },
     // cache: "no-store",
   });
   if (!res.ok) {
@@ -19,10 +15,6 @@ export async function getTenders() {
 export async function getTenderCategory() {
   const res = await fetch("https://jsk-co.com/api/tender-categories", {
     next: { revalidate: 3600 },
-    headers: {
-      Authorization:
-        "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
-    },
     // cache: "no-store",
   });
   if (!res.ok) {
@@ -35,10 +27,6 @@ export async function getTenderCategory() {
 export async function getTenderById(id: number) {
   const res = await fetch(`https://jsk-co.com/api/tenders/${id}`, {
     next: { revalidate: 3600 },
-    headers: {
-      Authorization:
-        "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
-    },
     // cache: "no-store",
   });
 
