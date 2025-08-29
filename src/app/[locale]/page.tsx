@@ -19,6 +19,7 @@ export default async function Home() {
           <ProjectSection />
         </Suspense>
       </section>
+       
     </>
   );
 }

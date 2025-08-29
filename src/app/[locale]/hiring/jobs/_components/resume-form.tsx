@@ -9,6 +9,8 @@ import "react-multi-date-picker/styles/layouts/mobile.css";
 import { useLocale, useTranslations } from "next-intl";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { EmailTemplate } from "@/components/emailTemplate";
+import ReactDOMServer from "react-dom/server";
 
 type FormInputs = {
   name: string;
@@ -65,6 +67,22 @@ export default function ResumeForm() {
       setValue("military", "");
     }
   }, [selectedGender]);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      if (file.size > 8 * 1024 * 1024) {
+        setError("resume_file", {
+          type: "manual",
+          message: t("fields.resume.size_error"),
+        });
+        setResumeFile(null);
+      } else {
+        clearErrors("resume_file");
+        setResumeFile(file);
+      }
+    }
+  };
 
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     setIsSubmitting(true);
@@ -159,6 +177,10 @@ export default function ResumeForm() {
         throw new Error("Failed to send data to PM  server");
       }
 
+      const html = ReactDOMServer.renderToStaticMarkup(
+        <EmailTemplate firstName={data.name} locale={locale} />
+      );
+
       // Send email notification
       const emailResponse = await fetch("/api/send-email", {
         method: "POST",
@@ -168,17 +190,7 @@ export default function ResumeForm() {
         body: JSON.stringify({
           to: data.email,
           subject: t1("subject"),
-          html: `${
-            locale === "fa"
-              ? `<p><strong>${data.name} </strong> ${t1("greeting")}`
-              : `<p>${t1("greeting")} <strong>${data.name}</strong>`
-          },
-
-          ${t1("body")}
-
-          <br />
-          ${t1("signature")}
-          </p>`,
+          html: html,
         }),
       });
 
@@ -199,22 +211,6 @@ export default function ResumeForm() {
       );
     } finally {
       setIsSubmitting(false);
-    }
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      if (file.size > 8 * 1024 * 1024) {
-        setError("resume_file", {
-          type: "manual",
-          message: t("fields.resume.size_error"),
-        });
-        setResumeFile(null);
-      } else {
-        clearErrors("resume_file");
-        setResumeFile(file);
-      }
     }
   };
 

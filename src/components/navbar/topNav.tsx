@@ -14,34 +14,14 @@ export default async function TopNav() {
       <div className="flex justify-center items-center">
         <Link
           href="/"
-          className={`block relative cursor-pointer font-medium h-auto lg:h-[68px]
-          before:content-[''] before:absolute ${
-            locale === "fa" ? "before:right-[100%]" : "before:left-[100%]"
-          } 
-          before:bottom-0 ${
-            locale === "fa"
-              ? "before:border-l-[50px]"
-              : "before:border-r-[50px]"
-          }
-            ${
-              locale === "fa"
-                ? "before:border-l-transparent"
-                : "before:border-r-transparent"
-            } 
-          before:border-b-[68px] before:border-b-[#ffa500]
-          after:content-[''] after:absolute ${
-            locale === "fa" ? "after:left-[100%]" : "after:right-[100%]"
-          } 
-          after:bottom-0 after:min-w-[100vw] after:h-[100%] after:bg-[#ffa500] ${
-            locale === "fa" ? "xl:mr-auto" : "xl:ml-auto"
-          }`}
+          className="block relative cursor-pointer font-medium h-auto lg:h-[68px]"
         >
           <Image
             src={jsk}
             alt="JSK logo"
             width={200}
             height={24}
-            className="w-full h-full bg-[#ffa500]"
+            className="w-full h-full"
           />
         </Link>
       </div>

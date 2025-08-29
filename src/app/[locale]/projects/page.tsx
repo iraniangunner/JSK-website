@@ -4,6 +4,7 @@ import ProjectsTable from "@/components/project/projectsTbl";
 import { getProjects, getCategories } from "@/utils/server/projectsApi";
 import { getLocale, getTranslations } from "next-intl/server";
 
+
 type Props = {
   params: { locale: string };
 };
@@ -44,6 +45,7 @@ export default async function Projects() {
               projectsData={projectsData}
               categories={categoriesData}
             />
+           
           </div>
         </div>
       </div>
