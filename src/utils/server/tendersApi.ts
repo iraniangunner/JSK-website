@@ -2,8 +2,8 @@ import "server-only";
 
 export async function getTenders() {
   const res = await fetch("https://jsk-co.com/api/tenders", {
-    next: { revalidate: 3600 },
-    // cache: "no-store",
+    // next: { revalidate: 3600 },
+    cache: "no-store",
   });
   if (!res.ok) {
     throw new Error("Failed to fetch the Tenders");
@@ -14,8 +14,8 @@ export async function getTenders() {
 
 export async function getTenderCategory() {
   const res = await fetch("https://jsk-co.com/api/tender-categories", {
-    next: { revalidate: 3600 },
-    // cache: "no-store",
+    // next: { revalidate: 3600 },
+    cache: "no-store",
   });
   if (!res.ok) {
     throw new Error("Failed to fetch the Tenders");
@@ -26,8 +26,8 @@ export async function getTenderCategory() {
 
 export async function getTenderById(id: number) {
   const res = await fetch(`https://jsk-co.com/api/tenders/${id}`, {
-    next: { revalidate: 3600 },
-    // cache: "no-store",
+    // next: { revalidate: 3600 },
+    cache: "no-store",
   });
 
   if (!res.ok) {

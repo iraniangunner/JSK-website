@@ -10,6 +10,7 @@ export interface Project {
   location: string;
   location_en: string;
   images: { full_path: string }[];
+  preview_image_url:string;
   categories: { id: number; title: string; title_en: string }[];
 }
 export interface ProjectsData {

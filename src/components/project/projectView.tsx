@@ -17,7 +17,7 @@ export function ProjectView({ projectDetails }: { projectDetails: Project }) {
     >
       <Link href={`/projects/${projectDetails.id}`} className="block">
         <Image
-          src={projectDetails.images[0].full_path}
+          src={projectDetails.preview_image_url ||""}
           width={384}
           height={256}
           className="h-auto max-w-full w-full"

@@ -34,7 +34,7 @@ export default function ProjectCarousel({ project }: { project: Project }) {
           modules={[FreeMode, Navigation, Thumbs]}
           className="lg:h-96 w-full select-none"
         >
-          {project.images.slice(1).map((image, index) => (
+          {project.images.map((image, index) => (
             <SwiperSlide key={index}>
               <div className="flex h-full w-full items-center justify-center">
                 <Image
@@ -67,7 +67,7 @@ export default function ProjectCarousel({ project }: { project: Project }) {
           dir="ltr"
           className="thumbs mt-[-30px] sm:mt-1 lg:mt-3 h-32 w-full select-none"
         >
-          {project.images.slice(1).map((image, index) => (
+          {project.images.map((image, index) => (
             <SwiperSlide key={index}>
               <button className="flex h-full w-full items-center justify-center">
                 <Image
