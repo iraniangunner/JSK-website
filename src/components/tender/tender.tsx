@@ -140,7 +140,7 @@ export function TenderComponent({ tender }: { tender: Tender }) {
               href={tender.full_path}
               target="_blank"
               download
-              className="bg-blue-500 hover:bg-blue-600 ml-4 rtl:ml-0 rtl:mr-4 cursor-pointer text-white py-2 px-4 rounded inline-flex items-center transition duration-300 print:hidden"
+              className="bg-[#ffa500] ml-4 rtl:ml-0 rtl:mr-4 cursor-pointer text-white py-2 px-4 rounded inline-flex items-center transition duration-300 print:hidden"
               rel="noreferrer"
             >
               <svg
@@ -162,7 +162,7 @@ export function TenderComponent({ tender }: { tender: Tender }) {
 
             <button
               onClick={() => handlePrint()}
-              className="bg-blue-500 hover:bg-blue-600 ml-4 rtl:ml-0 rtl:mr-4 cursor-pointer text-white py-2 px-4 rounded inline-flex items-center transition duration-300"
+              className="bg-[#ffa500] ml-4 rtl:ml-0 rtl:mr-4 cursor-pointer text-white py-2 px-4 rounded inline-flex items-center transition duration-300"
             >
               <svg
                 className="w-4 h-4 ml-2 rtl:ml-0 rtl:mr-2"

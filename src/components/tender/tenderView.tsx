@@ -20,7 +20,7 @@ export function TenderView({ tender }: { tender: Tender }) {
             </h3>
             <Link
               href={`/tenders/${tender.id}`}
-              className="bg-blue-600 hover:bg-blue-600 cursor-pointer text-white py-2 px-4 rounded inline-flex items-center transition duration-300 justify-center"
+              className="bg-[#ffa500] cursor-pointer text-white py-2 px-4 rounded inline-flex items-center transition duration-300 justify-center"
             >
               {t("viewDetails")}
             </Link>

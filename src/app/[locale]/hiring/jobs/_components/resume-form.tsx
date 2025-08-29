@@ -627,7 +627,7 @@ export default function ResumeForm() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full md:w-auto px-8 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                className="w-full md:w-auto px-8 py-2 bg-[#ffa500] text-white font-medium rounded-md  focus:outline-none focus:ring-2 focus:ring-[#ffa500] focus:ring-offset-2"
               >
                 {isSubmitting ? (
                   <div className="flex justify-between items-center gap-2">

@@ -199,14 +199,14 @@ export function TendersTable({ categories }: { categories: TenderCategory[] }) {
                 type="button"
                 onClick={clearFilters}
                 disabled={isLoading}
-                className="flex-1 px-4 py-2 border disabled:opacity-50 border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="flex-1 px-4 py-2 border disabled:opacity-50 border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#ffa500]"
               >
                 {t("filters.buttons.clear")}
               </button>
               <button
                 onClick={applyFilters}
                 disabled={isLoading}
-                className="flex-1 px-4 py-2 border disabled:opacity-50 border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="flex-1 px-4 py-2 border disabled:opacity-50 border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#ffa500] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#ffa500]"
               >
                 {t("filters.buttons.search")}
               </button>
@@ -282,7 +282,7 @@ export function TendersTable({ categories }: { categories: TenderCategory[] }) {
               containerClassName="flex items-center justify-center space-x-1 sm:space-x-2 rtl:space-x-reverse"
               pageClassName="hidden sm:flex items-center justify-center w-8 h-8 rounded border text-sm"
               pageLinkClassName="flex items-center justify-center w-full h-full"
-              activeClassName="bg-blue-600 text-white"
+              activeClassName="bg-[#ffa500] text-white"
               previousClassName="flex items-center justify-center w-8 h-8 rounded border ml-2 rtl:ml-0 rtl:mr-2"
               nextClassName="flex items-center justify-center w-8 h-8 rounded border"
               disabledClassName="opacity-50 cursor-not-allowed"
