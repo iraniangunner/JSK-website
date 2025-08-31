@@ -3,14 +3,17 @@
 import { useState } from "react";
 import type React from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ReactDOMServer from "react-dom/server";
+import { EmailTemplate } from "@/components/emailTemplate";
 
 type FormInputs = {
   company_name: string;
   phone: string;
   mobile: string;
+  email: string;
   address: string;
   type_cooperation: string[];
   cooperation_file: File;
@@ -37,6 +40,8 @@ const translations = {
 
 export function CooperationForm() {
   const t = useTranslations("CooperationForm");
+  const t1 = useTranslations("Email");
+  const locale = useLocale();
   const [fileUploaded, setFileUploaded] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -99,6 +104,7 @@ export function CooperationForm() {
           name: data.company_name,
           phone: data.phone,
           mobile: data.mobile,
+          email: data.email,
           address: data.address,
           type_cooperation: data.type_cooperation
             .map(
@@ -128,6 +134,29 @@ export function CooperationForm() {
 
       if (!PMresponse.ok) {
         throw new Error("Failed to send data to PM  server");
+      }
+
+      if (data.email) {
+        const html = ReactDOMServer.renderToStaticMarkup(
+          <EmailTemplate firstName={data.company_name} locale={locale} />
+        );
+
+        // Send email notification
+        const emailResponse = await fetch("/api/send-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            to: data.email,
+            subject: t1("subject"),
+            html: html,
+          }),
+        });
+
+        if (!emailResponse.ok) {
+          throw new Error("Failed to send email notification");
+        }
       }
 
       toast.success(
@@ -245,6 +274,34 @@ export function CooperationForm() {
                   {errors.mobile && (
                     <p className="mt-1 text-xs text-red-600">
                       {errors.mobile.message}
+                    </p>
+                  )}
+                </div>
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    {t("fields.email.label")}
+                  </label>
+
+                  <input
+                    {...register("email", {
+                      // required: t("fields.email.error"),
+                      pattern: {
+                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, // regex برای فرمت ایمیل
+                        message: t("fields.email.error"), // پیام خطای فرمت
+                      },
+                    })}
+                    id="email"
+                    dir="ltr"
+                    type="email"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+
+                  {errors.email && (
+                    <p className="mt-1 text-xs text-red-600">
+                      {errors.email.message}
                     </p>
                   )}
                 </div>
