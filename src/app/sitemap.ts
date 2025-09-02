@@ -15,62 +15,93 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/services/management",
     "/services/operation",
     "/tenders",
+    "/news",
   ];
 
   let projectEntries: MetadataRoute.Sitemap = [];
   let tenderEntries: MetadataRoute.Sitemap = [];
+  let newsEntries: MetadataRoute.Sitemap = [];
+
+  // Helper function to fetch all paginated data
+  const fetchAllPages = async (url: string) => {
+    let results: any[] = [];
+    let page = 1;
+    let lastPage = 1;
+
+    do {
+      const response = await fetch(`${url}?page=${page}&per_page=100`, {
+        cache: "force-cache",
+        next: { revalidate: 86400 }, // 24 hours
+      });
+
+      if (!response.ok) {
+        console.error(`Failed to fetch ${url} (page ${page}):`, response.statusText);
+        break;
+      }
+
+      const json = await response.json();
+      results = [...results, ...json.data];
+      lastPage = json.last_page ?? 1;
+      page++;
+    } while (page <= lastPage);
+
+    return results;
+  };
 
   // Fetch projects
   try {
-    const projectResponse = await fetch("https://jsk-co.com/api/projects", {
-      cache: "no-store",
-    });
-    if (projectResponse.ok) {
-      const { data } = await projectResponse.json();
-      // Create entries for each locale
-      projectEntries = data.flatMap(
-        ({ id, updated_at }: { id: number; updated_at: string }) =>
-          locales.map((locale) => ({
-            url: `${baseUrl}/${locale}/projects/${id}`,
-            lastModified: new Date(updated_at),
-          }))
-      );
-    } else {
-      console.error("Failed to fetch projects:", projectResponse.statusText);
-    }
+    const projects = await fetchAllPages("https://jsk-co.com/api/projects");
+    projectEntries = projects.flatMap(
+      ({ id, updated_at }: { id: number; updated_at: string }) =>
+        locales.map((locale) => ({
+          url: `${baseUrl}/${locale}/projects/${id}`,
+          lastModified: new Date(updated_at),
+        }))
+    );
   } catch (error) {
     console.error("Error fetching projects:", error);
   }
 
   // Fetch tenders
   try {
-    const tenderResponse = await fetch("https://jsk-co.com/api/tenders", {
-      cache: "no-store",
-    });
-    if (tenderResponse.ok) {
-      const { data } = await tenderResponse.json();
-      // Create entries for each locale
-      tenderEntries = data.flatMap(
-        ({ id, updated_at }: { id: number; updated_at: string }) =>
-          locales.map((locale) => ({
-            url: `${baseUrl}/${locale}/tenders/${id}`,
-            lastModified: new Date(updated_at),
-          }))
-      );
-    } else {
-      console.error("Failed to fetch tenders:", tenderResponse.statusText);
-    }
+    const tenders = await fetchAllPages("https://jsk-co.com/api/tenders");
+    tenderEntries = tenders.flatMap(
+      ({ id, updated_at }: { id: number; updated_at: string }) =>
+        locales.map((locale) => ({
+          url: `${baseUrl}/${locale}/tenders/${id}`,
+          lastModified: new Date(updated_at),
+        }))
+    );
   } catch (error) {
     console.error("Error fetching tenders:", error);
+  }
+
+  // Fetch news
+  try {
+    const news = await fetchAllPages("https://jsk-co.com/api/news");
+    newsEntries = news.flatMap(
+      ({ id, updated_at }: { id: number; updated_at: string }) =>
+        locales.map((locale) => ({
+          url: `${baseUrl}/${locale}/news/${id}`,
+          lastModified: new Date(updated_at),
+        }))
+    );
+  } catch (error) {
+    console.error("Error fetching news:", error);
   }
 
   // Generate localized entries for static routes
   const localizedStaticEntries = staticRoutes.flatMap((route) =>
     locales.map((locale) => ({
       url: `${baseUrl}/${locale}${route}`,
-      lastModified: new Date(),
+      lastModified: undefined,
     }))
   );
 
-  return [...localizedStaticEntries, ...projectEntries, ...tenderEntries];
+  return [
+    ...localizedStaticEntries,
+    ...projectEntries,
+    ...tenderEntries,
+    ...newsEntries,
+  ];
 }

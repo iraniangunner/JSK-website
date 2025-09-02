@@ -5,7 +5,7 @@ export const fetchNews = async ({
   pageParam = 1,
 }): Promise<PaginatedResponse<News>> => {
   const response = await fetch(
-    `https://jsk-co.com/api/news?page=${pageParam}&per_page=5`
+    `https://jsk-co.com/api/news?page=${pageParam}&per_page=6`
   );
   if (!response.ok) throw new Error("Failed to fetch news");
   return response.json();

@@ -1,7 +1,7 @@
 import { PageCover } from "@/components/pageCover";
 import { getLocale, getTranslations } from "next-intl/server";
 import QueryProvider from "@/providers/query-provider";
-import NewsSection from "./_components/news-grid";
+import {NewsGrid} from "./_components/news-grid";
 
 type Props = {
   params: { locale: string };
@@ -33,7 +33,7 @@ export default async function JobsOpportunityPage() {
       />
       <div className="container mx-auto px-4 py-12">
         <QueryProvider>
-          <NewsSection />
+          <NewsGrid />
         </QueryProvider>
       </div>
     </div>
