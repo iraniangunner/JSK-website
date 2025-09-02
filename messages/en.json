@@ -398,6 +398,18 @@
       "requirements": "Requirements"
     }
   },
+
+  "News": {
+    "title": "News",
+    "default": "Zhivar Sanat Kian | News",
+    "description": "Zhivar Sanat Kian News",
+    "news": {
+      "title": "News | {title}",
+      "fallbackTitle": "Zhivar Sanat Kian",
+      "description": "Zhivar Sanat Kian - Implementation and operation of industrial and mining projects",
+      "fallbackDescription": "Zhivar Sanat Kian - Implementation and operation of industrial and mining projects"
+    }
+  },
   "ResumeForm": {
     "title": "Couldn't find the job opportunity you were looking for?",
     "subtitle": "Submit your resume. We'll review it when the desired job opportunity becomes available.",
