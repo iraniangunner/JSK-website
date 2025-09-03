@@ -2,6 +2,8 @@ import React from "react";
 import { Calendar } from "lucide-react";
 import { News } from "@/types/news";
 import { useLocale } from "next-intl";
+import { generateHTML } from '@tiptap/html'
+import StarterKit from '@tiptap/starter-kit'
 
 export const NewsDetail = ({ news }: { news: News }) => {
   const locale = useLocale();
@@ -21,6 +23,8 @@ export const NewsDetail = ({ news }: { news: News }) => {
           {para}
         </p>
       ));
+
+
 
   return (
     <div className="min-h-screen bg-gray-50 py-10">
@@ -51,11 +55,18 @@ export const NewsDetail = ({ news }: { news: News }) => {
           </div>
 
           {/* Content */}
-          <div className={`p-8 ${isFa ? "text-right" : "text-left"}`} dir={isFa ? "rtl" : "ltr"}>
+          {/* <div className={`p-8 ${isFa ? "text-right" : "text-left"}`} dir={isFa ? "rtl" : "ltr"}>
             <div className="prose prose-lg max-w-none text-gray-800">
               {isFa ? formattedContent(news.content) : formattedContent(news.content_en)}
             </div>
-          </div>
+            
+          </div> */}
+         <div
+  className="prose prose-rtl max-w-full p-8 text-justify
+             [&_ul]:list-disc [&_ul]:pl-5
+             [&_ol]:list-decimal [&_ol]:pl-5"
+  dangerouslySetInnerHTML={{ __html: news.content }}
+/>
         </article>
       </main>
     </div>
