@@ -223,13 +223,3 @@ html[lang="fa"] {
   background-image: linear-gradient(to top, rgba(3, 15, 39, 0.7), transparent);
 }
 
-
-/* 
-.ProseMirror ul,
-.ProseMirror ol,
-.prose ul,
-.prose ol {
-  list-style-position: inside;
-  padding-inline-start: 1.25rem;
-  margin-block: 0.5rem 0;
-} */
