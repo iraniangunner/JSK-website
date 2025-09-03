@@ -11,7 +11,8 @@ export const getMenuItems = (t: (key: string) => string) => [
   { linkTitle: t("Menu.certifications"), linkAddress: "/certifications" },
   { linkTitle: t("Menu.projects"), linkAddress: "/projects" },
   { linkTitle: t("Menu.tenders"), linkAddress: "/tenders" },
-  { linkTitle: t("Menu.about"), linkAddress: "/about" },
+  // { linkTitle: t("Menu.about"), linkAddress: "/about" },
+  { linkTitle: t("Menu.news"), linkAddress: "/news" },
   {
     linkTitle: t("Menu.cooperation"),
     subLinks: [

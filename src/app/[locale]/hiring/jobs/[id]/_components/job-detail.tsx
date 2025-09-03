@@ -1,5 +1,4 @@
 "use client";
-
 import { useLocale, useTranslations } from "next-intl";
 import type { JobResponse } from "@/types/job";
 import { DetailCover } from "@/components/detailCover"; // Declare the DetailCover variable
@@ -138,14 +137,6 @@ export function JobDetail({ job }: { job: JobResponse }) {
                     <span className="ml-2">{cityName}</span>
                   </div>
                 )}
-                {/* {job.created_at && (
-                  <div>
-                    <span className="font-semibold">{locale === "fa" ? "تاریخ انتشار:" : "Published:"}</span>
-                    <span className="ml-2">
-                      {new Date(job.created_at).toLocaleDateString(locale === "fa" ? "fa-IR" : "en-US")}
-                    </span>
-                  </div>
-                )} */}
               </div>
             </section>
 

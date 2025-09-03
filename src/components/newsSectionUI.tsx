@@ -1,20 +1,16 @@
 "use client";
 import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
-import { ProjectsCarousel } from "./carousel/ProjectsCarousel";
-import { ProjectsData } from "@/types/projectTypes";
 import { useLocale, useTranslations } from "next-intl";
+import { News, PaginatedResponse } from "@/types/news";
+import { NewsCarousel } from "./carousel/NewsCarousel";
 
-
-export const ProjectsSectionUI = ({ projects }: { projects: ProjectsData }) => {
-  const t = useTranslations("ProjectsSection");
+export const NewsSectionUI = ({ news }: { news: PaginatedResponse<News> }) => {
+  const t = useTranslations("NewsSection");
   const locale = useLocale();
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 w-[90%] xl:w-[80%] mx-auto gap-10 py-20 ">
-      <div className="order-2 lg:order-1">
-        <ProjectsCarousel projects={projects} />
-      </div>
-      <div className="z-[1] order-1 lg:order-2 flex flex-col justify-center">
+      <div className="z-[1] order-1 lg:order-1 flex flex-col justify-center">
         <motion.h1
           initial="hidden"
           whileInView="visible"
@@ -53,7 +49,7 @@ export const ProjectsSectionUI = ({ projects }: { projects: ProjectsData }) => {
           }}
         >
           <Link
-            href="/projects"
+            href="/news"
             className="inline-block px-4 py-2 text-white bg-[#ffa500] select-none
                 mt-8 border border-[#ffa500] hover:bg-white hover:text-[#ffa500] 
                 transition-all"
@@ -61,6 +57,9 @@ export const ProjectsSectionUI = ({ projects }: { projects: ProjectsData }) => {
             {locale === "fa" ? "مشاهده همه" : "View All"}
           </Link>
         </motion.div>
+      </div>
+      <div className="order-2 lg:order-2">
+        <NewsCarousel news={news} />
       </div>
     </div>
   );

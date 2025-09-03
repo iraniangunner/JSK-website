@@ -52,7 +52,7 @@ export default function NewsCard({ news }: NewsCardProps) {
           </div>
 
           <Link
-            href={`/news/${news.id}`}
+            href={locale == "fa" ? `/fa/news/${news.id}`:`/en/news/${news.id}`}
             className="text-[#fea925] hover:underline font-medium text-sm"
           >
             {locale == "fa" ? " → مشاهده بیشتر" : "Show more ->"}
