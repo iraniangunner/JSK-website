@@ -4,38 +4,39 @@ import { News } from "@/types/news";
 import { useLocale } from "next-intl";
 
 export const NewsDetail = ({ news }: { news: News }) => {
-  // Mock article data (would come from API/props in real Next.js app)
   const locale = useLocale();
-  const formattedDate =
-    locale == "fa"
-      ? new Date(news.created_at).toLocaleDateString("fa-IR")
-      : new Date(news.created_at).toLocaleDateString("en-EN");
+  const isFa = locale === "fa";
 
-  const formattedContent = (content: string) => {
-    return content
+  const formattedDate = new Date(news.created_at).toLocaleDateString(
+    isFa ? "fa-IR" : "en-EN",
+    { weekday: "long", year: "numeric", month: "long", day: "numeric" }
+  );
+
+  const formattedContent = (content: string) =>
+    content
       .split("\n")
       .filter(Boolean)
       .map((para, i) => (
-        <p key={i} className="mb-3 leading-relaxed text-justify">
+        <p key={i} className="mb-4 leading-relaxed text-gray-700 text-justify">
           {para}
         </p>
-      )); // حذف خطوط خالی
-  };
+      ));
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-4 py-8">
-        <article className="bg-white rounded-lg shadow-sm overflow-hidden">
-          {/* Article Header */}
-          <div className="p-8">
-            <h1 className="text-4xl font-bold text-gray-900 leading-tight mb-6">
-              {locale == "fa" ? news.title : news.title_en}
+    <div className="min-h-screen bg-gray-50 py-10">
+      <main className="max-w-4xl mx-auto px-4">
+        <article className="bg-white rounded-2xl shadow-lg overflow-hidden">
+          {/* Header */}
+          <div
+            className={`p-8 ${isFa ? "text-right" : "text-left"}`}
+            dir={isFa ? "rtl" : "ltr"}
+          >
+            <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+              {isFa ? news.title : news.title_en}
             </h1>
 
-            {/* Date */}
-            <div className="flex items-center text-gray-600 mb-8">
-              <Calendar size={18} />
+            <div className="flex items-center text-gray-500 mb-6">
+              <Calendar size={20} className="text-orange-400" />
               <span className="ml-2 text-sm">{formattedDate}</span>
             </div>
           </div>
@@ -45,16 +46,14 @@ export const NewsDetail = ({ news }: { news: News }) => {
             <img
               src={`https://jsk-co.com${news.image_url}`}
               alt={news.title}
-              className="w-full h-96 object-cover rounded-lg"
+              className="w-full h-96 object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105"
             />
           </div>
 
-          {/* Article Content */}
-          <div className="p-8">
-            <div className="prose prose-lg max-w-none">
-              {locale == "fa"
-                ? formattedContent(news.content)
-                : formattedContent(news.content_en)}
+          {/* Content */}
+          <div className={`p-8 ${isFa ? "text-right" : "text-left"}`} dir={isFa ? "rtl" : "ltr"}>
+            <div className="prose prose-lg max-w-none text-gray-800">
+              {isFa ? formattedContent(news.content) : formattedContent(news.content_en)}
             </div>
           </div>
         </article>
