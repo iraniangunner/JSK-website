@@ -38,11 +38,15 @@ export default function NewsCard({ news }: NewsCardProps) {
         </h2>
 
         {/* متن کوتاه */}
-        <p className="text-sm text-gray-700 text-justify flex-1">
-          {locale == "fa"
-            ? previewContent(news.content)
-            : previewContent(news.content_en)}
-        </p>
+        <p
+          className="text-sm text-gray-700 text-justify flex-1"
+          dangerouslySetInnerHTML={{
+            __html:
+              locale == "fa"
+                ? previewContent(news.content)
+                : previewContent(news.content_en),
+          }}
+        ></p>
 
         {/* footer */}
         <div className="flex items-center justify-between pt-4 border-t mt-4">
@@ -52,7 +56,9 @@ export default function NewsCard({ news }: NewsCardProps) {
           </div>
 
           <Link
-            href={locale == "fa" ? `/fa/news/${news.id}`:`/en/news/${news.id}`}
+            href={
+              locale == "fa" ? `/fa/news/${news.id}` : `/en/news/${news.id}`
+            }
             className="text-[#fea925] hover:underline font-medium text-sm"
           >
             {locale == "fa" ? " → مشاهده بیشتر" : "Show more ->"}
