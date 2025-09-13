@@ -19,11 +19,11 @@ export default async function Home() {
         </Suspense>
       </section>
 
-      <section className="relative min-h-[500px] overflow-hidden flex justify-center items-center">
+      {/* <section className="relative min-h-[500px] overflow-hidden flex justify-center items-center">
         <Suspense fallback={<LoadingSpinner />}>
           <NewsSection />
         </Suspense>
-      </section>
+      </section> */}
     </>
   );
 }

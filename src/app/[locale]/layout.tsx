@@ -5,10 +5,12 @@ import NextTopLoader from "nextjs-toploader";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { routing } from "@/i18n/routing";
-import { notFound } from "next/navigation";
+import { notFound, usePathname } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { headers } from "next/headers";
+import VisitLogger from "@/components/visitLogger";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -104,6 +106,7 @@ export default async function RootLayout({
             speed={200}
             shadow="0 0 10px #2299DD,0 0 5px #2299DD"
           />
+          <VisitLogger />
           <Header />
           {children}
           <Footer />
