@@ -46,7 +46,7 @@ export default async function Contact() {
           <FaPhone
             size={45}
             className={`${locale === "fa" ? "ml-[20px]" : "mr-[20px]"}`}
-            color="#ffa500"
+            color="#EC9123"
           />
           <div className="overflow-hidden">
             <h4 className="mb-[10px] text-[1rem] lg:text-[1.5rem] font-bold">
@@ -64,7 +64,7 @@ export default async function Contact() {
           <FaLocationDot
             size={45}
             className={`${locale === "fa" ? "ml-[20px]" : "mr-[20px]"}`}
-            color="#ffa500"
+            color="#EC9123"
           />
           <div className="overflow-hidden">
             <h4 className="mb-[10px] text-[1rem] lg:text-[1.5rem] font-bold">
@@ -80,7 +80,7 @@ export default async function Contact() {
           <MdEmail
             size={45}
             className={`${locale === "fa" ? "ml-[20px]" : "mr-[20px]"}`}
-            color="#ffa500"
+            color="#EC9123"
           />
           <div className="overflow-hidden">
             <h4 className="mb-[10px] text-[1rem] lg:text-[1.5rem] font-bold">
@@ -95,7 +95,7 @@ export default async function Contact() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-[50px] pb-[20px] lg:pt-[60px] lg:pb-[30px] px-10 lg:px-30 xl:px-40 mx-auto">
-        <div className="py-[40px] px-[45px] border border-solid border-[#fea925] lg:w-[80%] lg:mr-auto">
+        <div className="py-[40px] px-[45px] border border-solid border-[#EC9123 lg:w-[80%] lg:mr-auto">
           <ContactForm />
         </div>
         <div className=" h-[200px] lg:h-full lg:w-[80%]">

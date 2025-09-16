@@ -448,7 +448,7 @@ export function CooperationForm() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-6 py-2 border border-transparent text-base font-medium rounded-md text-white bg-[#ffa500]  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#ffa500] disabled:opacity-50 flex items-center"
+                  className="px-6 py-2 border border-transparent text-base font-medium rounded-md text-white bg-[#EC9123]  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#EC9123] disabled:opacity-50 flex items-center"
                 >
                   {isSubmitting ? (
                     <>

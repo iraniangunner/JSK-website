@@ -14,7 +14,6 @@ import { motion } from "framer-motion";
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
 import { useLocale } from "next-intl";
 import { News, PaginatedResponse } from "@/types/news";
-import NewsCard from "@/app/[locale]/news/_components/news-card";
 
 interface SlideProps {
   delay: number;
@@ -122,7 +121,7 @@ export const NewsCarousel = ({ news }: { news: PaginatedResponse<News> }) => {
                     <div className="text-gray-300"></div>
                   </div>
                 </div>
-                <div className="text-white group-hover:text-[#ffa500] transition-all duration-[0.3]">
+                <div className="text-white group-hover:text-[#EC9123] transition-all duration-[0.3]">
                   <Link
                     href={`/news/${n.id}`}
                     className="flex items-center gap-1 h-full"
@@ -147,16 +146,16 @@ export const NewsCarousel = ({ news }: { news: PaginatedResponse<News> }) => {
 
       <div className="absolute right-[20px] top-0 flex gap-2">
         <div
-          className="swiper-button-prev related-prev after:hidden border border-[#ffa500] rounded-full
-        hover:bg-white bg-[#ffa500] transition-all"
+          className="swiper-button-prev related-prev after:hidden border border-[#EC9123] rounded-full
+        hover:bg-white bg-[#EC9123] transition-all"
         >
-          <FaArrowLeftLong className="text-white hover:text-[#ffa500] transition-all p-[8px]" />
+          <FaArrowLeftLong className="text-white hover:text-[#EC9123] transition-all p-[8px]" />
         </div>
         <div
-          className="swiper-button-next related-next after:hidden border border-[#ffa500] rounded-full
-        hover:bg-white bg-[#ffa500] transition-all"
+          className="swiper-button-next related-next after:hidden border border-[#EC9123] rounded-full
+        hover:bg-white bg-[#EC9123] transition-all"
         >
-          <FaArrowRightLong className="text-white hover:text-[#ffa500] transition-all p-[8px]" />
+          <FaArrowRightLong className="text-white hover:text-[#EC9123] transition-all p-[8px]" />
         </div>
       </div>
     </Swiper>

@@ -43,7 +43,7 @@ export const JobCard: React.FC<JobCardProps> = ({ job }) => {
         </div>
         <Link
           href={`/hiring/jobs/${job.id}`}
-          className="flex justify-center items-center w-[80%] xl:w-[40%] px-2 py-2 mt-8 text-center bg-[#fea925] cursor-pointer border 
+          className="flex justify-center items-center w-[80%] xl:w-[40%] px-2 py-2 mt-8 text-center bg-[#EC9123] cursor-pointer border 
               border-solid border-[#e6e5e5] font-[600] text-[#fff]
                hover:bg-[#2c4050] hover:border-[#2c4050] transition-all duration-[0.5s]"
         >

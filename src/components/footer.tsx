@@ -5,6 +5,7 @@ import { FaPhone } from "react-icons/fa";
 import { MdEmail, MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import jsk from "../../public/images/Logo_White.png";
+// import jsk from "../../public/images/jsk1.png";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { useLocale, useTranslations } from "next-intl";
@@ -64,7 +65,7 @@ export default function Footer() {
               }}
               className="mb-5 text-[18px] font-bold relative 
                   
-                  before:content-[''] before:absolute before:left-0 before:bottom-[-8px] before:h-[2px] before:w-full before:bg-[#ffa502]"
+                  before:content-[''] before:absolute before:left-0 before:bottom-[-8px] before:h-[2px] before:w-full before:bg-[#EC9123]"
             >
               {locale === "fa" ? "لینک های مفید" : "Useful Links"}
             </Typography>
@@ -84,7 +85,7 @@ export default function Footer() {
                   <li key={item.title}>
                     <Link
                       href={item.link}
-                      className={`py-2 w-full font-normal text-[#fff] flex items-center gap-2 hover:text-[#ffa500] ${
+                      className={`py-2 w-full font-normal text-[#fff] flex items-center gap-2 hover:text-[#EC9123] ${
                         locale === "fa" ? "hover:mr-[10px]" : "hover:ml-[10px]"
                       } transition-all duration-[0.4s]`}
                     >
@@ -113,7 +114,7 @@ export default function Footer() {
                 }`,
               }}
               className="mb-3 text-[18px] font-bold relative 
-              before:content-[''] before:absolute before:left-0 before:bottom-[-10px] before:h-[2px] before:w-full before:bg-[#ffa502]"
+              before:content-[''] before:absolute before:left-0 before:bottom-[-10px] before:h-[2px] before:w-full before:bg-[#EC9123]"
             >
               {locale === "fa" ? "ارتباط با ما" : "Contact Us"}
             </Typography>

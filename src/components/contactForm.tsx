@@ -200,8 +200,8 @@ export const ContactForm = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`w-full text-center bg-[#fea925] rounded-[15px] cursor-pointer border 
-                  border-solid border-[#fea925] h-[52px] font-[600] text-[#fff] text-[18px]
+            className={`w-full text-center bg-[#EC9123] rounded-[15px] cursor-pointer border 
+                  border-solid border-[#EC9123] h-[52px] font-[600] text-[#fff] text-[18px]
                    hover:bg-[#2c4050] hover:border-[#2c4050] transition-all duration-[0.5s] ${
                      isSubmitting ? "opacity-50 cursor-not-allowed" : ""
                    }`}

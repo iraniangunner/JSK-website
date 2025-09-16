@@ -26,7 +26,7 @@ export const NewsDetail = ({ news }: { news: News }) => {
             </h1>
 
             <div className="flex items-center text-gray-500 mb-6">
-              <Calendar size={20} className="text-orange-400" />
+              <Calendar size={20} className="text-[#EC9123]" />
               <span className="ml-2 text-sm">{formattedDate}</span>
             </div>
           </div>

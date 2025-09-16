@@ -50,8 +50,8 @@ export const NewsSectionUI = ({ news }: { news: PaginatedResponse<News> }) => {
         >
           <Link
             href="/news"
-            className="inline-block px-4 py-2 text-white bg-[#ffa500] select-none
-                mt-8 border border-[#ffa500] hover:bg-white hover:text-[#ffa500] 
+            className="inline-block px-4 py-2 text-white bg-[#EC9123] select-none
+                mt-8 border border-[#EC9123] hover:bg-white hover:text-[#EC9123] 
                 transition-all"
           >
             {locale === "fa" ? "مشاهده همه" : "View All"}

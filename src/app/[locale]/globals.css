@@ -53,8 +53,8 @@ html[lang="fa"] {
   left: 0;
   width: 200%;
   height: 500px;
-  background-color: #ffa500;
-  color: #ffa500;
+  background-color: #EC9123;
+  color: #EC9123;
   display: inline-block;
   z-index: -2;
 }
@@ -78,7 +78,7 @@ html[lang="fa"] {
 }
 
 .footer_bar {
-  background: -webkit-linear-gradient(90deg, #db8e00, #ffa500);
+  background: -webkit-linear-gradient(90deg, #db8e00, #EC9123);
 }
 
 .main-prev {
@@ -144,7 +144,7 @@ html[lang="fa"] {
   position: relative;
   z-index: 1;
   overflow: hidden;
-  color: #ffa500;
+  color: #EC9123;
   font-size: 16px;
   font-weight: 600;
   padding: 12px 20px;
@@ -165,7 +165,7 @@ html[lang="fa"] {
   padding: 12px 20px;
   text-align: center;
   display: inline-block;
-  background: #ffa500;
+  background: #EC9123;
   box-shadow: 0 7px 25px rgb(41 41 41 / 27%);
   transition: 0.4s;
 }

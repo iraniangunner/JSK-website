@@ -146,8 +146,8 @@ export function JobDetail({ job }: { job: JobResponse }) {
                 href="http://79.127.63.91:85/sysworkflow/en/neoclassic/97738647466c1e56a916250067348930/535278320672b338c4b5ff7071028364.php"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex justify-center items-center px-4 py-2 mt-8 text-center bg-[#fea925] cursor-pointer border
-                       border-solid border-[#fea925] h-[52px] font-[600] text-[#fff] text-[18px]
+                className="flex justify-center items-center px-4 py-2 mt-8 text-center bg-[#EC9123] cursor-pointer border
+                       border-solid border-[#EC9123] h-[52px] font-[600] text-[#fff] text-[18px]
                        hover:bg-[#2c4050] hover:border-[#2c4050] transition-all duration-[0.5s]"
               >
                 {locale === "fa" ? "درخواست همکاری" : "Apply"}

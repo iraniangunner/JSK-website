@@ -22,7 +22,7 @@ export default function LoadingSpinner() {
           stroke-width="5"
           stroke-linecap="round"
           stroke-linejoin="round"
-          className="text-[#ffa500]"
+          className="text-[#EC9123]"
         ></path>
       </svg>
     </div>

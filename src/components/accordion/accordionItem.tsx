@@ -13,9 +13,9 @@ import { useLocale } from "next-intl";
 function Icon({ id, open }: { id: number; open: number }) {
   return (
     <div
-      className={`border border-[#ffa500] p-3 rounded-full ${
+      className={`border border-[#EC9123] p-3 rounded-full ${
         id === open ? "bg-white" : ""
-      } bg-[#ffa500] text-white transition-all`}
+      } bg-[#EC9123] text-white transition-all`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,7 @@ function Icon({ id, open }: { id: number; open: number }) {
         strokeWidth={2}
         stroke="currentColor"
         className={`${
-          id === open ? "rotate-180 text-[#ffa500]" : ""
+          id === open ? "rotate-180 text-[#fff]" : ""
         } h-5 w-5 transition-all`}
       >
         <path
@@ -112,8 +112,8 @@ export function AccordionItem({ data }: { data: AccordionType[] }) {
               {item.link ? (
                 <Link
                   href={item.link}
-                  className="inline-block px-4 py-2 text-white bg-[#ffa500] 
-                mt-4 border border-[#ffa500] hover:bg-white hover:text-[#ffa500] 
+                  className="inline-block px-4 py-2 text-white bg-[#EC9123] 
+                mt-4 border border-[#EC9123] hover:bg-white hover:text-[#EC9123] 
                 transition-all"
                 >
                   {locale === "fa" ? "مشاهده بیش تر" : "View More"}

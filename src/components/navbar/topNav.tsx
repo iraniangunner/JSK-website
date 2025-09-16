@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { Phone, Mail, MapPin } from "lucide-react";
-import jsk from "../../../public/images/jsk.png";
+import jsk from "../../../public/images/jsk1.png";
 import LocalSwitcher from "../language-switcher";
 import { getLocale, getTranslations } from "next-intl/server";
 
@@ -10,7 +10,7 @@ export default async function TopNav() {
   const t = await getTranslations();
 
   return (
-    <div className="hidden top-0 lg:flex items-center justify-center gap-6 bg-white pt-[10px]">
+    <div className="hidden top-0 lg:flex items-center justify-center gap-6 bg-white p-[10px]">
       <div className="flex justify-center items-center">
         <Link
           href="/"
@@ -40,7 +40,7 @@ export default async function TopNav() {
             href={process.env.GOOGLE_MAP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className={`border border-[#ffa500] text-[#ffa500] hover:bg-[#ffa500] hover:text-white transition-all rounded-full p-2 ${
+            className={`border border-[#EC9123] text-[#EC9123] hover:bg-[#EC9123] hover:text-white transition-all rounded-full p-2 ${
               locale === "fa" ? "ml-3" : "mr-3"
             }`}
           >
@@ -60,7 +60,7 @@ export default async function TopNav() {
         >
           <a
             href="tel:02188660368"
-            className={`border border-[#ffa500] text-[#ffa500] hover:bg-[#ffa500] hover:text-white transition-all rounded-full p-2 ${
+            className={`border border-[#EC9123] text-[#EC9123] hover:bg-[#EC9123] hover:text-white transition-all rounded-full p-2 ${
               locale === "fa" ? "ml-3" : "mr-3"
             }`}
           >
@@ -76,7 +76,7 @@ export default async function TopNav() {
         <div className="flex justify-center items-center">
           <a
             href="mailto:info@jsk-co.com"
-            className={`border border-[#ffa500] text-[#ffa500] hover:bg-[#ffa500] 
+            className={`border border-[#EC9123] text-[#EC9123] hover:bg-[#EC9123] 
           hover:text-white transition-all rounded-full p-2 ${
             locale === "fa" ? "ml-3" : "mr-3"
           }`}
@@ -91,11 +91,6 @@ export default async function TopNav() {
           </div>
         </div>
       </div>
-      {/* <div
-        className={`flex justify-center items-center gap-1 mr-2 ${
-          locale === "fa" ? "lg:mr-6" : "lg:ml-6"
-        }`}
-      > */}
       <div
         className={`flex items-center ${
           locale === "fa"

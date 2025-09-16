@@ -6,7 +6,7 @@ import { Navbar, MenuItem, IconButton } from "@material-tailwind/react";
 import MenuModal from "./navModal";
 import { AnimatePresence } from "framer-motion";
 import { Bars2Icon } from "@heroicons/react/24/solid";
-import jsk from "../../../public/images/jsk.png";
+import jsk from "../../../public/images/jsk1.png";
 import { useBrowserWidth } from "@/hooks/useBrowserWidth";
 import { useScroll } from "@/hooks/useScroll";
 import { DropdownMenu } from "./dropdownMenu";
@@ -74,7 +74,7 @@ export function ScrollNav() {
           {isScrolling ? (
             <Link
               href="/"
-              className="cursor-pointer font-medium hidden lg:block lg:h-[68px]"
+              className="cursor-pointer font-medium hidden lg:block lg:h-[68px] py-2"
             >
               <Image
                 src={jsk}
@@ -89,7 +89,7 @@ export function ScrollNav() {
           )}
           <div
             className="hidden lg:block relative after:content-[''] after:absolute after:w-full after:left-0 
-          after:bottom-[-3px] after:h-[3px] after:bg-[#ffa502]"
+          after:bottom-[-3px] after:h-[3px] after:bg-[#EC9123]"
           >
             <ul className="mt-2 mb-4 py-2 flex flex-col gap-2 2xl:gap-6 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
               {menuItems.map((item) =>
@@ -102,7 +102,7 @@ export function ScrollNav() {
                     key={item.linkTitle}
                     href={item.linkAddress}
                     className="contact font-bold relative flex items-center gap-2 rounded-none py-3 px-3
-        overflow-hidden text-sm 2xl:text-[16px] transition-all duration-[0.5s] text-[#fff] hover:text-[#ffa500] h-full z-[1]"
+        overflow-hidden text-sm 2xl:text-[16px] transition-all duration-[0.5s] text-[#fff] hover:text-[#EC9123] h-full z-[1]"
                   >
                     {item.linkTitle}
                   </Link>
@@ -115,7 +115,7 @@ export function ScrollNav() {
                     <MenuItem
                       className={`flex text-gray-900 items-center gap-2 rounded-none h-full py-3 ${
                         isScrolling
-                          ? "hover:text-[#ffa500] hover:bg-opacity-0"
+                          ? "hover:text-[#EC9123] hover:bg-opacity-0"
                           : "hover:bg-[#fff] hover:transition-all duration-[0.4s] delay-0 ease-in-out"
                       }  focus:bg-opacity-0 active:bg-opacity-0`}
                     >

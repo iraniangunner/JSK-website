@@ -109,7 +109,7 @@ export function SingleProject({ project }: { project: Project }) {
               <FaRegUser
                 className={`${
                   locale === "fa" ? "ml-[20px]" : "mr-[20px]"
-                } text-[#FF5E14]`}
+                } text-[#EC9123]`}
                 size={20}
               />
               <div>
@@ -125,7 +125,7 @@ export function SingleProject({ project }: { project: Project }) {
               <FaRegCalendar
                 className={`${
                   locale === "fa" ? "ml-[20px]" : "mr-[20px]"
-                } text-[#FF5E14]`}
+                } text-[#EC9123]`}
                 size={20}
               />
               <div>
@@ -141,7 +141,7 @@ export function SingleProject({ project }: { project: Project }) {
               <FaLocationDot
                 className={`${
                   locale === "fa" ? "ml-[20px]" : "mr-[20px]"
-                } text-[#FF5E14]`}
+                } text-[#EC9123`}
                 size={20}
               />
               <div>
