@@ -24,7 +24,7 @@ function Icon({ id, open }: { id: number; open: number }) {
         strokeWidth={2}
         stroke="currentColor"
         className={`${
-          id === open ? "rotate-180 text-[#fff]" : ""
+          id === open ? "rotate-180 text-[#EC9123]" : ""
         } h-5 w-5 transition-all`}
       >
         <path

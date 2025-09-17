@@ -4,8 +4,7 @@ import { FaMapLocationDot } from "react-icons/fa6";
 import { FaPhone } from "react-icons/fa";
 import { MdEmail, MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
-import jsk from "../../public/images/Logo_White.png";
-// import jsk from "../../public/images/jsk1.png";
+import jsk from "../../public/images/jsk_gray.png";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { useLocale, useTranslations } from "next-intl";
@@ -41,11 +40,12 @@ export default function Footer() {
             <Image
               src={jsk}
               alt="JSK logo"
-              width={300}
+              width={200}
               height={30}
-              className={`select-none ${
-                locale === "fa" ? "mr-[-20px]" : "ml-[-20px]"
-              }`}
+              className="mb-4"
+              // className={`select-none ${
+              //   locale === "fa" ? "mr-[-20px]" : "ml-[-20px]"
+              // }`}
             />
 
             <p className="sm:text-justify sm:leading-7 select-none text-[16px]">

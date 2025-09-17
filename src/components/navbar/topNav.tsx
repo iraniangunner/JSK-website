@@ -40,7 +40,7 @@ export default async function TopNav() {
             href={process.env.GOOGLE_MAP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className={`border border-[#EC9123] text-[#EC9123] hover:bg-[#EC9123] hover:text-white transition-all rounded-full p-2 ${
+            className={`border border-[#EC9123] cursor-pointer text-[#EC9123] hover:bg-[#EC9123] hover:text-white transition-all rounded-full p-2 ${
               locale === "fa" ? "ml-3" : "mr-3"
             }`}
           >
