@@ -23,7 +23,7 @@ export function EmailTemplate({ firstName, locale }: EmailTemplateProps) {
                 {/* Logo */}
                 <tr>
                   <td align="center" style={{ paddingBottom: "20px" }}>
-                    <img src="https://jsk-co.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fjsk.7562ac2d.png&w=256&q=75" alt="Company Logo" width={150} style={{ display: "block", border: "1px solid #ddd" }} />
+                    <img src="https://jsk-co.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fjsk1.ba8c51e9.png&w=256&q=75" alt="Company Logo" width={150} style={{ display: "block", border: "1px solid #ddd" }} />
                   </td>
                 </tr>
 
