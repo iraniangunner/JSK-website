@@ -91,8 +91,6 @@ export const ContactForm = () => {
         next: { revalidate: 3600 },
         headers: {
           "Content-Type": "application/json",
-          Authorization:
-            "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
         },
         body: JSON.stringify(trimmedData),
       });
