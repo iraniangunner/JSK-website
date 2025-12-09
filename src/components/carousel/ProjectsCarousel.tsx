@@ -306,13 +306,13 @@ export const ProjectsCarousel = ({ projects }: { projects: ProjectsData }) => {
           className="projects-carousel-prev w-12 h-12 rounded-full bg-[#ffa500] hover:bg-white border-2 border-[#ffa500] flex items-center justify-center transition-all duration-300 shadow-lg group"
           aria-label="Previous slide"
         >
-          <FaArrowLeftLong className="text-lg text-white group-hover:text-[#ffa500] transition-colors" />
+          <FaArrowRightLong className="text-lg text-white group-hover:text-[#ffa500] transition-colors" />
         </button>
         <button
           className="projects-carousel-next w-12 h-12 rounded-full bg-[#ffa500] hover:bg-white border-2 border-[#ffa500] flex items-center justify-center transition-all duration-300 shadow-lg group"
           aria-label="Next slide"
         >
-          <FaArrowRightLong className="text-lg text-white group-hover:text-[#ffa500] transition-colors" />
+          <FaArrowLeftLong className="text-lg text-white group-hover:text-[#ffa500] transition-colors" />
         </button>
       </div>
     </div>
