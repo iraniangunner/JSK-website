@@ -15,7 +15,7 @@ import "swiper/css/effect-fade";
 
 interface MainCarouselProps {
   data: Slide[];
-  baseImageUrl?: string; // Optional prop to configure base URL
+  baseImageUrl?: string;
 }
 
 export function MainCarousel({
@@ -24,13 +24,24 @@ export function MainCarousel({
 }: MainCarouselProps) {
   const [activeSlideIndex, setActiveStyleIndex] = useState<number>(0);
   const locale = useLocale();
+  const isRTL = locale === "fa";
 
-  // Function to get the full image URL
   const getImageUrl = (path: string) => `${baseImageUrl}${path}`;
 
   return (
     <section className="w-full select-none" dir="ltr">
-      <div className="h-screen">
+      <div className="h-screen relative">
+        {/* Progress bar */}
+        <div className="absolute top-0 left-0 right-0 z-20 h-1 bg-white/10">
+          <motion.div
+            key={activeSlideIndex}
+            className="h-full bg-[#EC9123]"
+            initial={{ width: "0%" }}
+            animate={{ width: "100%" }}
+            transition={{ duration: 4, ease: "linear" }}
+          />
+        </div>
+
         <Swiper
           navigation={{
             nextEl: ".swiper-button-next",
@@ -47,86 +58,170 @@ export function MainCarousel({
           modules={[Autoplay, Navigation, EffectFade]}
           className="h-full"
         >
-          {data.map(({ id, image, text, link, text_en }) => (
+          {data.map(({ id, image, text, link, text_en }, index) => (
             <SwiperSlide key={id}>
               {({ isActive }) => (
                 <div className="relative h-full">
-                  {/* Main slide image with Next.js Image optimization */}
+                  {/* Main slide image */}
                   <div className="absolute inset-0">
                     <Image
                       src={getImageUrl(image) || "/placeholder.svg"}
                       alt={text}
                       fill
-                      priority={id === 11} // Priority load first slide
-                      quality={85}
+                      priority={index === 0}
+                      quality={90}
                       sizes="100vw"
-                      style={{
-                        objectFit: "cover",
-                      }}
+                      className="object-cover"
                     />
-                    {/* Dark overlays */}
-                    <div className="absolute inset-0 bg-[#042038] opacity-30 z-[1]" />
-                    <div className="absolute inset-0 bg-black opacity-20 z-[1]" />
+                    
+                    {/* Gradient overlays for better text readability */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/70 z-[1]" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50 z-[1]" />
                   </div>
 
                   {/* Content */}
-                  <div className="relative z-10 h-full w-full">
-                    <div className="absolute top-[25%] left-[50%] translate-x-[-50%] lg:max-w-[30%] overflow-hidden">
+                  <div className="relative z-10 h-full w-full flex items-center justify-center">
+                    <div className="max-w-5xl mx-auto px-6 text-center">
+                      {/* Slide number indicator */}
                       <motion.div
-                        initial={{ y: 50, opacity: 0 }}
+                        initial={{ opacity: 0, y: 20 }}
                         animate={{
-                          y: isActive ? 0 : 50,
                           opacity: isActive ? 1 : 0,
+                          y: isActive ? 0 : 20,
                         }}
-                        transition={{ duration: 0.5 }}
+                        transition={{ duration: 0.6 }}
+                        className="mb-6"
                       >
-                        <p
-                          className={`text-sm sm:text-[30px] font-semibold leading-8 sm:leading-10 lg:leading-[50px] ${
-                            locale === "fa" ? "text-center" : "text-left"
-                          } text-white`}
-                        >
-                          {locale === "fa" ? text : text_en}
-                        </p>
+                        <span className="inline-flex items-center gap-3 text-white/60 text-sm font-medium tracking-widest uppercase">
+                          <span className="w-8 h-px bg-[#EC9123]" />
+                          <span className="text-[#EC9123] font-bold">
+                            {String(index + 1).padStart(2, "0")}
+                          </span>
+                          <span className="text-white/40">/</span>
+                          <span>{String(data.length).padStart(2, "0")}</span>
+                          <span className="w-8 h-px bg-white/30" />
+                        </span>
                       </motion.div>
 
+                      {/* Main heading */}
+                      <div className="overflow-hidden">
+                        <motion.h2
+                          initial={{ y: 100, opacity: 0 }}
+                          animate={{
+                            y: isActive ? 0 : 100,
+                            opacity: isActive ? 1 : 0,
+                          }}
+                          transition={{ duration: 0.7, ease: "easeOut" }}
+                          className={`text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-8 ${
+                            isRTL ? "font-persian" : ""
+                          }`}
+                          style={{
+                            textShadow: "0 4px 30px rgba(0,0,0,0.3)",
+                          }}
+                        >
+                          {locale === "fa" ? text : text_en}
+                        </motion.h2>
+                      </div>
+
+                      {/* Decorative line */}
                       <motion.div
-                        initial={{ x: 100, opacity: 0 }}
+                        initial={{ scaleX: 0, opacity: 0 }}
                         animate={{
-                          x: isActive ? 0 : 100,
+                          scaleX: isActive ? 1 : 0,
+                          opacity: isActive ? 1 : 0,
+                        }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
+                        className="w-24 h-1 bg-[#EC9123] mx-auto mb-8 rounded-full"
+                      />
+
+                      {/* CTA Button */}
+                      <motion.div
+                        initial={{ y: 30, opacity: 0 }}
+                        animate={{
+                          y: isActive ? 0 : 30,
                           opacity: isActive ? 1 : 0,
                         }}
                         transition={{ duration: 0.5, delay: 0.5 }}
-                        className="flex justify-center items-center mt-8"
                       >
-                        <div className="text-white bg-[#EC9123]">
-                          <Link
-                            href={link}
-                            className="px-4 py-2 sm:px-6 sm:py-4 w-full h-full block hover:bg-[#EC9123]/90 transition-colors text-sm sm:text-[18px]"
+                        <Link
+                          href={link}
+                          className="group relative inline-flex items-center gap-3 px-8 py-4 bg-[#EC9123] text-white font-semibold text-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-[#EC9123]/30"
+                        >
+                          {/* Button shine effect */}
+                          <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <span className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
+                          </span>
+                          
+                          <span className="relative z-10">
+                            {locale === "fa" ? "مشاهده بیشتر" : "View More"}
+                          </span>
+                          
+                         <svg
+                            className={`relative z-10 w-5 h-5 transition-transform duration-300 ${
+                              isRTL
+                                ? "group-hover:-translate-x-1"
+                                : ""
+                            }`}
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={2}
                           >
-                            {locale === "fa" ? "مشاهده بیش تر" : "View More"}
-                          </Link>
-                        </div>
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                            />
+                          </svg>
+                        </Link>
                       </motion.div>
                     </div>
                   </div>
+
+                  {/* Bottom gradient for navigation area */}
+                  <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black/60 to-transparent z-[2] pointer-events-none" />
                 </div>
               )}
             </SwiperSlide>
           ))}
 
-          {/* Navigation Buttons with Preview */}
+          {/* Navigation Buttons - UNCHANGED */}
           <NavigationButtons
             data={data}
             activeIndex={activeSlideIndex}
             getImageUrl={getImageUrl}
           />
         </Swiper>
+
+        {/* Slide indicators */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+          {data.map((_, index) => (
+            <button
+              key={index}
+              className={`h-1 rounded-full transition-all duration-500 ${
+                index === activeSlideIndex
+                  ? "w-8 bg-[#EC9123]"
+                  : "w-2 bg-white/40 hover:bg-white/60"
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* Side decorative elements */}
+        <div className="absolute top-1/2 -translate-y-1/2 left-6 z-10 hidden xl:flex flex-col items-center gap-4">
+          <div className="w-px h-16 bg-gradient-to-b from-transparent via-white/30 to-transparent" />
+          <span className="text-white/50 text-xs tracking-widest uppercase [writing-mode:vertical-lr] rotate-180">
+            {locale === "fa" ? "اسکرول کنید" : "Scroll"}
+          </span>
+          <div className="w-px h-16 bg-gradient-to-b from-transparent via-white/30 to-transparent" />
+        </div>
       </div>
     </section>
   );
 }
 
-// Separate component for navigation buttons
+// Navigation Buttons Component - COMPLETELY UNCHANGED
 function NavigationButtons({
   data,
   activeIndex,
