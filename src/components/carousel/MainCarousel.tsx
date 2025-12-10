@@ -32,7 +32,7 @@ export function MainCarousel({
     <section className="w-full select-none" dir="ltr">
       <div className="h-screen relative">
         {/* Progress bar */}
-        <div className="absolute top-0 left-0 right-0 z-20 h-1 bg-white/10">
+        {/* <div className="absolute top-0 left-0 right-0 z-20 h-1 bg-white/10">
           <motion.div
             key={activeSlideIndex}
             className="h-full bg-[#EC9123]"
@@ -40,7 +40,7 @@ export function MainCarousel({
             animate={{ width: "100%" }}
             transition={{ duration: 4, ease: "linear" }}
           />
-        </div>
+        </div> */}
 
         <Swiper
           navigation={{
