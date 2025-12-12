@@ -1,4 +1,5 @@
 import { getLocale, getTranslations } from "next-intl/server";
+import Link from "next/link";
 
 type Props = {
   params: { locale: string };
@@ -342,7 +343,7 @@ export default async function About() {
               : "Get in touch today and take the first step towards success"}
           </p>
 
-          <a
+          <Link
             href={isRTL ?"/fa/contact":"/en/contact"}
             className="group relative inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-[#ffa500] to-[#ff8c00] text-white font-bold text-lg rounded-full overflow-hidden shadow-xl shadow-[#ffa500]/30 hover:shadow-2xl hover:shadow-[#ffa500]/40 hover:scale-105 transition-all duration-300"
           >
@@ -361,7 +362,7 @@ export default async function About() {
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
-          </a>
+          </Link>
         </div>
       </section>
     </div>

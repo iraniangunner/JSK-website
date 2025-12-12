@@ -32,20 +32,7 @@ export default function ServicesSection() {
   return (
     <section className="relative overflow-hidden">
       <div className="relative z-10 w-[92%] xl:w-[88%] max-w-7xl mx-auto py-20 lg:py-28">
-        {/* Section Header */}
-        {/* <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <span className="inline-flex items-center gap-3 text-[#EC9123] text-sm font-semibold tracking-widest uppercase mb-4">
-            <span className="w-8 h-px bg-[#EC9123]" />
-            {isRTL ? "خدمات ما" : "Our Services"}
-            <span className="w-8 h-px bg-[#EC9123]" />
-          </span>
-        </motion.div> */}
+     
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Content Side */}

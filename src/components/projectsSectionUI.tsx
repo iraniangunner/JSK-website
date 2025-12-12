@@ -31,7 +31,7 @@ export const ProjectsSectionUI = ({ projects }: { projects: ProjectsData }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#2c4050] leading-tight mb-5"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#2c4050] leading-tight mb-5 select-none"
               >
                 {t("title")}
               </motion.h2>

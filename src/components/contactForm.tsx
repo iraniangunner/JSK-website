@@ -200,7 +200,7 @@
 //           <button
 //             type="submit"
 //             disabled={isSubmitting}
-//             className={`w-full text-center bg-[#EC9123] rounded-[15px] cursor-pointer border 
+//             className={`w-full text-center bg-[#EC9123] rounded-[15px] cursor-pointer border
 //                   border-solid border-[#EC9123] h-[52px] font-[600] text-[#fff] text-[18px]
 //                    hover:bg-[#2c4050] hover:border-[#2c4050] transition-all duration-[0.5s] ${
 //                      isSubmitting ? "opacity-50 cursor-not-allowed" : ""
@@ -300,13 +300,17 @@ export const ContactForm = () => {
     }
 
     try {
-      const recaptchaValidationResponse = await fetch("/api/validate-recaptcha", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token: recaptchaToken }),
-      });
+      const recaptchaValidationResponse = await fetch(
+        "/api/validate-recaptcha",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token: recaptchaToken }),
+        }
+      );
 
-      const recaptchaValidationResult = await recaptchaValidationResponse.json();
+      const recaptchaValidationResult =
+        await recaptchaValidationResponse.json();
 
       if (!recaptchaValidationResult.success) {
         toast.error(t("notifications.recaptchaFailed"));
@@ -327,7 +331,8 @@ export const ContactForm = () => {
         next: { revalidate: 3600 },
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
+          Authorization:
+            "Bearer 3|aEbpCRb3dEf0gV3YyrmjFpmGdkEyYGxJue9ResHtb33d8a02",
         },
         body: JSON.stringify(trimmedData),
       });
@@ -350,16 +355,17 @@ export const ContactForm = () => {
   };
 
   const getInputClasses = (fieldName: string, hasError: boolean) => {
-    const baseClasses = "w-full bg-gray-50 border-2 rounded-2xl px-5 py-4 text-gray-900 placeholder-gray-400 transition-all duration-300 outline-none";
-    
+    const baseClasses =
+      "w-full bg-gray-50 border-2 rounded-2xl px-5 py-4 text-gray-900 placeholder-gray-400 transition-all duration-300 outline-none";
+
     if (hasError) {
       return `${baseClasses} border-red-300 bg-red-50 focus:border-red-500 focus:ring-4 focus:ring-red-500/10`;
     }
-    
+
     if (focusedField === fieldName) {
       return `${baseClasses} border-[#EC9123] bg-white shadow-lg shadow-[#EC9123]/10 ring-4 ring-[#EC9123]/10`;
     }
-    
+
     return `${baseClasses} border-gray-200 hover:border-gray-300 focus:border-[#EC9123] focus:bg-white focus:shadow-lg focus:shadow-[#EC9123]/10 focus:ring-4 focus:ring-[#EC9123]/10`;
   };
 
@@ -426,8 +432,16 @@ export const ContactForm = () => {
               />
               {errors.name?.message && (
                 <p className="text-red-500 text-sm flex items-center gap-2">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                  <svg
+                    className="w-4 h-4"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                      clipRule="evenodd"
+                    />
                   </svg>
                   {errors.name.message}
                 </p>
@@ -451,8 +465,16 @@ export const ContactForm = () => {
               />
               {errors.email && (
                 <p className="text-red-500 text-sm flex items-center gap-2">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                  <svg
+                    className="w-4 h-4"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                      clipRule="evenodd"
+                    />
                   </svg>
                   {errors.email.message}
                 </p>
@@ -476,8 +498,16 @@ export const ContactForm = () => {
             />
             {errors.website?.message && (
               <p className="text-red-500 text-sm flex items-center gap-2">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                <svg
+                  className="w-4 h-4"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                    clipRule="evenodd"
+                  />
                 </svg>
                 {errors.website.message}
               </p>
@@ -494,15 +524,30 @@ export const ContactForm = () => {
             <textarea
               {...register("text")}
               rows={5}
-              className={`${getInputClasses("text", !!errors.text)} resize-none`}
-              placeholder={isRTL ? "پیام خود را بنویسید..." : "Tell us about your project..."}
+              className={`${getInputClasses(
+                "text",
+                !!errors.text
+              )} resize-none`}
+              placeholder={
+                isRTL
+                  ? "پیام خود را بنویسید..."
+                  : "Tell us about your project..."
+              }
               onFocus={() => setFocusedField("text")}
               onBlur={() => setFocusedField(null)}
             />
             {errors.text && (
               <p className="text-red-500 text-sm flex items-center gap-2">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                <svg
+                  className="w-4 h-4"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                    clipRule="evenodd"
+                  />
                 </svg>
                 {errors.text.message}
               </p>
@@ -531,7 +576,11 @@ export const ContactForm = () => {
               shadow-lg shadow-[#EC9123]/25 hover:shadow-xl hover:shadow-[#EC9123]/30 
               hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-[#EC9123]/30
               transition-all duration-300
-              ${isSubmitting ? "opacity-70 cursor-not-allowed hover:scale-100" : ""}
+              ${
+                isSubmitting
+                  ? "opacity-70 cursor-not-allowed hover:scale-100"
+                  : ""
+              }
             `}
           >
             {/* Shine effect */}
@@ -570,7 +619,11 @@ export const ContactForm = () => {
                     stroke="currentColor"
                     strokeWidth={2.5}
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                    />
                   </svg>
                 </>
               )}
