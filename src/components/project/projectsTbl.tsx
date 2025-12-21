@@ -23,15 +23,52 @@ export default function ProjectsTable({
           )
         )
       : projectsData.data;
-  }, [selectedCategory]);
+  }, [selectedCategory, projectsData.data]);
+
+  // Container animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  // Item animation variants
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 12,
+      },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.9,
+      transition: {
+        duration: 0.3,
+      },
+    },
+  };
 
   return (
     <div className="container mx-auto px-4 py-8">
+      {/* Category Filter Section */}
       <div className="mb-8">
         <div className="flex items-center justify-center gap-6 flex-wrap">
           {categories.map((category: ProjectCategory) => (
-            <button
+            <motion.button
               key={category.order}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => setSelectedCategory(category.id)}
               className={`filter_btn hover:text-white ${
                 selectedCategory === category.id
@@ -40,26 +77,62 @@ export default function ProjectsTable({
               }`}
             >
               {locale === "fa" ? category.title : category.title_en}
-            </button>
+            </motion.button>
           ))}
         </div>
       </div>
-      {!filteredProjects ||
-        (!filteredProjects.length && (
-          <div className="text-center py-8 text-gray-500">
-            {locale === "fa" ? "پروژه ای یافت نشد" : "No projects found"}
+
+      {/* Empty State */}
+      {!filteredProjects || !filteredProjects.length ? (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.4 }}
+          className="text-center py-16"
+        >
+          <div className="inline-block">
+            <svg
+              className="w-24 h-24 mx-auto text-gray-300 mb-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
+              />
+            </svg>
+            <h3 className="text-xl font-bold text-gray-700 mb-2">
+              {locale === "fa" ? "پروژه‌ای یافت نشد" : "No Projects Found"}
+            </h3>
+            <p className="text-sm text-gray-500">
+              {locale === "fa"
+                ? "لطفاً دسته‌بندی دیگری را انتخاب کنید"
+                : "Please try selecting a different category"}
+            </p>
           </div>
-        ))}
-      <motion.div
-        layout
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
-      >
-        <AnimatePresence>
-          {filteredProjects.map((project: any) => {
-            return <ProjectView key={project.id} projectDetails={project} />;
-          })}
-        </AnimatePresence>
-      </motion.div>
+        </motion.div>
+      ) : (
+        /* Projects Grid with Stagger Animation */
+        <motion.div
+          key={selectedCategory}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+        >
+          <AnimatePresence mode="wait">
+            {filteredProjects.map((project: any) => (
+              <motion.div key={project.id} variants={itemVariants} layout>
+                <ProjectView projectDetails={project} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+      )}
     </div>
   );
 }

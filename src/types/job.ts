@@ -19,6 +19,7 @@ export interface JobResponse {
   };
   text: string;
   text_en: string;
+  is_active:boolean
 }
 
 export interface FilterOption {

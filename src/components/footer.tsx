@@ -16,7 +16,7 @@ export default function Footer() {
   const t = useTranslations();
   const links = getUsefulLinks(t);
   return (
-    <footer className="relative w-full mt-6 overflow-hidden">
+    <footer className="relative w-full overflow-hidden">
       <div className="absolute inset-0 z-[-2]">
         <Image
           src={bgImage}
